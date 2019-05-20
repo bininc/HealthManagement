@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5F6A9B74-D445-4E23-9F55-EFE1FD5EE3D6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TmoCommon</RootNamespace>
+    <AssemblyName>TmoCommon</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>37392d71</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\ResourceLib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.JScript" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\ResourceLib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BinaryFormatterClass.cs" />
+    <Compile Include="MemoryCacheHelper.cs" />
+    <Compile Include="ColorHelper.cs" />
+    <Compile Include="ConvertJson.cs" />
+    <Compile Include="DateTimeHelper.cs" />
+    <Compile Include="EmailHelper.cs" />
+    <Compile Include="ImageHelper.cs" />
+    <Compile Include="JsonHelper.cs" />
+    <Compile Include="LogHelper.cs" />
+    <Compile Include="MD5Helper.cs" />
+    <Compile Include="ModelConvertHelper.cs" />
+    <Compile Include="ReflectHelper.cs" />
+    <Compile Include="EamilHelper.cs" />
+    <Compile Include="SMSHelper.cs" />
+    <Compile Include="SocketLib\TCPClient.cs" />
+    <Compile Include="SocketLib\TCPServer.cs" />
+    <Compile Include="SocketLib\TCPServerClient.cs" />
+    <Compile Include="SyncDeviceEnums.cs" />
+    <Compile Include="SyncDevice.cs" />
+    <Compile Include="SyncDeviceTool.cs" />
+    <Compile Include="TmoDataComm.cs" />
+    <Compile Include="USB\Classes\DllWrappers\USBQHIDDLL.cs" />
+    <Compile Include="USB\UsbHidDevice.cs" />
+    <Compile Include="USB\Classes\Constants.cs" />
+    <Compile Include="USB\Classes\DeviceChangeNotifier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="USB\Classes\DeviceCommunication.cs" />
+    <Compile Include="USB\Classes\DeviceDiscovery.cs" />
+    <Compile Include="USB\Classes\DllWrappers\Hid.cs" />
+    <Compile Include="WebServiceHelper.cs" />
+    <Compile Include="WeChatHelper.cs" />
+    <Compile Include="WinAPI\Kernel32.cs" />
+    <Compile Include="USB\Classes\DllWrappers\SetupApi.cs" />
+    <Compile Include="USB\Classes\Messaging\CommandMessage.cs" />
+    <Compile Include="USB\Classes\Messaging\IMesage.cs" />
+    <Compile Include="USB\Structures\DevBroadcastDeviceinterface.cs" />
+    <Compile Include="USB\Structures\DevBroadcastDeviceinterface1.cs" />
+    <Compile Include="USB\Structures\DevBroadcastHdr.cs" />
+    <Compile Include="USB\Structures\DeviceInformationStructure.cs" />
+    <Compile Include="USB\Structures\HiddAttributes.cs" />
+    <Compile Include="USB\Structures\HidpCaps.cs" />
+    <Compile Include="USB\Structures\HidpReportType.cs" />
+    <Compile Include="USB\Structures\HidpValueCaps.cs" />
+    <Compile Include="USB\Structures\NotRange.cs" />
+    <Compile Include="USB\Structures\Overlapped.cs" />
+    <Compile Include="USB\Structures\PspDeviceInterfaceDetailData.cs" />
+    <Compile Include="USB\Structures\Range.cs" />
+    <Compile Include="USB\Structures\SecurityAttributes.cs" />
+    <Compile Include="USB\Structures\SpDeviceInterfaceData.cs" />
+    <Compile Include="USB\Structures\SyncObjT.cs" />
+    <Compile Include="UserAttribute.cs" />
+    <Compile Include="ConfigHelper.cs" />
+    <Compile Include="DEncrypt\DESEncrypt.cs" />
+    <Compile Include="DEncrypt\HashEncode.cs" />
+    <Compile Include="DEncrypt\RSACryption.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringPlus.cs" />
+    <Compile Include="TmoEnum.cs" />
+    <Compile Include="TmoShare.cs" />
+    <Compile Include="TmoComm.cs" />
+    <Compile Include="UserMessageBox.cs" />
+    <Compile Include="WinAPI\Structs.cs" />
+    <Compile Include="WinAPI\User32.cs" />
+    <Compile Include="XmlFiles.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="USB\Classes\DeviceChangeNotifier.resx">
+      <DependentUpon>DeviceChangeNotifier.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
