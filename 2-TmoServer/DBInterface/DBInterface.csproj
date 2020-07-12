@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D997249E-71FF-4876-B725-99783ADD2033}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DBInterface</RootNamespace>
+    <AssemblyName>DBInterface</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="InewReport.cs" />
+    <Compile Include="ITmoConfig.cs" />
+    <Compile Include="Itmo_actionplan.cs" />
+    <Compile Include="Itmo_control.cs" />
+    <Compile Include="Itmo_disdic.cs" />
+    <Compile Include="Itmo_docInfo.cs" />
+    <Compile Include="Itmo_extend_service.cs" />
+    <Compile Include="ITmo_FakeEntity.cs" />
+    <Compile Include="Itmo_intervene.cs" />
+    <Compile Include="Itmo_maintenance.cs" />
+    <Compile Include="Itmo_medical_dictionary.cs" />
+    <Compile Include="Itmo_medical_in.cs" />
+    <Compile Include="Itmo_monitor.cs" />
+    <Compile Include="Itmo_nur.cs" />
+    <Compile Include="Itmo_nur_diary.cs" />
+    <Compile Include="Itmo_nur_dic.cs" />
+    <Compile Include="Itmo_opinion.cs" />
+    <Compile Include="Itmo_points.cs" />
+    <Compile Include="Itmo_points_goods.cs" />
+    <Compile Include="Itmo_projecttype.cs" />
+    <Compile Include="Itmo_project_result.cs" />
+    <Compile Include="Itmo_purchase_sell_stock.cs" />
+    <Compile Include="Itmo_push_list.cs" />
+    <Compile Include="Itmo_questionnaire.cs" />
+    <Compile Include="Itmo_receipt_address.cs" />
+    <Compile Include="Itmo_SmsEmail.cs" />
+    <Compile Include="Itmo_tuijian.cs" />
+    <Compile Include="Itmo_userinfo.cs" />
+    <Compile Include="Itmo_examin_result.cs" />
+    <Compile Include="Itmo_userinfo_token.cs" />
+    <Compile Include="Itmo_websystem_Dictionary.cs" />
+    <Compile Include="Itmo_web_article.cs" />
+    <Compile Include="Itmo_web_attachment.cs" />
+    <Compile Include="Itmo_web_config.cs" />
+    <Compile Include="Itmo_wechat_consulting.cs" />
+    <Compile Include="Itmo_weixin_answer.cs" />
+    <Compile Include="Itmo_weixin_content.cs" />
+    <Compile Include="IWebMedical.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Itmo_TangNiao.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\0-TmoCommon\TmoCommon.csproj">
+      <Project>{5f6a9b74-d445-4e23-9f55-efe1fd5ee3d6}</Project>
+      <Name>TmoCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBModel\DBModel.csproj">
+      <Project>{c7ea315c-c463-4fed-b233-b76098e6d7eb}</Project>
+      <Name>DBModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

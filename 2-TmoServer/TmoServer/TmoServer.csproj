@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B00B0783-9A84-46F9-B253-CF00F302452D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TmoServer</RootNamespace>
+    <AssemblyName>TmoServer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\Desktop\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\ico\Black server.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>5941852FE7B1996346825D8E9EF2671854142463</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>TmoServer_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutBoxMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBoxMain.Designer.cs">
+      <DependentUpon>AboutBoxMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSetting.designer.cs">
+      <DependentUpon>FrmSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWeCart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWeCart.Designer.cs">
+      <DependentUpon>FrmWeCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanService.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UCServieStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCServieStatus.Designer.cs">
+      <DependentUpon>UCServieStatus.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AboutBoxMain.resx">
+      <DependentUpon>AboutBoxMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSetting.resx">
+      <DependentUpon>FrmSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWeCart.resx">
+      <DependentUpon>FrmWeCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCServieStatus.resx">
+      <DependentUpon>UCServieStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\0-TmoCommon\TmoCommon.csproj">
+      <Project>{5f6a9b74-d445-4e23-9f55-efe1fd5ee3d6}</Project>
+      <Name>TmoCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBBLL\DBBLL.csproj">
+      <Project>{8eadbfb8-cb60-444f-9111-a8d807478f85}</Project>
+      <Name>DBBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBDAL\DBDAL.csproj">
+      <Project>{c0473545-34b6-4496-9f02-f12c45548f9e}</Project>
+      <Name>DBDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBInterface\DBInterface.csproj">
+      <Project>{d997249e-71ff-4876-b725-99783add2033}</Project>
+      <Name>DBInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBModel\DBModel.csproj">
+      <Project>{c7ea315c-c463-4fed-b233-b76098e6d7eb}</Project>
+      <Name>DBModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBUtility\DBUtility.csproj">
+      <Project>{8e0969fd-0286-4f9f-a7a6-cba7156bb100}</Project>
+      <Name>DBUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoPushData\TmoPushData.csproj">
+      <Project>{b4beadcd-4418-4998-8f80-00eb554ff90c}</Project>
+      <Name>TmoPushData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoRemotingServer\TmoRemotingServer.csproj">
+      <Project>{2c7b4b9c-a1d4-41ef-a6d2-fbb63c8d3ec2}</Project>
+      <Name>TmoRemotingServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TMOTcpServer\TmoTcpServer.csproj">
+      <Project>{021d095c-b60e-4ecd-bb39-7982f66daecd}</Project>
+      <Name>TmoTcpServer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\ico\Off server.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\ico\Enable server.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\ico\Remove server.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\ico\Web server.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\ico\Data server.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\ico\Add server.ico" />
+    <Content Include="Images\ico\Black server.ico" />
+    <Content Include="Images\ico\Desable server.ico" />
+    <Content Include="Images\ico\Download server.ico" />
+    <Content Include="Images\ico\Firewall server.ico" />
+    <Content Include="Images\ico\Lock server.ico" />
+    <Content Include="Images\ico\Plan server.ico" />
+    <Content Include="Images\ico\Print server.ico" />
+    <Content Include="Images\ico\Push server.ico" />
+    <Content Include="Images\ico\Search server.ico" />
+    <Content Include="Images\ico\Unlock server.ico" />
+    <Content Include="Images\ico\Upload server.ico" />
+    <Content Include="Images\png\Add server.png" />
+    <Content Include="Images\png\Data server.png" />
+    <Content Include="Images\png\Desable server.png" />
+    <Content Include="Images\png\Download server.png" />
+    <Content Include="Images\png\Enable server.png" />
+    <Content Include="Images\png\Remove server.png" />
+    <Content Include="Images\png\Run service.png" />
+    <Content Include="Images\png\Firewall server.png" />
+    <Content Include="Images\png\Lock server.png" />
+    <Content Include="Images\png\Plan server.png" />
+    <Content Include="Images\png\Print server.png" />
+    <Content Include="Images\png\Push server.png" />
+    <Content Include="Images\png\Stop service.png" />
+    <Content Include="Images\png\Search server.png" />
+    <Content Include="Images\png\Unlock server.png" />
+    <Content Include="Images\png\Upload server.png" />
+    <Content Include="Images\png\Web server.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

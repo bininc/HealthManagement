@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C0473545-34B6-4496-9F02-F12C45548F9E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DBDAL</RootNamespace>
+    <AssemblyName>DBDAL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=5.0.8.1, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DBUtility\lib\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\ResourceLib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="LinkDLL.cs" />
+    <Compile Include="MySqlDal\newReportDal.cs" />
+    <Compile Include="MySqlDal\TmoConfigDal.cs" />
+    <Compile Include="MySqlDal\tmo_actionplanDal.cs" />
+    <Compile Include="MySqlDal\tmo_controlDal.cs" />
+    <Compile Include="MySqlDal\tmo_disdicDal.cs" />
+    <Compile Include="MySqlDal\tmo_docInfoDal.cs" />
+    <Compile Include="MySqlDal\tmo_examin_resultDal.cs" />
+    <Compile Include="MySqlDal\tmo_extend_serviceDal.cs" />
+    <Compile Include="MySqlDal\Tmo_FakeEntityDal.cs" />
+    <Compile Include="MySqlDal\tmo_interveneDal.cs" />
+    <Compile Include="MySqlDal\tmo_maintenanceDal.cs" />
+    <Compile Include="MySqlDal\tmo_medical_dictionaryDal.cs" />
+    <Compile Include="MySqlDal\tmo_monitorDal.cs" />
+    <Compile Include="MySqlDal\tmo_nurDal.cs" />
+    <Compile Include="MySqlDal\tmo_nur_diaryDal.cs" />
+    <Compile Include="MySqlDal\tmo_nur_dicDal.cs" />
+    <Compile Include="MySqlDal\tmo_opinionDal.cs" />
+    <Compile Include="MySqlDal\tmo_pointsDal.cs" />
+    <Compile Include="MySqlDal\tmo_points_goodsDal.cs" />
+    <Compile Include="MySqlDal\tmo_projecttypeDal.cs" />
+    <Compile Include="MySqlDal\tmo_project_resultDal.cs" />
+    <Compile Include="MySqlDal\tmo_purchase_sell_stockDal.cs" />
+    <Compile Include="MySqlDal\tmo_push_listDal.cs" />
+    <Compile Include="MySqlDal\tmo_questionnaireDal.cs" />
+    <Compile Include="MySqlDal\tmo_receipt_addressDal.cs" />
+    <Compile Include="MySqlDal\tmo_SmsEmailDal.cs" />
+    <Compile Include="MySqlDal\tmo_tuijianDal.cs" />
+    <Compile Include="MySqlDal\tmo_userinfoDal.cs" />
+    <Compile Include="MySqlDal\tmoCommonDal.cs" />
+    <Compile Include="MySqlDal\tmo_userinfo_tokenDal.cs" />
+    <Compile Include="MySqlDal\tmo_websystem_DictionaryDal.cs" />
+    <Compile Include="MySqlDal\tmo_web_articleDal.cs" />
+    <Compile Include="MySqlDal\tmo_web_attachmentDal.cs" />
+    <Compile Include="MySqlDal\tmo_web_comfigDal.cs" />
+    <Compile Include="MySqlDal\tmo_TangNiaoDal.cs" />
+    <Compile Include="MySqlDal\tmo_wechat_consultingDal.cs" />
+    <Compile Include="MySqlDal\tmo_weixin_answerDal.cs" />
+    <Compile Include="MySqlDal\tmo_weixin_contentDal.cs" />
+    <Compile Include="MySqlDal\WebMedicalDal.cs" />
+    <Compile Include="MySqlDal\tmo_medical_inDal.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLServerDal\TmoConfigDal.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\0-TmoCommon\TmoCommon.csproj">
+      <Project>{5f6a9b74-d445-4e23-9f55-efe1fd5ee3d6}</Project>
+      <Name>TmoCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBInterface\DBInterface.csproj">
+      <Project>{d997249e-71ff-4876-b725-99783add2033}</Project>
+      <Name>DBInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBModel\DBModel.csproj">
+      <Project>{c7ea315c-c463-4fed-b233-b76098e6d7eb}</Project>
+      <Name>DBModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBUtility\DBUtility.csproj">
+      <Project>{8e0969fd-0286-4f9f-a7a6-cba7156bb100}</Project>
+      <Name>DBUtility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8EADBFB8-CB60-444F-9111-A8D807478F85}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DBBLL</RootNamespace>
+    <AssemblyName>DBBLL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLLCommon.cs" />
+    <Compile Include="Itmo_medical_dictionary.cs" />
+    <Compile Include="newReportManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TmoConfigManager.cs" />
+    <Compile Include="tmo_actionplanManager.cs" />
+    <Compile Include="tmo_controlManager.cs" />
+    <Compile Include="tmo_disdicManager.cs" />
+    <Compile Include="tmo_docInfoManager.cs" />
+    <Compile Include="tmo_examin_resultManager.cs" />
+    <Compile Include="tmo_extend_serviceManager.cs" />
+    <Compile Include="Tmo_FakeEntityManager.cs" />
+    <Compile Include="tmo_interveneManager.cs" />
+    <Compile Include="tmo_maintenanceManager.cs" />
+    <Compile Include="tmo_medical_dictionaryManager.cs" />
+    <Compile Include="tmo_medical_inManager.cs" />
+    <Compile Include="tmo_monitorManager.cs" />
+    <Compile Include="tmo_nurManager.cs" />
+    <Compile Include="tmo_nur_diaryManager.cs" />
+    <Compile Include="tmo_nur_dicManager.cs" />
+    <Compile Include="tmo_opinionManager.cs" />
+    <Compile Include="tmo_pointsManager.cs" />
+    <Compile Include="tmo_points_goodsManager.cs" />
+    <Compile Include="tmo_projecttypeManager.cs" />
+    <Compile Include="tmo_project_resultManager.cs" />
+    <Compile Include="tmo_purchase_sell_stockManager.cs" />
+    <Compile Include="tmo_push_listManager.cs" />
+    <Compile Include="tmo_questionnaireManager.cs" />
+    <Compile Include="tmo_receipt_addressManager.cs" />
+    <Compile Include="tmo_SmsEmailManager.cs" />
+    <Compile Include="tmo_tuijianManager.cs" />
+    <Compile Include="tmo_userinfoManager.cs" />
+    <Compile Include="tmo_userinfo_tokenManager.cs" />
+    <Compile Include="tmo_websystem_DictionaryManager.cs" />
+    <Compile Include="tmo_web_articleManager.cs" />
+    <Compile Include="tmo_web_attachmentManager.cs" />
+    <Compile Include="tmo_web_configManager.cs" />
+    <Compile Include="Tmo_TangNiaoManager.cs" />
+    <Compile Include="tmo_wechat_consultingManager.cs" />
+    <Compile Include="tmo_weixin_answerManager.cs" />
+    <Compile Include="tmo_weixin_contentManager.cs" />
+    <Compile Include="WebMedicalManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\0-TmoCommon\TmoCommon.csproj">
+      <Project>{5f6a9b74-d445-4e23-9f55-efe1fd5ee3d6}</Project>
+      <Name>TmoCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBDAL\DBDAL.csproj">
+      <Project>{c0473545-34b6-4496-9f02-f12c45548f9e}</Project>
+      <Name>DBDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBInterface\DBInterface.csproj">
+      <Project>{d997249e-71ff-4876-b725-99783add2033}</Project>
+      <Name>DBInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBModel\DBModel.csproj">
+      <Project>{c7ea315c-c463-4fed-b233-b76098e6d7eb}</Project>
+      <Name>DBModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
