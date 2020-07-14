@@ -15,6 +15,7 @@
     <description>公共聚合模块</description>
 
     <modules>
+        <module>common-core</module>
         <module>common-log</module>
     </modules>
 </project>

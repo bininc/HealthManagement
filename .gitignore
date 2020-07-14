@@ -245,3 +245,4 @@ ModelManifest.xml
 .idea/
 .mvn/
 .svn/
+*.iml
