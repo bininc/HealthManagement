@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{39CC249E-F4F0-496C-8694-C59D16573E96}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TmoClient</RootNamespace>
+    <AssemblyName>TmoClient</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>发布\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Client.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.BonusSkins.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.Data.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.Utils.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraBars.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraEditors.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Update, Version=1.1.6192.26157, Culture=neutral, PublicKeyToken=eeca1f5b84cde0ea, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\Update.exe</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogoForm.Designer.cs">
+      <DependentUpon>LogoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PHRMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PHRMain.Designer.cs">
+      <DependentUpon>PHRMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UCMainPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCMainPage.Designer.cs">
+      <DependentUpon>UCMainPage.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="logoForm.resx">
+      <DependentUpon>LogoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PHRMain.resx">
+      <DependentUpon>PHRMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCMainPage.resx">
+      <DependentUpon>UCMainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\0-TmoCommon\TmoCommon.csproj">
+      <Project>{5f6a9b74-d445-4e23-9f55-efe1fd5ee3d6}</Project>
+      <Name>TmoCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoControl\TmoControl.csproj">
+      <Project>{3e50d49c-1642-4f10-a65b-dbd13899ffa3}</Project>
+      <Name>TmoControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoEvaluation\TmoEvaluation.csproj">
+      <Project>{badd8f53-dca9-4444-9309-6874421874d9}</Project>
+      <Name>TmoEvaluation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoExtendServer\TmoExtendServer.csproj">
+      <Project>{eaa2e5b4-828f-4ca7-beb6-4e260abd8baf}</Project>
+      <Name>TmoExtendServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoGeneral\TmoGeneral.csproj">
+      <Project>{9f4ba00e-b56f-427b-a7b6-77e556d22368}</Project>
+      <Name>TmoGeneral</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoLinkServer\TmoLinkServer.csproj">
+      <Project>{cc656dff-e984-4d6b-8bb9-5b78f1fcc01e}</Project>
+      <Name>TmoLinkServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoOpinion\TmoOpinion.csproj">
+      <Project>{8ecca066-e7a2-4569-8711-6d9d21682d2b}</Project>
+      <Name>TmoOpinion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmoProject\tmoProject.csproj">
+      <Project>{8ae61f0d-9e7b-4b4b-b36d-4e65687fa75a}</Project>
+      <Name>tmoProject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoPurchaseSellStock\TmoPurchaseSellStock.csproj">
+      <Project>{40db8403-e7c7-42f0-8650-1025ce286701}</Project>
+      <Name>TmoPurchaseSellStock</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoQuestionnaire\TmoQuestionnaire.csproj">
+      <Project>{ffc2efd0-d8d0-4290-8a2b-cefb15f8c7b7}</Project>
+      <Name>TmoQuestionnaire</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoReport\TmoReport.csproj">
+      <Project>{fa7a4584-f393-423d-a5e3-f2a6765bf1e5}</Project>
+      <Name>TmoReport</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoSkin\TmoSkin.csproj">
+      <Project>{e556ccfd-bc05-405a-b8db-ebf8ca908d60}</Project>
+      <Name>TmoSkin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoWeb\TmoWeb.csproj">
+      <Project>{24dcee43-ffb1-4b12-a69e-2955812c60e5}</Project>
+      <Name>TmoWeb</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tmo_PointsCenter\TmoPointsCenter.csproj">
+      <Project>{69df487d-5229-4701-bedd-d170c09dbb07}</Project>
+      <Name>TmoPointsCenter</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Client.ico" />
+    <None Include="Resources\mainbg.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

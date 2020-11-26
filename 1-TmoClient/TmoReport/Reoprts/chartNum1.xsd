@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="chartNum1" targetNamespace="http://tempuri.org/chartNum1.xsd" xmlns:mstns="http://tempuri.org/chartNum1.xsd" xmlns="http://tempuri.org/chartNum1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="chartNum1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="chartNum1" msprop:Generator_UserDSName="chartNum1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="chartTable" msprop:Generator_TableClassName="chartTableDataTable" msprop:Generator_TableVarName="tablechartTable" msprop:Generator_TablePropName="chartTable" msprop:Generator_RowDeletingName="chartTableRowDeleting" msprop:Generator_RowChangingName="chartTableRowChanging" msprop:Generator_RowEvHandlerName="chartTableRowChangeEventHandler" msprop:Generator_RowDeletedName="chartTableRowDeleted" msprop:Generator_UserTableName="chartTable" msprop:Generator_RowChangedName="chartTableRowChanged" msprop:Generator_RowEvArgName="chartTableRowChangeEvent" msprop:Generator_RowClassName="chartTableRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="numValue" msprop:Generator_ColumnVarNameInTable="columnnumValue" msprop:Generator_ColumnPropNameInRow="numValue" msprop:Generator_ColumnPropNameInTable="numValueColumn" msprop:Generator_UserColumnName="numValue" type="xs:string" minOccurs="0" />
+              <xs:element name="numTime" msprop:Generator_ColumnVarNameInTable="columnnumTime" msprop:Generator_ColumnPropNameInRow="numTime" msprop:Generator_ColumnPropNameInTable="numTimeColumn" msprop:Generator_UserColumnName="numTime" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="pbgTable" msprop:Generator_TableClassName="pbgTableDataTable" msprop:Generator_TableVarName="tablepbgTable" msprop:Generator_TablePropName="pbgTable" msprop:Generator_RowDeletingName="pbgTableRowDeleting" msprop:Generator_RowChangingName="pbgTableRowChanging" msprop:Generator_RowEvHandlerName="pbgTableRowChangeEventHandler" msprop:Generator_RowDeletedName="pbgTableRowDeleted" msprop:Generator_UserTableName="pbgTable" msprop:Generator_RowChangedName="pbgTableRowChanged" msprop:Generator_RowEvArgName="pbgTableRowChangeEvent" msprop:Generator_RowClassName="pbgTableRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="numValue" msprop:Generator_ColumnVarNameInTable="columnnumValue" msprop:Generator_ColumnPropNameInRow="numValue" msprop:Generator_ColumnPropNameInTable="numValueColumn" msprop:Generator_UserColumnName="numValue" type="xs:string" minOccurs="0" />
+              <xs:element name="numTime" msprop:Generator_ColumnVarNameInTable="columnnumTime" msprop:Generator_ColumnPropNameInRow="numTime" msprop:Generator_ColumnPropNameInTable="numTimeColumn" msprop:Generator_UserColumnName="numTime" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ogttTable" msprop:Generator_TableClassName="ogttTableDataTable" msprop:Generator_TableVarName="tableogttTable" msprop:Generator_TablePropName="ogttTable" msprop:Generator_RowDeletingName="ogttTableRowDeleting" msprop:Generator_RowChangingName="ogttTableRowChanging" msprop:Generator_RowEvHandlerName="ogttTableRowChangeEventHandler" msprop:Generator_RowDeletedName="ogttTableRowDeleted" msprop:Generator_UserTableName="ogttTable" msprop:Generator_RowChangedName="ogttTableRowChanged" msprop:Generator_RowEvArgName="ogttTableRowChangeEvent" msprop:Generator_RowClassName="ogttTableRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="numValue" msprop:Generator_ColumnVarNameInTable="columnnumValue" msprop:Generator_ColumnPropNameInRow="numValue" msprop:Generator_ColumnPropNameInTable="numValueColumn" msprop:Generator_UserColumnName="numValue" type="xs:string" minOccurs="0" />
+              <xs:element name="numTime" msprop:Generator_ColumnVarNameInTable="columnnumTime" msprop:Generator_ColumnPropNameInRow="numTime" msprop:Generator_ColumnPropNameInTable="numTimeColumn" msprop:Generator_UserColumnName="numTime" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

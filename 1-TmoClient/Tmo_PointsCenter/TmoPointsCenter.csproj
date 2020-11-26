@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{69DF487D-5229-4701-BEDD-D170C09DBB07}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TmoPointsCenter</RootNamespace>
+    <AssemblyName>TmoPointsCenter</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.Data.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.Utils.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraEditors.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraGrid.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraNavBar.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TmoUcRecive.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TmoUcRecive.Designer.cs">
+      <DependentUpon>TmoUcRecive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TmoUcSend.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TmoUcSend.Designer.cs">
+      <DependentUpon>TmoUcSend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucLivingDiaryAdd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucLivingDiaryAdd.Designer.cs">
+      <DependentUpon>ucLivingDiaryAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucLivingDiaryList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucLivingDiaryList.Designer.cs">
+      <DependentUpon>ucLivingDiaryList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucManagermentList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucManagermentList.Designer.cs">
+      <DependentUpon>ucManagermentList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucNurDiaryAdd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucNurDiaryAdd.Designer.cs">
+      <DependentUpon>ucNurDiaryAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucNurDiaryList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucNurDiaryList.Designer.cs">
+      <DependentUpon>ucNurDiaryList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucPharmacyDiaryAdd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucPharmacyDiaryAdd.Designer.cs">
+      <DependentUpon>ucPharmacyDiaryAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucPharmacyDiaryList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucPharmacyDiaryList.Designer.cs">
+      <DependentUpon>ucPharmacyDiaryList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucPointsCenter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucPointsCenter.Designer.cs">
+      <DependentUpon>ucPointsCenter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucPointsChangeList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucPointsChangeList.Designer.cs">
+      <DependentUpon>ucPointsChangeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucPointsProductList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucPointsProductList.Designer.cs">
+      <DependentUpon>ucPointsProductList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucSportDiaryAdd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucSportDiaryAdd.Designer.cs">
+      <DependentUpon>ucSportDiaryAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucSportDiaryList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucSportDiaryList.Designer.cs">
+      <DependentUpon>ucSportDiaryList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucTargetDiaryAdd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucTargetDiaryAdd.Designer.cs">
+      <DependentUpon>ucTargetDiaryAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucTargetDiaryList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucTargetDiaryList.Designer.cs">
+      <DependentUpon>ucTargetDiaryList.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TmoUcRecive.resx">
+      <DependentUpon>TmoUcRecive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TmoUcSend.resx">
+      <DependentUpon>TmoUcSend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucLivingDiaryAdd.resx">
+      <DependentUpon>ucLivingDiaryAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucLivingDiaryList.resx">
+      <DependentUpon>ucLivingDiaryList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucManagermentList.resx">
+      <DependentUpon>ucManagermentList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucNurDiaryAdd.resx">
+      <DependentUpon>ucNurDiaryAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucNurDiaryList.resx">
+      <DependentUpon>ucNurDiaryList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucPharmacyDiaryAdd.resx">
+      <DependentUpon>ucPharmacyDiaryAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucPharmacyDiaryList.resx">
+      <DependentUpon>ucPharmacyDiaryList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucPointsCenter.resx">
+      <DependentUpon>ucPointsCenter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucPointsChangeList.resx">
+      <DependentUpon>ucPointsChangeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucPointsProductList.resx">
+      <DependentUpon>ucPointsProductList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucSportDiaryAdd.resx">
+      <DependentUpon>ucSportDiaryAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucSportDiaryList.resx">
+      <DependentUpon>ucSportDiaryList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucTargetDiaryAdd.resx">
+      <DependentUpon>ucTargetDiaryAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucTargetDiaryList.resx">
+      <DependentUpon>ucTargetDiaryList.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\0-TmoCommon\TmoCommon.csproj">
+      <Project>{5f6a9b74-d445-4e23-9f55-efe1fd5ee3d6}</Project>
+      <Name>TmoCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoControl\TmoControl.csproj">
+      <Project>{3E50D49C-1642-4F10-A65B-DBD13899FFA3}</Project>
+      <Name>TmoControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoLinkServer\TmoLinkServer.csproj">
+      <Project>{cc656dff-e984-4d6b-8bb9-5b78f1fcc01e}</Project>
+      <Name>TmoLinkServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoSkin\TmoSkin.csproj">
+      <Project>{e556ccfd-bc05-405a-b8db-ebf8ca908d60}</Project>
+      <Name>TmoSkin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

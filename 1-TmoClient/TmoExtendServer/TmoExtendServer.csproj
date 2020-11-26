@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EAA2E5B4-828F-4CA7-BEB6-4E260ABD8BAF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TmoExtendServer</RootNamespace>
+    <AssemblyName>TmoExtendServer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.Data.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v14.2.Core, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.Printing.v14.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.Utils.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraBars.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraCharts.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v14.2.UI, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraCharts.v14.2.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraEditors.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraGrid.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraPrinting.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraReports.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ExtendServerNew.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExtendServerNew.Designer.cs">
+      <DependentUpon>ExtendServerNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UcBackService.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UcBackService.Designer.cs">
+      <DependentUpon>UcBackService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UcBackServiceNew.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UcBackServiceNew.Designer.cs">
+      <DependentUpon>UcBackServiceNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UcPaySeivice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UcPaySeivice.Designer.cs">
+      <DependentUpon>UcPaySeivice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ExtendServer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExtendServer.Designer.cs">
+      <DependentUpon>ExtendServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UcPayServiceNew.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UcPayServiceNew.Designer.cs">
+      <DependentUpon>UcPayServiceNew.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ExtendServerNew.resx">
+      <DependentUpon>ExtendServerNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UcBackService.resx">
+      <DependentUpon>UcBackService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UcBackServiceNew.resx">
+      <DependentUpon>UcBackServiceNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UcPaySeivice.resx">
+      <DependentUpon>UcPaySeivice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExtendServer.resx">
+      <DependentUpon>ExtendServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UcPayServiceNew.resx">
+      <DependentUpon>UcPayServiceNew.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\0-TmoCommon\TmoCommon.csproj">
+      <Project>{5f6a9b74-d445-4e23-9f55-efe1fd5ee3d6}</Project>
+      <Name>TmoCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoGeneral\TmoGeneral.csproj">
+      <Project>{9f4ba00e-b56f-427b-a7b6-77e556d22368}</Project>
+      <Name>TmoGeneral</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoLinkServer\TmoLinkServer.csproj">
+      <Project>{cc656dff-e984-4d6b-8bb9-5b78f1fcc01e}</Project>
+      <Name>TmoLinkServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoQuestionnaire\TmoQuestionnaire.csproj">
+      <Project>{ffc2efd0-d8d0-4290-8a2b-cefb15f8c7b7}</Project>
+      <Name>TmoQuestionnaire</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoReport\TmoReport.csproj">
+      <Project>{FA7A4584-F393-423D-A5E3-F2A6765BF1E5}</Project>
+      <Name>TmoReport</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoSkin\TmoSkin.csproj">
+      <Project>{e556ccfd-bc05-405a-b8db-ebf8ca908d60}</Project>
+      <Name>TmoSkin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

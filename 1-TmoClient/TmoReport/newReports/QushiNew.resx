@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="chartNum11.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 134</value>
+  </metadata>
+  <data name="xrLabel11.Text" xml:space="preserve">
+    <value>【医学解释】糖化血红蛋白   是在红细胞生存期间HbA与己糖（主要是葡萄糖）缓慢、连续的非酶促反应的产物。当HbA被糖基化后由于血红蛋白β链N末端缬氨酸分子与葡萄糖等分子的结合，而使其在血红蛋白电泳中成为HbA之前的快泳HbA1组分，即GHb。由于HbA所结合的成分不同，其中HbA1a（与磷酰葡萄糖结合）、HbA1b（与果糖结合）、HbA（与葡萄糖结合），其中HbA1c含量最高，占60%-80%，是目前临床最常检测的部分。由于糖化过程非常缓慢，一旦生成不再解离，且不受血糖暂时性升高的影响。因此GHb对高血糖，特别是血糖和尿糖的波动较大时有特殊诊断价值。 
+
+【判断标准】参考值:HbA1c4%-6%,HbA15%-8% </value>
+  </data>
+  <data name="xrLabel9.Text" xml:space="preserve">
+    <value>
+【医学解释】 BMI指数（身体质量指数，简称体质指数又称体重指数，英文为Body Mass Index，简称BMI），是用体重公斤数除以身高米数平方得出的数字，是目前国际上常用的衡量人体胖瘦程度以及是否健康的一个标准。主要用于统计用途，当我们需要比较及分析一个人的体重对于不同高度的人所带来的健康影响时，BMI值是一个中立而可靠的指标。超重和肥胖会增加糖尿病、高血压、心脏病等多种疾病的患风险。
+
+【判断标准】消瘦：BMI＜18.5(kg/㎡)，正常：18.5≤BMI＜24(kg/㎡)，超重：24≤BMI＜28(kg/㎡)，肥胖：BMI≥28。
+
+</value>
+  </data>
+  <data name="xrLabel7.Text" xml:space="preserve">
+    <value>【医学解释】血脂是血浆中的中性脂肪(甘油三酯和胆固醇)和类脂(磷脂、糖脂、固醇、类固醇)的总称，广泛存在于人体中。它们是生命细胞的基础代谢必需物质。一般说来，血脂中的主要成份是甘油三酯和胆固醇，其中甘油三酯参与人体内能量代谢，而胆固醇则主要用于合成细胞浆膜、类固醇激素和胆汁酸。
+
+【判断标准】正常范围：总胆固醇（TC）＜5.18mmol/L，II型糖尿病控制指标＜4.5mmol/L。甘油三酯（TG）＜1.76mmol/L,II型糖尿病控制指标＜1.7mmol/L低密度脂蛋白胆固醇(LD-LC)&lt;3.37mmol/L，II型糖尿病控制指标＜2.6mmol/L（未合并冠心病），＜1.8mmol/L（合并冠心病），高密度脂蛋白胆固醇（HDL-C）≥1.04mmol/L，II型糖尿病控制指标＞1.0mmol/L（男）,&gt;1.3mmol/L（女）。
+</value>
+  </data>
+  <data name="xrLabel1.Text" xml:space="preserve">
+    <value>
+【医学解释】空腹血糖（GLU）是指隔夜禁食8-12小时于次日早餐前所测的血糖，最佳检测时间为起床后10分钟内，早8点之前，在没有运动和饮食的影响下测得的血糖水平。反应基础血糖水平，是受体内升糖激素和基础胰岛素分泌维持血糖平衡的。
+
+【判断标准】正常血糖，空腹：3.9-5.6mmol/L，空腹血糖受损（IGR）：5.6-6.9mmol/L，糖耐量受损（IGT）：餐后2小时血糖7.8-11.0mmol/L。随机空腹血糖≥7.0mmol/L两次即可诊断为糖尿病。</value>
+  </data>
+  <metadata name="tarcom1BindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 95</value>
+  </metadata>
+  <metadata name="tarcom1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
+  <metadata name="tmo_user1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="tarcomBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 173</value>
+  </metadata>
+</root>

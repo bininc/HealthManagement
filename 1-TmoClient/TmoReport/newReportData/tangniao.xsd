@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="tangniao" targetNamespace="http://tempuri.org/tangniao.xsd" xmlns:mstns="http://tempuri.org/tangniao.xsd" xmlns="http://tempuri.org/tangniao.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="tangniao" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="tangniao" msprop:Generator_UserDSName="tangniao">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tmo_ques1" msprop:Generator_TableClassName="tmo_ques1DataTable" msprop:Generator_TableVarName="tabletmo_ques1" msprop:Generator_TablePropName="tmo_ques1" msprop:Generator_RowDeletingName="tmo_ques1RowDeleting" msprop:Generator_RowChangingName="tmo_ques1RowChanging" msprop:Generator_RowEvHandlerName="tmo_ques1RowChangeEventHandler" msprop:Generator_RowDeletedName="tmo_ques1RowDeleted" msprop:Generator_UserTableName="tmo_ques1" msprop:Generator_RowChangedName="tmo_ques1RowChanged" msprop:Generator_RowEvArgName="tmo_ques1RowChangeEvent" msprop:Generator_RowClassName="tmo_ques1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="dengji" msprop:Generator_ColumnVarNameInTable="columndengji" msprop:Generator_ColumnPropNameInRow="dengji" msprop:Generator_ColumnPropNameInTable="dengjiColumn" msprop:Generator_UserColumnName="dengji" type="xs:string" minOccurs="0" />
+              <xs:element name="dengjiFen" msprop:Generator_ColumnVarNameInTable="columndengjiFen" msprop:Generator_ColumnPropNameInRow="dengjiFen" msprop:Generator_ColumnPropNameInTable="dengjiFenColumn" msprop:Generator_UserColumnName="dengjiFen" type="xs:string" minOccurs="0" />
+              <xs:element name="dengDse" msprop:Generator_ColumnVarNameInTable="columndengDse" msprop:Generator_ColumnPropNameInRow="dengDse" msprop:Generator_ColumnPropNameInTable="dengDseColumn" msprop:Generator_UserColumnName="dengDse" type="xs:string" minOccurs="0" />
+              <xs:element name="zhidao" msprop:Generator_ColumnVarNameInTable="columnzhidao" msprop:Generator_ColumnPropNameInRow="zhidao" msprop:Generator_ColumnPropNameInTable="zhidaoColumn" msprop:Generator_UserColumnName="zhidao" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

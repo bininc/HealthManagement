@@ -1,0 +1,551 @@
+﻿namespace tmoProject
+{
+    partial class ucPersonPushList
+    {
+        /// <summary> 
+        /// 必需的设计器变量。
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// 清理所有正在使用的资源。
+        /// </summary>
+        /// <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region 组件设计器生成的代码
+
+        /// <summary> 
+        /// 设计器支持所需的方法 - 不要
+        /// 使用代码编辑器修改此方法的内容。
+        /// </summary>
+        private void InitializeComponent()
+        {
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            this.input_time = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemGridLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.linklook = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanelPage = new DevExpress.XtraEditors.PanelControl();
+            this.txtPageIndex = new DevExpress.XtraEditors.TextEdit();
+            this.btnGo = new DevExpress.XtraEditors.SimpleButton();
+            this.txtPageSize = new DevExpress.XtraEditors.TextEdit();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblCount = new System.Windows.Forms.Label();
+            this.llblStart = new System.Windows.Forms.LinkLabel();
+            this.llblUp = new System.Windows.Forms.LinkLabel();
+            this.llblDown = new System.Windows.Forms.LinkLabel();
+            this.llblEnd = new System.Windows.Forms.LinkLabel();
+            this.lblPageIndex = new System.Windows.Forms.Label();
+            this.dgcTree = new DevExpress.XtraGrid.GridControl();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.title = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.message = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.isRead = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.look = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.del = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemHyperLinkEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
+            this.txttile = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.btnquery = new DevExpress.XtraEditors.SimpleButton();
+            this.birth_dateend = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.birchb = new DevExpress.XtraEditors.CheckEdit();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.birth_datestart = new DevExpress.XtraEditors.DateEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.linklook)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flowLayoutPanelPage)).BeginInit();
+            this.flowLayoutPanelPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPageIndex.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPageSize.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgcTree)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txttile.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.birth_dateend.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.birth_dateend.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.birchb.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.birth_datestart.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.birth_datestart.Properties)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // input_time
+            // 
+            this.input_time.Caption = "创建时间";
+            this.input_time.FieldName = "input_time";
+            this.input_time.Name = "input_time";
+            this.input_time.OptionsColumn.AllowEdit = false;
+            this.input_time.OptionsColumn.AllowFocus = false;
+            this.input_time.OptionsColumn.AllowShowHide = false;
+            this.input_time.OptionsColumn.AllowSize = false;
+            this.input_time.OptionsColumn.FixedWidth = true;
+            this.input_time.Visible = true;
+            this.input_time.VisibleIndex = 3;
+            this.input_time.Width = 135;
+            // 
+            // repositoryItemGridLookUpEdit1
+            // 
+            this.repositoryItemGridLookUpEdit1.AutoHeight = false;
+            this.repositoryItemGridLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemGridLookUpEdit1.Name = "repositoryItemGridLookUpEdit1";
+            this.repositoryItemGridLookUpEdit1.View = this.gridView1;
+            // 
+            // gridView1
+            // 
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // linklook
+            // 
+            this.linklook.AutoHeight = false;
+            this.linklook.Name = "linklook";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.flowLayoutPanelPage);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 555);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(889, 45);
+            this.panel1.TabIndex = 11;
+            // 
+            // flowLayoutPanelPage
+            // 
+            this.flowLayoutPanelPage.Controls.Add(this.txtPageIndex);
+            this.flowLayoutPanelPage.Controls.Add(this.btnGo);
+            this.flowLayoutPanelPage.Controls.Add(this.txtPageSize);
+            this.flowLayoutPanelPage.Controls.Add(this.label1);
+            this.flowLayoutPanelPage.Controls.Add(this.label3);
+            this.flowLayoutPanelPage.Controls.Add(this.label4);
+            this.flowLayoutPanelPage.Controls.Add(this.lblCount);
+            this.flowLayoutPanelPage.Controls.Add(this.llblStart);
+            this.flowLayoutPanelPage.Controls.Add(this.llblUp);
+            this.flowLayoutPanelPage.Controls.Add(this.llblDown);
+            this.flowLayoutPanelPage.Controls.Add(this.llblEnd);
+            this.flowLayoutPanelPage.Controls.Add(this.lblPageIndex);
+            this.flowLayoutPanelPage.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanelPage.Location = new System.Drawing.Point(0, -2);
+            this.flowLayoutPanelPage.Name = "flowLayoutPanelPage";
+            this.flowLayoutPanelPage.Size = new System.Drawing.Size(889, 47);
+            this.flowLayoutPanelPage.TabIndex = 3;
+            // 
+            // txtPageIndex
+            // 
+            this.txtPageIndex.EditValue = "1";
+            this.txtPageIndex.Location = new System.Drawing.Point(475, 13);
+            this.txtPageIndex.Name = "txtPageIndex";
+            this.txtPageIndex.Size = new System.Drawing.Size(30, 20);
+            this.txtPageIndex.TabIndex = 54;
+            // 
+            // btnGo
+            // 
+            this.btnGo.Location = new System.Drawing.Point(528, 11);
+            this.btnGo.Name = "btnGo";
+            this.btnGo.Size = new System.Drawing.Size(41, 23);
+            this.btnGo.TabIndex = 53;
+            this.btnGo.Text = "GO";
+            this.btnGo.Click += new System.EventHandler(this.btnGo_Click);
+            // 
+            // txtPageSize
+            // 
+            this.txtPageSize.EditValue = "100";
+            this.txtPageSize.Location = new System.Drawing.Point(384, 12);
+            this.txtPageSize.Name = "txtPageSize";
+            this.txtPageSize.Size = new System.Drawing.Size(29, 20);
+            this.txtPageSize.TabIndex = 52;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(350, 14);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 4, 0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 14);
+            this.label1.TabIndex = 50;
+            this.label1.Text = "每页";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(416, 14);
+            this.label3.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 14);
+            this.label3.TabIndex = 49;
+            this.label3.Text = "条,转到第";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(506, 14);
+            this.label4.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(19, 14);
+            this.label4.TabIndex = 51;
+            this.label4.Text = "页";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblCount
+            // 
+            this.lblCount.AutoSize = true;
+            this.lblCount.ForeColor = System.Drawing.Color.Black;
+            this.lblCount.Location = new System.Drawing.Point(17, 15);
+            this.lblCount.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.lblCount.Name = "lblCount";
+            this.lblCount.Size = new System.Drawing.Size(69, 14);
+            this.lblCount.TabIndex = 40;
+            this.lblCount.Text = "共[1100]条";
+            this.lblCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // llblStart
+            // 
+            this.llblStart.AutoSize = true;
+            this.llblStart.Location = new System.Drawing.Point(89, 15);
+            this.llblStart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
+            this.llblStart.Name = "llblStart";
+            this.llblStart.Size = new System.Drawing.Size(31, 14);
+            this.llblStart.TabIndex = 26;
+            this.llblStart.TabStop = true;
+            this.llblStart.Text = "首页";
+            this.llblStart.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblStart_LinkClicked);
+            // 
+            // llblUp
+            // 
+            this.llblUp.AutoSize = true;
+            this.llblUp.Location = new System.Drawing.Point(126, 15);
+            this.llblUp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
+            this.llblUp.Name = "llblUp";
+            this.llblUp.Size = new System.Drawing.Size(31, 14);
+            this.llblUp.TabIndex = 27;
+            this.llblUp.TabStop = true;
+            this.llblUp.Text = "上页";
+            this.llblUp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblUp_LinkClicked);
+            // 
+            // llblDown
+            // 
+            this.llblDown.AutoSize = true;
+            this.llblDown.Location = new System.Drawing.Point(163, 15);
+            this.llblDown.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
+            this.llblDown.Name = "llblDown";
+            this.llblDown.Size = new System.Drawing.Size(31, 14);
+            this.llblDown.TabIndex = 36;
+            this.llblDown.TabStop = true;
+            this.llblDown.Text = "下页";
+            this.llblDown.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblDown_LinkClicked);
+            // 
+            // llblEnd
+            // 
+            this.llblEnd.AutoSize = true;
+            this.llblEnd.Location = new System.Drawing.Point(200, 15);
+            this.llblEnd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
+            this.llblEnd.Name = "llblEnd";
+            this.llblEnd.Size = new System.Drawing.Size(31, 14);
+            this.llblEnd.TabIndex = 37;
+            this.llblEnd.TabStop = true;
+            this.llblEnd.Text = "尾页";
+            this.llblEnd.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblEnd_LinkClicked);
+            // 
+            // lblPageIndex
+            // 
+            this.lblPageIndex.AutoSize = true;
+            this.lblPageIndex.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblPageIndex.Location = new System.Drawing.Point(232, 15);
+            this.lblPageIndex.Margin = new System.Windows.Forms.Padding(3, 4, 3, 0);
+            this.lblPageIndex.Name = "lblPageIndex";
+            this.lblPageIndex.Size = new System.Drawing.Size(100, 14);
+            this.lblPageIndex.TabIndex = 42;
+            this.lblPageIndex.Text = "第[6]页,共[11]页";
+            // 
+            // dgcTree
+            // 
+            this.dgcTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            gridLevelNode1.RelationName = "Level1";
+            this.dgcTree.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode1});
+            this.dgcTree.Location = new System.Drawing.Point(0, 55);
+            this.dgcTree.MainView = this.gridView2;
+            this.dgcTree.Name = "dgcTree";
+            this.dgcTree.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemGridLookUpEdit1,
+            this.repositoryItemHyperLinkEdit1,
+            this.linklook});
+            this.dgcTree.Size = new System.Drawing.Size(889, 545);
+            this.dgcTree.TabIndex = 10;
+            this.dgcTree.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2});
+            // 
+            // gridView2
+            // 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.id,
+            this.title,
+            this.message,
+            this.isRead,
+            this.input_time,
+            this.look,
+            this.del});
+            this.gridView2.GridControl = this.dgcTree;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            // 
+            // id
+            // 
+            this.id.Caption = "消息编号";
+            this.id.FieldName = "id";
+            this.id.Name = "id";
+            this.id.OptionsColumn.AllowEdit = false;
+            this.id.OptionsColumn.AllowFocus = false;
+            this.id.OptionsColumn.AllowMove = false;
+            this.id.OptionsColumn.AllowSize = false;
+            this.id.OptionsColumn.FixedWidth = true;
+            this.id.OptionsColumn.ReadOnly = true;
+            this.id.Width = 100;
+            // 
+            // title
+            // 
+            this.title.Caption = "标题";
+            this.title.FieldName = "title";
+            this.title.Name = "title";
+            this.title.OptionsColumn.AllowEdit = false;
+            this.title.OptionsColumn.AllowFocus = false;
+            this.title.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.title.OptionsColumn.AllowMove = false;
+            this.title.OptionsColumn.AllowShowHide = false;
+            this.title.OptionsColumn.AllowSize = false;
+            this.title.Visible = true;
+            this.title.VisibleIndex = 0;
+            this.title.Width = 192;
+            // 
+            // message
+            // 
+            this.message.Caption = "内容";
+            this.message.FieldName = "message";
+            this.message.Name = "message";
+            this.message.OptionsColumn.AllowEdit = false;
+            this.message.OptionsColumn.AllowFocus = false;
+            this.message.Visible = true;
+            this.message.VisibleIndex = 1;
+            this.message.Width = 183;
+            // 
+            // isRead
+            // 
+            this.isRead.Caption = "是否查看";
+            this.isRead.FieldName = "isRead";
+            this.isRead.Name = "isRead";
+            this.isRead.OptionsColumn.AllowEdit = false;
+            this.isRead.OptionsColumn.AllowFocus = false;
+            this.isRead.OptionsColumn.AllowMove = false;
+            this.isRead.OptionsColumn.AllowSize = false;
+            this.isRead.OptionsColumn.FixedWidth = true;
+            this.isRead.Visible = true;
+            this.isRead.VisibleIndex = 2;
+            // 
+            // look
+            // 
+            this.look.Caption = "查看";
+            this.look.ColumnEdit = this.linklook;
+            this.look.FieldName = "look";
+            this.look.Name = "look";
+            this.look.OptionsColumn.AllowMove = false;
+            this.look.OptionsColumn.AllowSize = false;
+            this.look.OptionsColumn.FixedWidth = true;
+            this.look.Visible = true;
+            this.look.VisibleIndex = 4;
+            // 
+            // del
+            // 
+            this.del.Caption = "删除";
+            this.del.ColumnEdit = this.repositoryItemHyperLinkEdit1;
+            this.del.FieldName = "del";
+            this.del.Name = "del";
+            this.del.OptionsColumn.AllowMove = false;
+            this.del.OptionsColumn.AllowSize = false;
+            this.del.OptionsColumn.FixedWidth = true;
+            this.del.Visible = true;
+            this.del.VisibleIndex = 5;
+            // 
+            // repositoryItemHyperLinkEdit1
+            // 
+            this.repositoryItemHyperLinkEdit1.AutoHeight = false;
+            this.repositoryItemHyperLinkEdit1.Name = "repositoryItemHyperLinkEdit1";
+            // 
+            // txttile
+            // 
+            this.txttile.Location = new System.Drawing.Point(79, 17);
+            this.txttile.Name = "txttile";
+            this.txttile.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txttile.Size = new System.Drawing.Size(115, 20);
+            this.txttile.TabIndex = 19;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelControl4.Location = new System.Drawing.Point(13, 20);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(48, 12);
+            this.labelControl4.TabIndex = 18;
+            this.labelControl4.Text = "消息标题";
+            // 
+            // btnquery
+            // 
+            this.btnquery.Location = new System.Drawing.Point(625, 15);
+            this.btnquery.Name = "btnquery";
+            this.btnquery.Size = new System.Drawing.Size(81, 21);
+            this.btnquery.TabIndex = 16;
+            this.btnquery.Text = "查询";
+            this.btnquery.Click += new System.EventHandler(this.btnquery_Click_1);
+            // 
+            // birth_dateend
+            // 
+            this.birth_dateend.EditValue = new System.DateTime(2015, 4, 14, 23, 11, 57, 548);
+            this.birth_dateend.Location = new System.Drawing.Point(461, 17);
+            this.birth_dateend.Name = "birth_dateend";
+            this.birth_dateend.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.birth_dateend.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.birth_dateend.Size = new System.Drawing.Size(142, 20);
+            this.birth_dateend.TabIndex = 12;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelControl2.Location = new System.Drawing.Point(443, 19);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(12, 12);
+            this.labelControl2.TabIndex = 11;
+            this.labelControl2.Text = "至";
+            // 
+            // birchb
+            // 
+            this.birchb.Location = new System.Drawing.Point(210, 14);
+            this.birchb.Name = "birchb";
+            this.birchb.Properties.Caption = "推送日期";
+            this.birchb.Size = new System.Drawing.Size(75, 19);
+            this.birchb.TabIndex = 8;
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.txttile);
+            this.panelControl1.Controls.Add(this.labelControl4);
+            this.panelControl1.Controls.Add(this.btnquery);
+            this.panelControl1.Controls.Add(this.birth_dateend);
+            this.panelControl1.Controls.Add(this.labelControl2);
+            this.panelControl1.Controls.Add(this.birchb);
+            this.panelControl1.Controls.Add(this.birth_datestart);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl1.Location = new System.Drawing.Point(0, 0);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(889, 55);
+            this.panelControl1.TabIndex = 9;
+            // 
+            // birth_datestart
+            // 
+            this.birth_datestart.EditValue = new System.DateTime(2015, 4, 14, 23, 11, 20, 837);
+            this.birth_datestart.Location = new System.Drawing.Point(291, 17);
+            this.birth_datestart.Name = "birth_datestart";
+            this.birth_datestart.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.birth_datestart.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.birth_datestart.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.birth_datestart.Size = new System.Drawing.Size(146, 20);
+            this.birth_datestart.TabIndex = 10;
+            // 
+            // ucPersonPushList
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.dgcTree);
+            this.Controls.Add(this.panelControl1);
+            this.Name = "ucPersonPushList";
+            this.Size = new System.Drawing.Size(889, 600);
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.linklook)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.flowLayoutPanelPage)).EndInit();
+            this.flowLayoutPanelPage.ResumeLayout(false);
+            this.flowLayoutPanelPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPageIndex.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPageSize.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgcTree)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txttile.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.birth_dateend.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.birth_dateend.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.birchb.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.birth_datestart.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.birth_datestart.Properties)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private DevExpress.XtraGrid.Columns.GridColumn input_time;
+        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit repositoryItemGridLookUpEdit1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit linklook;
+        private System.Windows.Forms.Panel panel1;
+        private DevExpress.XtraEditors.PanelControl flowLayoutPanelPage;
+        private DevExpress.XtraEditors.TextEdit txtPageIndex;
+        private DevExpress.XtraEditors.SimpleButton btnGo;
+        private DevExpress.XtraEditors.TextEdit txtPageSize;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblCount;
+        private System.Windows.Forms.LinkLabel llblStart;
+        private System.Windows.Forms.LinkLabel llblUp;
+        private System.Windows.Forms.LinkLabel llblDown;
+        private System.Windows.Forms.LinkLabel llblEnd;
+        private System.Windows.Forms.Label lblPageIndex;
+        private DevExpress.XtraGrid.GridControl dgcTree;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Columns.GridColumn id;
+        private DevExpress.XtraGrid.Columns.GridColumn title;
+        private DevExpress.XtraGrid.Columns.GridColumn message;
+        private DevExpress.XtraGrid.Columns.GridColumn isRead;
+        private DevExpress.XtraGrid.Columns.GridColumn look;
+        private DevExpress.XtraGrid.Columns.GridColumn del;
+        private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit1;
+        private DevExpress.XtraEditors.TextEdit txttile;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.SimpleButton btnquery;
+        private DevExpress.XtraEditors.DateEdit birth_dateend;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.CheckEdit birchb;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.DateEdit birth_datestart;
+    }
+}

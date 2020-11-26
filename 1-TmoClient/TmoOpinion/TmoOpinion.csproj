@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8ECCA066-E7A2-4569-8711-6D9D21682D2B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TmoExtendServer</RootNamespace>
+    <AssemblyName>TmoOpinion</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.Data.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.Utils.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraEditors.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraGrid.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NewFrmAdviseAnswer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewFrmAdviseAnswer.Designer.cs">
+      <DependentUpon>NewFrmAdviseAnswer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewAdvisingClients.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NewAdvisingClients.Designer.cs">
+      <DependentUpon>NewAdvisingClients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvisingClients.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvisingClients.Designer.cs">
+      <DependentUpon>AdvisingClients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAdviseAnswer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAdviseAnswer.Designer.cs">
+      <DependentUpon>FrmAdviseAnswer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewFrmAdviseOpinion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewFrmAdviseOpinion.Designer.cs">
+      <DependentUpon>NewFrmAdviseOpinion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NewFrmAdviseAnswer.resx">
+      <DependentUpon>NewFrmAdviseAnswer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewAdvisingClients.resx">
+      <DependentUpon>NewAdvisingClients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvisingClients.resx">
+      <DependentUpon>AdvisingClients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAdviseAnswer.resx">
+      <DependentUpon>FrmAdviseAnswer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewFrmAdviseOpinion.resx">
+      <DependentUpon>NewFrmAdviseOpinion.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\0-TmoCommon\TmoCommon.csproj">
+      <Project>{5f6a9b74-d445-4e23-9f55-efe1fd5ee3d6}</Project>
+      <Name>TmoCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoControl\TmoControl.csproj">
+      <Project>{3e50d49c-1642-4f10-a65b-dbd13899ffa3}</Project>
+      <Name>TmoControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoLinkServer\TmoLinkServer.csproj">
+      <Project>{cc656dff-e984-4d6b-8bb9-5b78f1fcc01e}</Project>
+      <Name>TmoLinkServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmoProject\tmoProject.csproj">
+      <Project>{8ae61f0d-9e7b-4b4b-b36d-4e65687fa75a}</Project>
+      <Name>tmoProject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoReport\TmoReport.csproj">
+      <Project>{fa7a4584-f393-423d-a5e3-f2a6765bf1e5}</Project>
+      <Name>TmoReport</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoSkin\TmoSkin.csproj">
+      <Project>{e556ccfd-bc05-405a-b8db-ebf8ca908d60}</Project>
+      <Name>TmoSkin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

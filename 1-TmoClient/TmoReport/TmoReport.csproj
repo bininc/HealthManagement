@@ -1,0 +1,990 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FA7A4584-F393-423D-A5E3-F2A6765BF1E5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TmoReport</RootNamespace>
+    <AssemblyName>TmoReport</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>发布\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.v14.2.Core, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.Charts.v14.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.Data.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v14.2.Core, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.Pdf.v14.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v14.2.Core, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.Printing.v14.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v14.2.Core, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.RichEdit.v14.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.Utils.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraBars.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraCharts.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v14.2.UI, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraCharts.v14.2.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraEditors.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraGrid.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPdfViewer.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraPdfViewer.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraPrinting.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraReports.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraRichEdit.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraTreeList.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="chartPanlControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="chartPanlControl.Designer.cs">
+      <DependentUpon>chartPanlControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frist.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Frist.Designer.cs">
+      <DependentUpon>Frist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrintWait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrintWait.Designer.cs">
+      <DependentUpon>FrmPrintWait.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReport.designer.cs">
+      <DependentUpon>FrmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReportPer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReportPer.Designer.cs">
+      <DependentUpon>FrmReportPer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReportSite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReportSite.Designer.cs">
+      <DependentUpon>FrmReportSite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmtenance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmtenance.Designer.cs">
+      <DependentUpon>frmtenance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmtuiZhi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmtuiZhi.Designer.cs">
+      <DependentUpon>frmtuiZhi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUpImg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUpImg.Designer.cs">
+      <DependentUpon>FrmUpImg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FromPHR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FromPHR.Designer.cs">
+      <DependentUpon>FromPHR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newReportData\tangniao.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tangniao.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="newReports\Each.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="newReports\Each.Designer.cs">
+      <DependentUpon>Each.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newReports\TuiEach.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="newReports\TuiEach.Designer.cs">
+      <DependentUpon>TuiEach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newReports\Zong.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="newReports\Zong.Designer.cs">
+      <DependentUpon>Zong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newReports\Feipang.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="newReports\Feipang.Designer.cs">
+      <DependentUpon>Feipang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newReports\Xuezhi.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="newReports\Xuezhi.Designer.cs">
+      <DependentUpon>Xuezhi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newReports\TangNiao.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="newReports\TangNiao.Designer.cs">
+      <DependentUpon>TangNiao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newReports\Dengji.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="newReports\Dengji.Designer.cs">
+      <DependentUpon>Dengji.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newReports\Hbyj.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="newReports\Hbyj.Designer.cs">
+      <DependentUpon>Hbyj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newReports\Hbsjbb.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="newReports\Hbsjbb.Designer.cs">
+      <DependentUpon>Hbsjbb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newReports\Hbzb.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="newReports\Hbzb.Designer.cs">
+      <DependentUpon>Hbzb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newReports\Hbsb.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="newReports\Hbsb.Designer.cs">
+      <DependentUpon>Hbsb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newReports\Hbxxg.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="newReports\Hbxxg.Designer.cs">
+      <DependentUpon>Hbxxg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newReports\Hbnxb.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="newReports\Hbnxb.Designer.cs">
+      <DependentUpon>Hbnxb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newReports\SsBg.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="newReports\SsBg.Designer.cs">
+      <DependentUpon>SsBg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newReports\YDBG.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="newReports\YDBG.Designer.cs">
+      <DependentUpon>YDBG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newReports\Qushi.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="newReports\Qushi.Designer.cs">
+      <DependentUpon>Qushi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newReports\QushiNew.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="newReports\QushiNew.Designer.cs">
+      <DependentUpon>QushiNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newReports\ZongNew.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="newReports\ZongNew.Designer.cs">
+      <DependentUpon>ZongNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newReports\cc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="newReports\cc.Designer.cs">
+      <DependentUpon>cc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\chartdpControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reoprts\chartdpControl.Designer.cs">
+      <DependentUpon>chartdpControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\chartNum1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>chartNum1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\DataShow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reoprts\DataShow.Designer.cs">
+      <DependentUpon>DataShow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\glycuresis.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reoprts\glycuresis.Designer.cs">
+      <DependentUpon>glycuresis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\Index.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reoprts\Index.Designer.cs">
+      <DependentUpon>Index.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\Project.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reoprts\Project.Designer.cs">
+      <DependentUpon>Project.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\projectType.cs">
+      <DependentUpon>projectType.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\projectType.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>projectType.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\projectType1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>projectType1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\projectType2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>projectType2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\projectType3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>projectType3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\projectType4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>projectType4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\projectType5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>projectType5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\projectType6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>projectType6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\projectType7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>projectType7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\projectType8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>projectType8.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\projectType9.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>projectType9.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\pronurdata.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>pronurdata.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\report_result.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>report_result.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\tarcom.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tarcom.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\Targetcomparison.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reoprts\Targetcomparison.Designer.cs">
+      <DependentUpon>Targetcomparison.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\titlepage .cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reoprts\titlepage .Designer.cs">
+      <DependentUpon>titlepage .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\diabetes.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reoprts\diabetes.Designer.cs">
+      <DependentUpon>diabetes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\tmo_index.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tmo_index.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\tmo_target.cs">
+      <DependentUpon>tmo_target.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\tmo_target.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tmo_target.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\tmo_user.cs">
+      <DependentUpon>tmo_user.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\tmo_user.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tmo_user.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reoprts\XtraReport1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reoprts\XtraReport1.Designer.cs">
+      <DependentUpon>XtraReport1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReportList.Designer.cs">
+      <DependentUpon>ReportList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucLuru.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucLuru.Designer.cs">
+      <DependentUpon>ucLuru.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucluruList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucluruList.Designer.cs">
+      <DependentUpon>ucluruList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UcViewReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UcViewReport.Designer.cs">
+      <DependentUpon>UcViewReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportShow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReportShow.Designer.cs">
+      <DependentUpon>ReportShow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporttenance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reporttenance.Designer.cs">
+      <DependentUpon>Reporttenance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportProjec.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReportProjec.Designer.cs">
+      <DependentUpon>ReportProjec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProject.designer.cs">
+      <DependentUpon>FrmProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewRepor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewRepor.designer.cs">
+      <DependentUpon>FrmNewRepor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UcViewNewReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UcViewNewReport.Designer.cs">
+      <DependentUpon>UcViewNewReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewReportList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NewReportList.Designer.cs">
+      <DependentUpon>NewReportList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NewReport.Designer.cs">
+      <DependentUpon>NewReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewReporttenance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NewReporttenance.Designer.cs">
+      <DependentUpon>NewReporttenance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmluruQu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmluruQu.Designer.cs">
+      <DependentUpon>frmluruQu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUp.Designer.cs">
+      <DependentUpon>FrmUp.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\0-TmoCommon\TmoCommon.csproj">
+      <Project>{5f6a9b74-d445-4e23-9f55-efe1fd5ee3d6}</Project>
+      <Name>TmoCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoControl\TmoControl.csproj">
+      <Project>{3E50D49C-1642-4F10-A65B-DBD13899FFA3}</Project>
+      <Name>TmoControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoLinkServer\TmoLinkServer.csproj">
+      <Project>{cc656dff-e984-4d6b-8bb9-5b78f1fcc01e}</Project>
+      <Name>TmoLinkServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoQuestionnaire\TmoQuestionnaire.csproj">
+      <Project>{ffc2efd0-d8d0-4290-8a2b-cefb15f8c7b7}</Project>
+      <Name>TmoQuestionnaire</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoSkin\TmoSkin.csproj">
+      <Project>{e556ccfd-bc05-405a-b8db-ebf8ca908d60}</Project>
+      <Name>TmoSkin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoWeb\TmoWeb.csproj">
+      <Project>{24dcee43-ffb1-4b12-a69e-2955812c60e5}</Project>
+      <Name>TmoWeb</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="chartPanlControl.resx">
+      <DependentUpon>chartPanlControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frist.resx">
+      <DependentUpon>Frist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrintWait.resx">
+      <DependentUpon>FrmPrintWait.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReport.resx">
+      <DependentUpon>FrmReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReportPer.resx">
+      <DependentUpon>FrmReportPer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReportSite.resx">
+      <DependentUpon>FrmReportSite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmtenance.resx">
+      <DependentUpon>frmtenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmtuiZhi.resx">
+      <DependentUpon>frmtuiZhi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUpImg.resx">
+      <DependentUpon>FrmUpImg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FromPHR.resx">
+      <DependentUpon>FromPHR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newReports\Each.resx">
+      <DependentUpon>Each.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newReports\TuiEach.resx">
+      <DependentUpon>TuiEach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newReports\Zong.resx">
+      <DependentUpon>Zong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newReports\Feipang.resx">
+      <DependentUpon>Feipang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newReports\Xuezhi.resx">
+      <DependentUpon>Xuezhi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newReports\TangNiao.resx">
+      <DependentUpon>TangNiao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newReports\Dengji.resx">
+      <DependentUpon>Dengji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newReports\Hbyj.resx">
+      <DependentUpon>Hbyj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newReports\Hbsjbb.resx">
+      <DependentUpon>Hbsjbb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newReports\Hbzb.resx">
+      <DependentUpon>Hbzb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newReports\Hbsb.resx">
+      <DependentUpon>Hbsb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newReports\Hbxxg.resx">
+      <DependentUpon>Hbxxg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newReports\Hbnxb.resx">
+      <DependentUpon>Hbnxb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newReports\SsBg.resx">
+      <DependentUpon>SsBg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newReports\YDBG.resx">
+      <DependentUpon>YDBG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newReports\Qushi.resx">
+      <DependentUpon>Qushi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newReports\QushiNew.resx">
+      <DependentUpon>QushiNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newReports\ZongNew.resx">
+      <DependentUpon>ZongNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newReports\cc.resx">
+      <DependentUpon>cc.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reoprts\chartdpControl.resx">
+      <DependentUpon>chartdpControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reoprts\DataShow.resx">
+      <DependentUpon>DataShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reoprts\diabetes.resx">
+      <DependentUpon>diabetes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reoprts\glycuresis.resx">
+      <DependentUpon>glycuresis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reoprts\Index.resx">
+      <DependentUpon>Index.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reoprts\Project.resx">
+      <DependentUpon>Project.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reoprts\Targetcomparison.resx">
+      <DependentUpon>Targetcomparison.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reoprts\titlepage .resx">
+      <DependentUpon>titlepage .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reoprts\XtraReport1.resx">
+      <DependentUpon>XtraReport1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportList.resx">
+      <DependentUpon>ReportList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucLuru.resx">
+      <DependentUpon>ucLuru.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucluruList.resx">
+      <DependentUpon>ucluruList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UcViewReport.resx">
+      <DependentUpon>UcViewReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportShow.resx">
+      <DependentUpon>ReportShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporttenance.resx">
+      <DependentUpon>Reporttenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportProjec.resx">
+      <DependentUpon>ReportProjec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProject.resx">
+      <DependentUpon>FrmProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewRepor.resx">
+      <DependentUpon>FrmNewRepor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UcViewNewReport.resx">
+      <DependentUpon>UcViewNewReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewReportList.resx">
+      <DependentUpon>NewReportList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewReport.resx">
+      <DependentUpon>NewReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewReporttenance.resx">
+      <DependentUpon>NewReporttenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmluruQu.resx">
+      <DependentUpon>frmluruQu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUp.resx">
+      <DependentUpon>FrmUp.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="newReportData\tangniao.xsc">
+      <DependentUpon>tangniao.xsd</DependentUpon>
+    </None>
+    <None Include="newReportData\tangniao.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>tangniao.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="newReportData\tangniao.xss">
+      <DependentUpon>tangniao.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\chartNum1.xsc">
+      <DependentUpon>chartNum1.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\chartNum1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>chartNum1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reoprts\chartNum1.xss">
+      <DependentUpon>chartNum1.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\projectType.xsc">
+      <DependentUpon>projectType.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\projectType.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>projectType.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reoprts\projectType.xss">
+      <DependentUpon>projectType.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\projectType1.xsc">
+      <DependentUpon>projectType1.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\projectType1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>projectType1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reoprts\projectType1.xss">
+      <DependentUpon>projectType1.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\projectType2.xsc">
+      <DependentUpon>projectType2.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\projectType2.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>projectType2.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reoprts\projectType2.xss">
+      <DependentUpon>projectType2.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\projectType3.xsc">
+      <DependentUpon>projectType3.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\projectType3.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>projectType3.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reoprts\projectType3.xss">
+      <DependentUpon>projectType3.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\projectType4.xsc">
+      <DependentUpon>projectType4.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\projectType4.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>projectType4.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reoprts\projectType4.xss">
+      <DependentUpon>projectType4.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\projectType5.xsc">
+      <DependentUpon>projectType5.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\projectType5.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>projectType5.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reoprts\projectType5.xss">
+      <DependentUpon>projectType5.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\projectType6.xsc">
+      <DependentUpon>projectType6.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\projectType6.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>projectType6.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reoprts\projectType6.xss">
+      <DependentUpon>projectType6.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\projectType7.xsc">
+      <DependentUpon>projectType7.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\projectType7.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>projectType7.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reoprts\projectType7.xss">
+      <DependentUpon>projectType7.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\projectType8.xsc">
+      <DependentUpon>projectType8.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\projectType8.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>projectType8.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reoprts\projectType8.xss">
+      <DependentUpon>projectType8.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\projectType9.xsc">
+      <DependentUpon>projectType9.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\projectType9.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>projectType9.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reoprts\projectType9.xss">
+      <DependentUpon>projectType9.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\pronurdata.xsc">
+      <DependentUpon>pronurdata.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\pronurdata.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>pronurdata.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reoprts\pronurdata.xss">
+      <DependentUpon>pronurdata.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\report_result.xsc">
+      <DependentUpon>report_result.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\report_result.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>report_result.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reoprts\report_result.xss">
+      <DependentUpon>report_result.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\tarcom.xsc">
+      <DependentUpon>tarcom.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\tarcom.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>tarcom.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reoprts\tarcom.xss">
+      <DependentUpon>tarcom.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\tmo_index.xsc">
+      <DependentUpon>tmo_index.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\tmo_index.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>tmo_index.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reoprts\tmo_index.xss">
+      <DependentUpon>tmo_index.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\tmo_target.xsc">
+      <DependentUpon>tmo_target.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\tmo_target.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>tmo_target.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reoprts\tmo_target.xss">
+      <DependentUpon>tmo_target.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\tmo_user.xsc">
+      <DependentUpon>tmo_user.xsd</DependentUpon>
+    </None>
+    <None Include="Reoprts\tmo_user.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>tmo_user.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reoprts\tmo_user.xss">
+      <DependentUpon>tmo_user.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

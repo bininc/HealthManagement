@@ -1,0 +1,467 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9F4BA00E-B56F-427B-A7B6-77E556D22368}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TmoGeneral</RootNamespace>
+    <AssemblyName>TmoGeneral</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.Data.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v14.2.Core, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.Printing.v14.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.Utils.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraBars.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraEditors.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraGrid.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraPrinting.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraReports.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ResourceLib\DevDll\DevExpress.XtraTreeList.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\XReportFirstPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\XReportFirstPage.Designer.cs">
+      <DependentUpon>XReportFirstPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCActionPlan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCActionPlan.Designer.cs">
+      <DependentUpon>UCActionPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCActionPlanEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCActionPlanEditor.Designer.cs">
+      <DependentUpon>UCActionPlanEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCActionPlanInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCActionPlanInfo.Designer.cs">
+      <DependentUpon>UCActionPlanInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCChangePwd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCChangePwd.Designer.cs">
+      <DependentUpon>UCChangePwd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCChooseAddress.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCChooseAddress.Designer.cs">
+      <DependentUpon>UCChooseAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCDepartmentEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDepartmentEditor.Designer.cs">
+      <DependentUpon>UCDepartmentEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCDepartmentInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDepartmentInfo.Designer.cs">
+      <DependentUpon>UCDepartmentInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCDeviceBindEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDeviceBindEditor.Designer.cs">
+      <DependentUpon>UCDeviceBindEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCDeviceBindInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDeviceBindInfo.Designer.cs">
+      <DependentUpon>UCDeviceBindInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCDeviceDataSync.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDeviceDataSync.Designer.cs">
+      <DependentUpon>UCDeviceDataSync.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCdicMonitorEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCdicMonitorEditor.Designer.cs">
+      <DependentUpon>UCdicMonitorEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCdicMonitorInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCdicMonitorInfo.Designer.cs">
+      <DependentUpon>UCdicMonitorInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCDocEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDocEditor.Designer.cs">
+      <DependentUpon>UCDocEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCDocInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDocInfo.Designer.cs">
+      <DependentUpon>UCDocInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCFunction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCFunction.Designer.cs">
+      <DependentUpon>UCFunction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCGroupEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCGroupEditor.Designer.cs">
+      <DependentUpon>UCGroupEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCGroupInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCGroupInfo.Designer.cs">
+      <DependentUpon>UCGroupInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCIntervene.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCIntervene.Designer.cs">
+      <DependentUpon>UCIntervene.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCInterveneEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCInterveneEditor.Designer.cs">
+      <DependentUpon>UCInterveneEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCInterveneFlag.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCInterveneFlag.Designer.cs">
+      <DependentUpon>UCInterveneFlag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCActionPlanLibEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCActionPlanLibEditor.Designer.cs">
+      <DependentUpon>UCActionPlanLibEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCInterveneLibEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCInterveneLibEditor.Designer.cs">
+      <DependentUpon>UCInterveneLibEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCActionPlanLibInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCActionPlanLibInfo.Designer.cs">
+      <DependentUpon>UCActionPlanLibInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCInterveneLibInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCInterveneLibInfo.Designer.cs">
+      <DependentUpon>UCInterveneLibInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCActionPlanlibTypeEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCActionPlanlibTypeEditor.Designer.cs">
+      <DependentUpon>UCActionPlanlibTypeEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCIntervenelibTypeEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCIntervenelibTypeEditor.Designer.cs">
+      <DependentUpon>UCIntervenelibTypeEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCIntervenePhoneResult.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCIntervenePhoneResult.Designer.cs">
+      <DependentUpon>UCIntervenePhoneResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCInterveneMFResult.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCInterveneMFResult.Designer.cs">
+      <DependentUpon>UCInterveneMFResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCInterveneSystem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCInterveneSystem.Designer.cs">
+      <DependentUpon>UCInterveneSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCQuestionSave.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCQuestionSave.Designer.cs">
+      <DependentUpon>UCQuestionSave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCStatisticalAnalysis.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCStatisticalAnalysis.Designer.cs">
+      <DependentUpon>UCStatisticalAnalysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCUserEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCUserEditor.Designer.cs">
+      <DependentUpon>UCUserEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCUserInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCUserInfo.Designer.cs">
+      <DependentUpon>UCUserInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\XReportActionPlan.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\XReportActionPlan.Designer.cs">
+      <DependentUpon>XReportActionPlan.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\XReportFirstPage.resx">
+      <DependentUpon>XReportFirstPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCActionPlan.resx">
+      <DependentUpon>UCActionPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCActionPlanEditor.resx">
+      <DependentUpon>UCActionPlanEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCActionPlanInfo.resx">
+      <DependentUpon>UCActionPlanInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCChangePwd.resx">
+      <DependentUpon>UCChangePwd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCChooseAddress.resx">
+      <DependentUpon>UCChooseAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDepartmentEditor.resx">
+      <DependentUpon>UCDepartmentEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDepartmentInfo.resx">
+      <DependentUpon>UCDepartmentInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDeviceBindEditor.resx">
+      <DependentUpon>UCDeviceBindEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDeviceBindInfo.resx">
+      <DependentUpon>UCDeviceBindInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDeviceDataSync.resx">
+      <DependentUpon>UCDeviceDataSync.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCdicMonitorEditor.resx">
+      <DependentUpon>UCdicMonitorEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCdicMonitorInfo.resx">
+      <DependentUpon>UCdicMonitorInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDocEditor.resx">
+      <DependentUpon>UCDocEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDocInfo.resx">
+      <DependentUpon>UCDocInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCFunction.resx">
+      <DependentUpon>UCFunction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCGroupEditor.resx">
+      <DependentUpon>UCGroupEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCGroupInfo.resx">
+      <DependentUpon>UCGroupInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCIntervene.resx">
+      <DependentUpon>UCIntervene.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCInterveneEditor.resx">
+      <DependentUpon>UCInterveneEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCInterveneFlag.resx">
+      <DependentUpon>UCInterveneFlag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCActionPlanLibEditor.resx">
+      <DependentUpon>UCActionPlanLibEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCInterveneLibEditor.resx">
+      <DependentUpon>UCInterveneLibEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCActionPlanLibInfo.resx">
+      <DependentUpon>UCActionPlanLibInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCInterveneLibInfo.resx">
+      <DependentUpon>UCInterveneLibInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCActionPlanlibTypeEditor.resx">
+      <DependentUpon>UCActionPlanlibTypeEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCIntervenelibTypeEditor.resx">
+      <DependentUpon>UCIntervenelibTypeEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCIntervenePhoneResult.resx">
+      <DependentUpon>UCIntervenePhoneResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCInterveneMFResult.resx">
+      <DependentUpon>UCInterveneMFResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCInterveneSystem.resx">
+      <DependentUpon>UCInterveneSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCQuestionSave.resx">
+      <DependentUpon>UCQuestionSave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCStatisticalAnalysis.resx">
+      <DependentUpon>UCStatisticalAnalysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCUserEditor.resx">
+      <DependentUpon>UCUserEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCUserInfo.resx">
+      <DependentUpon>UCUserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\XReportActionPlan.resx">
+      <DependentUpon>XReportActionPlan.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\0-TmoCommon\TmoCommon.csproj">
+      <Project>{5f6a9b74-d445-4e23-9f55-efe1fd5ee3d6}</Project>
+      <Name>TmoCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\2-TmoServer\DBModel\DBModel.csproj">
+      <Project>{c7ea315c-c463-4fed-b233-b76098e6d7eb}</Project>
+      <Name>DBModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\3-MonitorDataTool\SyncDataLib\SyncDataLib.csproj">
+      <Project>{5f66f11d-2a32-4091-ba75-51aa2b20f798}</Project>
+      <Name>SyncDataLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoControl\TmoControl.csproj">
+      <Project>{3e50d49c-1642-4f10-a65b-dbd13899ffa3}</Project>
+      <Name>TmoControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoLinkServer\TmoLinkServer.csproj">
+      <Project>{cc656dff-e984-4d6b-8bb9-5b78f1fcc01e}</Project>
+      <Name>TmoLinkServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TmoSkin\TmoSkin.csproj">
+      <Project>{e556ccfd-bc05-405a-b8db-ebf8ca908d60}</Project>
+      <Name>TmoSkin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flag_blue.png" />
+    <None Include="Resources\flag_gray.png" />
+    <None Include="Resources\flag_green.png" />
+    <None Include="Resources\flag_purple.png" />
+    <None Include="Resources\flag_red.png" />
+    <None Include="Resources\flag_yellow.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
