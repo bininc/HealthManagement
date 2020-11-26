@@ -95,7 +95,6 @@
     <Compile Include="BinaryFormatterClass.cs" />
     <Compile Include="MemoryCacheHelper.cs" />
     <Compile Include="ColorHelper.cs" />
-    <Compile Include="ConvertJson.cs" />
     <Compile Include="DateTimeHelper.cs" />
     <Compile Include="EmailHelper.cs" />
     <Compile Include="ImageHelper.cs" />
