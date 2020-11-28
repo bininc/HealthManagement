@@ -6,7 +6,7 @@ using TmoCommon;
 using System.IO;
 using System.Threading;
 using TmoTcpServer;
-using TmoRemotingServer;
+using TmoServiceServer;
 using System.Linq;
 using DBBLL;
 using System.Data;
@@ -44,8 +44,9 @@ namespace TmoServer
         {
             #region 界面控件添加
             //Remoting
-            UCRemotingService.Instance.Dock = DockStyle.Fill;
-            tpRemoting.Controls.Add(UCRemotingService.Instance);
+            UCServiceServer.Instance.Dock = DockStyle.Fill;
+            tpRemoting.Controls.Add(UCServiceServer.Instance);
+            tpRemoting.Text = UCServiceServer.Instance.ServiceName;
             // Tcp服务器
             UcTcpServer.Instance.Dock = DockStyle.Fill;
             tpTCP.Controls.Add(UcTcpServer.Instance);
@@ -62,8 +63,8 @@ namespace TmoServer
             #region 服务注册
             //Remoting
             ServieRemoting.StatusChanged = StatusCheck;  //事件赋值
-            ServieRemoting.StartServiceMethod = UCRemotingService.Instance.StartServices;
-            ServieRemoting.StopServiceMethod = UCRemotingService.Instance.StopServices;
+            ServieRemoting.StartServiceMethod = UCServiceServer.Instance.StartServices;
+            ServieRemoting.StopServiceMethod = UCServiceServer.Instance.StopServices;
             //DataBase
             ServieDataBase.StatusChanged = StatusCheck;
             ServieDataBase.StartServiceMethod = TmoConfigManager.Instance.CheckConnection;

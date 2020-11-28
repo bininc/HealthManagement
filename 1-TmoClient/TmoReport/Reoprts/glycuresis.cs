@@ -33,7 +33,7 @@ namespace TmoReport.Reoprts
                 dt.Rows.Add(dr_user);
                 tmo_user1.Tables.Clear();
                 tmo_user1.Tables.Add(dt.Copy());
-                string dstxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethod(TmoCommon.funCode.GetRiskResult, new object[] { userID, user_times }).ToString();
+                string dstxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(TmoCommon.funCode.GetRiskResult, new object[] { userID, user_times }).ToString();
                 DataSet dst = TmoCommon.TmoShare.getDataSetFromXML(dstxml);
                 DataTable dtr = new DataTable();
                 dtr.Columns.Add("moment_type", typeof(string));

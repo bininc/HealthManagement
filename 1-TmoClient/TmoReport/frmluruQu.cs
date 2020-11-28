@@ -39,7 +39,7 @@ namespace TmoReport
 
                 try
                 {
-                    string strmlx = TmoReomotingClient.InvokeServerMethod(funCode.GetMedicalInUser, new object[] { _user_id, _dc }).ToString();
+                    string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetMedicalInUser, new object[] { _user_id, _dc }).ToString();
                     DataTable dt = TmoShare.getDataTableFromXML(strmlx);
                     if (TmoShare.DataTableIsNotEmpty(dt))
                     {

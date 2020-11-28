@@ -54,7 +54,7 @@ namespace TmoPurchaseSellStock
                 }
                 else
                 {
-                    object obj = TmoReomotingClient.InvokeServerMethod(funCode.DeleteProduct, drDel["product_id"].ToString());
+                    object obj = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.DeleteProduct, drDel["product_id"].ToString());
                     if (Convert.ToBoolean(obj))
                     {
                         DXMessageBox.Show("产品删除成功！", true);
@@ -106,7 +106,7 @@ namespace TmoPurchaseSellStock
                         _dsQueryXml.Tables[0].Rows[0]["product_id"] = this.productId.EditValue;
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoReomotingClient.InvokeServerMethod(funCode.GetStockList, new object[] { selexml }).ToString();
+                    string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetStockList, new object[] { selexml }).ToString();
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {

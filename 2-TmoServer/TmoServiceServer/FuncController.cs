@@ -1,32 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
+using System.Web.Http;
 using Newtonsoft.Json;
 using TmoCommon;
 using TmoCommon.SocketLib;
 
-namespace TmoRemotingServer
+namespace TmoServiceServer
 {
     /// <summary>
     /// 客户端Remoting调用类
     /// </summary>
-    public class FuncMainClass : MarshalByRefObject
+    public class FuncController : ApiController
     {
         /// <summary>
         /// 客户端调用事件
         /// </summary>
         public static event Action<string> OnInvokedMain;
 
-        #region Remoting通信服务入口
+        #region 通信服务入口
+
         /// <summary>
         /// 客户端通信接口
         /// </summary>
+        [HttpPost]
+        [ActionName("InvokeMain")]
         public object InvokeMain(string checkData, string checkKey, funCode funCode, params object[] funParams)
         {
             InvokeEvent(funCode, checkData, checkKey, funParams);
             //默认返回码 
-            object returnObj = "err_Unkonwn";  //未知错误
+            object returnObj = "err_Unkonwn"; //未知错误
             try
             {
                 #region 加密狗验证
@@ -38,9 +43,10 @@ namespace TmoRemotingServer
                 #endregion
 
                 #region 处理不同的方法请求
+
                 switch (funCode)
                 {
-                    case funCode.CheckLink:     //连接检查
+                    case funCode.CheckLink: //连接检查
                         returnObj = FunctionClass.CheckLink();
                         break;
                     case funCode.CheckIDCard:
@@ -91,7 +97,8 @@ namespace TmoRemotingServer
                         returnObj = FunctionClass.GetRiskResult(funParams[0].ToString(), funParams[1].ToString());
                         break;
                     case funCode.InsertAttach:
-                        returnObj = FunctionClass.InsertAttach(funParams[0] as byte[], funParams[1].ToString(), funParams[2].ToString(), funParams[3].ToString());
+                        returnObj = FunctionClass.InsertAttach(funParams[0] as byte[], funParams[1].ToString(), funParams[2].ToString(),
+                            funParams[3].ToString());
                         break;
                     case funCode.GetAttach:
                         returnObj = FunctionClass.GetAttach(funParams[0].ToString(), funParams[1].ToString(), funParams[2].ToString());
@@ -104,6 +111,7 @@ namespace TmoRemotingServer
                         break;
 
                     #region 实体相关
+
                     case funCode.FakeEntity_GetTableStruct:
                         returnObj = FunctionClass.GetTableStruct(funParams[0].ToString());
                         break;
@@ -123,14 +131,17 @@ namespace TmoRemotingServer
                         returnObj = FunctionClass.GetPageData(funParams[0].ToString());
                         break;
                     case funCode.FakeEntity_ExistSameValue:
-                        returnObj = FunctionClass.ExistSameValue(funParams[0].ToString(), funParams[1].ToString(), funParams[2].ToString(), funParams[3], bool.Parse(funParams[4].ToString()));
+                        returnObj = FunctionClass.ExistSameValue(funParams[0].ToString(), funParams[1].ToString(), funParams[2].ToString(), funParams[3],
+                            bool.Parse(funParams[4].ToString()));
                         break;
                     case funCode.FakeEntity_DeleteData:
                         returnObj = FunctionClass.DelData(funParams);
                         break;
+
                     #endregion
 
                     #region 新版问卷
+
                     case funCode.GetFistQuestionnaires:
                         returnObj = FunctionClass.GetFistQuestionnaires(funParams);
                         break;
@@ -146,9 +157,11 @@ namespace TmoRemotingServer
                     case funCode.DeleteQuestionnaires:
                         returnObj = FunctionClass.DeleteQuestionnaires(funParams);
                         break;
+
                     #endregion
 
                     #region 推荐列表
+
                     case funCode.TuijianZhi:
                         returnObj = FunctionClass.InputDicUser(funParams[0].ToString());
                         break;
@@ -161,6 +174,7 @@ namespace TmoRemotingServer
                     case funCode.GettuiDataUser:
                         returnObj = FunctionClass.GetDataUser(funParams[0].ToString(), funParams[1].ToString());
                         break;
+
                     #endregion
 
                     case funCode.AddQuestionnaire:
@@ -224,7 +238,10 @@ namespace TmoRemotingServer
                         string bloodlipid_reason = funParams[6].ToString();
                         string bloodlipid_advice = funParams[7].ToString();
                         string zhuanjia = funParams[8].ToString();
-                        returnObj = FunctionClass.SaveReportUP(user_iD, user_Times, bloodreason, bloodadvice, pressurereason, pressureadvice, bloodlipid_reason, bloodlipid_advice, zhuanjia, funParams[9].ToString(), funParams[10].ToString(), funParams[11].ToString(), funParams[12].ToString(), funParams[13].ToString(), funParams[14].ToString(), funParams[15].ToString(), funParams[16].ToString(), funParams[17].ToString(), funParams[18].ToString());
+                        returnObj = FunctionClass.SaveReportUP(user_iD, user_Times, bloodreason, bloodadvice, pressurereason, pressureadvice, bloodlipid_reason,
+                            bloodlipid_advice, zhuanjia, funParams[9].ToString(), funParams[10].ToString(), funParams[11].ToString(), funParams[12].ToString(),
+                            funParams[13].ToString(), funParams[14].ToString(), funParams[15].ToString(), funParams[16].ToString(), funParams[17].ToString(),
+                            funParams[18].ToString());
                         break;
                     case funCode.GetMainData:
                         returnObj = FunctionClass.GetMainData(funParams[0].ToString(), funParams[1].ToString());
@@ -238,7 +255,10 @@ namespace TmoRemotingServer
                         string bloodlipid_reason1 = funParams[7].ToString();
                         string bloodlipid_advice2 = funParams[8].ToString();
                         string azhuanjia = funParams[9].ToString();
-                        returnObj = FunctionClass.SaveReportUPdate(service_id, funParams[5].ToString(), funParams[6].ToString(), bloodreasonu, bloodadviceu, pressurereasonu, pressureadviceu, bloodlipid_reason1, bloodlipid_advice2, azhuanjia, funParams[10].ToString(), funParams[11].ToString(), funParams[12].ToString(), funParams[13].ToString(), funParams[14].ToString(), funParams[15].ToString(), funParams[16].ToString(), funParams[17].ToString(), funParams[18].ToString(), funParams[19].ToString());
+                        returnObj = FunctionClass.SaveReportUPdate(service_id, funParams[5].ToString(), funParams[6].ToString(), bloodreasonu, bloodadviceu,
+                            pressurereasonu, pressureadviceu, bloodlipid_reason1, bloodlipid_advice2, azhuanjia, funParams[10].ToString(),
+                            funParams[11].ToString(), funParams[12].ToString(), funParams[13].ToString(), funParams[14].ToString(), funParams[15].ToString(),
+                            funParams[16].ToString(), funParams[17].ToString(), funParams[18].ToString(), funParams[19].ToString());
                         break;
                     case funCode.ReportDel:
                         returnObj = FunctionClass.ReportDel(funParams[0].ToString(), funParams[1].ToString());
@@ -511,7 +531,9 @@ namespace TmoRemotingServer
                     case funCode.lookPush:
                         returnObj = FunctionClass.lookPush(funParams[0].ToString(), funParams[1].ToString());
                         break;
+
                     #region 积分商城
+
                     case funCode.GetNurDiaryList:
                         string nurdiaryxmls = funParams[0].ToString();
                         returnObj = FunctionClass.GetNurDiaryList(nurdiaryxmls);
@@ -592,7 +614,9 @@ namespace TmoRemotingServer
                         break;
 
                     #endregion
+
                     #region 指标录入
+
                     case funCode.medicQuery:
                         returnObj = FunctionClass.medicQuery();
                         break;
@@ -608,8 +632,11 @@ namespace TmoRemotingServer
                     case funCode.checkname:
                         returnObj = FunctionClass.checkname(funParams[0].ToString());
                         break;
+
                     #endregion
+
                     #region 新报告数据读取
+
                     case funCode.getTangniao:
                         returnObj = FunctionClass.getTangniao(funParams[0].ToString(), funParams[1].ToString(), funParams[2].ToString());
                         break;
@@ -617,7 +644,8 @@ namespace TmoRemotingServer
                         returnObj = FunctionClass.getTest(funParams[0].ToString(), funParams[1].ToString(), funParams[2].ToString());
                         break;
                     case funCode.reportIn:
-                        returnObj = FunctionClass.reportIn(funParams[0].ToString(), funParams[1].ToString(), funParams[2].ToString(), funParams[3].ToString(), funParams[4].ToString(), funParams[5].ToString());
+                        returnObj = FunctionClass.reportIn(funParams[0].ToString(), funParams[1].ToString(), funParams[2].ToString(), funParams[3].ToString(),
+                            funParams[4].ToString(), funParams[5].ToString());
                         break;
                     case funCode.reportUpdate:
                         returnObj = FunctionClass.reportUpdate(funParams[0].ToString(), funParams[1].ToString(), funParams[2].ToString());
@@ -628,9 +656,11 @@ namespace TmoRemotingServer
                     case funCode.getScreenData:
                         returnObj = FunctionClass.getScreenData(funParams[0].ToString(), funParams[1].ToString(), funParams[2].ToString());
                         break;
+
                     #endregion
 
                     #region 微信
+
                     case funCode.PushAddWxMsg:
                         returnObj = FunctionClass.PushAddWxMsg(funParams[0].ToString());
                         break;
@@ -640,12 +670,14 @@ namespace TmoRemotingServer
                     case funCode.GetBindId:
                         returnObj = FunctionClass.GetBindId(funParams[0].ToString());
                         break;
+
                     #endregion
 
                     case funCode.SaveActionPlan: //保存健康行动计划
                         returnObj = FunctionClass.SaveActionPlan(funParams);
                         break;
                 }
+
                 #endregion
             }
             catch (Exception ex)
@@ -653,11 +685,14 @@ namespace TmoRemotingServer
                 TmoShare.WriteLog("InvokeMain错误 funCode:" + funCode, ex);
                 returnObj = ex.Message;
             }
+
             return returnObj;
         }
+
         #endregion
 
         #region 方法
+
         /// <summary>
         /// 获取客户端IP地址
         /// </summary>
@@ -669,8 +704,10 @@ namespace TmoRemotingServer
             {
                 return ip.ToString();
             }
+
             return null;
         }
+
         /// <summary>
         /// 调用事件
         /// </summary>
@@ -686,6 +723,7 @@ namespace TmoRemotingServer
                     doc = tsc.DocInfo;
                 }
             }
+
             if (doc == null && !string.IsNullOrWhiteSpace(docloginid))
             {
                 TCPServerClient tsc = TCPServer.Instance.Clients.FirstOrDefault(c => c.DocInfo != null && c.DocInfo.doc_loginid == docloginid);
@@ -694,11 +732,13 @@ namespace TmoRemotingServer
                     doc = tsc.DocInfo;
                 }
             }
+
             string docName = "";
             if (doc != null)
             {
                 docName = doc.doc_name + "(" + doc.doc_id + ")";
             }
+
             StringBuilder sbArg = new StringBuilder();
             if (args.Length > 0)
             {
@@ -713,6 +753,7 @@ namespace TmoRemotingServer
                     }
                 }
             }
+
             string msg = DateTime.Now.ToFormatTimeStr() + " [" + getIPAddress() + "] " + docName + "-> " + fun;
             if (sbArg.Length > 0)
                 msg = msg + ":" + sbArg;

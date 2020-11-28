@@ -48,7 +48,7 @@ namespace TmoReport
         {
 
             List<string> md5res = new List<string>();
-            string resultxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethod(funCode.getFeiPang, new object[] { userId, user_times, queryids }).ToString();
+            string resultxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(funCode.getFeiPang, new object[] { userId, user_times, queryids }).ToString();
             DataTable DsReslut = TmoShare.getDataTableFromXML(resultxml);
             double zongfen = 0;
             string jianyi = "";

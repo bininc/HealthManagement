@@ -121,7 +121,7 @@ namespace tmoProject
                 DXMessageBox.Show("指标名称不能为空");
                   return;
              }
-             bool dicNametur = (bool)TmoReomotingClient.InvokeServerMethod(funCode.checkname, new object[] { dic_name.Text });
+             bool dicNametur = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.checkname, new object[] { dic_name.Text });
              if (!dicNametur)
              { DXMessageBox.Show("该指标名称已经被使用"); return; }
             if (string.IsNullOrEmpty(control_static.Text)&&control_static.Visible)
@@ -145,7 +145,7 @@ namespace tmoProject
                 drd["dic_id"] = drinput["dic_id"];
                 dt.Rows.Add(drd);
                 string xml = TmoShare.getXMLFromDataTable(dt);
-                bool updteTrue = (bool)TmoReomotingClient.InvokeServerMethod(funCode.updatemedic, new object[] { xml });
+                bool updteTrue = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.updatemedic, new object[] { xml });
                 if (updteTrue)
                     DXMessageBox.ShowSuccess("修改成功");
                 else
@@ -157,7 +157,7 @@ namespace tmoProject
             else {
                 dt.Rows.Add(drd);
                 string xml = TmoShare.getXMLFromDataTable(dt);
-                bool updteTrue = (bool)TmoReomotingClient.InvokeServerMethod(funCode.medicadd, new object[] { xml });
+                bool updteTrue = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.medicadd, new object[] { xml });
                 if (updteTrue)
                     DXMessageBox.ShowSuccess("添加成功");
                 else

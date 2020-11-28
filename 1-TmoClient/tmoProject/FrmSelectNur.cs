@@ -29,7 +29,7 @@ namespace tmoProject
         {
           
             string hottype = hottypea.EditValue.ToString();
-            bool issuccess = (bool)TmoReomotingClient.InvokeServerMethod(funCode.InputPersonNur, new object[] { user_id, user_times,hottype });
+            bool issuccess = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.InputPersonNur, new object[] { user_id, user_times,hottype });
             if(issuccess)
             {
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;

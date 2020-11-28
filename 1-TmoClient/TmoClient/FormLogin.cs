@@ -134,7 +134,7 @@ namespace TmoClient
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            object obj = TmoReomotingClient.InvokeServerMethod(txtServerIP.Text, Convert.ToInt32(txtServerPort.Text), funCode.CheckLink);
+            object obj = TmoReomotingClient.InvokeServerMethodT<bool>(txtServerIP.Text, Convert.ToInt32(txtServerPort.Text), funCode.CheckLink);
             if (obj is bool && ((bool)obj))
                 DXMessageBox.ShowSuccess("测试连接成功！", this);
             else
@@ -143,7 +143,7 @@ namespace TmoClient
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            object obj = TmoReomotingClient.InvokeServerMethod(txtServerIP.Text, Convert.ToInt32(txtServerPort.Text), funCode.CheckLink);
+            object obj = TmoReomotingClient.InvokeServerMethodT<bool>(txtServerIP.Text, Convert.ToInt32(txtServerPort.Text), funCode.CheckLink);
             if (obj is bool && ((bool)obj))
             {
                 ConfigHelper.UpdateConfig("ServerIP", txtServerIP.Text, true);
@@ -166,7 +166,7 @@ namespace TmoClient
                     TCPClient._port = TmoReomotingClient.Port + 1;
                     btnCloseSet_Click(null, null);
                 };
-                DXMessageBox.ShowWarning2("测试连接失败！\r\n是否继续保存该配置？", this);
+                DXMessageBox.ShowQuestion("测试连接失败！\r\n是否继续保存该配置？", this);
             }
         }
 

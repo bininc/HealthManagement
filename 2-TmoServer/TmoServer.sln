@@ -22,7 +22,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TmoTcpServer", "TMOTcpServe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TmoCommon", "..\0-TmoCommon\TmoCommon.csproj", "{5F6A9B74-D445-4E23-9F55-EFE1FD5EE3D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TmoRemotingServer", "TmoRemotingServer\TmoRemotingServer.csproj", "{2C7B4B9C-A1D4-41EF-A6D2-FBB63C8D3EC2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TmoServiceServer", "TmoServiceServer\TmoServiceServer.csproj", "{2C7B4B9C-A1D4-41EF-A6D2-FBB63C8D3EC2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TmoPushData", "TmoPushData\TmoPushData.csproj", "{B4BEADCD-4418-4998-8F80-00EB554FF90C}"
 EndProject

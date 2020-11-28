@@ -566,7 +566,7 @@ namespace TmoQuestionnaire
             else
                 return "3";
             string xml = TmoCommon.TmoShare.getXMLFromDataSet(dsRisk);
-            bool boolr = (bool)TmoReomotingClient.InvokeServerMethod(TmoCommon.funCode.RiskMedical, new object[] { xml });
+            bool boolr = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(TmoCommon.funCode.RiskMedical, new object[] { xml });
             if (boolr)
                 return "1";
             else

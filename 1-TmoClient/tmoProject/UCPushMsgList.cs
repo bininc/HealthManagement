@@ -52,7 +52,7 @@ namespace tmoProject
         {
             string idd = Delrow["id"].ToString();
 
-            bool issuc = (bool)TmoReomotingClient.InvokeServerMethod(funCode.DelPush, new object[] { idd });
+            bool issuc = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.DelPush, new object[] { idd });
             if (issuc)
             {
                 DXMessageBox.Show("删除成功", true);
@@ -97,7 +97,7 @@ namespace tmoProject
                     _dsQueryXml.Tables[0].Rows[0]["creater"] = TmoComm.login_docInfo.doc_id;
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoReomotingClient.InvokeServerMethod(funCode.GetpushMsgData, new object[] { selexml }).ToString();
+                    string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetpushMsgData, new object[] { selexml }).ToString();
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {

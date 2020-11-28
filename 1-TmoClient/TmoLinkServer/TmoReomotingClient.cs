@@ -3,37 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TmoCommon;
-using System.Runtime.Remoting.Channels;
-using System.Runtime.Remoting.Channels.Http;
-using System.Runtime.Remoting.Channels.Tcp;
-using TmoRemotingServer;
 using System.Collections;
 using System.Data;
+using System.Net;
+using Newtonsoft.Json;
 
 namespace TmoLinkServer
 {
     public class TmoReomotingClient
     {
+        #region 服务相关
 
-        #region Remoting相关
         /// <summary>
-        /// 客户端通道名称
+        /// 服务路径
         /// </summary>
-        static string clientChannelName = "ClientChannel";
+        static string ServicePath = "TmoServer";
 
         private static string _ip;
+
         /// <summary>
         /// 服务器IP地址
         /// </summary>
-        public static string Ip
-        {
-            get
-            {
-                return _ip ?? (_ip = ConfigHelper.GetConfigString("ServerIP", "127.0.0.1", true));
-            }
-        }
+        public static string Ip => _ip ?? (_ip = ConfigHelper.GetConfigString("ServerIP", "127.0.0.1", true));
 
         private static int _port;
+
         /// <summary>
         /// 服务器端口地址
         /// </summary>
@@ -42,10 +36,11 @@ namespace TmoLinkServer
             get
             {
                 if (_port == 0)
-                    _port = ConfigHelper.GetConfigInt("RemotingPort", 8800, true);
+                    _port = ConfigHelper.GetConfigInt("ServerPort", 8800, true);
                 return _port;
             }
         }
+
         /// <summary>
         /// 刷新服务器IpPort配置
         /// </summary>
@@ -53,29 +48,9 @@ namespace TmoLinkServer
         {
             _ip = null;
             _port = 0;
+            StopService();
         }
 
-        /// <summary>
-        ///  执行服务端远程接口方法
-        /// </summary>
-        /// <param name="funCode">方法编号</param>
-        /// <param name="funParams">方法参数</param>
-        /// <returns></returns>
-        public static object InvokeServerMethod(funCode funCode, params object[] funParams)
-        {
-            if (string.IsNullOrWhiteSpace(Ip))
-            {
-                TmoShare.WriteLog("err_ServerIP");
-                return "err_ServerIP";
-            }
-            if (Port == 0)
-            {
-                TmoShare.WriteLog("err_RemotingPort");
-                return "err_RemotingPort";
-            }
-
-            return InvokeServerMethod(Ip, Port, funCode, funParams);
-        }
         /// <summary>
         /// 执行服务端远程接口方法
         /// </summary>
@@ -84,54 +59,41 @@ namespace TmoLinkServer
         /// <param name="funCode">方法编号</param>
         /// <param name="funParams">方法参数</param>
         /// <returns></returns>
-        public static object InvokeServerMethod(string ip, int port, funCode funCode, params object[] funParams)
+        private static string InvokeServerMethod(string ip, int port, funCode funCode, params object[] funParams)
         {
             bool isTcp = false;
-        start:
+            start:
             try
             {
-                if (string.IsNullOrWhiteSpace(ip) || port <= 0) return "err_UrlorPort";
+                if (string.IsNullOrWhiteSpace(ip) || port <= 0) return "err_UrlOrPort";
 
-                IChannel ic = ChannelServices.GetChannel(clientChannelName);  //检测已注册的当前通道
-                if (ic == null)
-                {
-                    BinaryClientFormatterSinkProvider clientProvider = new BinaryClientFormatterSinkProvider();
-                    if (isTcp)
-                    {
-                        TcpClientChannel tcpChannel = new TcpClientChannel(clientChannelName, clientProvider);
-                        ChannelServices.RegisterChannel(tcpChannel, false);
-                    }
-                    else
-                    {
-                        HttpClientChannel httpChannel = new HttpClientChannel(clientChannelName, clientProvider);
-                        ChannelServices.RegisterChannel(httpChannel, false);
-                    }
-                }
-
-                string url = string.Format("{0}://{1}:{2}/funcMain", isTcp ? "tcp" : "http", ip, port);
-                FuncMainClass main = (FuncMainClass)Activator.GetObject(typeof(FuncMainClass), url);    //得到服务端接口类对象
                 string docid = null, docloginid = null;
                 if (TmoComm.login_docInfo != null)
                 {
                     docid = TmoComm.login_docInfo.doc_id.ToString();
                     docloginid = TmoComm.login_docInfo.doc_loginid;
                 }
-                object obj = main.InvokeMain(docid, docloginid, funCode, funParams);
-                //StopService();  //执行完关闭已注册通道
-                return obj;
+
+                using (var webClient = new WebClient())
+                {
+                    webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
+                    webClient.Headers[HttpRequestHeader.Accept] = "application/json";
+                    string mainFunUrl = $"http://{ip}:{port}/{ServicePath}/func/InvokeMain";
+                    return webClient.UploadString(mainFunUrl, "POST",
+                        JsonConvert.SerializeObject(new {checkData = docid, checkKey = docloginid, funCode = funCode, funParams = funParams}));
+                }
             }
             catch (Exception ex)
             {
                 string errmsg = ex.Message;
-                //if (ex is System.Runtime.Remoting.RemotingException)
-                //    errmsg = "服务器Remoting服务未启动";
+                StopService();
                 TmoShare.WriteLog("InvokeServerMethod错误 funCode:" + funCode, errmsg);
-                if (isTcp)
-                {
-                    StopService();
-                    isTcp = false;  //尝试HTTP模式
-                    goto start;
-                }
+                // if (!isTcp)
+                // {
+                //     isTcp = true; //尝试TCP模式
+                //     goto start;
+                // }
+
                 return "err_" + errmsg;
             }
         }
@@ -141,15 +103,12 @@ namespace TmoLinkServer
         /// </summary>
         public static void StopService()
         {
-            IChannel ic = ChannelServices.GetChannel(clientChannelName);  //检测已注册的当前通道
-            if (ic != null)
-            {
-                ChannelServices.UnregisterChannel(ic);
-            }
         }
+
         #endregion
 
         #region 方法
+
         /// <summary>
         /// 执行服务端远程接口方法
         /// </summary>
@@ -163,39 +122,40 @@ namespace TmoLinkServer
             T retT = default(T);
             try
             {
-                object obj = InvokeServerMethod(ip, port, funCode, funParams);
+                string result = InvokeServerMethod(ip, port, funCode, funParams);
                 if (typeof(T) == typeof(DataSet))
                 {
-                    if (obj != null && !string.IsNullOrWhiteSpace(obj.ToString()))
+                    if (result != null && !string.IsNullOrWhiteSpace(result))
                     {
-                        DataSet ds = TmoShare.getDataSetFromXML(obj.ToString());
+                        DataSet ds = TmoShare.getDataSetFromXML(result);
                         if (ds != null)
-                            obj = ds;
+                            retT = (T) (object) ds;
                         else
-                            throw new Exception("返回结果非DataSet格式:" + obj.ToString());
+                            throw new Exception("返回结果非DataSet格式:" + result);
                     }
                 }
                 else if (typeof(T) == typeof(DataTable))
                 {
-                    if (obj != null && !string.IsNullOrWhiteSpace(obj.ToString()))
+                    if (result != null && !string.IsNullOrWhiteSpace(result))
                     {
-                        DataTable dt = TmoShare.getDataTableFromXML(obj.ToString());
+                        DataTable dt = TmoShare.getDataTableFromXML(result);
                         if (dt != null)
-                            obj = dt;
+                            retT = (T) (object) dt;
                         else
-                            throw new Exception("返回结果非DataTable格式:" + obj.ToString());
+                            throw new Exception("返回结果非DataTable格式:" + result);
                     }
                 }
-
-                if (obj is T)
-                    retT = (T)obj;
+                else
+                    retT = JsonConvert.DeserializeObject<T>(result);
             }
             catch (Exception ex)
             {
                 TmoShare.WriteLog("InvokeServerMethodT<T>错误 funCode:" + funCode, ex);
             }
+
             return retT;
         }
+
         /// <summary>
         ///  执行服务端远程接口方法
         /// </summary>
@@ -211,14 +171,16 @@ namespace TmoLinkServer
                 TmoShare.WriteLog("err_ServerIP");
                 return retT;
             }
+
             if (Port == 0)
             {
-                TmoShare.WriteLog("err_RemotingPort");
+                TmoShare.WriteLog("err_ServerPort");
                 return retT;
             }
 
             return InvokeServerMethodT<T>(Ip, Port, funCode, funParams);
         }
+
         #endregion
     }
 }

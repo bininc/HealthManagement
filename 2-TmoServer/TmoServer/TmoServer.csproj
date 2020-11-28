@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TmoServer</RootNamespace>
     <AssemblyName>TmoServer</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -191,9 +191,9 @@
       <Project>{b4beadcd-4418-4998-8f80-00eb554ff90c}</Project>
       <Name>TmoPushData</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TmoRemotingServer\TmoRemotingServer.csproj">
+    <ProjectReference Include="..\TmoServiceServer\TmoServiceServer.csproj">
       <Project>{2c7b4b9c-a1d4-41ef-a6d2-fbb63c8d3ec2}</Project>
-      <Name>TmoRemotingServer</Name>
+      <Name>TmoServiceServer</Name>
     </ProjectReference>
     <ProjectReference Include="..\TMOTcpServer\TmoTcpServer.csproj">
       <Project>{021d095c-b60e-4ecd-bb39-7982f66daecd}</Project>

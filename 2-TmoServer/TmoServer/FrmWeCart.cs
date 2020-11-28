@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using TmoCommon;
-using TmoRemotingServer;
+using TmoServiceServer;
 
 namespace TmoServer
 {

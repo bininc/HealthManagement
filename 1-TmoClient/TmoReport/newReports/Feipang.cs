@@ -46,12 +46,12 @@ namespace TmoReport
             RefData(userID, user_times, queryId);
             try
             {
-                bool isIn = (bool)TmoLinkServer.TmoReomotingClient.InvokeServerMethod(funCode.reportUpdate, new object[] { userID, user_times, "feipang" });
+                bool isIn = (bool)TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<bool>(funCode.reportUpdate, new object[] { userID, user_times, "feipang" });
                 if (!isIn)
                 {
 
                     JieLun = "由于您目前的体重指数是" + zhishuValue.Text + "kg/㎡，腰围是" + yaoweiValue.Text + "，根据中国肥胖问题工作组提供的体重指数结合腰围判断相关疾病（高血压、糖尿病、血脂异常等）危险度的标准。";
-                    bool issuccess = (bool)TmoLinkServer.TmoReomotingClient.InvokeServerMethod(funCode.reportIn, new object[] { userID, user_times, "肥胖", JianYi, JieLun, "feipang" });
+                    bool issuccess = (bool)TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<bool>(funCode.reportIn, new object[] { userID, user_times, "肥胖", JianYi, JieLun, "feipang" });
                 }
             }
             catch (Exception)
@@ -65,7 +65,7 @@ namespace TmoReport
         public void RefData(string userId, string user_times,string queryId)
         {
             List<string> md5res = new List<string>();
-            string resultxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethod(funCode.getFeiPang, new object[] { userId, user_times, queryId }).ToString();
+            string resultxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(funCode.getFeiPang, new object[] { userId, user_times, queryId }).ToString();
             DataTable DsReslut = TmoShare.getDataTableFromXML(resultxml);
             double zongfen = 0;
             string jianyi = "";

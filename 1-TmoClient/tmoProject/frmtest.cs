@@ -84,7 +84,7 @@ namespace tmoProject
             if (dtNew.Rows.Count > 0)
             {
                 string allXml = TmoShare.getXMLFromDataTable(dtNew);
-                bool issuc = (bool)TmoReomotingClient.InvokeServerMethod(funCode.updateAll, new object[] { allXml });
+                bool issuc = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.updateAll, new object[] { allXml });
                 return issuc;
             }
             return true;
@@ -192,12 +192,12 @@ namespace tmoProject
         }
         public void GetCommdata()
         {
-            DataSet ds = TmoShare.getDataSetFromXML(TmoReomotingClient.InvokeServerMethod(funCode.GetProType, new object[] { "" }).ToString());
+            DataSet ds = TmoShare.getDataSetFromXML(TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetProType, new object[] { "" }).ToString());
              dttype = ds != null ? ds.Tables[0] : null;
         }
         void DXMessageBox_btnOKClick(object sender, EventArgs e)
         {
-            bool issuc = (bool)TmoReomotingClient.InvokeServerMethod(funCode.DelPerProre, new object[] { "", "", project_idva });
+            bool issuc = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.DelPerProre, new object[] { "", "", project_idva });
             if (issuc)
                 DXMessageBox.Show("删除成功", true);
             else
@@ -220,7 +220,7 @@ namespace tmoProject
 
                 try
                 {
-                    string xmlreturn = TmoReomotingClient.InvokeServerMethod(funCode.GetProResult, new object[] { user_id, user_times, "" }).ToString();
+                    string xmlreturn = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetProResult, new object[] { user_id, user_times, "" }).ToString();
                     DataSet ds = TmoShare.getDataSetFromXML(xmlreturn);
                     if (TmoShare.DataSetIsNotEmpty(ds))
                     {

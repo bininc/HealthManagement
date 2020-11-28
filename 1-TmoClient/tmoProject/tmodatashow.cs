@@ -93,7 +93,7 @@ namespace tmoProject
             DataRow dr = gridView1.GetDataRow(CheckedRowIndexs[0]);
             string user_idstr = dr["user_id"].ToString();
             string user_timesstr = dr["user_times"].ToString();
-            bool isdel =(bool) TmoReomotingClient.InvokeServerMethod(funCode.ReportDel, new object[] { user_idstr, user_timesstr });
+            bool isdel =(bool) TmoReomotingClient.InvokeServerMethodT<bool>(funCode.ReportDel, new object[] { user_idstr, user_timesstr });
             if (isdel)
               DXMessageBox.ShowWarning2("删除成功！");
             else
@@ -203,7 +203,7 @@ namespace tmoProject
                     }
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoReomotingClient.InvokeServerMethod(funCode.GetItemDataShow, new object[] { selexml }).ToString();
+                    string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetItemDataShow, new object[] { selexml }).ToString();
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {

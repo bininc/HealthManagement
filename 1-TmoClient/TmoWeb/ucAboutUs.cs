@@ -65,7 +65,7 @@ namespace TmoWeb
             drConfig["c_type"] = "1";//1-关于我们 2-联系我们 
             dsConfig.Tables[0].Rows.Add(drConfig.ItemArray);
             string strAboutUs = dsConfig.GetXml();
-            bool flag = Convert.ToBoolean(TmoReomotingClient.InvokeServerMethod(funCode.AddOrUpdateAboutUs, TmoComm.login_docInfo.doc_name, "bnys", strAboutUs));
+            bool flag = Convert.ToBoolean(TmoReomotingClient.InvokeServerMethodT<bool>(funCode.AddOrUpdateAboutUs, TmoComm.login_docInfo.doc_name, "bnys", strAboutUs));
             content = contact_us.GetHtmlValue();
             dsConfig.Tables[0].Rows.Clear();
             drConfig = dsConfig.Tables[0].NewRow();
@@ -76,7 +76,7 @@ namespace TmoWeb
             drConfig["c_type"] = "2";//1-关于我们 2-联系我们 
             dsConfig.Tables[0].Rows.Add(drConfig.ItemArray);
             strAboutUs = dsConfig.GetXml();
-            flag &= Convert.ToBoolean(TmoReomotingClient.InvokeServerMethod(funCode.AddOrUpdateAboutUs, TmoComm.login_docInfo.doc_name, "bnys", strAboutUs));
+            flag &= Convert.ToBoolean(TmoReomotingClient.InvokeServerMethodT<bool>(funCode.AddOrUpdateAboutUs, TmoComm.login_docInfo.doc_name, "bnys", strAboutUs));
             return flag;
         }
     }

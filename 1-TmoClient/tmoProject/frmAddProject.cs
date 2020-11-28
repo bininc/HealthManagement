@@ -32,7 +32,7 @@ namespace tmoProject
 
         public void Getdata()
         {
-            DataSet ds = TmoShare.getDataSetFromXML(TmoReomotingClient.InvokeServerMethod(funCode.GetProType, new object[] { "" }).ToString());
+            DataSet ds = TmoShare.getDataSetFromXML(TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetProType, new object[] { "" }).ToString());
             DataTable dt = ds != null ? ds.Tables[0] : null;
             int intCount = (dt != null) ? dt.Rows.Count : 0;
             cmproType.Properties.TextEditStyle = TextEditStyles.DisableTextEditor; // 设置 comboBox的文本值不能被编辑  
@@ -56,7 +56,7 @@ namespace tmoProject
                 this.Text = "方案修改";
                 btnAdd.Text = "确定修改";
                 isadd = project_id;
-                string strmlx = TmoReomotingClient.InvokeServerMethod(funCode.GetProjectDic, new object[] { "", "", project_id }).ToString();
+                string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetProjectDic, new object[] { "", "", project_id }).ToString();
                 DataSet ds = TmoShare.getDataSetFromXML(strmlx);
                 if (TmoShare.DataSetIsNotEmpty(ds))
                 {
@@ -164,7 +164,7 @@ namespace tmoProject
                 dr["project_type"] = protype;
                 ds.Tables[0].Rows.InsertAt(dr, 0);
 
-                bool blt = (bool)TmoReomotingClient.InvokeServerMethod(funCode.AddProject, new object[] { TmoShare.getXMLFromDataSet(ds) });
+                bool blt = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.AddProject, new object[] { TmoShare.getXMLFromDataSet(ds) });
                 if (blt)
                 {
                     DXMessageBox.ShowWarning2("添加项目成功");
@@ -201,7 +201,7 @@ namespace tmoProject
                 dr["project_id"] = isadd;
                 ds.Tables[0].Rows.InsertAt(dr, 0);
 
-                bool blt = (bool)TmoReomotingClient.InvokeServerMethod(funCode.AddProject, new object[] { TmoShare.getXMLFromDataSet(ds) });
+                bool blt = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.AddProject, new object[] { TmoShare.getXMLFromDataSet(ds) });
                 if (blt)
                 {
                     DXMessageBox.ShowWarning2("修改项目成功！");

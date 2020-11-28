@@ -79,7 +79,7 @@ namespace TmoReport
             string user_idstr = drdel["user_id"].ToString();
             string user_timesstr = drdel["user_times"].ToString();
             bool isdel = false;
-            string reDel = TmoReomotingClient.InvokeServerMethod(funCode.ReportDel, new object[] { user_idstr, user_timesstr }).ToString();
+            string reDel = TmoReomotingClient.InvokeServerMethodT<string>(funCode.ReportDel, new object[] { user_idstr, user_timesstr }).ToString();
             if (reDel == "3")
             {
                 DXMessageBox.ShowWarning2("已购买服务不能删除！");
@@ -211,7 +211,7 @@ namespace TmoReport
                     }
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoReomotingClient.InvokeServerMethod(funCode.GetReportData, new object[] { selexml }).ToString();
+                    string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetReportData, new object[] { selexml }).ToString();
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {

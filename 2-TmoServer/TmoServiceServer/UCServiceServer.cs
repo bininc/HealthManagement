@@ -2,25 +2,29 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Runtime.Remoting;
-using System.Runtime.Remoting.Channels;
-using System.Runtime.Remoting.Channels.Http;
-using System.Runtime.Remoting.Channels.Tcp;
-using System.Text;
+using System.Net.Http.Formatting;
+using System.Web.Http;
+using System.Web.Http.SelfHost;
 using System.Windows.Forms;
 using TmoCommon;
 
-namespace TmoRemotingServer
+namespace TmoServiceServer
 {
-    public partial class UCRemotingService : UserControl
+    public partial class UCServiceServer : UserControl
     {
         #region 变量
+
         /// <summary>
-        /// 服务信道名字
+        /// 服务路径
         /// </summary>
-        string ServerChannelName = "ServerChannel";
+        string ServicePath = "TmoServer";
+
+        /// <summary>
+        /// 服务主机
+        /// </summary>
+        private HttpSelfHostServer _serviceHost;
+
+        private bool _isTcp;
 
         /// <summary>
         /// 配置信道模式 true-TCP false-HTTP
@@ -35,91 +39,90 @@ namespace TmoRemotingServer
             }
         }
 
-        ///// <summary>
-        ///// 向客户端映射的服务接口类
-        ///// </summary>
-        //FuncMainClass objMain = new FuncMainClass();
         /// <summary>
         /// 服务是否已启动
         /// </summary>
         bool start = false;
 
-        private bool _isTcp;
+        /// <summary>
+        /// 资源管理器
+        /// </summary>
+        private readonly ComponentResourceManager _resourceManager;
 
         #endregion
 
         #region 单例
-        private static UCRemotingService _instance = null;
-        public static UCRemotingService Instance
+
+        public static UCServiceServer Instance => InnerClass.instance;
+
+        private class InnerClass
         {
-            get
+            static InnerClass()
             {
-                if (_instance == null)
-                {
-                    _instance = new UCRemotingService();
-                }
-                return _instance;
             }
+
+            internal static UCServiceServer instance = new UCServiceServer();
         }
+
         #endregion
 
-        private UCRemotingService()
+        private UCServiceServer()
         {
             InitializeComponent();
-            FuncMainClass.OnInvokedMain += FuncMainClass_OnInvokedMain;
+            FuncController.OnInvokedMain += FuncMainClass_OnInvokedMain;
             btnClear.Click += new EventHandler(btn_clear_Click);
+            _resourceManager = new ComponentResourceManager(this.GetType());
         }
+
+        #region 属性
+
+        public String ServiceName => _resourceManager.GetString("ServiceName");
+
+        #endregion
+
         #region 方法
+
         /// <summary>
-        /// 启动Remoting服务
+        /// 启动服务
         /// </summary>
         /// <returns></returns>
         public bool StartServices()
         {
             if (start) return true; //阻止重复启动
 
-            isTcp = ConfigHelper.GetConfigBool("RemotingType", false, true);
+            isTcp = false; //ConfigHelper.GetConfigBool("ServiceMode", false, true);
+
             #region 注册前先关闭通道
+
             try
             {
-                IChannel ic = ChannelServices.GetChannel(ServerChannelName);
-                if (ic != null)
+                if (_serviceHost != null)
                 {
-                    ChannelServices.UnregisterChannel(ic);
+                    _serviceHost.CloseAsync().Wait();
+                    _serviceHost.Dispose();
                 }
             }
-            catch { }
+            catch
+            {
+            }
+
             #endregion
+
             try
             {
-                BinaryServerFormatterSinkProvider sinkProvider = new BinaryServerFormatterSinkProvider();
-                sinkProvider.TypeFilterLevel = System.Runtime.Serialization.Formatters.TypeFilterLevel.Full;
-                ClientIPServerSinkProvider ipProvider=new ClientIPServerSinkProvider();
-                sinkProvider.Next = ipProvider; //加入接收链
-
                 string port = ConfigHelper.GetConfigString("Port");
                 string ip = ConfigHelper.GetConfigString("IPAddress");
-                Dictionary<string, string> channelProp = new Dictionary<string, string>();
-                channelProp["name"] = ServerChannelName;
-                channelProp["port"] = port;
-                channelProp["bindTo"] = ip;
-                channelProp["rejectRemoteRequests"] = "false";
                 lblServerAddr.Text = ip + ":" + port;
-                if (isTcp)
-                {
-                    TcpServerChannel tcpChannel = new TcpServerChannel(channelProp, sinkProvider);
-                    ChannelServices.RegisterChannel(tcpChannel, false);
-                }
-                else
-                {
-                    HttpServerChannel httpChannel = new HttpServerChannel(channelProp, sinkProvider);
-                    ChannelServices.RegisterChannel(httpChannel, false);
-                }
-                // ObjRef objrefWellKnown = RemotingServices.Marshal(objMain, "funcMain", typeof(FuncMainClass)); //此种方式解决注销通道后客户端仍能访问的Bug
+                Uri baseAddress = new Uri($"http://{ip}:{port}");
+                var config = new HttpSelfHostConfiguration(baseAddress);
+                config.Routes.MapHttpRoute("API Default", ServicePath + "/{controller}/{action}/{id}", new {id = RouteParameter.Optional});
+                config.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
+                config.Formatters.JsonFormatter.MediaTypeMappings.Add(new QueryStringMapping("datatype", "json", "application/json"));
+                
+                _serviceHost = new HttpSelfHostServer(config);
+                _serviceHost.OpenAsync().Wait();
 
-                //此种方法会造成注销通道后客户端仍能访问的Bug
-                RemotingConfiguration.RegisterWellKnownServiceType(typeof(FuncMainClass), "funcMain", WellKnownObjectMode.Singleton);
-                start = true;   //标记已启动
+                start = true; //标记已启动
 
                 lblStatus.Text = "已启动...";
                 lblStatus.ForeColor = Color.Green;
@@ -136,12 +139,14 @@ namespace TmoRemotingServer
             }
             catch (Exception ex)
             {
-                TmoCommon.TmoShare.WriteLog("启动Remoting服务失败", ex.Message);
+                TmoCommon.TmoShare.WriteLog($"启动{ServiceName}失败", ex.Message);
             }
+
             return false;
         }
+
         /// <summary>
-        /// 停止Remoting服务
+        /// 停止服务
         /// </summary>
         /// <returns></returns>
         public bool StopServices()
@@ -149,12 +154,14 @@ namespace TmoRemotingServer
             if (!start) return true;
             try
             {
-                IChannel ic = ChannelServices.GetChannel(ServerChannelName);
-                if (ic != null)
+                if (_serviceHost != null)
                 {
-                    ChannelServices.UnregisterChannel(ic);
+                    _serviceHost.CloseAsync().Wait();
+                    _serviceHost.Dispose();
+                    _serviceHost = null;
                 }
-                start = false;  //标记未启动
+
+                start = false; //标记未启动
 
                 lblStatus.Text = "未启动...";
                 lblStatus.ForeColor = Color.Red;
@@ -162,7 +169,7 @@ namespace TmoRemotingServer
             }
             catch (Exception ex)
             {
-                TmoShare.WriteLog("停止Remoting服务失败", ex);
+                TmoShare.WriteLog($"停止{ServiceName}失败", ex);
                 return false;
             }
         }
@@ -181,7 +188,7 @@ namespace TmoRemotingServer
             if (msgStr == null) return;
             rtbLogList.CrossThreadCalls(() =>
             {
-                int showLines = 500;    //只显示500行数据
+                int showLines = 500; //只显示500行数据
                 if (rtbLogList.Lines.Length >= showLines)
                 {
                     List<string> list = new List<string>(rtbLogList.Lines);
@@ -189,17 +196,21 @@ namespace TmoRemotingServer
                     {
                         list.RemoveAt(i);
                     }
+
                     rtbLogList.Text = StringPlus.GetArrayStr(list, Environment.NewLine);
                 }
+
                 msgStr = msgStr.TrimEnd() + Environment.NewLine;
                 rtbLogList.AppendText(msgStr);
                 rtbLogList.ScrollToCaret();
             });
         }
+
         void btn_clear_Click(object sender, EventArgs e)
         {
             rtbLogList.Clear();
         }
+
         #endregion
     }
 }

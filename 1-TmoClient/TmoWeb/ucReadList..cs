@@ -136,7 +136,7 @@ namespace TmoWeb
                     }
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoReomotingClient.InvokeServerMethod(funCode.GetArticleData, new object[] { selexml }).ToString();
+                    string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetArticleData, new object[] { selexml }).ToString();
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {
@@ -342,7 +342,7 @@ namespace TmoWeb
             }
             if (e.Column.Name == "del")
             {
-                bool isDel = (bool)TmoReomotingClient.InvokeServerMethod(funCode.OptionalDelete, new object[] { dr["opt_id"].ToString() });
+                bool isDel = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.OptionalDelete, new object[] { dr["opt_id"].ToString() });
                 if (isDel)
                 {
                     DXMessageBox.Show("删除成功！", true);

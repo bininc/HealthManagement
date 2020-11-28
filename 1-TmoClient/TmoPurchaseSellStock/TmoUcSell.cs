@@ -119,7 +119,7 @@ namespace TmoPurchaseSellStock
             string quesXml = ds.GetXml();
             quesXml = TmoShare.XML_TITLE + quesXml;
 
-            object obj = TmoReomotingClient.InvokeServerMethod(funCode.AddSell, quesXml);
+            object obj = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.AddSell, quesXml);
             if (Convert.ToBoolean(obj))
             {
                 DXMessageBox.Show("下单成功！", true);

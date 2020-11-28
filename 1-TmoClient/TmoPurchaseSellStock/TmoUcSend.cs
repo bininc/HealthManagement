@@ -29,7 +29,7 @@ namespace TmoPurchaseSellStock
 
         void btnUpdate_Click(object sender, EventArgs e)
         {
-            object obj = TmoReomotingClient.InvokeServerMethod(funCode.UpdateState, "send_type", sendState.EditValue.ToString(), sellid.Text);
+            object obj = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.UpdateState, "send_type", sendState.EditValue.ToString(), sellid.Text);
             if (Convert.ToBoolean(obj))
             {
                 DXMessageBox.Show("发货状态修改成功！", true);

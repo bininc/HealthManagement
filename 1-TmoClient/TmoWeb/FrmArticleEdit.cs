@@ -119,7 +119,7 @@ namespace TmoWeb
             object obj;
             if (IsAdd)
             {
-                obj = TmoReomotingClient.InvokeServerMethod(funCode.OptionalAdd, quesXml);
+                obj = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.OptionalAdd, quesXml);
                 if (Convert.ToBoolean(obj))
                 {
                     DXMessageBox.Show("新增文章成功！",true);
@@ -131,7 +131,7 @@ namespace TmoWeb
 
             else
             {
-                obj = TmoReomotingClient.InvokeServerMethod(funCode.OptionalUpdate, quesXml);
+                obj = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.OptionalUpdate, quesXml);
                 if (Convert.ToBoolean(obj))
                 {
                     DXMessageBox.Show("修改文章成功！", true);

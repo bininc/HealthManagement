@@ -1,6 +1,6 @@
-﻿namespace TmoRemotingServer
+﻿namespace TmoServiceServer
 {
-    partial class UCRemotingService
+    partial class UCServiceServer
     {
         /// <summary> 
         /// Required designer variable.
@@ -22,8 +22,8 @@
 
         #region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
@@ -53,13 +53,13 @@
             this.gbRemoting.Size = new System.Drawing.Size(560, 51);
             this.gbRemoting.TabIndex = 33;
             this.gbRemoting.TabStop = false;
-            this.gbRemoting.Text = "Remoting服务";
+            this.gbRemoting.Text = "WebApi服务";
             // 
             // lblType
             // 
             this.lblType.AutoSize = true;
             this.lblType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblType.Font = new System.Drawing.Font("SimSun", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblType.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
             this.lblType.Location = new System.Drawing.Point(38, 23);
             this.lblType.Name = "lblType";
             this.lblType.Size = new System.Drawing.Size(58, 16);
@@ -69,7 +69,7 @@
             // 
             // lblServerAddr
             // 
-            this.lblServerAddr.Font = new System.Drawing.Font("SimSun", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblServerAddr.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
             this.lblServerAddr.ForeColor = System.Drawing.Color.DodgerBlue;
             this.lblServerAddr.Location = new System.Drawing.Point(102, 24);
             this.lblServerAddr.Name = "lblServerAddr";
@@ -80,7 +80,7 @@
             // 
             // lblStatus
             // 
-            this.lblStatus.Font = new System.Drawing.Font("SimSun", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblStatus.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
             this.lblStatus.ForeColor = System.Drawing.Color.Red;
             this.lblStatus.Location = new System.Drawing.Point(281, 23);
             this.lblStatus.Name = "lblStatus";
@@ -125,7 +125,7 @@
             // lblLogList
             // 
             this.lblLogList.AutoSize = true;
-            this.lblLogList.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblLogList.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
             this.lblLogList.Location = new System.Drawing.Point(4, 4);
             this.lblLogList.Name = "lblLogList";
             this.lblLogList.Size = new System.Drawing.Size(57, 12);
@@ -134,8 +134,8 @@
             // 
             // btnClear
             // 
-            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClear.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClear.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
             this.btnClear.Location = new System.Drawing.Point(496, 0);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(61, 20);
@@ -143,13 +143,13 @@
             this.btnClear.Text = "清除日志";
             this.btnClear.UseVisualStyleBackColor = true;
             // 
-            // UCRemotingService
+            // UCServiceServer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.gbRemoting);
-            this.Name = "UCRemotingService";
+            this.Name = "UCServiceServer";
             this.Padding = new System.Windows.Forms.Padding(3);
             this.Size = new System.Drawing.Size(566, 400);
             this.gbRemoting.ResumeLayout(false);
@@ -158,7 +158,6 @@
             this.panelTitle.ResumeLayout(false);
             this.panelTitle.PerformLayout();
             this.ResumeLayout(false);
-
         }
 
         #endregion

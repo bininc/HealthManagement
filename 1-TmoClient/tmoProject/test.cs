@@ -28,7 +28,7 @@ namespace tmoProject
         }
         public void GetComdata()
         {
-            DataSet ds = TmoShare.getDataSetFromXML(TmoReomotingClient.InvokeServerMethod(funCode.GetProType, new object[] { "" }).ToString());
+            DataSet ds = TmoShare.getDataSetFromXML(TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetProType, new object[] { "" }).ToString());
             DataTable dt = ds != null ? ds.Tables[0] : null;
             int intCount = (dt != null) ? dt.Rows.Count : 0;
             cmproType.Properties.TextEditStyle = TextEditStyles.DisableTextEditor; // 设置 comboBox的文本值不能被编辑  
@@ -75,7 +75,7 @@ namespace tmoProject
                 string project_id = Delrow["project_id"].ToString();
 
 
-                bool isdel = (bool)TmoReomotingClient.InvokeServerMethod(funCode.DelProject, new object[] { project_id });
+                bool isdel = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.DelProject, new object[] { project_id });
                 if (isdel)
                 {
                     DXMessageBox.Show("删除成功", true);
@@ -105,7 +105,7 @@ namespace tmoProject
                     if (!string.IsNullOrEmpty("全部类型"))
                         project = txtproject.Text;
 
-                    string strmlx = TmoReomotingClient.InvokeServerMethod(funCode.GetProjectDic, new object[] { projecttype, project, "" }).ToString();
+                    string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetProjectDic, new object[] { projecttype, project, "" }).ToString();
                     DataSet ds = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(ds))
                     {

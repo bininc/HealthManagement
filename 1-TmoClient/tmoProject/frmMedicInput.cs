@@ -283,7 +283,7 @@ namespace tmoProject
 
                 try
                 {
-      string xmlreturn = TmoReomotingClient.InvokeServerMethod(funCode.medicQuery, new object[] { ""}).ToString();
+      string xmlreturn = TmoReomotingClient.InvokeServerMethodT<string>(funCode.medicQuery, new object[] { ""}).ToString();
                     DataSet ds = TmoShare.getDataSetFromXML(xmlreturn);
                     if (TmoShare.DataSetIsNotEmpty(ds))
                     {

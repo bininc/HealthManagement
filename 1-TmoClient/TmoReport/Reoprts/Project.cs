@@ -47,7 +47,7 @@ namespace TmoReport.Reoprts
             dt1.Rows.Add(dr_user);
             tmo_user1.Tables.Clear();
             tmo_user1.Tables.Add(dt1.Copy());
-            DataSet dsnurDataSet = TmoShare.getDataSetFromXML(TmoReomotingClient.InvokeServerMethod(funCode.GetPNurData, new object[] { userID, user_times }).ToString());
+            DataSet dsnurDataSet = TmoShare.getDataSetFromXML(TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetPNurData, new object[] { userID, user_times }).ToString());
             try
             {
                 if (TmoShare.DataSetIsNotEmpty(dsnurDataSet))
@@ -154,7 +154,7 @@ namespace TmoReport.Reoprts
             
             #endregion
 
-            DataSet ds = TmoShare.getDataSetFromXML(TmoReomotingClient.InvokeServerMethod(funCode.GetProType, new object[] { "" }).ToString());
+            DataSet ds = TmoShare.getDataSetFromXML(TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetProType, new object[] { "" }).ToString());
             DataTable dtd = ds != null ? ds.Tables[0] : null;
             int intCount = (dtd != null) ? dtd.Rows.Count : 0;
             projectType1.Tables.Clear();

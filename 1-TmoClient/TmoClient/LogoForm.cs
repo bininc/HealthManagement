@@ -128,7 +128,7 @@ namespace TmoClient
         /// <returns></returns>
         private bool CheckLink()
         {
-            object obj = TmoReomotingClient.InvokeServerMethod(funCode.CheckLink);
+            object obj = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.CheckLink);
             if (obj is bool)
                 return (bool)obj;
             return false;

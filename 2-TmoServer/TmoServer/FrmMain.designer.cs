@@ -340,7 +340,7 @@
             this.ServieRemoting.Location = new System.Drawing.Point(205, 4);
             this.ServieRemoting.Name = "ServieRemoting";
             this.ServieRemoting.RunningImg = ((System.Drawing.Image) (resources.GetObject("ServieRemoting.RunningImg")));
-            this.ServieRemoting.ServiceType = TmoCommon.Services.Remoting;
+            this.ServieRemoting.ServiceType = TmoCommon.Services.BizService;
             this.ServieRemoting.Size = new System.Drawing.Size(194, 164);
             this.ServieRemoting.StoppedImg = ((System.Drawing.Image) (resources.GetObject("ServieRemoting.StoppedImg")));
             this.ServieRemoting.TabIndex = 1;

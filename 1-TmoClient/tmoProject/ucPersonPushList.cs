@@ -73,7 +73,7 @@ namespace tmoProject
                     _dsQueryXml.Tables[0].Rows[0]["doc_group"] = TmoComm.login_docInfo.doc_group;
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoReomotingClient.InvokeServerMethod(funCode.GetPushlist, new object[] { selexml }).ToString();
+                    string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetPushlist, new object[] { selexml }).ToString();
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {
@@ -137,7 +137,7 @@ namespace tmoProject
             else
             {
                 string idd = Delrow["id"].ToString();
-                bool issuc = (bool)TmoReomotingClient.InvokeServerMethod(funCode.lookPush, new object[] { idd, TmoComm.login_docInfo.doc_loginid });
+                bool issuc = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.lookPush, new object[] { idd, TmoComm.login_docInfo.doc_loginid });
                 if (issuc)
                 {
                     if (new FrmPushLook(Delrow).ShowDialog(this) == DialogResult.Cancel)
@@ -151,7 +151,7 @@ namespace tmoProject
         {
             string idd = Delrow["id"].ToString();
 
-            bool issuc = (bool)TmoReomotingClient.InvokeServerMethod(funCode.DelPush, new object[] { idd });
+            bool issuc = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.DelPush, new object[] { idd });
             if (issuc)
             {
                 DXMessageBox.Show("删除成功", true);

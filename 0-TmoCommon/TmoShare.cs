@@ -1696,6 +1696,7 @@ namespace TmoCommon
         public static T GetValueFromJson<T>(string jsonValue)
         {
             T value = default(T);
+            if (string.IsNullOrWhiteSpace(jsonValue)) return value;
             try
             {
                 jsonValue = jsonValue.Replace("\\", "\\\\");

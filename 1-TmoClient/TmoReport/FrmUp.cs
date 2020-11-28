@@ -120,7 +120,7 @@ namespace TmoReport
             userTime = dr["user_times"].ToString();
 
 
-            string xmlData = TmoReomotingClient.InvokeServerMethod(funCode.GetAttach, new object[] { userid, userTime,"new"}).ToString();
+            string xmlData = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetAttach, new object[] { userid, userTime,"new"}).ToString();
             if (xmlData != "")
             {
                 DataTable dt = TmoShare.getDataTableFromXML(xmlData);
@@ -183,13 +183,13 @@ namespace TmoReport
             {
                 if (!isupdate)
                 {
-                    bool isscul = (bool)TmoReomotingClient.InvokeServerMethod(funCode.InsertAttach, new object[] { by, userid, userTime, ExName });
+                    bool isscul = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.InsertAttach, new object[] { by, userid, userTime, ExName });
                     return isscul;
                   
                 }
                 else
                 {
-                    bool isscul = (bool)TmoReomotingClient.InvokeServerMethod(funCode.UpdateAttch, new object[] { atId, by, ExName });
+                    bool isscul = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.UpdateAttch, new object[] { atId, by, ExName });
                     return isscul;
               
                 }

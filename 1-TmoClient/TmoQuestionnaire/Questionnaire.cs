@@ -384,7 +384,7 @@ namespace TmoQuestionnaire
             if (!string.IsNullOrEmpty(user_id))
             {
                 _user_id = user_id;
-                object obj = TmoReomotingClient.InvokeServerMethod(funCode.SelectLastQues, user_id);
+                object obj = TmoReomotingClient.InvokeServerMethodT<string>(funCode.SelectLastQues, user_id);
                 DataSet ds = TmoShare.getDataSetFromXML(obj.ToString());
                 if (TmoShare.DataSetIsNotEmpty(ds))
                 {
@@ -397,7 +397,7 @@ namespace TmoQuestionnaire
 
                     if (!string.IsNullOrWhiteSpace(user_times))
                     {
-                        object objrisk = x == -1 ? TmoReomotingClient.InvokeServerMethod(funCode.SelectLookQuestionnaire, user_id, user_times) : TmoReomotingClient.InvokeServerMethod(funCode.SelectQuestionnaire, user_id, user_times);
+                        object objrisk = x == -1 ? TmoReomotingClient.InvokeServerMethodT<string>(funCode.SelectLookQuestionnaire, user_id, user_times) : TmoReomotingClient.InvokeServerMethodT<string>(funCode.SelectQuestionnaire, user_id, user_times);
                         DataSet dsrisk = TmoShare.getDataSetFromXML(objrisk.ToString());
 
                         if (TmoShare.DataSetIsNotEmpty(dsrisk)) BindQues(dsrisk);
@@ -406,7 +406,7 @@ namespace TmoQuestionnaire
                     }
                     //else加载用户信息
                     {
-                        object objuserinfo = TmoReomotingClient.InvokeServerMethod(funCode.SelectUserinfo, user_id);
+                        object objuserinfo = TmoReomotingClient.InvokeServerMethodT<string>(funCode.SelectUserinfo, user_id);
                         DataSet dsuserinfo = TmoShare.getDataSetFromXML(objuserinfo.ToString());
 
                         if (TmoShare.DataSetIsNotEmpty(dsuserinfo))
@@ -940,7 +940,7 @@ namespace TmoQuestionnaire
                 string usertimes = "";
                 if (method == "2")//修改获取修改次数
                 {
-                    object objLast = TmoReomotingClient.InvokeServerMethod(funCode.SelectLastQues, identity.Text);
+                    object objLast = TmoReomotingClient.InvokeServerMethodT<string>(funCode.SelectLastQues, identity.Text);
                     DataSet dsLast = TmoShare.getDataSetFromXML(objLast.ToString());
                     if (TmoShare.DataSetIsNotEmpty(dsLast))
                     {
@@ -1933,12 +1933,12 @@ namespace TmoQuestionnaire
 
                 if (method == "1")//新增
                 {
-                    obj = TmoReomotingClient.InvokeServerMethod(funCode.AddQuestionnaire, quesXml);
+                    obj = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.AddQuestionnaire, quesXml);
                 }
                 if (method == "2")//修改
                 {
 
-                    obj = TmoReomotingClient.InvokeServerMethod(funCode.UpdateQuestionnaire, quesXml);
+                    obj = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.UpdateQuestionnaire, quesXml);
                 }
             }
             catch (Exception ex)
@@ -1953,13 +1953,13 @@ namespace TmoQuestionnaire
         {
             if (string.IsNullOrWhiteSpace(sbp.Text))
                 //收缩压
-                sbp.Text = TmoReomotingClient.InvokeServerMethod(funCode.GetDeviceValue, "101", identity).ToString();
+                sbp.Text = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetDeviceValue, "101", identity).ToString();
             if (string.IsNullOrWhiteSpace(dbp.Text))
                 //舒张压
-                dbp.Text = TmoReomotingClient.InvokeServerMethod(funCode.GetDeviceValue, "100", identity).ToString();
+                dbp.Text = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetDeviceValue, "100", identity).ToString();
             if (string.IsNullOrWhiteSpace(fbg.Text))
                 //空腹血糖
-                fbg.Text = TmoReomotingClient.InvokeServerMethod(funCode.GetDeviceValue, "103", identity).ToString();
+                fbg.Text = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetDeviceValue, "103", identity).ToString();
         }
         #endregion
 
@@ -2516,7 +2516,7 @@ namespace TmoQuestionnaire
         public bool IsRiskZC(string identity)
         {
             bool riskZC = false;
-            object obj = TmoReomotingClient.InvokeServerMethod(funCode.SelectLastQues, identity);
+            object obj = TmoReomotingClient.InvokeServerMethodT<string>(funCode.SelectLastQues, identity);
             DataSet ds = TmoShare.getDataSetFromXML(obj.ToString());
             if (TmoShare.DataSetIsNotEmpty(ds))
             {
@@ -2535,7 +2535,7 @@ namespace TmoQuestionnaire
         public bool IsRiskTJ(string identity)
         {
             bool riskZC = false;
-            object obj = TmoReomotingClient.InvokeServerMethod(funCode.SelectLastQues, identity);
+            object obj = TmoReomotingClient.InvokeServerMethodT<string>(funCode.SelectLastQues, identity);
             DataSet ds = TmoShare.getDataSetFromXML(obj.ToString());
             if (TmoShare.DataSetIsNotEmpty(ds))
             {

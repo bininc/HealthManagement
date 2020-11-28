@@ -184,7 +184,7 @@ namespace TmoReport
             string userid = dr["user_id"].ToString();
             string userTimes = dr["user_times"].ToString();
             saveMedical(userid, userTimes);
-            bool isscul = (bool)TmoReomotingClient.InvokeServerMethod(funCode.RiskNewReport, new object[] { userid, userTimes });
+            bool isscul = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.RiskNewReport, new object[] { userid, userTimes });
             if (isscul)
             { DXMessageBox.Show("生成报告成功", true); GetData(); }
             else { DXMessageBox.ShowWarning2("生成报告失败！"); }
@@ -192,7 +192,7 @@ namespace TmoReport
         public void saveMedical(string userid,string usertimes) {
 
 
-            bool isscul = (bool)TmoReomotingClient.InvokeServerMethod(funCode.RiskSaveMedical, new object[] { userid, usertimes });
+            bool isscul = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.RiskSaveMedical, new object[] { userid, usertimes });
         }
         void btnquery_Click(object sender, EventArgs e)
         {
@@ -253,7 +253,7 @@ namespace TmoReport
                     }
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoReomotingClient.InvokeServerMethod(funCode.GetGetNewPersonData, new object[] { selexml }).ToString();
+                    string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetGetNewPersonData, new object[] { selexml }).ToString();
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {

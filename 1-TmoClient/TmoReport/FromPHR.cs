@@ -63,10 +63,10 @@ namespace TmoReport
                 {
 
 
-                    object objrisk = TmoReomotingClient.InvokeServerMethod(funCode.SelectLookQuestionnaire, dr["user_id"].ToString(), user_times);
+                    object objrisk = TmoReomotingClient.InvokeServerMethodT<string>(funCode.SelectLookQuestionnaire, dr["user_id"].ToString(), user_times);
                     DataSet dsrisk = TmoShare.getDataSetFromXML(objrisk.ToString());
 
-                    string strmlx = TmoReomotingClient.InvokeServerMethod(funCode.Getdis_dic, new object[] { "" }).ToString();
+                    string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.Getdis_dic, new object[] { "" }).ToString();
                     DataSet ds = TmoShare.getDataSetFromXML(strmlx);
                     SetData(dsrisk, ds);
                     return ds.Tables[0];

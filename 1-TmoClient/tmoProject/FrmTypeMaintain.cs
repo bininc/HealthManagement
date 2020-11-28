@@ -22,7 +22,7 @@ namespace tmoProject
         }
         public void Indata()
         {
-            DataSet ds = TmoShare.getDataSetFromXML(TmoReomotingClient.InvokeServerMethod(funCode.GetProType, new object[] { "" }).ToString());
+            DataSet ds = TmoShare.getDataSetFromXML(TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetProType, new object[] { "" }).ToString());
             DataTable dt = ds != null ? ds.Tables[0] : null;
             int intCount = (dt != null) ? dt.Rows.Count : 0;
             cmproType.Properties.TextEditStyle = TextEditStyles.DisableTextEditor; // 设置 comboBox的文本值不能被编辑  

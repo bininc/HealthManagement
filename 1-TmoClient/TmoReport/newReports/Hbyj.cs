@@ -47,10 +47,10 @@ namespace TmoReport
             RefData(idsss);
             try
             {
-                bool isIn = (bool)TmoLinkServer.TmoReomotingClient.InvokeServerMethod(funCode.reportUpdate, new object[] { userID, user_times, "hbyj" });
+                bool isIn = (bool)TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<bool>(funCode.reportUpdate, new object[] { userID, user_times, "hbyj" });
                 if (!isIn)
                 {
-                    bool issuccess = (bool)TmoLinkServer.TmoReomotingClient.InvokeServerMethod(funCode.reportIn, new object[] { userID, user_times, "糖尿病并发眼病", JianYi, JieLun, "hbyj" });
+                    bool issuccess = (bool)TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<bool>(funCode.reportIn, new object[] { userID, user_times, "糖尿病并发眼病", JianYi, JieLun, "hbyj" });
                 }
             }
             catch (Exception)
@@ -88,7 +88,7 @@ namespace TmoReport
         public void RefData(string userId, string user_times, string quids)
         {
             List<string> md5res = new List<string>();
-            string resultxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethod(funCode.getFeiPang, new object[] { userId, user_times, quids }).ToString();
+            string resultxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(funCode.getFeiPang, new object[] { userId, user_times, quids }).ToString();
             DataTable DsReslut = TmoShare.getDataTableFromXML(resultxml);
             double zongfen = 0;
             string jianyi = "";

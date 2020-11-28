@@ -97,7 +97,7 @@ namespace TmoPointsCenter
                 DXMessageBox.ShowWarning2("证件号不能为空！");
                 return;
             }
-            bool idCard = Convert.ToBoolean(TmoReomotingClient.InvokeServerMethod(funCode.CheckIDCard, user_id.Text));
+            bool idCard = Convert.ToBoolean(TmoReomotingClient.InvokeServerMethodT<bool>(funCode.CheckIDCard, user_id.Text));
             if (idCard)
             {
                 DXMessageBox.ShowWarning2("用户ID不存在！");
@@ -130,8 +130,8 @@ namespace TmoPointsCenter
             catch { DXMessageBox.Show("运动日志失败！", true); }
             ds.Tables[0].Rows.Add(dr);
             ds.AcceptChanges();
-            TmoReomotingClient.InvokeServerMethod(funCode.CreatePointsUser, user_id.Text);
-            result = (TmoReomotingClient.InvokeServerMethod(funCode.AddSportDiary, TmoShare.getXMLFromDataSet(ds))).ToString();
+            TmoReomotingClient.InvokeServerMethodT<string>(funCode.CreatePointsUser, user_id.Text);
+            result = (TmoReomotingClient.InvokeServerMethodT<int>(funCode.AddSportDiary, TmoShare.getXMLFromDataSet(ds))).ToString();
             if (Convert.ToInt16(result) >= 0)
             {
                 DXMessageBox.Show("运动日志成功！", true);

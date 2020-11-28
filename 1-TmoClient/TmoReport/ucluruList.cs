@@ -52,7 +52,7 @@ namespace TmoReport
 
         void DXMessageBox_btnOKClick(object sender, EventArgs e)
         {
-            bool isdel = (bool)TmoReomotingClient.InvokeServerMethod(funCode.delMedicalIn, new object[] { _id });
+            bool isdel = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.delMedicalIn, new object[] { _id });
             if (isdel)
             {
                 DXMessageBox.Show("删除成功", true);
@@ -74,7 +74,7 @@ namespace TmoReport
 
                 try
                 {
-                    string strmlx = TmoReomotingClient.InvokeServerMethod(funCode.GetMedicalIn, new object[] { _user_id}).ToString();
+                    string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetMedicalIn, new object[] { _user_id}).ToString();
                     DataTable dt= TmoShare.getDataTableFromXML(strmlx);
                     if (TmoShare.DataTableIsNotEmpty(dt))
                     {

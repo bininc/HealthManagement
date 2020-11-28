@@ -50,10 +50,10 @@ namespace TmoReport
             RefData(idsss);
             try
             {
-                bool isIn = (bool)TmoLinkServer.TmoReomotingClient.InvokeServerMethod(funCode.reportUpdate, new object[] { userID, user_times, "tangniaobing" });
+                bool isIn = (bool)TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<bool>(funCode.reportUpdate, new object[] { userID, user_times, "tangniaobing" });
                 if (!isIn)
                 {
-                    bool issuccess = (bool)TmoLinkServer.TmoReomotingClient.InvokeServerMethod(funCode.reportIn, new object[] { userID, user_times, "糖尿病", JianYi, JieLun, "tangniaobing" });
+                    bool issuccess = (bool)TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<bool>(funCode.reportIn, new object[] { userID, user_times, "糖尿病", JianYi, JieLun, "tangniaobing" });
                 }
             }
             catch (Exception)
@@ -66,7 +66,7 @@ namespace TmoReport
         public void getData(string userId, string user_times,string mquesTypeId)
         {
             List<string> md5res = new List<string>();
-            string resultxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethod(funCode.getTangniao, new object[] { userId, user_times, mquesTypeId }).ToString();
+            string resultxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(funCode.getTangniao, new object[] { userId, user_times, mquesTypeId }).ToString();
             DataTable DsReslut = TmoShare.getDataTableFromXML(resultxml);
             double zongfen = 0;
             string jianyi = "";
@@ -138,7 +138,7 @@ namespace TmoReport
             ds.Tables[0].Rows[0]["user_id"] = userId;
             ds.Tables[0].Rows[0]["user_time"] = user_times;
             string xml = TmoShare.getXMLFromDataSet(ds);
-            string resultxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethod(funCode.GetRiskData, new object[] { xml }).ToString();
+            string resultxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetRiskData, new object[] { xml }).ToString();
             DataSet DsReslut = TmoShare.getDataSetFromXML(resultxml);
             return DsReslut;
         }

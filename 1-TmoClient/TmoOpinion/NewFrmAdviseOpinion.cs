@@ -83,7 +83,7 @@ namespace TmoOpinion
                 {
                     foreach (string xx in user_id.Text.Split(','))
                     {
-                        string openid = TmoReomotingClient.InvokeServerMethod(funCode.GetBindId, new object[] { xx }).ToString();
+                        string openid = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetBindId, new object[] { xx }).ToString();
                         if (string.IsNullOrWhiteSpace(openid))
                         {
                             DXMessageBox.ShowWarning2("用户" + xx + "未绑定微信！");
@@ -92,13 +92,13 @@ namespace TmoOpinion
                     }
                     foreach (string xx in user_id.Text.Split(','))
                     {
-                        string openid = TmoReomotingClient.InvokeServerMethod(funCode.GetBindId, new object[] { xx }).ToString();
+                        string openid = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetBindId, new object[] { xx }).ToString();
                         sendmessage(openid, xx);
                     }
                 }
                 else
                 {
-                    string openid = TmoReomotingClient.InvokeServerMethod(funCode.GetBindId, new object[] { user_id.Text }).ToString();
+                    string openid = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetBindId, new object[] { user_id.Text }).ToString();
                     if (string.IsNullOrWhiteSpace(openid))
                     {
                         DXMessageBox.ShowWarning2("该用户未绑定微信！");
@@ -126,7 +126,7 @@ namespace TmoOpinion
             newRow["con_id"] = Guid.NewGuid().ToString("N");
             dtWeiXinMsg.Tables[0].Rows.InsertAt(newRow, 0);
             dtWeiXinMsg.AcceptChanges();
-            bool answer = (bool)(TmoReomotingClient.InvokeServerMethod(funCode.AddAsk, new object[] { TmoCommon.TmoShare.getXMLFromDataSet(dtWeiXinMsg) }));
+            bool answer = (bool)(TmoReomotingClient.InvokeServerMethodT<bool>(funCode.AddAsk, new object[] { TmoCommon.TmoShare.getXMLFromDataSet(dtWeiXinMsg) }));
             if (answer)
             {
                 string data = @"<data>

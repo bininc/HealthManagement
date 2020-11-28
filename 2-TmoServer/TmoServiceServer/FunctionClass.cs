@@ -7,7 +7,7 @@ using System.Text;
 using DBBLL;
 using DBModel;
 
-namespace TmoRemotingServer
+namespace TmoServiceServer
 {
     /// <summary>
     /// 客户端接口方法类（调用BLL层应该在此）

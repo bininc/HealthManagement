@@ -28,7 +28,7 @@ namespace TmoPointsCenter
         }
         void btnUpdate_Click(object sender, EventArgs e)
         {
-            object obj = TmoReomotingClient.InvokeServerMethod(funCode.UpdateStatePT, "4", sellid.Text);
+            object obj = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.UpdateStatePT, "4", sellid.Text);
             if (Convert.ToBoolean(obj))
             {
                 DXMessageBox.Show("收货状态修改成功！", true);

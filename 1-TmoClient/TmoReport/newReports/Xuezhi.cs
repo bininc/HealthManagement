@@ -45,10 +45,10 @@ namespace TmoReport
             RefData(userID, user_times, queryid);
             try
             {
-                bool isIn = (bool)TmoLinkServer.TmoReomotingClient.InvokeServerMethod(funCode.reportUpdate, new object[] { userID, user_times, "xuezhi" });
+                bool isIn = (bool)TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<bool>(funCode.reportUpdate, new object[] { userID, user_times, "xuezhi" });
                 if (!isIn)
                 {
-                    bool issuccess = (bool)TmoLinkServer.TmoReomotingClient.InvokeServerMethod(funCode.reportIn, new object[] { userID, user_times, "血脂异常", JianYi, JieLun, "xuezhi" });
+                    bool issuccess = (bool)TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<bool>(funCode.reportIn, new object[] { userID, user_times, "血脂异常", JianYi, JieLun, "xuezhi" });
                 }
             }
             catch (Exception)
@@ -69,7 +69,7 @@ namespace TmoReport
             ds.Tables[0].Rows[0]["user_id"] = userId;
             ds.Tables[0].Rows[0]["user_time"] = user_times;
             string xml = TmoShare.getXMLFromDataSet(ds);
-            string resultxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethod(funCode.GetRiskData, new object[] { xml }).ToString();
+            string resultxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetRiskData, new object[] { xml }).ToString();
             DataSet DsReslut = TmoShare.getDataSetFromXML(resultxml);
             return DsReslut;
         }
@@ -92,7 +92,7 @@ namespace TmoReport
             ds.Tables[0].Rows[0]["user_id"] = userId;
             ds.Tables[0].Rows[0]["user_time"] = timeup.ToString();
             string xml = TmoShare.getXMLFromDataSet(ds);
-            string resultxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethod(funCode.GetRiskData, new object[] { xml }).ToString();
+            string resultxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetRiskData, new object[] { xml }).ToString();
             DataSet DsReslut = TmoShare.getDataSetFromXML(resultxml);
             return DsReslut;
 
@@ -121,14 +121,14 @@ namespace TmoReport
             float gaozhis=-100f;
             double zongfen = 0;
             string yinsu = "";
-            string resultxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethod(funCode.getFeiPang, new object[] { userId, user_times, querId }).ToString();
+            string resultxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(funCode.getFeiPang, new object[] { userId, user_times, querId }).ToString();
             DataTable DsReslut = TmoShare.getDataTableFromXML(resultxml);
             int timeup = 0;
             if (user_times == "1" || user_times == "0")
             { }
             else
                 timeup = Convert.ToInt32(user_times) - 1;
-            string upxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethod(funCode.getFeiPang, new object[] { userId, timeup, querId }).ToString();
+            string upxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(funCode.getFeiPang, new object[] { userId, timeup, querId }).ToString();
             DataTable upResult = TmoShare.getDataTableFromXML(upxml);
             #region 上次和本次
             if (DsReslut != null)

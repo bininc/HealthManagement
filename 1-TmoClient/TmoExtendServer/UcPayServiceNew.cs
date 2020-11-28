@@ -86,7 +86,7 @@ namespace TmoExtendServer
             string quesXml = ds.GetXml();
             quesXml = TmoShare.XML_TITLE + quesXml;
 
-            object obj = TmoReomotingClient.InvokeServerMethod(funCode.UpdateNewPayType, quesXml);
+            object obj = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.UpdateNewPayType, quesXml);
             if (Convert.ToBoolean(obj))
             {
                 DXMessageBox.Show("产品购买成功！", true);

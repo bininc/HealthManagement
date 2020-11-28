@@ -50,7 +50,7 @@ namespace TmoReport
             ds.Tables[0].Rows[0]["user_id"] = userId;
             ds.Tables[0].Rows[0]["user_time"] = user_times;
             string xml = TmoShare.getXMLFromDataSet(ds);
-            string resultxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethod(funCode.GetRiskData, new object[] { xml }).ToString();
+            string resultxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetRiskData, new object[] { xml }).ToString();
             DataSet DsReslut = TmoShare.getDataSetFromXML(resultxml);
             return DsReslut;
         }
@@ -73,7 +73,7 @@ namespace TmoReport
             ds.Tables[0].Rows[0]["user_id"] = userId;
             ds.Tables[0].Rows[0]["user_time"] = timeup.ToString();
             string xml = TmoShare.getXMLFromDataSet(ds);
-            string resultxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethod(funCode.GetRiskData, new object[] { xml }).ToString();
+            string resultxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetRiskData, new object[] { xml }).ToString();
             DataSet DsReslut = TmoShare.getDataSetFromXML(resultxml);
             return DsReslut;
 

@@ -40,7 +40,7 @@ namespace TmoReport.Reoprts
             try
             {
                 DataSet ds = null;
-                ds = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoReomotingClient.InvokeServerMethod(TmoCommon.funCode.GetNewFiveData, new object[] { user_id, user_times }).ToString());
+                ds = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(TmoCommon.funCode.GetNewFiveData, new object[] { user_id, user_times }).ToString());
                 if (TmoCommon.TmoShare.DataSetIsNotEmpty(ds))
                 {
                     xuetang.Series[0].Points.Clear();
