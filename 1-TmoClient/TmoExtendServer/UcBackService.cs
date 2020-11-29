@@ -28,7 +28,7 @@ namespace TmoExtendServer
         }
         void btnOk_Click(object sender, EventArgs e)
         {
-            object obj = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.BackService, user_code.Text,user_times.Text);
+            object obj = TmoServiceClient.InvokeServerMethodT<bool>(funCode.BackService, user_code.Text,user_times.Text);
             if (Convert.ToBoolean(obj))
             {
                 DXMessageBox.Show("延伸服务退费成功！", true);

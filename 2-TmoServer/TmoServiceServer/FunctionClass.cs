@@ -6,6 +6,7 @@ using TmoCommon;
 using System.Text;
 using DBBLL;
 using DBModel;
+using Newtonsoft.Json.Linq;
 
 namespace TmoServiceServer
 {
@@ -930,9 +931,9 @@ namespace TmoServiceServer
 
         public static string GetData(object fe_GetDataParam)
         {
-            var param = fe_GetDataParam as FE_GetDataParam;
+            var param = fe_GetDataParam as JObject;
             if (param == null) return "err_params";
-            DataSet ds = Tmo_FakeEntityManager.Instance.GetData(param);
+            DataSet ds = Tmo_FakeEntityManager.Instance.GetData(param.ToObject<FE_GetDataParam>());
             return TmoShare.getXMLFromDataSet(ds);
         }
 

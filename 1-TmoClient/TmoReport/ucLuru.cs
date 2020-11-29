@@ -79,9 +79,9 @@ namespace TmoReport
             catch { DXMessageBox.Show("手动录入指标失败", true); return; }
             ds.Tables[0].Rows.Add(dr);
             ds.AcceptChanges();
-            TmoReomotingClient.InvokeServerMethodT<string>(funCode.CreatePointsUser, user_id.Text);
+            TmoServiceClient.InvokeServerMethodT<string>(funCode.CreatePointsUser, user_id.Text);
             string result =" -1";
-            result = (TmoReomotingClient.InvokeServerMethodT<int>(funCode.MedicalInADD, TmoShare.getXMLFromDataSet(ds))).ToString();
+            result = (TmoServiceClient.InvokeServerMethodT<int>(funCode.MedicalInADD, TmoShare.getXMLFromDataSet(ds))).ToString();
             if (Convert.ToInt16(result) >= 0)
             {
                 DXMessageBox.Show("录入指标成功！", true);

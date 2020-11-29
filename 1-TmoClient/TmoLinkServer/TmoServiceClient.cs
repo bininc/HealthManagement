@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace TmoLinkServer
 {
-    public class TmoReomotingClient
+    public class TmoServiceClient
     {
         #region 服务相关
 
@@ -76,11 +76,14 @@ namespace TmoLinkServer
 
                 using (var webClient = new WebClient())
                 {
+                    webClient.Encoding = Encoding.UTF8;
                     webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
                     webClient.Headers[HttpRequestHeader.Accept] = "application/json";
-                    string mainFunUrl = $"http://{ip}:{port}/{ServicePath}/func/InvokeMain";
-                    return webClient.UploadString(mainFunUrl, "POST",
-                        JsonConvert.SerializeObject(new {checkData = docid, checkKey = docloginid, funCode = funCode, funParams = funParams}));
+                    string mainFunUrl = $"http://{ip}:{port}/{ServicePath}/func/Main";
+                    var param = new FuncMainParam() {CheckData = docid, CheckKey = docloginid, FunCode = funCode, FunParams = funParams};
+                    var paramStr = JsonConvert.SerializeObject(param);
+                    var respStr = webClient.UploadString(mainFunUrl, "POST", paramStr);
+                    return respStr;
                 }
             }
             catch (Exception ex)
@@ -125,8 +128,9 @@ namespace TmoLinkServer
                 string result = InvokeServerMethod(ip, port, funCode, funParams);
                 if (typeof(T) == typeof(DataSet))
                 {
-                    if (result != null && !string.IsNullOrWhiteSpace(result))
+                    if (!string.IsNullOrWhiteSpace(result))
                     {
+                        result = JsonConvert.DeserializeObject<string>(result);
                         DataSet ds = TmoShare.getDataSetFromXML(result);
                         if (ds != null)
                             retT = (T) (object) ds;
@@ -136,8 +140,9 @@ namespace TmoLinkServer
                 }
                 else if (typeof(T) == typeof(DataTable))
                 {
-                    if (result != null && !string.IsNullOrWhiteSpace(result))
+                    if (!string.IsNullOrWhiteSpace(result))
                     {
+                        result = JsonConvert.DeserializeObject<string>(result);
                         DataTable dt = TmoShare.getDataTableFromXML(result);
                         if (dt != null)
                             retT = (T) (object) dt;

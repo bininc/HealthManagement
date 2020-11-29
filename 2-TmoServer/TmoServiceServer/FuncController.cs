@@ -26,14 +26,19 @@ namespace TmoServiceServer
         /// 客户端通信接口
         /// </summary>
         [HttpPost]
-        [ActionName("InvokeMain")]
-        public object InvokeMain(string checkData, string checkKey, funCode funCode, params object[] funParams)
+        public dynamic Main([FromBody] FuncMainParam param)
         {
-            InvokeEvent(funCode, checkData, checkKey, funParams);
+            funCode funCode = param.FunCode;
+            string checkData = param.CheckData;
+            string checkKey = param.CheckKey;
+            object[] funParams = param.FunParams;
+            
             //默认返回码 
-            object returnObj = "err_Unkonwn"; //未知错误
+            dynamic returnObj = "err_Unkonwn"; //未知错误
             try
             {
+                InvokeEvent(funCode, checkData, checkKey, funParams);
+
                 #region 加密狗验证
 
                 #endregion
@@ -676,6 +681,9 @@ namespace TmoServiceServer
                     case funCode.SaveActionPlan: //保存健康行动计划
                         returnObj = FunctionClass.SaveActionPlan(funParams);
                         break;
+                    default:
+                        returnObj = "err_unKnowFuncode";
+                        break;
                 }
 
                 #endregion
@@ -692,6 +700,9 @@ namespace TmoServiceServer
         #endregion
 
         #region 方法
+        private const string HttpContext = "MS_HttpContext";
+        private const string RemoteEndpointMessage = "System.ServiceModel.Channels.RemoteEndpointMessageProperty";
+        private const string OwinContext = "MS_OwinContext";
 
         /// <summary>
         /// 获取客户端IP地址
@@ -699,15 +710,40 @@ namespace TmoServiceServer
         /// <returns></returns>
         private string getIPAddress()
         {
-            System.Net.IPAddress ip = System.Runtime.Remoting.Messaging.CallContext.GetData("ClientIPAddress") as System.Net.IPAddress;
-            if (ip != null)
+            // Web-hosting. Needs reference to System.Web.dll
+            if (Request.Properties.ContainsKey(HttpContext))
             {
-                return ip.ToString();
+                dynamic ctx = Request.Properties[HttpContext];
+                if (ctx != null)
+                {
+                    return ctx.Request.UserHostAddress;
+                }
             }
-
+ 
+            // Self-hosting. Needs reference to System.ServiceModel.dll. 
+            if (Request.Properties.ContainsKey(RemoteEndpointMessage))
+            {
+                dynamic remoteEndpoint = Request.Properties[RemoteEndpointMessage];
+                if (remoteEndpoint != null)
+                {
+                    return remoteEndpoint.Address;
+                }
+            }
+ 
+            // Self-hosting using Owin. Needs reference to Microsoft.Owin.dll. 
+            if (Request.Properties.ContainsKey(OwinContext))
+            {
+                dynamic owinContext = Request.Properties[OwinContext];
+                if (owinContext != null)
+                {
+                    return owinContext.Request.RemoteIpAddress;
+                }
+            }
+ 
             return null;
-        }
 
+        }
+        
         /// <summary>
         /// 调用事件
         /// </summary>
@@ -755,16 +791,8 @@ namespace TmoServiceServer
             }
 
             string msg = DateTime.Now.ToFormatTimeStr() + " [" + getIPAddress() + "] " + docName + "-> " + fun;
-            if (sbArg.Length > 0)
-                msg = msg + ":" + sbArg;
-            LogHelper.WriteInfo(msg);
-            if (msg.Length > 90)
-                msg = msg.Substring(0, 90) + "...";
-
-            if (OnInvokedMain != null)
-            {
-                OnInvokedMain(msg);
-            }
+            LogHelper.WriteInfo(msg + ":" + sbArg);
+            OnInvokedMain?.Invoke(msg);
         }
 
         #endregion

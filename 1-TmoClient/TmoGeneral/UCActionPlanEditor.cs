@@ -72,7 +72,7 @@ namespace TmoGeneral
             }
 
             string jsonData = GetDataJsonString();
-            bool suc = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.SaveActionPlan, _user.user_id, _user.user_times, jsonData, null);
+            bool suc = TmoServiceClient.InvokeServerMethodT<bool>(funCode.SaveActionPlan, _user.user_id, _user.user_times, jsonData, null);
             if (suc)
             {
                 DXMessageBox.Show("健康行动计划暂存成功！", true);

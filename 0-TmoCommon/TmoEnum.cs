@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -308,9 +309,19 @@ namespace TmoCommon
         #endregion
 
         //保存健康行动计划
-        SaveActionPlan
+        SaveActionPlan,
+        
+        UnKnow
     }
 
+    public class FuncMainParam
+    {
+        public string CheckData { get; set; } = string.Empty;
+        public string CheckKey { get; set; } = string.Empty;
+        public funCode FunCode { get; set; } = funCode.UnKnow;
+        public object[] FunParams { get; set; } = new object[0];
+    }
+    
     /// <summary>
     /// 已有服务枚举
     /// </summary>

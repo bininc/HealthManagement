@@ -52,7 +52,7 @@ namespace TmoReport
             ds.Tables[0].Rows[0]["user_id"] = userId;
             ds.Tables[0].Rows[0]["user_time"] = user_times;
             string xml = TmoShare.getXMLFromDataSet(ds);
-            string resultxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetRiskData, new object[] { xml }).ToString();
+            string resultxml = TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(funCode.GetRiskData, new object[] { xml }).ToString();
             DataSet DsReslut = TmoShare.getDataSetFromXML(resultxml);
             return DsReslut;
         }
@@ -75,7 +75,7 @@ namespace TmoReport
             ds.Tables[0].Rows[0]["user_id"] = userId;
             ds.Tables[0].Rows[0]["user_time"] = timeup.ToString();
             string xml = TmoShare.getXMLFromDataSet(ds);
-            string resultxml = TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetRiskData, new object[] { xml }).ToString();
+            string resultxml = TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(funCode.GetRiskData, new object[] { xml }).ToString();
             DataSet DsReslut = TmoShare.getDataSetFromXML(resultxml);
             return DsReslut;
 
@@ -90,7 +90,7 @@ namespace TmoReport
                 uptime = (int.Parse(user_times) - 1).ToString();
             }
             #region 隐藏
-            DataSet ds = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(TmoCommon.funCode.GetImetData, new object[] { userId, user_times }).ToString());
+            DataSet ds = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(TmoCommon.funCode.GetImetData, new object[] { userId, user_times }).ToString());
             if (ds != null && ds.Tables.Count > 0)
             {
                 DataRow[] rows = ds.Tables[0].Select("user_times='" + user_times + "'");

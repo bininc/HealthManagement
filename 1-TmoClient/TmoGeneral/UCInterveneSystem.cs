@@ -59,7 +59,7 @@ namespace TmoGeneral
         {
             string user_id = Userinfo == null ? "" : Userinfo.user_id;
             int user_times = Userinfo == null ? 0 : Userinfo.user_times;
-            DataSet ds = TmoReomotingClient.InvokeServerMethodT<DataSet>(funCode.GetProResult, user_id, user_times, "");
+            DataSet ds = TmoServiceClient.InvokeServerMethodT<DataSet>(funCode.GetProResult, user_id, user_times, "");
             if (ds != null && ds.Tables.Count > 0)
             {
                 ds.Tables[0].TableName = "tmo_data";

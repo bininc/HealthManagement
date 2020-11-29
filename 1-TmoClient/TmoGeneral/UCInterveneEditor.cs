@@ -305,7 +305,7 @@ namespace TmoGeneral
                 model.inte_id = TmoShare.GetGuidString();
                 model.user_id = user_id.Tag.ToString();
                 model.inte_type = _inte_type;
-                bool suc = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.AddIntervene, model);
+                bool suc = TmoServiceClient.InvokeServerMethodT<bool>(funCode.AddIntervene, model);
                 if (suc)
                     this.ParentForm.DialogResult = DialogResult.OK;
                 else

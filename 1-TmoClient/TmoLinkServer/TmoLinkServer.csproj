@@ -60,7 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TmoReomotingClient.cs" />
+    <Compile Include="TmoServiceClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tmo_CommonClient.cs" />
     <Compile Include="Tmo_FakeEntityClient.cs" />

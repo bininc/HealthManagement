@@ -134,7 +134,7 @@ namespace TmoPointsCenter
                 DXMessageBox.ShowWarning2("证件号不能为空！");
                 return;
             }
-            bool idCard = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.CheckIDCard, user_id.Text);
+            bool idCard = TmoServiceClient.InvokeServerMethodT<bool>(funCode.CheckIDCard, user_id.Text);
             if (idCard)
             {
                 DXMessageBox.ShowWarning2("用户ID不存在！");
@@ -172,8 +172,8 @@ namespace TmoPointsCenter
             catch { DXMessageBox.Show("起居记录失败！", true); }
             ds.Tables[0].Rows.Add(dr);
             ds.AcceptChanges();
-            TmoReomotingClient.InvokeServerMethodT<string>(funCode.CreatePointsUser, user_id.Text);
-            result = (TmoReomotingClient.InvokeServerMethodT<int>(funCode.AddLivingDiary, TmoShare.getXMLFromDataSet(ds))).ToString();
+            TmoServiceClient.InvokeServerMethodT<string>(funCode.CreatePointsUser, user_id.Text);
+            result = (TmoServiceClient.InvokeServerMethodT<int>(funCode.AddLivingDiary, TmoShare.getXMLFromDataSet(ds))).ToString();
             if (Convert.ToInt16(result) >= 0)
             {
                 DXMessageBox.Show("起居记录成功！", true);

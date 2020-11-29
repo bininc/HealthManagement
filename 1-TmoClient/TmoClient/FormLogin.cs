@@ -52,8 +52,8 @@ namespace TmoClient
         void FormLogin_Load(object sender, EventArgs e)
         {
             InitValidationRules();
-            txtServerIP.EditValue = TmoReomotingClient.Ip;
-            txtServerPort.EditValue = TmoReomotingClient.Port;
+            txtServerIP.EditValue = TmoServiceClient.Ip;
+            txtServerPort.EditValue = TmoServiceClient.Port;
 
             string uidmd5 = ConfigHelper.GetConfigString("u");
             string pwdmd5 = ConfigHelper.GetConfigString("p");
@@ -114,8 +114,8 @@ namespace TmoClient
 
         private void btnSet_Click(object sender, EventArgs e)
         {
-            txtServerIP.EditValue = TmoReomotingClient.Ip;
-            txtServerPort.EditValue = TmoReomotingClient.Port;
+            txtServerIP.EditValue = TmoServiceClient.Ip;
+            txtServerPort.EditValue = TmoServiceClient.Port;
             panelSet.BringToFront();
             panelSet.Show();
             this.AcceptButton = panelSet.Visible ? btnSave : btnLogin;
@@ -134,7 +134,7 @@ namespace TmoClient
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            object obj = TmoReomotingClient.InvokeServerMethodT<bool>(txtServerIP.Text, Convert.ToInt32(txtServerPort.Text), funCode.CheckLink);
+            object obj = TmoServiceClient.InvokeServerMethodT<bool>(txtServerIP.Text, Convert.ToInt32(txtServerPort.Text), funCode.CheckLink);
             if (obj is bool && ((bool)obj))
                 DXMessageBox.ShowSuccess("测试连接成功！", this);
             else
@@ -143,15 +143,15 @@ namespace TmoClient
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            object obj = TmoReomotingClient.InvokeServerMethodT<bool>(txtServerIP.Text, Convert.ToInt32(txtServerPort.Text), funCode.CheckLink);
+            object obj = TmoServiceClient.InvokeServerMethodT<bool>(txtServerIP.Text, Convert.ToInt32(txtServerPort.Text), funCode.CheckLink);
             if (obj is bool && ((bool)obj))
             {
                 ConfigHelper.UpdateConfig("ServerIP", txtServerIP.Text, true);
                 ConfigHelper.UpdateConfig("RemotingPort", txtServerPort.Text, true);
-                TmoReomotingClient.RefreshIpPort();
+                TmoServiceClient.RefreshIpPort();
                 TCPClient.Instance.ClostSocket();
-                TCPClient._ip = TmoReomotingClient.Ip;
-                TCPClient._port = TmoReomotingClient.Port + 1;
+                TCPClient._ip = TmoServiceClient.Ip;
+                TCPClient._port = TmoServiceClient.Port + 1;
                 btnCloseSet_Click(null, null);
             }
             else
@@ -160,10 +160,10 @@ namespace TmoClient
                 {
                     ConfigHelper.UpdateConfig("ServerIP", txtServerIP.Text, true);
                     ConfigHelper.UpdateConfig("RemotingPort", txtServerPort.Text, true);
-                    TmoReomotingClient.RefreshIpPort();
+                    TmoServiceClient.RefreshIpPort();
                     TCPClient.Instance.ClostSocket();
-                    TCPClient._ip = TmoReomotingClient.Ip;
-                    TCPClient._port = TmoReomotingClient.Port + 1;
+                    TCPClient._ip = TmoServiceClient.Ip;
+                    TCPClient._port = TmoServiceClient.Port + 1;
                     btnCloseSet_Click(null, null);
                 };
                 DXMessageBox.ShowQuestion("测试连接失败！\r\n是否继续保存该配置？", this);

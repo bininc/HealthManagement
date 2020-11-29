@@ -95,7 +95,7 @@ namespace tmoProject
                 }
                 string user_idd = dr["user_id"].ToString();
                 string user_timesd = dr["user_times"].ToString();
-                string xmlreturn = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetProResult, new object[] { user_idd, user_timesd, "" }).ToString();
+                string xmlreturn = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProResult, new object[] { user_idd, user_timesd, "" }).ToString();
                 DataSet ds = TmoShare.getDataSetFromXML(xmlreturn);
                 if (!TmoShare.DataSetIsEmpty(ds) && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
                 {
@@ -115,7 +115,7 @@ namespace tmoProject
                 string user_idd = dr["user_id"].ToString();
                 string user_timesd = dr["user_times"].ToString();
 
-                string xmlreturn = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetProResult, new object[] { user_idd, user_timesd, "" }).ToString();
+                string xmlreturn = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProResult, new object[] { user_idd, user_timesd, "" }).ToString();
                 DataSet ds = TmoShare.getDataSetFromXML(xmlreturn);
                 if (!TmoShare.DataSetIsEmpty(ds) && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
                 {
@@ -170,7 +170,7 @@ namespace tmoProject
            
             string user_idd = Delrow["user_id"].ToString();
             string user_timesd = Delrow["user_times"].ToString();
-            bool issuc = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.DelPerProre, new object[] { user_idd, user_timesd, "" });
+            bool issuc = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.DelPerProre, new object[] { user_idd, user_timesd, "" });
             if (issuc)
             {
                 DXMessageBox.Show("删除成功", true);
@@ -199,7 +199,7 @@ namespace tmoProject
                         inputProds.Tables[0].Rows.Clear();
                     }
 
-                    string resxml = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetRiskResult, new object[] { user_idd, user_timesd }).ToString();
+                    string resxml = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetRiskResult, new object[] { user_idd, user_timesd }).ToString();
                     DataSet ds = TmoShare.getDataSetFromXML(resxml);
                     if (TmoShare.DataSetIsEmpty(ds))
                         return "2";
@@ -212,7 +212,7 @@ namespace tmoProject
                         }
                     }
 
-                    string resxmlprodic = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetProjectDic, new object[] { "", "", "" }).ToString();
+                    string resxmlprodic = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProjectDic, new object[] { "", "", "" }).ToString();
                     DataSet dsprodic = TmoShare.getDataSetFromXML(resxmlprodic);
                     if (TmoShare.DataSetIsEmpty(dsprodic))
                         return "2";
@@ -256,7 +256,7 @@ namespace tmoProject
 
                         project_ids.Clear();
                         string inputproxml = TmoShare.getXMLFromDataSet(inputProds);
-                        bool isuc = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.InProResult, new object[] { inputproxml });
+                        bool isuc = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.InProResult, new object[] { inputproxml });
                         if (isuc)
                             return "1";
                         else
@@ -308,7 +308,7 @@ namespace tmoProject
             DataRow dr = gridView1.GetDataRow(CheckedRowIndexs[0]);
             string user_idstr = dr["user_id"].ToString();
             string user_timesstr = dr["user_times"].ToString();
-            bool isdel = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.ReportDel, new object[] { user_idstr, user_timesstr });
+            bool isdel = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.ReportDel, new object[] { user_idstr, user_timesstr });
             if (isdel)
                 DXMessageBox.ShowWarning2("删除成功！");
             else
@@ -420,7 +420,7 @@ namespace tmoProject
                     }
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetProjectData, new object[] { selexml }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProjectData, new object[] { selexml }).ToString();
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {

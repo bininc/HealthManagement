@@ -34,8 +34,8 @@ namespace TmoReport.Reoprts
             tmo_user1.Tables.Add(dt.Copy());
            // RefData(userID, user_times);
             DataSet ds = null;
-            ds = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(TmoCommon.funCode.GetRiskFiveData, new object[] { userID }).ToString());
-            DataSet advicDs = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(TmoCommon.funCode.GetMainData, new object[] { userID, user_times }).ToString());
+            ds = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(TmoCommon.funCode.GetRiskFiveData, new object[] { userID }).ToString());
+            DataSet advicDs = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(TmoCommon.funCode.GetMainData, new object[] { userID, user_times }).ToString());
             if (TmoCommon.TmoShare.DataSetIsNotEmpty(advicDs))
             {
                 if (advicDs.Tables[0]!=null)

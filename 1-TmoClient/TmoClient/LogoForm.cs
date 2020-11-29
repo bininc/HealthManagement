@@ -45,7 +45,7 @@ namespace TmoClient
 
             TCPClient.Instance.DataReceived += Instance_DataReceived;
             TCPClient.Instance.ServerConnectionChanged += Instance_ServerConnectionChanged;
-            TCPClient.Instance.StartService(TmoReomotingClient.Ip, TmoReomotingClient.Port + 1);   //启动TCP服务
+            TCPClient.Instance.StartService(TmoServiceClient.Ip, TmoServiceClient.Port + 1);   //启动TCP服务
 
             #region 加载自定义Logo画面
             string logoPath = TmoShare.GetRootPath() + "\\Images\\logo.jpg";
@@ -128,7 +128,7 @@ namespace TmoClient
         /// <returns></returns>
         private bool CheckLink()
         {
-            object obj = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.CheckLink);
+            object obj = TmoServiceClient.InvokeServerMethodT<bool>(funCode.CheckLink);
             if (obj is bool)
                 return (bool)obj;
             return false;

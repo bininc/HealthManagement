@@ -122,7 +122,7 @@ namespace TmoControl
                             DialogResult result = DXMessageBox.ShowQuestion("问卷已经填写完毕，是否进行评估？", this);
                             if (result == DialogResult.OK)
                             {
-                               bool r= TmoReomotingClient.InvokeServerMethodT<bool>(funCode.RiskNewReport,
+                               bool r= TmoServiceClient.InvokeServerMethodT<bool>(funCode.RiskNewReport,
                                     currentUser.user_id, controlData.Status.usertimes);
                                 if (r)
                                     DXMessageBox.Show("问卷评估成功", true);
@@ -257,9 +257,9 @@ namespace TmoControl
             this.ShowWaitingPanel(() =>
             {
                 var firstqc = qc_id == null || qc_id.Length == 0
-                    ? TmoReomotingClient.InvokeServerMethodT<List<tmo_questionnaire_category>>(
+                    ? TmoServiceClient.InvokeServerMethodT<List<tmo_questionnaire_category>>(
                         funCode.GetFistQuestionnaires, currentUser.user_id, _usertimes)
-                    : TmoReomotingClient.InvokeServerMethodT<List<tmo_questionnaire_category>>(
+                    : TmoServiceClient.InvokeServerMethodT<List<tmo_questionnaire_category>>(
                         funCode.GetQuestionnaires, currentUser.user_id, _usertimes, qc_id);
 
                 XtabControlData tabControlData = new XtabControlData(currentUser);

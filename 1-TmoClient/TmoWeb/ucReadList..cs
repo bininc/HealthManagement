@@ -136,7 +136,7 @@ namespace TmoWeb
                     }
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetArticleData, new object[] { selexml }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetArticleData, new object[] { selexml }).ToString();
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {
@@ -197,13 +197,13 @@ namespace TmoWeb
         {
             try
             {
-                DataTable wzds = TmoReomotingClient.InvokeServerMethodT<DataSet>(funCode.GetPublicList, "tmo_web_aticle_type", " big_class='2' ").Tables[0];
+                DataTable wzds = TmoServiceClient.InvokeServerMethodT<DataSet>(funCode.GetPublicList, "tmo_web_aticle_type", " big_class='2' ").Tables[0];
 
                 if (TmoShare.DataTableIsNotEmpty(wzds))
                 {
                     this.BindDataTable(optType, wzds, "type_name", "type_id");
                 }
-                DataTable ztdt = TmoReomotingClient.InvokeServerMethodT<DataSet>(funCode.GetPublicList, "tmo_web_aticle_type", " big_class='4' ").Tables[0];
+                DataTable ztdt = TmoServiceClient.InvokeServerMethodT<DataSet>(funCode.GetPublicList, "tmo_web_aticle_type", " big_class='4' ").Tables[0];
 
                 if (TmoShare.DataTableIsNotEmpty(ztdt))
                 {
@@ -342,7 +342,7 @@ namespace TmoWeb
             }
             if (e.Column.Name == "del")
             {
-                bool isDel = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.OptionalDelete, new object[] { dr["opt_id"].ToString() });
+                bool isDel = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.OptionalDelete, new object[] { dr["opt_id"].ToString() });
                 if (isDel)
                 {
                     DXMessageBox.Show("删除成功！", true);

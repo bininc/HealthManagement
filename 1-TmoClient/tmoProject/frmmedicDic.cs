@@ -56,7 +56,7 @@ namespace tmoProject
         }
         void DXMessageBox_btnOKClick(object sender, EventArgs e)
         {
-            bool delTrue = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.delmedic, new object[] { delrow["dic_id"].ToString() });
+            bool delTrue = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.delmedic, new object[] { delrow["dic_id"].ToString() });
             if (delTrue)
             {
                 DXMessageBox.Show("删除成功", true);
@@ -135,7 +135,7 @@ namespace tmoProject
 
                 try
                 {
-                    string xmlreturn = TmoReomotingClient.InvokeServerMethodT<string>(funCode.medicQuery, new object[] { "" }).ToString();
+                    string xmlreturn = TmoServiceClient.InvokeServerMethodT<string>(funCode.medicQuery, new object[] { "" }).ToString();
                     DataSet ds = TmoShare.getDataSetFromXML(xmlreturn);
                     if (TmoShare.DataSetIsNotEmpty(ds))
                     {

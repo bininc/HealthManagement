@@ -53,7 +53,7 @@ namespace tmoProject
 
         void DXMessageBox_btnOKClick(object sender, EventArgs e)
         {
-            bool issuc = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.DelPerProre, new object[] { "", "", project_idva });
+            bool issuc = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.DelPerProre, new object[] { "", "", project_idva });
             if (issuc)
                 DXMessageBox.Show("删除成功", true);
             else
@@ -76,7 +76,7 @@ namespace tmoProject
 
                 try
                 {
-                    string xmlreturn = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetProResult, new object[] { user_id, user_times, "" }).ToString();
+                    string xmlreturn = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProResult, new object[] { user_id, user_times, "" }).ToString();
                     DataSet ds = TmoShare.getDataSetFromXML(xmlreturn);
                     if (TmoShare.DataSetIsNotEmpty(ds))
                     {

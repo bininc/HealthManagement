@@ -300,7 +300,7 @@ namespace TmoClient
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            TmoReomotingClient.StopService(); //关闭Remoting
+            TmoServiceClient.StopService(); //关闭Remoting
         }
 
         protected override void OnShown(EventArgs e)

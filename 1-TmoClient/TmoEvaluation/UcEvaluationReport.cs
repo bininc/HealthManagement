@@ -45,7 +45,7 @@ namespace TmoEvaluation
         {
             string userID = personDr["user_id"].ToString();
             string user_times = personDr["user_times"].ToString();
-            DataSet advicDs = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(TmoCommon.funCode.GetMainData, new object[] { userID, user_times }).ToString());
+            DataSet advicDs = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(TmoCommon.funCode.GetMainData, new object[] { userID, user_times }).ToString());
 
             ZongNew fi = new ZongNew(advicDs);
             this.ShowWaitingPanel(() =>

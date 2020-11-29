@@ -51,7 +51,7 @@ namespace tmoProject
             if (dr != null && dr["update"].ToString() != "--")
             {
                 bool sabool;
-                sabool = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.DeleNurData, new object[] { dr["id"].ToString() });
+                sabool = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.DeleNurData, new object[] { dr["id"].ToString() });
              if(sabool){
 
                  DXMessageBox.Show("删除成功！", true);
@@ -63,7 +63,7 @@ namespace tmoProject
         }
         public void SetControl()
         {
-            string nurXml = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetnurtypeItem, new object[] { "" }).ToString();
+            string nurXml = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetnurtypeItem, new object[] { "" }).ToString();
             DataSet nurDs = TmoShare.getDataSetFromXML(nurXml);
             if (TmoShare.DataSetIsNotEmpty(nurDs))
             {
@@ -82,7 +82,7 @@ namespace tmoProject
                   
                 nurtype.SelectedIndex = 0;
             }
-            string hotXml = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetHotDic, new object[] { "" }).ToString();
+            string hotXml = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetHotDic, new object[] { "" }).ToString();
             DataSet hotDs = TmoShare.getDataSetFromXML(hotXml);
             if (TmoShare.DataSetIsNotEmpty(hotDs))
             {
@@ -114,7 +114,7 @@ namespace tmoProject
                 {
 
 
-                    string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetNurData, new object[] { parentid,hotid }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetNurData, new object[] { parentid,hotid }).ToString();
                     DataSet ds = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(ds))
                    return ds.Tables[0];

@@ -105,7 +105,7 @@ namespace TmoReport
             //此处写你的删除方法
             string user_idstr = drDel["user_id"].ToString();
             string user_timesstr = drDel["user_times"].ToString();
-            bool isdel = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.DeleteQuestionnaire, user_idstr, user_timesstr);
+            bool isdel = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.DeleteQuestionnaire, user_idstr, user_timesstr);
             if (isdel)
             {
                 DXMessageBox.Show("删除成功！", true);
@@ -167,7 +167,7 @@ namespace TmoReport
                 ds.Tables[0].Rows.Add(ds.Tables[0].NewRow());
             ds.Tables[0].Rows[0]["user_id"] = dr["user_id"];
 
-            string riskDxml = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetTimes, new object[] { dr["user_id"].ToString() }).ToString();
+            string riskDxml = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetTimes, new object[] { dr["user_id"].ToString() }).ToString();
             DataSet riskState = TmoShare.getDataSetFromXML(riskDxml);
             if (riskState != null && riskState.Tables.Count > 0 && riskState.Tables[0] != null && riskState.Tables[0].Rows.Count > 0)
             {
@@ -175,7 +175,7 @@ namespace TmoReport
                 {
                     ds.Tables[0].Rows[0]["user_time"] = riskState.Tables[0].Rows[0]["user_times"];
                     string selexml = TmoShare.getXMLFromDataSet(ds);
-                    string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetRiskData, new object[] { selexml }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetRiskData, new object[] { selexml }).ToString();
                     ds = TmoShare.getDataSetFromXML(strmlx);
 
                     string c = CreateReport.pphase_Result(ds.Tables[0], ds.Tables[1], "1");
@@ -270,7 +270,7 @@ namespace TmoReport
                     }
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetPersonData, new object[] { selexml }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetPersonData, new object[] { selexml }).ToString();
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {

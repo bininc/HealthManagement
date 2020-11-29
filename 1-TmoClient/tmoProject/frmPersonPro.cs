@@ -34,7 +34,7 @@ namespace tmoProject
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string aswer = this.typeAnswer.Text;
-            bool issuc = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.unpdtePersonPro, new object[] { project_id, aswer });
+            bool issuc = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.unpdtePersonPro, new object[] { project_id, aswer });
             if (issuc)
                 this.Close();
             else

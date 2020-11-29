@@ -69,7 +69,7 @@ namespace TmoPurchaseSellStock
             string quesXml = ds.GetXml();
             quesXml = TmoShare.XML_TITLE + quesXml;
 
-            object obj = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.AddProduct, quesXml);
+            object obj = TmoServiceClient.InvokeServerMethodT<bool>(funCode.AddProduct, quesXml);
             if (Convert.ToBoolean(obj))
             {
                 DXMessageBox.Show("产品新增成功！", true);
@@ -85,7 +85,7 @@ namespace TmoPurchaseSellStock
         {
             try
             {
-                DataTable wzds = TmoReomotingClient.InvokeServerMethodT<DataSet>(funCode.GetPublicList, "tmo_product_type", "is_del='1' ").Tables[0];
+                DataTable wzds = TmoServiceClient.InvokeServerMethodT<DataSet>(funCode.GetPublicList, "tmo_product_type", "is_del='1' ").Tables[0];
 
                 if (TmoShare.DataTableIsNotEmpty(wzds))
                 {

@@ -66,7 +66,7 @@ namespace TmoReport
                 string shanshi = this.shanJianyi.Text;
 
 
-                bool isSuc = (bool)TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<bool>(TmoCommon.funCode.SaveReportUP, new object[] { bloodreason, bloodadvice, pressurereason, pressureadvice, userID, user_times, bloodlipid_reason, bloodlipid_advice, zhuanjia, genzong, jiankangshuzhi, height_advice, weight_adivce, weist_adivce, can_advice, kong_adivce, shuzhangya_adivce, yundong,shanshi });
+                bool isSuc = (bool)TmoLinkServer.TmoServiceClient.InvokeServerMethodT<bool>(TmoCommon.funCode.SaveReportUP, new object[] { bloodreason, bloodadvice, pressurereason, pressureadvice, userID, user_times, bloodlipid_reason, bloodlipid_advice, zhuanjia, genzong, jiankangshuzhi, height_advice, weight_adivce, weist_adivce, can_advice, kong_adivce, shuzhangya_adivce, yundong,shanshi });
                 if (isSuc)
                 {
                     DXMessageBox.Show("添加成功！", true);
@@ -92,7 +92,7 @@ namespace TmoReport
                 string jiankangshuzhi = this.jiankangshuzhi.Text;
                 string yundong = this.yunJianyi.Text;
                 string shanshi = this.shanJianyi.Text;
-                bool isSuc = (bool)TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<bool>(TmoCommon.funCode.SaveReportUPdate, new object[] { severce_id, bloodreason, bloodadvice, pressurereason, pressureadvice, userID, user_times, bloodlipid_reason, bloodlipid_advice, zhuanjia, genzong, jiankangshuzhi, height_advice, weight_adivce, weist_adivce, can_advice, kong_adivce, shuzhangya_adivce,yundong,shanshi});
+                bool isSuc = (bool)TmoLinkServer.TmoServiceClient.InvokeServerMethodT<bool>(TmoCommon.funCode.SaveReportUPdate, new object[] { severce_id, bloodreason, bloodadvice, pressurereason, pressureadvice, userID, user_times, bloodlipid_reason, bloodlipid_advice, zhuanjia, genzong, jiankangshuzhi, height_advice, weight_adivce, weist_adivce, can_advice, kong_adivce, shuzhangya_adivce,yundong,shanshi});
                 if (isSuc)
                 {
                     DXMessageBox.Show("修改成功！", true);
@@ -162,7 +162,7 @@ namespace TmoReport
 
 
             DataSet ds = null;
-            ds = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(TmoCommon.funCode.GetNewFiveData, new object[] { userID, user_times }).ToString());
+            ds = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(TmoCommon.funCode.GetNewFiveData, new object[] { userID, user_times }).ToString());
             if (TmoCommon.TmoShare.DataSetIsNotEmpty(ds))
             {
                 string up_times = "0";
@@ -231,7 +231,7 @@ namespace TmoReport
             }
 
 
-            DataSet advicDs = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(TmoCommon.funCode.GetMainData, new object[] { userID, user_times }).ToString());
+            DataSet advicDs = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(TmoCommon.funCode.GetMainData, new object[] { userID, user_times }).ToString());
             if (TmoCommon.TmoShare.DataSetIsNotEmpty(advicDs))
             {
                 if (advicDs.Tables[0] != null)

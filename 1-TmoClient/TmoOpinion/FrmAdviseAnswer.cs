@@ -29,7 +29,7 @@ namespace TmoOpinion
         }
         void okbtn_Click(object sender, EventArgs e)
         {
-            bool answer = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.UpdateOpinion, new object[] { advise_id.Text, answer_content.Text, doc_code.Text });
+            bool answer = TmoServiceClient.InvokeServerMethodT<bool>(funCode.UpdateOpinion, new object[] { advise_id.Text, answer_content.Text, doc_code.Text });
             if (answer)
             {
                 this.DialogResult = DialogResult.OK; 

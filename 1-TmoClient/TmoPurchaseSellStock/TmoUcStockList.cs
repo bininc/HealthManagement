@@ -54,7 +54,7 @@ namespace TmoPurchaseSellStock
                 }
                 else
                 {
-                    object obj = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.DeleteProduct, drDel["product_id"].ToString());
+                    object obj = TmoServiceClient.InvokeServerMethodT<bool>(funCode.DeleteProduct, drDel["product_id"].ToString());
                     if (Convert.ToBoolean(obj))
                     {
                         DXMessageBox.Show("产品删除成功！", true);
@@ -78,7 +78,7 @@ namespace TmoPurchaseSellStock
             if (this.produtType.EditValue == null || this.produtType.EditValue.ToString() == "0") return;
             string typeID = this.produtType.EditValue.ToString();
             //所在市
-            DataTable dtProduct = TmoReomotingClient.InvokeServerMethodT<DataSet>(funCode.GetPublicList, "tmo_product_list", "type_id=" + typeID).Tables[0];
+            DataTable dtProduct = TmoServiceClient.InvokeServerMethodT<DataSet>(funCode.GetPublicList, "tmo_product_list", "type_id=" + typeID).Tables[0];
 
             if (TmoShare.DataTableIsNotEmpty(dtProduct))
             {
@@ -106,7 +106,7 @@ namespace TmoPurchaseSellStock
                         _dsQueryXml.Tables[0].Rows[0]["product_id"] = this.productId.EditValue;
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetStockList, new object[] { selexml }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetStockList, new object[] { selexml }).ToString();
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {
@@ -158,13 +158,13 @@ namespace TmoPurchaseSellStock
         {
             try
             {
-                DataTable wzds = TmoReomotingClient.InvokeServerMethodT<DataSet>(funCode.GetPublicList, "tmo_product_type", "is_del='1' ").Tables[0];
+                DataTable wzds = TmoServiceClient.InvokeServerMethodT<DataSet>(funCode.GetPublicList, "tmo_product_type", "is_del='1' ").Tables[0];
 
                 if (TmoShare.DataTableIsNotEmpty(wzds))
                 {
                     this.BindDataTable(produtType, wzds, "type_name", "type_id");
                 }
-                DataTable ztdt = TmoReomotingClient.InvokeServerMethodT<DataSet>(funCode.GetPublicList, "tmo_product_list", " is_del='1' ").Tables[0];
+                DataTable ztdt = TmoServiceClient.InvokeServerMethodT<DataSet>(funCode.GetPublicList, "tmo_product_list", " is_del='1' ").Tables[0];
 
                 if (TmoShare.DataTableIsNotEmpty(ztdt))
                 {

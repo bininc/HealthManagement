@@ -42,7 +42,7 @@ namespace TmoWeb
         }
         public void LoadData(string opt_ID)
         {
-            DataSet ds = TmoReomotingClient.InvokeServerMethodT<DataSet>(funCode.OptionalSelect, opt_ID);
+            DataSet ds = TmoServiceClient.InvokeServerMethodT<DataSet>(funCode.OptionalSelect, opt_ID);
             optId = opt_ID;
             if (TmoShare.DataSetIsNotEmpty(ds))
             {
@@ -119,7 +119,7 @@ namespace TmoWeb
             object obj;
             if (IsAdd)
             {
-                obj = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.OptionalAdd, quesXml);
+                obj = TmoServiceClient.InvokeServerMethodT<bool>(funCode.OptionalAdd, quesXml);
                 if (Convert.ToBoolean(obj))
                 {
                     DXMessageBox.Show("新增文章成功！",true);
@@ -131,7 +131,7 @@ namespace TmoWeb
 
             else
             {
-                obj = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.OptionalUpdate, quesXml);
+                obj = TmoServiceClient.InvokeServerMethodT<bool>(funCode.OptionalUpdate, quesXml);
                 if (Convert.ToBoolean(obj))
                 {
                     DXMessageBox.Show("修改文章成功！", true);
@@ -148,13 +148,13 @@ namespace TmoWeb
         {
             try
             {
-                DataTable wzds = TmoReomotingClient.InvokeServerMethodT<DataSet>(funCode.GetPublicList, "tmo_web_aticle_type", " big_class='2' ").Tables[0];
+                DataTable wzds = TmoServiceClient.InvokeServerMethodT<DataSet>(funCode.GetPublicList, "tmo_web_aticle_type", " big_class='2' ").Tables[0];
 
                 if (TmoShare.DataTableIsNotEmpty(wzds))
                 {
                     this.BindDataTable(opt_type, wzds, "type_name", "type_id");
                 }
-                DataTable ztdt = TmoReomotingClient.InvokeServerMethodT<DataSet>(funCode.GetPublicList, "tmo_web_aticle_type", " big_class='4' ").Tables[0];
+                DataTable ztdt = TmoServiceClient.InvokeServerMethodT<DataSet>(funCode.GetPublicList, "tmo_web_aticle_type", " big_class='4' ").Tables[0];
 
                 if (TmoShare.DataTableIsNotEmpty(ztdt))
                 {

@@ -26,7 +26,7 @@ namespace TmoQuestionnaire
                 ds.Tables[0].Rows.Add(ds.Tables[0].NewRow());
             ds.Tables[0].Rows[0]["user_id"] = userId;
 
-            string riskDxml = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetTimes, new object[] { userId }).ToString();
+            string riskDxml = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetTimes, new object[] { userId }).ToString();
             DataSet riskState = TmoShare.getDataSetFromXML(riskDxml);
             if (riskState != null && riskState.Tables.Count > 0 && riskState.Tables[0] != null && riskState.Tables[0].Rows.Count > 0)
             {
@@ -34,7 +34,7 @@ namespace TmoQuestionnaire
                 {
                     ds.Tables[0].Rows[0]["user_time"] = riskState.Tables[0].Rows[0]["user_times"];
                     string selexml = TmoShare.getXMLFromDataSet(ds);
-                    string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetRiskData, new object[] { selexml }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetRiskData, new object[] { selexml }).ToString();
                     ds = TmoShare.getDataSetFromXML(strmlx);
 
                     string c = CreateReport.pphase_Result(ds.Tables[0], ds.Tables[1], "1");

@@ -34,27 +34,34 @@ namespace TmoCommon
         public static string WebEmailPwd = ConfigHelper.GetConfigString("WebEmailPwd");
 
         #region 微信公众平台信息
+
         /// <summary>
         /// 微信公众平台账号
         /// </summary>
         public static string WX_APP_ID = ConfigHelper.GetConfigString("WX_APP_ID");
+
         /// <summary>
         /// 微信公众平台密码
         /// </summary>
         public static string WX_APP_SECRET = ConfigHelper.GetConfigString("WX_APP_SECRET");
+
         /// <summary>
         /// 微信公众平台令牌（有效期7200秒，系统默认更新时间3600）
         /// </summary>
         public static string WX_ACCESS_TOKEN = "";
+
         /// <summary>
         /// 微信公众平台最新令牌更新时间
         /// </summary>
         public static DateTime WX_ACCESS_TOKEN_TIME = DateTime.Parse("2016-08-28");
+
         /// <summary>
         /// 微信公众平台模板ID
         /// </summary>
         public static string WX_TEMPLATE_ID = ConfigHelper.GetConfigString("WX_TEMPLATE_ID");
+
         #endregion
+
         /// <summary>
         /// xml标头
         /// </summary>
@@ -64,118 +71,113 @@ namespace TmoCommon
         /// email验证正则表达式
         /// </summary>
         public const string EmailType = @"\w{1,}@\w{1,}\.\w{1,}";
+
         /// <summary>
         /// 是否使用代理 True-是 False-否
         /// </summary>
         public static string IsSettingProxy = string.Empty;
+
         /// <summary>
         /// 是否设置IE代理 True-是 False-否
         /// </summary>
         public static string IsSetIEProxy = string.Empty;
 
         /// <summary>
-
         /// <summary>
         /// 代理服务器IP
         /// </summary>
         public static string ProxyIP = string.Empty;
+
         /// <summary>
         /// 代理服务器端口
         /// </summary>
         public static string ProxyPort = string.Empty;
+
         /// <summary>
         /// 代理服务器用户名
         /// </summary>
         public static string ProxyUserName = string.Empty;
+
         /// <summary>
         /// 代理服务器密码
         /// </summary>
         public static string ProxyPassWord = string.Empty;
+
         #endregion
 
         #region 时间相关
+
         /// <summary>
         /// 格式化日期类型
         /// </summary>
         public static string FormatDate = "yyyy-MM-dd";
+
         /// <summary>
         /// 格式化时间类型
         /// </summary>
         public static string FormatTime = "HH:mm:ss";
+
         /// <summary>
         /// 格式化日期时间类型
         /// </summary>
         public static string FormatDateTime = "yyyy-MM-dd HH:mm:ss";
+
         /// <summary>
         /// 返回当前日期
         /// </summary>
         public static string DateNow
         {
-            get
-            {
-                return DateTime.Now.ToString(FormatDate);
-            }
+            get { return DateTime.Now.ToString(FormatDate); }
         }
+
         /// <summary>
         /// 当天起始
         /// </summary>
         public static DateTime TodayBegin
         {
-            get
-            {
-                return DateTime.Now.Date;
-            }
+            get { return DateTime.Now.Date; }
         }
+
         /// <summary>
         /// 当天结束
         /// </summary>
         public static DateTime TodayEnd
         {
-            get
-            {
-                return DateTime.Now.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(999);
-            }
+            get { return DateTime.Now.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(999); }
         }
+
         /// <summary>
         /// 返回当前时间
         /// </summary>
         public static string TimeNow
         {
-            get
-            {
-                return DateTime.Now.ToString(FormatTime);
-            }
+            get { return DateTime.Now.ToString(FormatTime); }
         }
+
         /// <summary>
         /// 返回当前日期时间
         /// </summary>
         public static string DateTimeNow
         {
-            get
-            {
-                return DateTime.Now.ToString(FormatDateTime);
-            }
+            get { return DateTime.Now.ToString(FormatDateTime); }
         }
+
         /// <summary>
         /// 返回每天的开始时间
         /// </summary>
         public static string TODAY_FROM
         {
-            get
-            {
-                return DateTime.Now.ToString(FormatDate) + " 00:00:00";
-            }
+            get { return DateTime.Now.ToString(FormatDate) + " 00:00:00"; }
         }
+
         /// <summary>
         /// 返回每天的结束时间
         /// </summary>
         public static string TODAY_END
         {
-            get
-            {
-                return DateTime.Now.ToString(FormatDate) + " 23:59:59";
-            }
+            get { return DateTime.Now.ToString(FormatDate) + " 23:59:59"; }
         }
+
         /// <summary>
         /// datetime转换为时间戳
         /// </summary>
@@ -184,8 +186,9 @@ namespace TmoCommon
         public static int DateTime2TimeStamp(DateTime time)
         {
             DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
-            return (int)(time - startTime).TotalSeconds;
+            return (int) (time - startTime).TotalSeconds;
         }
+
         /// <summary>
         /// 时间戳转换为datetime
         /// </summary>
@@ -197,9 +200,11 @@ namespace TmoCommon
             TimeSpan toNow = new TimeSpan(0, 0, timeStamp);
             return startTime.Add(toNow);
         }
+
         #endregion
 
         #region 数据相关
+
         /// <summary>
         /// 获取当前数据库类型
         /// </summary>
@@ -227,6 +232,7 @@ namespace TmoCommon
         }
 
         #region 把xml转成DataSet或DataTable数据集
+
         /// <summary>
         /// 把xml转成DataSet数据集
         /// </summary>
@@ -247,11 +253,12 @@ namespace TmoCommon
                     }
                     else
                         ds.ReadXmlSchema(ms);
+
                     ms.Close();
                     bs = Encoding.UTF8.GetBytes(xmls[1]);
                     ms = new MemoryStream(bs);
                     ds.ReadXml(ms);
-                end:
+                    end:
                     ms.Close();
 
                     if (DataSetIsNotEmpty(ds))
@@ -265,6 +272,7 @@ namespace TmoCommon
                 {
                     ds = getDataSetFromXML16(strXML, iFClear);
                 }
+
             return ds;
         }
 
@@ -281,11 +289,12 @@ namespace TmoCommon
 
                 foreach (char cc in strXML)
                 {
-                    int ss = (int)cc;
+                    int ss = (int) cc;
                     if (((ss >= 0) && (ss <= 8)) || ((ss >= 11) && (ss <= 12)) || ((ss >= 14) && (ss <= 32)))
                         info.AppendFormat("&#x{0:X};", ss);
                     else info.Append(cc);
                 }
+
                 strXML = info.ToString().Replace("&#x20;", " ");
 
                 List<string> xmls = StringPlus.GetStrArray(strXML, "_;_");
@@ -298,11 +307,12 @@ namespace TmoCommon
                 }
                 else
                     ds.ReadXmlSchema(ms);
+
                 ms.Close();
                 bs = Encoding.UTF8.GetBytes(xmls[1]);
                 ms = new MemoryStream(bs);
                 ds.ReadXml(ms);
-            end:
+                end:
                 ms.Close();
 
                 if (DataSetIsNotEmpty(ds))
@@ -312,8 +322,10 @@ namespace TmoCommon
                             dt.Clear();
                     }
             }
+
             return ds;
         }
+
         /// <summary>
         /// 把XML转换为DataTable
         /// </summary>
@@ -337,21 +349,25 @@ namespace TmoCommon
                 }
                 else
                     dt.ReadXmlSchema(ms);
+
                 ms.Close();
                 bs = Encoding.UTF8.GetBytes(xmls[1]);
                 ms = new MemoryStream(bs);
                 dt.ReadXml(ms);
-            end:
+                end:
                 ms.Close();
                 if (DataTableIsNotEmpty(dt))
                     if (iFClear)
                         dt.Clear();
             }
+
             return dt;
         }
+
         #endregion
 
-        #region  得到dataSet或datatable的xml串
+        #region 得到dataSet或datatable的xml串
+
         /// <summary>
         /// 返回某张表的表的XML
         /// </summary>
@@ -365,6 +381,7 @@ namespace TmoCommon
             //return sbXml.ToString();
             return getXMLFromDataTable_NO_TITLE(dt);
         }
+
         public static string getXMLFromDataTable_NO_TITLE(DataTable dt)
         {
             if (dt == null) return "";
@@ -374,21 +391,26 @@ namespace TmoCommon
             MemoryStream ms = new MemoryStream();
             XmlTextWriter xmlWriter = new XmlTextWriter(ms, Encoding.UTF8);
             dt.WriteXmlSchema(xmlWriter);
-            byte[] bs = ms.GetBuffer();
-            string xmlSchema = Encoding.UTF8.GetString(bs);
+            ms.Position = 0;
+            StreamReader sr = new StreamReader(ms, Encoding.UTF8);
+            string xmlSchema = sr.ReadToEnd();
+            sr.Close();
             xmlWriter.Close();
             ms.Close();
             ms = new MemoryStream();
             xmlWriter = new XmlTextWriter(ms, Encoding.UTF8);
             dt.WriteXml(xmlWriter);
-            bs = ms.GetBuffer();
-            string xml = Encoding.UTF8.GetString(bs);
+            ms.Position = 0;
+            sr = new StreamReader(ms, Encoding.UTF8);
+            string xml = sr.ReadToEnd();
+            sr.Close();
             xmlWriter.Close();
             ms.Close();
 
             sbXml.AppendFormat("{0}_;_{1}", xmlSchema, xml);
 
             #region 旧方法 停用
+
             /*
             sbXml.AppendFormat("<tableXML_{0}>\r", dt.TableName);
             for (int j = 0; j < dt.Rows.Count; j++)
@@ -402,10 +424,12 @@ namespace TmoCommon
                 sbXml.AppendFormat(" </{0}>\r", dt.TableName);
             }
             sbXml.AppendFormat("</tableXML_{0}>", dt.TableName); */
+
             #endregion
 
             return sbXml.ToString();
         }
+
         /// <summary>
         /// 获取数据集的XML
         /// </summary>
@@ -421,6 +445,7 @@ namespace TmoCommon
             //return sbXml.ToString();
             return getXMLFromDataSet_NO_TITLE(ds);
         }
+
         /// <summary>
         /// 获取数据集的XML不带XML头
         /// </summary>
@@ -435,20 +460,26 @@ namespace TmoCommon
             MemoryStream ms = new MemoryStream();
             XmlTextWriter xmlWriter = new XmlTextWriter(ms, Encoding.UTF8);
             ds.WriteXmlSchema(xmlWriter, new Converter<Type, string>(DataTypeConverterString));
-            byte[] bs = ms.GetBuffer();
-            string xmlSchema = Encoding.UTF8.GetString(bs);
+            ms.Position = 0;
+            StreamReader sr = new StreamReader(ms, Encoding.UTF8);
+            string xmlSchema = sr.ReadToEnd();
+            sr.Close();
             xmlWriter.Close();
             ms.Close();
             ms = new MemoryStream();
             xmlWriter = new XmlTextWriter(ms, Encoding.UTF8);
             ds.WriteXml(xmlWriter, XmlWriteMode.WriteSchema);
-            bs = ms.GetBuffer();
-            string xml = Encoding.UTF8.GetString(bs);
+            ms.Position = 0;
+            sr = new StreamReader(ms, Encoding.UTF8);
+            string xml = sr.ReadToEnd();
+            sr.Close();
             xmlWriter.Close();
             ms.Close();
 
             sbXml.AppendFormat("{0}_;_{1}", xmlSchema, xml);
+
             #region 旧方法 停用
+
             /*
             sbXml.AppendFormat("{0}_;_", ds.DataSetName);
             foreach (DataTable dt in ds.Tables)
@@ -500,10 +531,12 @@ namespace TmoCommon
                 }
             }
             sbXml.AppendFormat("</{0}>", ds.DataSetName);*/
+
             #endregion
 
             return sbXml.ToString();
         }
+
         //特殊类型转换
         public static string DataTypeConverterString(Type input)
         {
@@ -522,14 +555,14 @@ namespace TmoCommon
         {
             if (typeof(T) == typeof(DataSet))
             {
-                DataSet ds = (DataSet)input;
+                DataSet ds = (DataSet) input;
                 foreach (DataTable dt in ds.Copy().Tables)
                 {
                     foreach (DataColumn dc in dt.Columns)
                     {
                         if (dc.DataType.Name.EndsWith("MySqlDateTime"))
                         {
-                            ds.Tables[dt.TableName].Columns.Remove(dc.ColumnName);  //删除该列
+                            ds.Tables[dt.TableName].Columns.Remove(dc.ColumnName); //删除该列
                             DataColumn dcnew = new DataColumn(dc.ColumnName, typeof(DateTime)); //新建相同列
                             ds.Tables[dt.TableName].Columns.Add(dcnew); //添加新建列
                             for (int i = 0; i < dt.Rows.Count; i++)
@@ -545,17 +578,18 @@ namespace TmoCommon
                         }
                     }
                 }
+
                 input = ds;
             }
             else if (typeof(T) == typeof(DataTable))
             {
-                DataTable dt = (DataTable)input;
+                DataTable dt = (DataTable) input;
                 DataTable dtcp = dt.Copy();
                 foreach (DataColumn dc in dtcp.Columns)
                 {
                     if (dc.DataType.Name.EndsWith("MySqlDateTime"))
                     {
-                        dt.Columns.Remove(dc.ColumnName);  //删除该列
+                        dt.Columns.Remove(dc.ColumnName); //删除该列
                         DataColumn dcnew = new DataColumn(dc.ColumnName, typeof(DateTime)); //新建相同列
                         dt.Columns.Add(dcnew); //添加新建列
                         for (int i = 0; i < dt.Rows.Count; i++)
@@ -571,9 +605,11 @@ namespace TmoCommon
                         }
                     }
                 }
+
                 input = dt;
             }
         }
+
         #endregion
 
         public static string GetXml_NO_TITLE(DataSet ds)
@@ -598,7 +634,7 @@ namespace TmoCommon
                             {
                                 if (dr[col.ColumnName].ToString() != "")
                                 {
-                                    string ss = Convert.ToBase64String(((byte[])dr[col.ColumnName]));
+                                    string ss = Convert.ToBase64String(((byte[]) dr[col.ColumnName]));
                                     sbXml.Append(ss);
                                 }
                             }
@@ -620,20 +656,23 @@ namespace TmoCommon
                         catch
                         {
                             TmoShare.WriteLog(@"XML字段格式错误！原因：源数据保存时格式没有验证。其中时间类型默认转变为【当天yyyy-MM-dd 11:58:58】 \n字段名："
-                            + col.ColumnName + " 字段值：" + dr[col.ColumnName].ToString() + " 字段类型:" + col.DataType.ToString());
+                                              + col.ColumnName + " 字段值：" + dr[col.ColumnName].ToString() + " 字段类型:" + col.DataType.ToString());
                         }
 
                         sbXml.Append("</" + col.ColumnName.ToLower() + ">\r");
                     }
+
                     sbXml.Append("  </" + dt.TableName.ToLower() + ">\r");
                 }
             }
+
             sbXml.Append(" </" + ds.DataSetName.ToLower() + ">\r");
 
             return sbXml.ToString();
         }
 
         #region DataSet或DataTable相关操作
+
         /// <summary>
         /// 验证DataSet是否有数据 否则传入dataset赋为null 
         /// </summary>
@@ -644,8 +683,10 @@ namespace TmoCommon
             {
                 ds = null;
             }
+
             return ds;
         }
+
         /// <summary>
         /// 验证DataSet是否有数据 否则传入dataset赋为null 
         /// </summary>
@@ -657,6 +698,7 @@ namespace TmoCommon
             else
                 return false;
         }
+
         /// <summary>
         /// 验证DataSet是否有数据 否则传入dataset赋为null 
         /// </summary>
@@ -665,6 +707,7 @@ namespace TmoCommon
         {
             return !DataSetIsEmpty(ds);
         }
+
         /// <summary>
         /// 消除数据表中的主键冲突行
         /// </summary>
@@ -683,8 +726,10 @@ namespace TmoCommon
                 dcKey.Add(indexId);
                 dtClone.ImportRow(dr);
             }
+
             return dtClone;
         }
+
         /// <summary>
         /// 验证DataTable是否有数据 否则传入datatable赋为null 
         /// </summary>
@@ -695,8 +740,10 @@ namespace TmoCommon
             {
                 dt = null;
             }
+
             return dt;
         }
+
         /// <summary>
         /// 验证DataTable是否有数据 否则传入datatable赋为null 
         /// </summary>
@@ -708,6 +755,7 @@ namespace TmoCommon
             else
                 return false;
         }
+
         /// <summary>
         /// 验证DataTable是否有数据 否则传入datatable赋为null 
         /// </summary>
@@ -716,9 +764,11 @@ namespace TmoCommon
         {
             return !DataTableIsEmpty(dt);
         }
+
         #endregion
 
         #region DataTable排序
+
         /// <summary>
         /// 设置datatable排序
         /// </summary>
@@ -736,15 +786,17 @@ namespace TmoCommon
             dt.TableName = TableName ?? dt_source.TableName + "Sorted";
             return dt;
         }
+
         #endregion
 
         #region FakeEntity伪实体相关
+
         /// <summary>
         /// 得到查询实体参数
         /// </summary>
         /// <returns></returns>
         public static string GetDataEntityParams(string entityName, string colums = "*", int rowStart = -1, int rowEnd = -1,
-                                                                        string pkName = "", string pkValue = "", string where = "", string order = "")
+            string pkName = "", string pkValue = "", string where = "", string order = "")
         {
             if (string.IsNullOrWhiteSpace(entityName)) return null;
             List<string> list = new List<string>();
@@ -758,6 +810,7 @@ namespace TmoCommon
             list.Add(order);
             return StringPlus.GetArrayStr(list, "_;_");
         }
+
         /// <summary>
         /// 得到实体提交参数
         /// </summary>
@@ -769,10 +822,11 @@ namespace TmoCommon
                 dicParams = new Dictionary<string, object>();
                 dicParams.Add("null", null);
             }
+
             if (dicParams == null || dicParams.Count == 0) return "err_params";
 
             List<string> list = new List<string>();
-            list.Add(((int)opType).ToString());
+            list.Add(((int) opType).ToString());
             list.Add(entityName);
             list.Add(pkName);
             list.Add(pkValue);
@@ -783,9 +837,11 @@ namespace TmoCommon
                 if (item.Value != null && !string.IsNullOrWhiteSpace(item.Value.ToString()))
                     sb.AppendFormat("{0}_|_{1}-|-", item.Key, item.Value);
             }
+
             list.Add(sb.ToString());
             return StringPlus.GetArrayStr(list, "_;_");
         }
+
         /// <summary>
         /// 得到分页查询实体参数
         /// </summary>
@@ -805,9 +861,11 @@ namespace TmoCommon
         }
 
         #endregion
+
         #endregion
 
         #region 计算相关
+
         /// <summary>
         /// 计算年龄
         /// </summary>
@@ -833,6 +891,7 @@ namespace TmoCommon
             //}
             return Age;
         }
+
         /// <summary>
         /// 计算年龄（到现在为止）
         /// </summary>
@@ -842,6 +901,7 @@ namespace TmoCommon
         {
             return CalAge(birthdayDate, DateTime.Now);
         }
+
         /// <summary>
         /// 计算BMI
         /// </summary>
@@ -887,11 +947,13 @@ namespace TmoCommon
             //object res = sc.Eval(str);
             return obj;
         }
+
         #endregion
 
         #region 文件操作相关
 
         #region GB2312转UTF8
+
         public static string GB2312ToUTF8(string str)
         {
             try
@@ -904,14 +966,16 @@ namespace TmoCommon
                 string result = uft8.GetString(temp1);
                 return result;
             }
-            catch (Exception ex)//(UnsupportedEncodingException ex)
+            catch (Exception ex) //(UnsupportedEncodingException ex)
             {
                 return null;
             }
         }
+
         #endregion
 
         #region 文件操作
+
         public static void OpenFile(string filePath)
         {
             //定义一个ProcessStartInfo实例
@@ -926,7 +990,6 @@ namespace TmoCommon
             try
             {
                 System.Diagnostics.Process.Start(info);
-
             }
             catch (System.ComponentModel.Win32Exception we)
             {
@@ -957,6 +1020,7 @@ namespace TmoCommon
                     string sGUID = System.Guid.NewGuid().ToString().Replace("-", "");
                     fileInfo.MoveTo(sPath + "\\" + sGUID + "_" + fileName);
                 }
+
                 FileInfo fi = new FileInfo(newPath);
                 FileStream fs = fi.OpenWrite();
                 fs.Write(oByte, 0, oByte.Length);
@@ -984,6 +1048,7 @@ namespace TmoCommon
                     FileInfo fi = new FileInfo(sPath);
                     fi.Delete();
                 }
+
                 return true;
             }
             catch
@@ -1010,6 +1075,7 @@ namespace TmoCommon
                     fs.Close();
                     return bytes;
                 }
+
                 return null;
             }
             catch
@@ -1017,6 +1083,7 @@ namespace TmoCommon
                 return null;
             }
         }
+
         #endregion
 
         #region 把位图转成字节
@@ -1025,6 +1092,7 @@ namespace TmoCommon
         {
             return System.IO.File.ReadAllBytes(fileName);
         }
+
         public static byte[] BitMapToBytes(Image img, string ExtensionName)
         {
             if (img == null) return null;
@@ -1045,6 +1113,7 @@ namespace TmoCommon
                     format = ImageFormat.Bmp;
                     break;
             }
+
             MemoryStream ms = null;
             try
             {
@@ -1064,9 +1133,11 @@ namespace TmoCommon
                 ms.Close();
             }
         }
+
         #endregion
 
         #region 系统日志生成
+
         /// <summary>
         /// 写日志
         /// </summary>
@@ -1075,6 +1146,7 @@ namespace TmoCommon
         {
             LogHelper.WriteError(ex);
         }
+
         /// <summary>
         /// 写日志
         /// </summary>
@@ -1084,6 +1156,7 @@ namespace TmoCommon
         {
             LogHelper.WriteError(ex, typename);
         }
+
         /// <summary>
         /// 写日志
         /// </summary>
@@ -1125,9 +1198,11 @@ namespace TmoCommon
                             buffer0 = new string(new string(buffer0.Reverse().ToArray()).Remove(maxLength).Reverse().ToArray());
                             File.WriteAllText(path, buffer0, Encoding.UTF8);
                         }
+
                         return;
                     }
                 }
+
                 File.WriteAllText(path, value, Encoding.UTF8);
 
                 string buffer = File.ReadAllText(path, Encoding.UTF8);
@@ -1141,6 +1216,7 @@ namespace TmoCommon
             {
             }
         }
+
         /// <summary>
         /// 写TCP日志
         /// </summary>
@@ -1154,6 +1230,7 @@ namespace TmoCommon
                 errMsg = "TCP|" + errMsg;
             LogHelper.WriteInfo(errMsg);
         }
+
         /// <summary>
         /// 写TCP日志
         /// </summary>
@@ -1167,9 +1244,11 @@ namespace TmoCommon
                 typeName = "TCP";
             LogHelper.WriteError(ex, typeName);
         }
+
         #endregion
 
         #region 系统运行路径获取
+
         /// <summary>
         /// 判断其实路径是否为WebServer类型路径
         /// </summary>
@@ -1178,15 +1257,15 @@ namespace TmoCommon
         public static bool IsWebRoot(string StartPath)
         {
             if (StartPath == @"c:\windows\system32\inetsrv"
-                           || StartPath == @"c:\windows\syswow64\inetsrv"
-                           || StartPath == @"c:\windows\microsoft.net\framework\v2.0.50727"
-                           || StartPath == @"c:\windows\microsoft.net\framework64\v2.0.50727"
-                           || StartPath == @"c:\windows\microsoft.net\framework\v4.0.30319"
-                           || StartPath == @"c:\windows\microsoft.net\framework64\v4.0.30319"
-                           || StartPath == @"c:\program files\iis express"
-                           || StartPath == @"c:\program files (x86)\iis express"
-                           || StartPath.StartsWith(@"c:\windows")
-                )
+                || StartPath == @"c:\windows\syswow64\inetsrv"
+                || StartPath == @"c:\windows\microsoft.net\framework\v2.0.50727"
+                || StartPath == @"c:\windows\microsoft.net\framework64\v2.0.50727"
+                || StartPath == @"c:\windows\microsoft.net\framework\v4.0.30319"
+                || StartPath == @"c:\windows\microsoft.net\framework64\v4.0.30319"
+                || StartPath == @"c:\program files\iis express"
+                || StartPath == @"c:\program files (x86)\iis express"
+                || StartPath.StartsWith(@"c:\windows")
+            )
             {
                 //webRoot
                 return true;
@@ -1213,6 +1292,7 @@ namespace TmoCommon
             {
                 path = Application.StartupPath;
             }
+
             return path;
         }
 
@@ -1232,18 +1312,21 @@ namespace TmoCommon
             {
                 path = Application.StartupPath;
             }
+
             return Path.Combine(path, fileName);
         }
+
         #endregion
 
         #region 保存图片
+
         public static bool SaveImg(object ImgValue, string fileName)
         {
             MemoryStream ms = null;
             Image img = null;
             try
             {
-                byte[] buffer = (byte[])ImgValue;
+                byte[] buffer = (byte[]) ImgValue;
                 string path = Application.StartupPath + "\\" + fileName;
                 if (File.Exists(path))
                     File.Delete(path);
@@ -1262,6 +1345,7 @@ namespace TmoCommon
                 return false;
             }
         }
+
         public static bool SaveImg(object ImgValue, string fileName, bool bootPath)
         {
             MemoryStream ms = null;
@@ -1269,7 +1353,7 @@ namespace TmoCommon
             string path = "";
             try
             {
-                byte[] buffer = (byte[])ImgValue;
+                byte[] buffer = (byte[]) ImgValue;
                 if (bootPath)
                     path = fileName;
                 else
@@ -1278,13 +1362,13 @@ namespace TmoCommon
 
                 if (!File.Exists(path))
                 {
-
                     ms = new MemoryStream(buffer);
                     img = Image.FromStream(ms);
                     img.Save(fileName, ImageFormat.Png);
 
                     ms.Close();
                 }
+
                 return true;
             }
             catch (Exception ex)
@@ -1294,6 +1378,7 @@ namespace TmoCommon
                 return false;
             }
         }
+
         public static byte[] ReadImg(string fileName)
         {
             try
@@ -1304,19 +1389,20 @@ namespace TmoCommon
                 {
                     return null;
                 }
+
                 FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
                 byte[] byteFile = new byte[fs.Length];
                 fs.Read(byteFile, 0, byteFile.Length);
                 fs.Close();
 
                 return byteFile;
-
             }
             catch (Exception ex)
             {
                 return null;
             }
         }
+
         #endregion
 
         #endregion
@@ -1331,6 +1417,7 @@ namespace TmoCommon
         {
             return Guid.NewGuid().ToString().Replace("-", "").ToUpper();
         }
+
         /// <summary>
         /// 判断字符串是否是XML格式
         /// </summary>
@@ -1376,6 +1463,7 @@ namespace TmoCommon
         }
 
         #region 验证是否为数字格式
+
         /// <summary>
         /// 验证是否为数字格式（包括浮点型）
         /// </summary>
@@ -1385,9 +1473,11 @@ namespace TmoCommon
         {
             bool isNum;
             double retNum;
-            isNum = Double.TryParse(Convert.ToString(Expression), System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out retNum);
+            isNum = Double.TryParse(Convert.ToString(Expression), System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo,
+                out retNum);
             return isNum;
         }
+
         /// <summary>
         /// 验证s是否为数字格式（只限整型）
         /// </summary>
@@ -1399,6 +1489,7 @@ namespace TmoCommon
             {
                 return false;
             }
+
             foreach (char c in str)
             {
                 if (!Char.IsNumber(c))
@@ -1406,11 +1497,14 @@ namespace TmoCommon
                     return false;
                 }
             }
+
             return true;
         }
+
         #endregion
 
         #region 验证是否是正确身份证号
+
         /// <summary>
         /// 是否是正确的身份证号
         /// </summary>
@@ -1419,7 +1513,8 @@ namespace TmoCommon
         /// <returns></returns>
         public static bool isIdCardNo(string num, out string errMsg)
         {
-            errMsg = null; ;
+            errMsg = null;
+            ;
 
             num = num.ToUpper();
 
@@ -1443,7 +1538,8 @@ namespace TmoCommon
 
                 //检查生日日期是否正确
                 DateTime dtmBirth = DateTime.MinValue;
-                bool success = DateTime.TryParse(string.Format("19{0}/{1}/{2}", arrSplit.Groups[2].Value, arrSplit.Groups[3].Value, arrSplit.Groups[4].Value), out dtmBirth);
+                bool success = DateTime.TryParse(string.Format("19{0}/{1}/{2}", arrSplit.Groups[2].Value, arrSplit.Groups[3].Value, arrSplit.Groups[4].Value),
+                    out dtmBirth);
                 if (!success)
                 {
                     errMsg = "输入的身份证号里出生日期不对！";
@@ -1454,8 +1550,8 @@ namespace TmoCommon
                     errMsg = dtmBirth.ToString();
                     //将15位身份证转成18位
                     //校验位按照ISO 7064:1983.MOD 11-2的规定生成，X可以认为是数字10。
-                    int[] arrInt = { 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 };
-                    string[] arrCh = { "1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2" };
+                    int[] arrInt = {7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2};
+                    string[] arrCh = {"1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2"};
                     int nTemp = 0;
 
                     num = num.Substring(0, 6) + "19" + num.Substring(6, num.Length - 6);
@@ -1463,16 +1559,19 @@ namespace TmoCommon
                     {
                         nTemp += int.Parse(num.Substring(i, 1)) * arrInt[i];
                     }
+
                     num += arrCh[nTemp % 11];
                 }
             }
+
             if (num.Length == 18)
             {
                 re = @"^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$";
                 Match arrSplit = Regex.Match(num, re);
                 //检查生日日期是否正确
                 DateTime dtmBirth = DateTime.MinValue;
-                bool success = DateTime.TryParse(string.Format("{0}/{1}/{2}", arrSplit.Groups[2].Value, arrSplit.Groups[3].Value, arrSplit.Groups[4].Value), out dtmBirth);
+                bool success = DateTime.TryParse(string.Format("{0}/{1}/{2}", arrSplit.Groups[2].Value, arrSplit.Groups[3].Value, arrSplit.Groups[4].Value),
+                    out dtmBirth);
                 if (!success)
                 {
                     errMsg = "输入的身份证号里出生日期不对！";
@@ -1485,8 +1584,8 @@ namespace TmoCommon
 
                     //校验位按照ISO 7064:1983.MOD 11-2的规定生成，X可以认为是数字10。
 
-                    int[] arrInt = { 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 };
-                    string[] arrCh = { "1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2" };
+                    int[] arrInt = {7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2};
+                    string[] arrCh = {"1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2"};
                     int nTemp = 0;
                     for (int i = 0; i < 17; i++)
                     {
@@ -1496,9 +1595,10 @@ namespace TmoCommon
                     string valnum = arrCh[nTemp % 11];
                     if (valnum != num.Substring(17, 1))
                     {
-                        errMsg = "18位身份证的校验码不正确！";//应该为：" + valnum;
+                        errMsg = "18位身份证的校验码不正确！"; //应该为：" + valnum;
                         return false;
                     }
+
                     return true;
                 }
             }
@@ -1506,13 +1606,16 @@ namespace TmoCommon
             {
                 errMsg = "输入的身份证号长度不正确！";
             }
+
             return false;
         }
+
         #endregion
 
         #region 加密 解密
 
         #region DES GB2312
+
         /// <summary>
         /// DES加密 GB2312
         /// </summary>
@@ -1537,12 +1640,16 @@ namespace TmoCommon
                 {
                     builder.AppendFormat("{0:X2}", num);
                 }
+
                 stream.Close();
             }
             catch
-            { }
+            {
+            }
+
             return builder.ToString();
         }
+
         /// <summary>
         ///  DES解密 GB2312
         /// </summary>
@@ -1562,22 +1669,27 @@ namespace TmoCommon
                 for (int i = 0; i < (str.Length / 2); i++)
                 {
                     int num2 = Convert.ToInt32(str.Substring(i * 2, 2), 0x10);
-                    buffer[i] = (byte)num2;
+                    buffer[i] = (byte) num2;
                 }
+
                 CryptoStream stream2 = new CryptoStream(stream, provider.CreateDecryptor(), CryptoStreamMode.Write);
                 stream2.Write(buffer, 0, buffer.Length);
                 stream2.FlushFinalBlock();
                 stream.Close();
             }
             catch
-            { }
+            {
+            }
+
             return Encoding.GetEncoding("GB2312").GetString(stream.ToArray());
         }
+
         #endregion
 
         #endregion
 
         #region 解压字符串
+
         /// <summary>
         /// 解压字符串
         /// </summary>
@@ -1599,13 +1711,15 @@ namespace TmoCommon
             byte[] decompressBuffer = new byte[nSize];
             int nSizeIncept = stream.Read(decompressBuffer, 0, nSize);
             stream.Close();
-            return System.Text.Encoding.Unicode.GetString(decompressBuffer, 0, nSizeIncept);//转换为普通的字符串
+            return System.Text.Encoding.Unicode.GetString(decompressBuffer, 0, nSizeIncept); //转换为普通的字符串
         }
+
         #endregion
 
         #endregion
 
         #region 操作系统相关
+
         /// <summary>
         /// 获得本机IPV4地址
         /// </summary>
@@ -1631,12 +1745,16 @@ namespace TmoCommon
                 return null;
             }
         }
+
         #endregion
 
         #region 单据相关
+
         #region 订单号生成
+
         private static long sn = 0;
         private static object locker = new object();
+
         public static string NextBillNumber()
         {
             lock (locker)
@@ -1647,10 +1765,13 @@ namespace TmoCommon
                 return DateTime.Now.ToString("yyyyMMddHHmmss") + sn.ToString().PadLeft(10, '0');
             }
         }
+
         #endregion
+
         #endregion
 
         #region Ds2Json
+
         public static string DataSet2Json(DataSet dataSet)
         {
             StringBuilder json = new StringBuilder();
@@ -1658,8 +1779,10 @@ namespace TmoCommon
             {
                 json.Append(DataTable2Json(dt));
             }
+
             return json.ToString();
         }
+
         //取出dataset的数据拼接json
         public static string DataTable2Json(DataTable dt)
         {
@@ -1675,20 +1798,25 @@ namespace TmoCommon
                     jsonBuilder.Append("\"");
                     jsonBuilder.Append(dt.Columns[j].ColumnName);
                     jsonBuilder.Append("\":\"");
-                    jsonBuilder.Append(dt.Rows[i][j].ToString().Replace("\\", "\\\\").Replace("\'", "\\\'").Replace("\t", " ").Replace("\r", " ").Replace("\n", "<br/>").Replace("\"", "'").Trim());
+                    jsonBuilder.Append(dt.Rows[i][j].ToString().Replace("\\", "\\\\").Replace("\'", "\\\'").Replace("\t", " ").Replace("\r", " ")
+                        .Replace("\n", "<br/>").Replace("\"", "'").Trim());
                     jsonBuilder.Append("\",");
                 }
+
                 jsonBuilder.Remove(jsonBuilder.Length - 1, 1);
                 jsonBuilder.Append("},");
             }
+
             jsonBuilder.Remove(jsonBuilder.Length - 1, 1);
             jsonBuilder.Append("]");
             //jsonBuilder.Append("}");
             return jsonBuilder.ToString();
         }
+
         #endregion
 
         #region JSON相关
+
         /// <summary>
         /// 获得值
         /// </summary>
@@ -1706,25 +1834,28 @@ namespace TmoCommon
             {
                 LogHelper.WriteError(ex, "Json字符串解析错误");
             }
+
             return value;
         }
+
         /// <summary>
         /// 将值转换成JSON串
         /// </summary>
         /// <returns></returns>
         public static string SetValueToJson(object value)
         {
-            var v = new { value = value };
+            var v = new {value = value};
             try
             {
                 return JsonConvert.SerializeObject(v);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LogHelper.WriteError(ex, "Json对象转换错误");
                 return null;
             }
         }
+
         #endregion
 
         /// <summary>
@@ -1736,6 +1867,7 @@ namespace TmoCommon
         {
             return "#" + color.ToArgb().ToString("X6").Substring(2);
         }
+
         /// <summary>
         /// 将系统RGB颜色转换成Web颜色（带透明色）
         /// </summary>
@@ -1763,14 +1895,52 @@ namespace TmoCommon
                 retval = ser.Deserialize(ms);
                 ms.Close();
             }
-            return (T)retval;
+
+            return (T) retval;
+        }
+        
+        /// <summary>
+        /// 获取客户端IP地址（无视代理）
+        /// </summary>
+        /// <returns>若失败则返回回送地址</returns>
+        public static string GetHostAddress()
+        {
+            string userHostAddress = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+            if (string.IsNullOrEmpty(userHostAddress))
+            {
+                if (System.Web.HttpContext.Current.Request.ServerVariables["HTTP_VIA"] != null)
+                    userHostAddress = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"].ToString().Split(',')[0].Trim();
+            }
+            if (string.IsNullOrEmpty(userHostAddress))
+            {
+                userHostAddress = HttpContext.Current.Request.UserHostAddress;
+            }
+
+            //最后判断获取是否成功，并检查IP地址的格式（检查其格式非常重要）
+            if (!string.IsNullOrEmpty(userHostAddress) && IsIP(userHostAddress))
+            {
+                return userHostAddress;
+            }
+            return "127.0.0.1";
+        }
+
+        /// <summary>
+        /// 检查IP地址格式
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        public static bool IsIP(string ip)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(ip, @"^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$");
         }
     }
 
     #region JSON相关
+
     public class Jsonvalue<T>
     {
         public T value { get; set; }
     }
+
     #endregion
 }

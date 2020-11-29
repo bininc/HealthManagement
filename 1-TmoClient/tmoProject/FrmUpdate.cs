@@ -25,7 +25,7 @@ namespace tmoProject
         }
         public void SetControl(DataRowView drView)
         {
-            string nurXml = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetnurtypeItem, new object[] { "" }).ToString();
+            string nurXml = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetnurtypeItem, new object[] { "" }).ToString();
             DataSet nurDs = TmoShare.getDataSetFromXML(nurXml);
             if (TmoShare.DataSetIsNotEmpty(nurDs))
             {
@@ -45,7 +45,7 @@ namespace tmoProject
                 else
                     nurtype.SelectedIndex = 0;
             }
-            string hotXml = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetHotDic, new object[] { "" }).ToString();
+            string hotXml = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetHotDic, new object[] { "" }).ToString();
             DataSet hotDs = TmoShare.getDataSetFromXML(hotXml);
             if (TmoShare.DataSetIsNotEmpty(hotDs))
             {
@@ -73,7 +73,7 @@ namespace tmoProject
             if (nurtype.EditValue != null && hottype.EditValue != null && !string.IsNullOrWhiteSpace(nurcountent.Text))
             {
                 bool sabool;
-                sabool = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.UpdateNurData, new object[] {id, nurtype.EditValue.ToString(), hottype.EditValue.ToString(), nurcountent.Text });
+                sabool = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.UpdateNurData, new object[] {id, nurtype.EditValue.ToString(), hottype.EditValue.ToString(), nurcountent.Text });
                 if (sabool)
                 {
                     DXMessageBox.Show("修改成功！", true);

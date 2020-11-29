@@ -101,7 +101,7 @@ namespace TmoGeneral
             string submitStr = submitData as string;
             if (sDev.deviceType == SyncDeviceType.ALKBP || sDev.deviceType == SyncDeviceType.ALKBG || sDev.deviceType == SyncDeviceType.JBQ)
             {
-                return TmoReomotingClient.InvokeServerMethodT<bool>(funCode.AddMonitorData, submitStr);
+                return TmoServiceClient.InvokeServerMethodT<bool>(funCode.AddMonitorData, submitStr);
             }
             return false;
         }

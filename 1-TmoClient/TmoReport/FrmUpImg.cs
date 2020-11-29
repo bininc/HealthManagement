@@ -54,7 +54,7 @@ namespace TmoReport
                 userid = dr["user_id"].ToString();
                
                 userTime = dr["user_times"].ToString();
-                string xmlData = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetAttach, new object[] { userid, userTime, "old" }).ToString();
+                string xmlData = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetAttach, new object[] { userid, userTime, "old" }).ToString();
                 if (xmlData != "")
                 {
                     DataTable dt = TmoShare.getDataTableFromXML(xmlData);
@@ -83,7 +83,7 @@ namespace TmoReport
            string cont = htmlE1.HandlHtml();
            if (!isupdate)
            {
-               bool isscul = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.InsertAttach, new object[] { cont, userid, userTime });
+               bool isscul = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.InsertAttach, new object[] { cont, userid, userTime });
                if (isscul)
                {
                    DXMessageBox.Show("上传图片成功", true);
@@ -93,7 +93,7 @@ namespace TmoReport
            }
            else
            {
-               bool isscul = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.UpdateAttch, new object[] { atId,cont });
+               bool isscul = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.UpdateAttch, new object[] { atId,cont });
                if (isscul)
                {
                    DXMessageBox.Show("修改上传图片成功", true);

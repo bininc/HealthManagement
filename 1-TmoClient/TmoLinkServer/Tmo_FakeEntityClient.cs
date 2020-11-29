@@ -34,7 +34,7 @@ namespace TmoLinkServer
         public DataTable GetTableStruct(string tableName)
         {
             if (string.IsNullOrWhiteSpace(tableName)) return null;
-            DataTable dt = TmoReomotingClient.InvokeServerMethodT<DataTable>(funCode.FakeEntity_GetTableStruct, tableName);
+            DataTable dt = TmoServiceClient.InvokeServerMethodT<DataTable>(funCode.FakeEntity_GetTableStruct, tableName);
             return dt;
         }
         /// <summary>
@@ -66,7 +66,7 @@ namespace TmoLinkServer
         public bool SubmitData(FE_SubmitDataParam submitParams)
         {
             if (submitParams == null) return false;
-            bool suc = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.FakeEntity_SubmitDataNew, submitParams);
+            bool suc = TmoServiceClient.InvokeServerMethodT<bool>(funCode.FakeEntity_SubmitDataNew, submitParams);
             return suc;
         }
         public bool SubmitData(DBOperateType opType, string entityName, string pkName, string pkValue, Dictionary<string, object> dicParams)
@@ -107,7 +107,7 @@ namespace TmoLinkServer
         /// <returns></returns>
         public DataSet GetData(FE_GetDataParam getDataParam)
         {
-            return TmoReomotingClient.InvokeServerMethodT<DataSet>(funCode.FakeEntity_GetDataNew, getDataParam);
+            return TmoServiceClient.InvokeServerMethodT<DataSet>(funCode.FakeEntity_GetDataNew, getDataParam);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace TmoLinkServer
                 return true;
             }
 
-            return TmoReomotingClient.InvokeServerMethodT<bool>(funCode.FakeEntity_ExistSameValue, tableName, column, value, where, falseDel);
+            return TmoServiceClient.InvokeServerMethodT<bool>(funCode.FakeEntity_ExistSameValue, tableName, column, value, where, falseDel);
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace TmoLinkServer
             {
                 return "err_表名或者主键名为空";
             }
-            return TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetNextID, tableName, pkName, startId, receyle);
+            return TmoServiceClient.InvokeServerMethodT<string>(funCode.GetNextID, tableName, pkName, startId, receyle);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace TmoLinkServer
         public bool DeleteData(string tableName, string pkName, string pkValue)
         {
             if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(pkName) || string.IsNullOrWhiteSpace(pkValue)) return false;
-            return TmoReomotingClient.InvokeServerMethodT<bool>(funCode.FakeEntity_DeleteData, tableName, pkName, pkValue);
+            return TmoServiceClient.InvokeServerMethodT<bool>(funCode.FakeEntity_DeleteData, tableName, pkName, pkValue);
         }
 
         #endregion

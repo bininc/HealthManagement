@@ -64,7 +64,7 @@ namespace TmoPointsCenter
             }
             if (e.Column.Name == "del")
             {
-                object obj = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.DeleteProduct, dr["living_guid"].ToString());
+                object obj = TmoServiceClient.InvokeServerMethodT<bool>(funCode.DeleteProduct, dr["living_guid"].ToString());
                 if (Convert.ToBoolean(obj))
                 {
                     DXMessageBox.Show("删除成功！", true);
@@ -97,7 +97,7 @@ namespace TmoPointsCenter
                     }
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetNurDiaryList, new object[] { selexml }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetNurDiaryList, new object[] { selexml }).ToString();
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {

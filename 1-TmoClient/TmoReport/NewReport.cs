@@ -129,7 +129,7 @@ namespace TmoReport
             string user_idstr = drDel["user_id"].ToString();
             string user_timesstr = drDel["user_times"].ToString();
             bool isdel = false;
-            string reDel = TmoReomotingClient.InvokeServerMethodT<string>(funCode.ReportDelNew, new object[] { user_idstr, user_timesstr }).ToString();
+            string reDel = TmoServiceClient.InvokeServerMethodT<string>(funCode.ReportDelNew, new object[] { user_idstr, user_timesstr }).ToString();
             if (reDel == "3")
             {
                 DXMessageBox.ShowWarning2("已购买服务不能删除！");
@@ -157,7 +157,7 @@ namespace TmoReport
             string user_idstr = dr["user_id"].ToString();
             string user_timesstr = dr["user_times"].ToString();
             bool isdel = false;
-            string reDel = TmoReomotingClient.InvokeServerMethodT<string>(funCode.ReportDel, new object[] { user_idstr, user_timesstr }).ToString();
+            string reDel = TmoServiceClient.InvokeServerMethodT<string>(funCode.ReportDel, new object[] { user_idstr, user_timesstr }).ToString();
             if (reDel=="3")
             {
                   DXMessageBox.ShowWarning2("已购买服务不能删除！");
@@ -264,7 +264,7 @@ namespace TmoReport
                     }
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetNewReportData, new object[] { selexml }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetNewReportData, new object[] { selexml }).ToString();
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {
@@ -354,7 +354,7 @@ namespace TmoReport
             }
             Dictionary<string, string> dics = new Dictionary<string, string>();
             string userId = dr["user_id"].ToString();
-            string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetIds, new object[] { userId, "" }).ToString();
+            string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetIds, new object[] { userId, "" }).ToString();
             DataTable dtTable = TmoShare.getDataTableFromXML(strmlx);
             if (TmoShare.DataTableIsNotEmpty(dtTable))
             {
@@ -476,7 +476,7 @@ namespace TmoReport
                 string userId = row["user_id"].ToString();
                 string userTmes = row["user_times"].ToString();
 
-                string xmlData = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetAttach, new object[] { userId, userTmes }).ToString();
+                string xmlData = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetAttach, new object[] { userId, userTmes }).ToString();
                 if (xmlData != "")
                 {
                     DataTable dt = TmoShare.getDataTableFromXML(xmlData);
@@ -530,7 +530,7 @@ namespace TmoReport
                 {
                     try
                     {
-                        bool isscul = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.DelAttach, new object[] { userId, userTmes });
+                        bool isscul = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.DelAttach, new object[] { userId, userTmes });
                         if (isscul)
                         {
                             DXMessageBox.Show("删除成功", true);

@@ -60,7 +60,7 @@ namespace tmoProject
                 string id = Delrow["id"].ToString();
 
 
-                bool isdel = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.delVideoid, new object[] { id });
+                bool isdel = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.delVideoid, new object[] { id });
                 if (isdel)
                 {
                     DXMessageBox.Show("删除成功", true);
@@ -87,7 +87,7 @@ namespace tmoProject
                 {
                     string name = txtName.Text;
                   
-                    string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GeVideoList, new object[] {name, "" }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GeVideoList, new object[] {name, "" }).ToString();
                     DataSet ds = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(ds))
                     {

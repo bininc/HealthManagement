@@ -269,7 +269,7 @@ namespace TmoControl
         public List<tmo_questionnaire_category> SubmitResult()
         {
             List<tmo_questionnaire_result> data = GetResult();
-            var res = TmoReomotingClient.InvokeServerMethodT<List<tmo_questionnaire_category>>(funCode.SubmitQuestionnaires, data);
+            var res = TmoServiceClient.InvokeServerMethodT<List<tmo_questionnaire_category>>(funCode.SubmitQuestionnaires, data);
             return res;
         }
         /// <summary>
@@ -279,7 +279,7 @@ namespace TmoControl
         public bool SaveResult()
         {
             List<tmo_questionnaire_result> data = GetResult();
-            return TmoReomotingClient.InvokeServerMethodT<bool>(funCode.SaveQuestionnaires, data);
+            return TmoServiceClient.InvokeServerMethodT<bool>(funCode.SaveQuestionnaires, data);
         }
 
         /// <summary>

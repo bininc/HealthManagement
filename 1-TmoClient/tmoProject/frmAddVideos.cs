@@ -36,7 +36,7 @@ namespace tmoProject
                 this.Text = "视频修改";
                 btnAdd.Text = "确定修改";
                 isadd = videoId;
-                string strmlx = TmoReomotingClient.InvokeServerMethodT<string>(funCode.GetVideoId, new object[] { videoId }).ToString();
+                string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetVideoId, new object[] { videoId }).ToString();
                 DataSet ds = TmoShare.getDataSetFromXML(strmlx);
                 if (TmoShare.DataSetIsNotEmpty(ds))
                 {
@@ -83,7 +83,7 @@ namespace tmoProject
                 dr["video_url"] = videoUrl;
                   ds.Tables[0].Rows.InsertAt(dr, 0);
 
-              bool blt = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.AddVideo, new object[] { TmoShare.getXMLFromDataSet(ds) });
+              bool blt = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.AddVideo, new object[] { TmoShare.getXMLFromDataSet(ds) });
                 if (blt)
                 {
                     DXMessageBox.ShowWarning2("添加项目成功");
@@ -115,7 +115,7 @@ namespace tmoProject
                 dr["id"] = isadd;
                 ds.Tables[0].Rows.InsertAt(dr, 0);
 
-                bool blt = (bool)TmoReomotingClient.InvokeServerMethodT<bool>(funCode.UpdateVideo, new object[] { TmoShare.getXMLFromDataSet(ds) });
+                bool blt = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.UpdateVideo, new object[] { TmoShare.getXMLFromDataSet(ds) });
                 if (blt)
                 {
                     DXMessageBox.ShowWarning2("修改项目成功！");

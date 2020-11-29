@@ -14,12 +14,12 @@ using TmoSkin;
 namespace TmoWeb
 {
     /// <summary>
-    /// Html±à¼­Æ÷
-    /// Ô´´úÂëÀ´×Ô»¥ÁªÍø£¬ÓÉÈı½ÇÃ¨(DeltaCat)×öÁË½øÒ»²½À©Õ¹ºÍ²¿·ÖĞŞÕı
+    /// Htmlç¼–è¾‘å™¨
+    /// æºä»£ç æ¥è‡ªäº’è”ç½‘ï¼Œç”±ä¸‰è§’çŒ«(DeltaCat)åšäº†è¿›ä¸€æ­¥æ‰©å±•å’Œéƒ¨åˆ†ä¿®æ­£
     /// http://www.zu14.cn/
-    /// ¹Ø×¢¼¼Êõ£¬Ö§³Ö¿ªÔ´
+    /// å…³æ³¨æŠ€æœ¯ï¼Œæ”¯æŒå¼€æº
     /// </summary>
-    [Description("Html±à¼­Æ÷"), ClassInterface(ClassInterfaceType.AutoDispatch)]
+    [Description("Htmlç¼–è¾‘å™¨"), ClassInterface(ClassInterfaceType.AutoDispatch)]
     public partial class HtmlEditorEx : UCBase
     {
         public HtmlEditorEx()
@@ -29,9 +29,9 @@ namespace TmoWeb
             InitializeControls();
         }
 
-        #region À©Õ¹ÊôĞÔ
+        #region æ‰©å±•å±æ€§
         /// <summary>
-        /// ½Ó¿Ú×Ö·û´®
+        /// æ¥å£å­—ç¬¦ä¸²
         /// </summary>
         string attachmentXml = TmoCommon.TmoShare.XML_TITLE +
 @"<well_web_attachment>
@@ -45,7 +45,7 @@ namespace TmoWeb
 <input_time></input_time>
 </well_web_attachment>";
         /// <summary>
-        /// »ñÈ¡ºÍÉèÖÃµ±Ç°µÄHtmlÎÄ±¾
+        /// è·å–å’Œè®¾ç½®å½“å‰çš„Htmlæ–‡æœ¬
         /// </summary>
         public string Html
         {
@@ -64,11 +64,11 @@ namespace TmoWeb
                 //JAFly 2014-11-09
                 //var s = webBrowserBody.Document.Images[0];
                 //<IMG border=0 hspace=0 alt="" src="~\Read\newFileName.jpg" align=baseline>
-                //2 ±¾µØbin\Read ²éÕÒÍ¼Æ¬ÊÇ·ñ´æÔÚ
-                //3 Èç¹û±¾µØ²»´æÔÚ£¬µ÷ÓÃ·şÎñ¶Ë£¬ÔÚÏµÍ³¸½¼ş±íÖĞ»ñÈ¡Í¼Æ¬Á÷£¬Éú³ÉÍ¼Æ¬µ½±¾µØbin\Read¡£
-                //4 Ë¢ĞÂÒ³Ãæ
+                //2 æœ¬åœ°bin\Read æŸ¥æ‰¾å›¾ç‰‡æ˜¯å¦å­˜åœ¨
+                //3 å¦‚æœæœ¬åœ°ä¸å­˜åœ¨ï¼Œè°ƒç”¨æœåŠ¡ç«¯ï¼Œåœ¨ç³»ç»Ÿé™„ä»¶è¡¨ä¸­è·å–å›¾ç‰‡æµï¼Œç”Ÿæˆå›¾ç‰‡åˆ°æœ¬åœ°bin\Readã€‚
+                //4 åˆ·æ–°é¡µé¢
 
-                //×¢£ºÍøÕ¾Í¬Ñù
+                //æ³¨ï¼šç½‘ç«™åŒæ ·
             }
         }
 
@@ -78,7 +78,7 @@ namespace TmoWeb
         }
 
         /// <summary>
-        /// »ñÈ¡¼¯³ÉÁËÍ¼Æ¬×ÊÔ´µÄHTML BODY µÄ MailMessage
+        /// è·å–é›†æˆäº†å›¾ç‰‡èµ„æºçš„HTML BODY çš„ MailMessage
         /// </summary>
         public MailMessage XMailMessage
         {
@@ -123,7 +123,7 @@ namespace TmoWeb
         }
 
         /// <summary>
-        /// »ñÈ¡²åÈëµÄÍ¼Æ¬Ãû³Æ¼¯ºÏ
+        /// è·å–æ’å…¥çš„å›¾ç‰‡åç§°é›†åˆ
         /// </summary>
         public string[] Images
         {
@@ -146,16 +146,16 @@ namespace TmoWeb
 
         #endregion
 
-        #region ·½·¨
+        #region æ–¹æ³•
 
         /// <summary>
-        /// ¿Ø¼ş³õÊ¼»¯
+        /// æ§ä»¶åˆå§‹åŒ–
         /// </summary>
         private void InitializeControls()
         {
             BeginUpdate();
 
-            //¹¤¾ßÀ¸
+            //å·¥å…·æ 
             foreach (FontFamily family in FontFamily.Families)
             {
                 toolStripComboBoxName.Items.Add(family.Name);
@@ -163,7 +163,7 @@ namespace TmoWeb
 
             toolStripComboBoxSize.Items.AddRange(FontSize.All.ToArray());
 
-            //ä¯ÀÀÆ÷
+            //æµè§ˆå™¨
             webBrowserBody.DocumentText = string.Empty;
 
             webBrowserBody.Document.Click += new HtmlElementEventHandler(webBrowserBody_DocumentClick);
@@ -176,7 +176,7 @@ namespace TmoWeb
 
 
         /// <summary>
-        /// Ë¢ĞÂ°´Å¥×´Ì¬
+        /// åˆ·æ–°æŒ‰é’®çŠ¶æ€
         /// </summary>
         private void RefreshToolBar()
         {
@@ -212,7 +212,7 @@ namespace TmoWeb
 
         #endregion
 
-        #region ¸üĞÂÏà¹Ø
+        #region æ›´æ–°ç›¸å…³
 
         private int dataUpdate;
         private bool Updating
@@ -234,7 +234,7 @@ namespace TmoWeb
 
         #endregion
 
-        #region ¹¤¾ßÀ¸
+        #region å·¥å…·æ 
 
         private void toolStripComboBoxName_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -423,35 +423,35 @@ namespace TmoWeb
 
    //var s = webBrowserBody.Document.Images[0];
             webBrowserBody.Document.ExecCommand("InsertImage", true, null);
-            #region ÔİÊ±²»ÓÃ
-            //            if (Directory.Exists(Server.MapPath(~/upimg/hufu)) == false)//Èç¹û²»´æÔÚ¾Í´´½¨fileÎÄ¼ş¼Ğ{
+            #region æš‚æ—¶ä¸ç”¨
+            //            if (Directory.Exists(Server.MapPath(~/upimg/hufu)) == false)//å¦‚æœä¸å­˜åœ¨å°±åˆ›å»ºfileæ–‡ä»¶å¤¹{
             //Directory.CreateDirectory(Server.MapPath(~/upimg/hufu));}
-            ////Directory.Delete(Server.MapPath(~/upimg/hufu), true);//É¾³ıÎÄ¼ş¼ĞÒÔ¼°ÎÄ¼ş¼ĞÖĞµÄ×ÓÄ¿Â¼£¬ÎÄ¼ş
-            ////ÅĞ¶ÏÎÄ¼şµÄ´æÔÚ
+            ////Directory.Delete(Server.MapPath(~/upimg/hufu), true);//åˆ é™¤æ–‡ä»¶å¤¹ä»¥åŠæ–‡ä»¶å¤¹ä¸­çš„å­ç›®å½•ï¼Œæ–‡ä»¶
+            ////åˆ¤æ–­æ–‡ä»¶çš„å­˜åœ¨
             //if (File.Exists(Server.MapPath(~/upimg/Data.html))){
-            //Response.Write(Yes);//´æÔÚÎÄ¼ş}else{
+            //Response.Write(Yes);//å­˜åœ¨æ–‡ä»¶}else{
             //Response.Write(No);
-            ////²»´æÔÚÎÄ¼ş
-            //File.Create(MapPath(~/upimg/Data.html));//´´½¨¸ÃÎÄ¼ş}
-            //string name = GetFiles.FileName;//»ñÈ¡ÒÑÉÏ´«ÎÄ¼şµÄÃû×Ö
-            //string size = GetFiles.PostedFile.ContentLength.ToString();//»ñÈ¡ÒÑÉÏ´«ÎÄ¼şµÄ´óĞ¡
-            //string type = GetFiles.PostedFile.ContentType;//»ñÈ¡ÒÑÉÏ´«ÎÄ¼şµÄMIME
-            //string postfix = name.Substring(name.LastIndexOf(.) + 1);//»ñÈ¡ÒÑÉÏ´«ÎÄ¼şµÄºó×º
-            //string ipath = Server.MapPath(upimg) +\\+ name;//»ñÈ¡ÎÄ¼şµÄÊµ¼ÊÂ·¾¶
+            ////ä¸å­˜åœ¨æ–‡ä»¶
+            //File.Create(MapPath(~/upimg/Data.html));//åˆ›å»ºè¯¥æ–‡ä»¶}
+            //string name = GetFiles.FileName;//è·å–å·²ä¸Šä¼ æ–‡ä»¶çš„åå­—
+            //string size = GetFiles.PostedFile.ContentLength.ToString();//è·å–å·²ä¸Šä¼ æ–‡ä»¶çš„å¤§å°
+            //string type = GetFiles.PostedFile.ContentType;//è·å–å·²ä¸Šä¼ æ–‡ä»¶çš„MIME
+            //string postfix = name.Substring(name.LastIndexOf(.) + 1);//è·å–å·²ä¸Šä¼ æ–‡ä»¶çš„åç¼€
+            //string ipath = Server.MapPath(upimg) +\\+ name;//è·å–æ–‡ä»¶çš„å®é™…è·¯å¾„
             //string fpath = Server.MapPath(upfile) + \\ + name;
-            //string dpath = upimg\\ + name;//ÅĞ¶ÏĞ´ÈëÊı¾İ¿âµÄĞéÄâÂ·¾¶
-            //ShowPic.Visible = true;//¼¤»î
-            //ShowText.Visible = true;//¼¤»î
-            ////ÅĞ¶ÏÎÄ¼ş¸ñÊ½
+            //string dpath = upimg\\ + name;//åˆ¤æ–­å†™å…¥æ•°æ®åº“çš„è™šæ‹Ÿè·¯å¾„
+            //ShowPic.Visible = true;//æ¿€æ´»
+            //ShowText.Visible = true;//æ¿€æ´»
+            ////åˆ¤æ–­æ–‡ä»¶æ ¼å¼
             //if (name == ) {
-            //Response.Write(<scriptalert('ÉÏ´«ÎÄ¼ş²»ÄÜÎª¿Õ')</script);}else{
+            //Response.Write(<scriptalert('ä¸Šä¼ æ–‡ä»¶ä¸èƒ½ä¸ºç©º')</script);}else{
             //if (postfix == jpg || postfix == gif || postfix == bmp || postfix == png){
             //GetFiles.SaveAs(ipath);
             //ShowPic.ImageUrl = dpath;
-            //ShowText.Text = ÄãÉÏ´«µÄÍ¼Æ¬Ãû³ÆÊÇ: + name +  + ÎÄ¼ş´óĞ¡: + size + KB +  + ÎÄ¼şÀàĞÍ: + type +  + ´æ·ÅµÄÊµ¼ÊÂ·¾¶Îª: + ipath;}else{
-            //ShowPic.Visible = false;//Òş²ØÍ¼Æ¬
-            //GetFiles.SaveAs(fpath);//ÓÉÓÚ²»ÊÇÍ¼Æ¬ÎÄ¼ş,Òò´Ë×ª´æÔÚupfileÕâ¸öÎÄ¼ş¼Ğ
-            //ShowText.Text = ÄãÉÏ´«µÄÎÄ¼şÃû³ÆÊÇ: + name +  + ÎÄ¼ş´óĞ¡: + size + KB +  + ÎÄ¼şÀàĞÍ: + type +  + ´æ·ÅµÄÊµ¼ÊÂ·¾¶Îª: + fpath;} 
+            //ShowText.Text = ä½ ä¸Šä¼ çš„å›¾ç‰‡åç§°æ˜¯: + name +  + æ–‡ä»¶å¤§å°: + size + KB +  + æ–‡ä»¶ç±»å‹: + type +  + å­˜æ”¾çš„å®é™…è·¯å¾„ä¸º: + ipath;}else{
+            //ShowPic.Visible = false;//éšè—å›¾ç‰‡
+            //GetFiles.SaveAs(fpath);//ç”±äºä¸æ˜¯å›¾ç‰‡æ–‡ä»¶,å› æ­¤è½¬å­˜åœ¨upfileè¿™ä¸ªæ–‡ä»¶å¤¹
+            //ShowText.Text = ä½ ä¸Šä¼ çš„æ–‡ä»¶åç§°æ˜¯: + name +  + æ–‡ä»¶å¤§å°: + size + KB +  + æ–‡ä»¶ç±»å‹: + type +  + å­˜æ”¾çš„å®é™…è·¯å¾„ä¸º: + fpath;} 
             #endregion
          
             RefreshToolBar();
@@ -492,7 +492,7 @@ namespace TmoWeb
                     string str = imgSrcs[i];
                     byte[] ImageDatas = ImageDatabytes(str);
                     string DataBytes = ToBase64Str(ImageDatas);
-                    if (ImageDatas.Length > (1048576 * 5))//Í¼Æ¬²»ÄÜ´óÓÚ2Õ×
+                    if (ImageDatas.Length > (1048576 * 5))//å›¾ç‰‡ä¸èƒ½å¤§äº2å…†
                     {
 
                         content = content.Replace(Img[i], "");
@@ -532,7 +532,7 @@ namespace TmoWeb
                     string str = imgSrcs[i];
                     byte[] ImageDatas = ImageDatabytes(str);
                     string DataBytes = ToBase64Str(ImageDatas);
-                    if (ImageDatas.Length > (1048576 * 5))//Í¼Æ¬²»ÄÜ´óÓÚ2Õ×
+                    if (ImageDatas.Length > (1048576 * 5))//å›¾ç‰‡ä¸èƒ½å¤§äº2å…†
                     {
 
                         content = content.Replace(Img[i], "");
@@ -552,7 +552,7 @@ namespace TmoWeb
                         string OldfullPath = Path.GetFullPath(str);
                         string strpath = TmoCommon.TmoShare.GetRootPath();
                         Bitmap Newimg = GetImage(ImageDatas);
-                        //ÎÄ¼ş¼ĞÂ·¾¶
+                        //æ–‡ä»¶å¤¹è·¯å¾„
                         string direPath = strpath + "\\" + "Read";
                         if (OldDirePath == direPath)
                         {
@@ -579,7 +579,7 @@ namespace TmoWeb
                         else
                         {
 
-                            //ÎÄ¼şÂ·¾¶
+                            //æ–‡ä»¶è·¯å¾„
                             string fileNameNoEx = FileNameWithoutExtension + "_" + DateTime.Now.ToString("yyyyMMddHHmmss");
                             FileName = fileNameNoEx + ".png";
                             string filePath = direPath + "\\" + FileName;
@@ -595,7 +595,7 @@ namespace TmoWeb
                             else
                             {
                                 content = content.Replace(str, filePath);
-                                TmoCommon.UserMessageBox.MessageQuestion("ÒÑ´æÔÚ¸ÃÍ¼Æ¬");
+                                TmoCommon.UserMessageBox.MessageQuestion("å·²å­˜åœ¨è¯¥å›¾ç‰‡");
                                 return "";
                             }
 
@@ -616,14 +616,14 @@ namespace TmoWeb
                 objAllAttInfo = TmoCommon.TmoShare.getXMLFromDataSet(dsXml).ToString();
                 //if (!well_web_attachmentManager.Instance.AddAttachment(WellCommon.WellCareShare.LoginCode, WellCommon.WellCareShare._GetXml(dsXml).ToString()))
                 //{
-                //    UserMessageBox.MessageQuestion("±£´æÍ¼Æ¬Ê§°Ü");
+                //    UserMessageBox.MessageQuestion("ä¿å­˜å›¾ç‰‡å¤±è´¥");
                 //}
             }
             return content;
         }
         #endregion
 
-        #region ä¯ÀÀÆ÷
+        #region æµè§ˆå™¨
 
         private void webBrowserBody_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
@@ -651,7 +651,7 @@ namespace TmoWeb
 
         #endregion
 
-        #region ×ÖÌå´óĞ¡×ª»»
+        #region å­—ä½“å¤§å°è½¬æ¢
 
         private class FontSize
         {
@@ -723,7 +723,7 @@ namespace TmoWeb
 
         #endregion
 
-        #region ÏÂÀ­¿ò
+        #region ä¸‹æ‹‰æ¡†
 
         private class ToolStripComboBoxEx : ToolStripComboBox
         {
@@ -736,47 +736,47 @@ namespace TmoWeb
         }
 
         #endregion
-        #region ·µ»Ø×Ö·û´®ÖĞËùÓĞimg±êÇ©µÄsrcÖµ
+        #region è¿”å›å­—ç¬¦ä¸²ä¸­æ‰€æœ‰imgæ ‡ç­¾çš„srcå€¼
         /// <summary>
-        /// ¹¦ÄÜ·µ»Ø×Ö·û´®ÖĞËùÓĞimg±êÇ©µÄsrcÖµ
-        /// ¿ª·¢ÈËÔ±£ºÀî¶¬¶¬
-        /// Ê±¼ä£º2014-11-10
+        /// åŠŸèƒ½è¿”å›å­—ç¬¦ä¸²ä¸­æ‰€æœ‰imgæ ‡ç­¾çš„srcå€¼
+        /// å¼€å‘äººå‘˜ï¼šæå†¬å†¬
+        /// æ—¶é—´ï¼š2014-11-10
         /// </summary>
         /// <param name="sHtmlText"></param>
         /// <returns></returns>
         public string[] GetImageUrlList(string ImgStr)
         {
-            // ¶¨ÒåÕıÔò±í´ïÊ½ÓÃÀ´Æ¥Åä img ±êÇ©   
+            // å®šä¹‰æ­£åˆ™è¡¨è¾¾å¼ç”¨æ¥åŒ¹é… img æ ‡ç­¾   
             Regex regImg = new Regex(@"<img\b[^<>]*?\bsrc[\s\t\r\n]*=[\s\t\r\n]*[""']?[\s\t\r\n]*(?<imgUrl>[^\s\t\r\n""'<>]*)[^<>]*?/?[\s\t\r\n]*>", RegexOptions.IgnoreCase);
 
-            // ËÑË÷Æ¥ÅäµÄ×Ö·û´®   
+            // æœç´¢åŒ¹é…çš„å­—ç¬¦ä¸²   
             MatchCollection matches = regImg.Matches(ImgStr);
             int i = 0;
             string[] sUrlList = new string[matches.Count];
 
-            // È¡µÃÆ¥ÅäÏîÁĞ±í   
+            // å–å¾—åŒ¹é…é¡¹åˆ—è¡¨   
             foreach (Match match in matches)
                 sUrlList[i++] = match.Groups["imgUrl"].Value;
             return sUrlList;
         }
         /// <summary>
-        /// ¹¦ÄÜ·µ»ØÕû¸öIMG±êÇ©
-        /// ¿ª·¢ÈËÔ±£ºÀî¶¬¶¬
-        /// Ê±¼ä£º2014-11-10
+        /// åŠŸèƒ½è¿”å›æ•´ä¸ªIMGæ ‡ç­¾
+        /// å¼€å‘äººå‘˜ï¼šæå†¬å†¬
+        /// æ—¶é—´ï¼š2014-11-10
         /// </summary>
         /// <param name="sHtmlText"></param>
         /// <returns></returns>
         public string[] GetImageList(string ImgStr)
         {
-            // ¶¨ÒåÕıÔò±í´ïÊ½ÓÃÀ´Æ¥Åä img ±êÇ©   
+            // å®šä¹‰æ­£åˆ™è¡¨è¾¾å¼ç”¨æ¥åŒ¹é… img æ ‡ç­¾   
             Regex regImg = new Regex(@"<img\b[^<>]*?\bsrc[\s\t\r\n]*=[\s\t\r\n]*[""']?[\s\t\r\n]*(?<imgUrl>[^\s\t\r\n""'<>]*)[^<>]*?/?[\s\t\r\n]*>", RegexOptions.IgnoreCase);
 
-            // ËÑË÷Æ¥ÅäµÄ×Ö·û´®   
+            // æœç´¢åŒ¹é…çš„å­—ç¬¦ä¸²   
             MatchCollection matches = regImg.Matches(ImgStr);
             int i = 0;
             string[] sUrlList = new string[matches.Count];
 
-            // È¡µÃÆ¥ÅäÏîÁĞ±í   
+            // å–å¾—åŒ¹é…é¡¹åˆ—è¡¨   
             foreach (Match match in matches)
                 sUrlList[i++] = match.Value;
             // match.Groups["imgUrl"].Value;
@@ -784,10 +784,10 @@ namespace TmoWeb
         }
         #endregion
 
-        #region Í¼Æ¬ºÍ¶ş½øÖÆµÄ×ª»»¹¤¾ß
+        #region å›¾ç‰‡å’ŒäºŒè¿›åˆ¶çš„è½¬æ¢å·¥å…·
         /// <summary>
-        /// ¹¦ÄÜ£º¸ù¾İÂ·¾¶½«Í¼Æ¬×ª»»³É¶ş½øÖÆÁ÷
-        /// ¿ª·¢ÈËÔ±£ºÀî¶¬¶¬
+        /// åŠŸèƒ½ï¼šæ ¹æ®è·¯å¾„å°†å›¾ç‰‡è½¬æ¢æˆäºŒè¿›åˆ¶æµ
+        /// å¼€å‘äººå‘˜ï¼šæå†¬å†¬
         /// </summary>
         /// <param name="FilePath"></param>
         /// <returns></returns>
@@ -803,13 +803,13 @@ namespace TmoWeb
                 curImageStream.Flush();
 
                 byte[] bmpBytes = curImageStream.ToArray();
-                //Èç¹û×ª×Ö·û´®µÄ»°
+                //å¦‚æœè½¬å­—ç¬¦ä¸²çš„è¯
                 //string BmpStr = Convert.ToBase64String(bmpBytes);
                 return bmpBytes;
             }
         }
         /// <summary>
-        /// ¸ù¾İ¶ş½øÖÆÁ÷´«»½Îªbase64×Ö·û´®
+        /// æ ¹æ®äºŒè¿›åˆ¶æµä¼ å”¤ä¸ºbase64å­—ç¬¦ä¸²
         /// </summary>
         /// <param name="bmpBytes"></param>
         /// <returns></returns>
@@ -817,25 +817,25 @@ namespace TmoWeb
         {
             if (bmpBytes == null)
                 return null;
-            //Èç¹û×ª×Ö·û´®µÄ»°
+            //å¦‚æœè½¬å­—ç¬¦ä¸²çš„è¯
             string BmpStr = Convert.ToBase64String(bmpBytes);
             return BmpStr;
         }
         /// <summary>
-        /// ¸ù¾İbase64×Ö·û´®,×ª»»Îª¶ş½øÖÆÁ÷
+        /// æ ¹æ®base64å­—ç¬¦ä¸²,è½¬æ¢ä¸ºäºŒè¿›åˆ¶æµ
         /// </summary>
         /// <param name="bmpBytes"></param>
         /// <returns></returns>
         private byte[] ToBytes(string base64Str)
         {
-            //Èç¹ûÊÇ×Ö·û´®µÄ»°
+            //å¦‚æœæ˜¯å­—ç¬¦ä¸²çš„è¯
             byte[] resultBytes = Convert.FromBase64String(base64Str);
             return resultBytes;
         }
         /// <summary>
-        /// ¹¦ÄÜ£º¸ù¾İ¶ş½øÖÆ×ª»»³ÉÍ¼Æ·
-        /// ¿ª·¢ÈËÔ±:Àî¶¬¶¬
-        /// Ê±¼ä£º
+        /// åŠŸèƒ½ï¼šæ ¹æ®äºŒè¿›åˆ¶è½¬æ¢æˆå›¾å“
+        /// å¼€å‘äººå‘˜:æå†¬å†¬
+        /// æ—¶é—´ï¼š
         /// </summary>
         /// <param name="ImageDatas"></param>
         /// <returns></returns>
@@ -843,7 +843,7 @@ namespace TmoWeb
         {
             try
             {
-                //Èç¹ûÊÇ×Ö·û´®µÄ»°
+                //å¦‚æœæ˜¯å­—ç¬¦ä¸²çš„è¯
                 //byte[] resultBytes = Convert.FromBase64String(ImageDatas);
 
                 using (MemoryStream ImageMS = new MemoryStream())

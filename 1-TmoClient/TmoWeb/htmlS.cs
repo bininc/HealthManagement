@@ -14,12 +14,12 @@ using TmoSkin;
 namespace TmoWeb
 {
     /// <summary>
-    /// Html±à¼­Æ÷
-    /// Ô´´úÂëÀ´×Ô»¥ÁªÍø£¬ÓÉÈı½ÇÃ¨(DeltaCat)×öÁË½øÒ»²½À©Õ¹ºÍ²¿·ÖĞŞÕı
+    /// Htmlç¼–è¾‘å™¨
+    /// æºä»£ç æ¥è‡ªäº’è”ç½‘ï¼Œç”±ä¸‰è§’çŒ«(DeltaCat)åšäº†è¿›ä¸€æ­¥æ‰©å±•å’Œéƒ¨åˆ†ä¿®æ­£
     /// http://www.zu14.cn/
-    /// ¹Ø×¢¼¼Êõ£¬Ö§³Ö¿ªÔ´
+    /// å…³æ³¨æŠ€æœ¯ï¼Œæ”¯æŒå¼€æº
     /// </summary>
-    [Description("Html±à¼­Æ÷"), ClassInterface(ClassInterfaceType.AutoDispatch)]
+    [Description("Htmlç¼–è¾‘å™¨"), ClassInterface(ClassInterfaceType.AutoDispatch)]
     public partial class htmlS : UCBase
     {
         public htmlS()
@@ -29,7 +29,7 @@ namespace TmoWeb
             InitializeControls();
         }
         /// <summary>
-        /// »ñÈ¡ºÍÉèÖÃµ±Ç°µÄHtmlÎÄ±¾
+        /// è·å–å’Œè®¾ç½®å½“å‰çš„Htmlæ–‡æœ¬
         /// </summary>
         public string Html
         {
@@ -46,10 +46,10 @@ namespace TmoWeb
         }
        
 
-        #region ·½·¨
+        #region æ–¹æ³•
 
         /// <summary>
-        /// ¿Ø¼ş³õÊ¼»¯
+        /// æ§ä»¶åˆå§‹åŒ–
         /// </summary>
         private void InitializeControls()
         {
@@ -57,7 +57,7 @@ namespace TmoWeb
 
           
 
-            //ä¯ÀÀÆ÷
+            //æµè§ˆå™¨
             webBrowserBody.DocumentText = string.Empty;
 
             webBrowserBody.Document.Click += new HtmlElementEventHandler(webBrowserBody_DocumentClick);
@@ -70,7 +70,7 @@ namespace TmoWeb
 
 
         /// <summary>
-        /// Ë¢ĞÂ°´Å¥×´Ì¬
+        /// åˆ·æ–°æŒ‰é’®çŠ¶æ€
         /// </summary>
         private void RefreshToolBar()
         {
@@ -86,7 +86,7 @@ namespace TmoWeb
         }
         #endregion
 
-        #region ¸üĞÂÏà¹Ø
+        #region æ›´æ–°ç›¸å…³
 
         private int dataUpdate;
         private bool Updating
@@ -108,7 +108,7 @@ namespace TmoWeb
 
         #endregion
 
-        #region ¹¤¾ßÀ¸
+        #region å·¥å…·æ 
 
        
 
@@ -156,7 +156,7 @@ namespace TmoWeb
                     string str = imgSrcs[i];
                     byte[] ImageDatas = ImageDatabytes(str);
                     string DataBytes = ToBase64Str(ImageDatas);
-                    if (ImageDatas.Length > (1048576 * 5))//Í¼Æ¬²»ÄÜ´óÓÚ2Õ×
+                    if (ImageDatas.Length > (1048576 * 5))//å›¾ç‰‡ä¸èƒ½å¤§äº2å…†
                     {
 
                         strData = "";
@@ -194,7 +194,7 @@ namespace TmoWeb
                     }
                     byte[] ImageDatas = ImageDatabytes(str);
                     string DataBytes = ToBase64Str(ImageDatas);
-                    if (ImageDatas.Length > (1048576 * 5))//Í¼Æ¬²»ÄÜ´óÓÚ2Õ×
+                    if (ImageDatas.Length > (1048576 * 5))//å›¾ç‰‡ä¸èƒ½å¤§äº2å…†
                     {
 
                         content = content.Replace(Img[i], "");
@@ -216,7 +216,7 @@ namespace TmoWeb
         }
         #endregion
 
-        #region ä¯ÀÀÆ÷
+        #region æµè§ˆå™¨
 
         private void webBrowserBody_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
@@ -244,7 +244,7 @@ namespace TmoWeb
 
         #endregion
 
-        #region ×ÖÌå´óĞ¡×ª»»
+        #region å­—ä½“å¤§å°è½¬æ¢
 
         private class FontSize
         {
@@ -316,7 +316,7 @@ namespace TmoWeb
 
         #endregion
 
-        #region ÏÂÀ­¿ò
+        #region ä¸‹æ‹‰æ¡†
 
         private class ToolStripComboBoxEx : ToolStripComboBox
         {
@@ -329,47 +329,47 @@ namespace TmoWeb
         }
 
         #endregion
-        #region ·µ»Ø×Ö·û´®ÖĞËùÓĞimg±êÇ©µÄsrcÖµ
+        #region è¿”å›å­—ç¬¦ä¸²ä¸­æ‰€æœ‰imgæ ‡ç­¾çš„srcå€¼
         /// <summary>
-        /// ¹¦ÄÜ·µ»Ø×Ö·û´®ÖĞËùÓĞimg±êÇ©µÄsrcÖµ
-        /// ¿ª·¢ÈËÔ±£ºÀî¶¬¶¬
-        /// Ê±¼ä£º2014-11-10
+        /// åŠŸèƒ½è¿”å›å­—ç¬¦ä¸²ä¸­æ‰€æœ‰imgæ ‡ç­¾çš„srcå€¼
+        /// å¼€å‘äººå‘˜ï¼šæå†¬å†¬
+        /// æ—¶é—´ï¼š2014-11-10
         /// </summary>
         /// <param name="sHtmlText"></param>
         /// <returns></returns>
         public string[] GetImageUrlList(string ImgStr)
         {
-            // ¶¨ÒåÕıÔò±í´ïÊ½ÓÃÀ´Æ¥Åä img ±êÇ©   
+            // å®šä¹‰æ­£åˆ™è¡¨è¾¾å¼ç”¨æ¥åŒ¹é… img æ ‡ç­¾   
             Regex regImg = new Regex(@"<img\b[^<>]*?\bsrc[\s\t\r\n]*=[\s\t\r\n]*[""']?[\s\t\r\n]*(?<imgUrl>[^\s\t\r\n""'<>]*)[^<>]*?/?[\s\t\r\n]*>", RegexOptions.IgnoreCase);
 
-            // ËÑË÷Æ¥ÅäµÄ×Ö·û´®   
+            // æœç´¢åŒ¹é…çš„å­—ç¬¦ä¸²   
             MatchCollection matches = regImg.Matches(ImgStr);
             int i = 0;
             string[] sUrlList = new string[matches.Count];
 
-            // È¡µÃÆ¥ÅäÏîÁĞ±í   
+            // å–å¾—åŒ¹é…é¡¹åˆ—è¡¨   
             foreach (Match match in matches)
                 sUrlList[i++] = match.Groups["imgUrl"].Value;
             return sUrlList;
         }
         /// <summary>
-        /// ¹¦ÄÜ·µ»ØÕû¸öIMG±êÇ©
-        /// ¿ª·¢ÈËÔ±£ºÀî¶¬¶¬
-        /// Ê±¼ä£º2014-11-10
+        /// åŠŸèƒ½è¿”å›æ•´ä¸ªIMGæ ‡ç­¾
+        /// å¼€å‘äººå‘˜ï¼šæå†¬å†¬
+        /// æ—¶é—´ï¼š2014-11-10
         /// </summary>
         /// <param name="sHtmlText"></param>
         /// <returns></returns>
         public string[] GetImageList(string ImgStr)
         {
-            // ¶¨ÒåÕıÔò±í´ïÊ½ÓÃÀ´Æ¥Åä img ±êÇ©   
+            // å®šä¹‰æ­£åˆ™è¡¨è¾¾å¼ç”¨æ¥åŒ¹é… img æ ‡ç­¾   
             Regex regImg = new Regex(@"<img\b[^<>]*?\bsrc[\s\t\r\n]*=[\s\t\r\n]*[""']?[\s\t\r\n]*(?<imgUrl>[^\s\t\r\n""'<>]*)[^<>]*?/?[\s\t\r\n]*>", RegexOptions.IgnoreCase);
 
-            // ËÑË÷Æ¥ÅäµÄ×Ö·û´®   
+            // æœç´¢åŒ¹é…çš„å­—ç¬¦ä¸²   
             MatchCollection matches = regImg.Matches(ImgStr);
             int i = 0;
             string[] sUrlList = new string[matches.Count];
 
-            // È¡µÃÆ¥ÅäÏîÁĞ±í   
+            // å–å¾—åŒ¹é…é¡¹åˆ—è¡¨   
             foreach (Match match in matches)
                 sUrlList[i++] = match.Value;
             // match.Groups["imgUrl"].Value;
@@ -377,10 +377,10 @@ namespace TmoWeb
         }
         #endregion
 
-        #region Í¼Æ¬ºÍ¶ş½øÖÆµÄ×ª»»¹¤¾ß
+        #region å›¾ç‰‡å’ŒäºŒè¿›åˆ¶çš„è½¬æ¢å·¥å…·
         /// <summary>
-        /// ¹¦ÄÜ£º¸ù¾İÂ·¾¶½«Í¼Æ¬×ª»»³É¶ş½øÖÆÁ÷
-        /// ¿ª·¢ÈËÔ±£ºÀî¶¬¶¬
+        /// åŠŸèƒ½ï¼šæ ¹æ®è·¯å¾„å°†å›¾ç‰‡è½¬æ¢æˆäºŒè¿›åˆ¶æµ
+        /// å¼€å‘äººå‘˜ï¼šæå†¬å†¬
         /// </summary>
         /// <param name="FilePath"></param>
         /// <returns></returns>
@@ -396,13 +396,13 @@ namespace TmoWeb
                 curImageStream.Flush();
 
                 byte[] bmpBytes = curImageStream.ToArray();
-                //Èç¹û×ª×Ö·û´®µÄ»°
+                //å¦‚æœè½¬å­—ç¬¦ä¸²çš„è¯
                 //string BmpStr = Convert.ToBase64String(bmpBytes);
                 return bmpBytes;
             }
         }
         /// <summary>
-        /// ¸ù¾İ¶ş½øÖÆÁ÷´«»½Îªbase64×Ö·û´®
+        /// æ ¹æ®äºŒè¿›åˆ¶æµä¼ å”¤ä¸ºbase64å­—ç¬¦ä¸²
         /// </summary>
         /// <param name="bmpBytes"></param>
         /// <returns></returns>
@@ -410,25 +410,25 @@ namespace TmoWeb
         {
             if (bmpBytes == null)
                 return null;
-            //Èç¹û×ª×Ö·û´®µÄ»°
+            //å¦‚æœè½¬å­—ç¬¦ä¸²çš„è¯
             string BmpStr = Convert.ToBase64String(bmpBytes);
             return BmpStr;
         }
         /// <summary>
-        /// ¸ù¾İbase64×Ö·û´®,×ª»»Îª¶ş½øÖÆÁ÷
+        /// æ ¹æ®base64å­—ç¬¦ä¸²,è½¬æ¢ä¸ºäºŒè¿›åˆ¶æµ
         /// </summary>
         /// <param name="bmpBytes"></param>
         /// <returns></returns>
         private byte[] ToBytes(string base64Str)
         {
-            //Èç¹ûÊÇ×Ö·û´®µÄ»°
+            //å¦‚æœæ˜¯å­—ç¬¦ä¸²çš„è¯
             byte[] resultBytes = Convert.FromBase64String(base64Str);
             return resultBytes;
         }
         /// <summary>
-        /// ¹¦ÄÜ£º¸ù¾İ¶ş½øÖÆ×ª»»³ÉÍ¼Æ·
-        /// ¿ª·¢ÈËÔ±:Àî¶¬¶¬
-        /// Ê±¼ä£º
+        /// åŠŸèƒ½ï¼šæ ¹æ®äºŒè¿›åˆ¶è½¬æ¢æˆå›¾å“
+        /// å¼€å‘äººå‘˜:æå†¬å†¬
+        /// æ—¶é—´ï¼š
         /// </summary>
         /// <param name="ImageDatas"></param>
         /// <returns></returns>
@@ -436,7 +436,7 @@ namespace TmoWeb
         {
             try
             {
-                //Èç¹ûÊÇ×Ö·û´®µÄ»°
+                //å¦‚æœæ˜¯å­—ç¬¦ä¸²çš„è¯
                 //byte[] resultBytes = Convert.FromBase64String(ImageDatas);
 
                 using (MemoryStream ImageMS = new MemoryStream())

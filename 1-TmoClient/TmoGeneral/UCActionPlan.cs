@@ -69,7 +69,7 @@ namespace TmoGeneral
                 {
                     MemoryStream ms = new MemoryStream();
                     _xReport.PrintingSystem.ExportToPdf(ms);
-                    SaveSucess = TmoReomotingClient.InvokeServerMethodT<bool>(funCode.SaveActionPlan, _user.user_id, _user.user_times, _content, ms.ToArray());
+                    SaveSucess = TmoServiceClient.InvokeServerMethodT<bool>(funCode.SaveActionPlan, _user.user_id, _user.user_times, _content, ms.ToArray());
                     _isfirst = false;
                     if (SaveSucess)
                     {

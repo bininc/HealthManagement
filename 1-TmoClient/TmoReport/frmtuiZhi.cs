@@ -27,12 +27,12 @@ namespace TmoReport
         public void GetData() {
 
 
-            DataSet ds = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(TmoCommon.funCode.GettuiDataUser, new object[] { userIDDD,userTimesss }).ToString());
+            DataSet ds = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(TmoCommon.funCode.GettuiDataUser, new object[] { userIDDD,userTimesss }).ToString());
             btnsave.Text = "修改";
             if (!TmoShare.DataSetIsNotEmpty(ds))
             {
                 btnsave.Text = "添加";
-                ds = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<string>(TmoCommon.funCode.getTuiData, new object[] { "" }).ToString());
+                ds = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(TmoCommon.funCode.getTuiData, new object[] { "" }).ToString());
             }
             if (TmoShare.DataSetIsNotEmpty(ds))
             {
@@ -63,14 +63,14 @@ namespace TmoReport
             if (btnsave.Text == "修改")
             {
 
-                bool isT = (bool)TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<bool>(TmoCommon.funCode.TuijianUpdate, new object[] { xmldata });
+                bool isT = (bool)TmoLinkServer.TmoServiceClient.InvokeServerMethodT<bool>(TmoCommon.funCode.TuijianUpdate, new object[] { xmldata });
                 if (isT)
                     DXMessageBox.Show("修改成功！",true);
                 else
                     DXMessageBox.Show("修改失败！", true);
             }
             else {
-                bool isT = (bool)TmoLinkServer.TmoReomotingClient.InvokeServerMethodT<bool>(TmoCommon.funCode.TuijianZhi, new object[] { xmldata });
+                bool isT = (bool)TmoLinkServer.TmoServiceClient.InvokeServerMethodT<bool>(TmoCommon.funCode.TuijianZhi, new object[] { xmldata });
                 if (isT)
                     DXMessageBox.Show("添加成功！", true);
                 else
