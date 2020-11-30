@@ -26,7 +26,7 @@ namespace DBModel
         /// </summary>		
         public float qr_score { get; set; }
         /// <summary>
-        /// ÊÇ·ñ´¥·¢Î£ÏÕÒòËØ
+        /// æ˜¯å¦è§¦å‘å±é™©å› ç´ 
         /// </summary>
         public byte qr_is_risk { get; set; }
         /// <summary>
@@ -42,7 +42,7 @@ namespace DBModel
         /// </summary>		
         public DateTime input_time { get; set; }
         /// <summary>
-        /// µ±Ç°ÓÃ»§×´Ì¬
+        /// å½“å‰ç”¨æˆ·çŠ¶æ€
         /// </summary>
         public tmo_userstatus Userstatus { get; set; }
     }

@@ -223,6 +223,8 @@ namespace TmoServiceServer
         }
         #endregion
 
+        #region 获得第一次启动的问卷题目
+
         public static object GetFistQuestionnaires(object[] funParams)
         {
             if (funParams == null || funParams.Length < 2 || funParams[0] == null || funParams[1] == null ||
@@ -230,6 +232,7 @@ namespace TmoServiceServer
             int usertimes = Convert.ToInt32(funParams[1]);
             return tmo_questionnaireManager.Instance.GetFistQuestionnaires(funParams[0].ToString(), usertimes);
         }
+        #endregion
 
         public static object SaveQuestionnaires(object[] funParams)
         {

@@ -8,27 +8,27 @@ namespace DBModel
     {
         public string id { get; set; }
         /// <summary>
-        /// ÓÃ»§±àºÅ
+        /// ç”¨æˆ·ç¼–å·
         /// </summary>		
         public string user_id { get; set; }
         /// <summary>
-        /// ÎÊ¾í´ÎÊı
+        /// é—®å·æ¬¡æ•°
         /// </summary>		
         public int usertimes { get; set; }
         /// <summary>
-        /// ÎÊ¾íÌîĞ´Ê±¼ä
+        /// é—®å·å¡«å†™æ—¶é—´
         /// </summary>		
         public DateTime questionnaire_time { get; set; }
         /// <summary>
-        /// ÎÊ¾í×´Ì¬ 0-Ôİ´æ 1-ÒÑÌá½»(µÈ´ıÆÀ¹À) 2-ÒÑÆÀ¹À
+        /// é—®å·çŠ¶æ€ 0-æš‚å­˜ 1-å·²æäº¤(ç­‰å¾…è¯„ä¼°) 2-å·²è¯„ä¼°
         /// </summary>		
         public short questionnare_status { get; set; }
         /// <summary>
-        /// ÓÃ»§Ñ¡ÔñµÄÎÊ¾íÀà±ğ
+        /// ç”¨æˆ·é€‰æ‹©çš„é—®å·ç±»åˆ«
         /// </summary>
         public string qc_ids { get; set; }
         /// <summary>
-        /// ÎÊ¾íÆÀ¹ÀÊ±¼ä
+        /// é—®å·è¯„ä¼°æ—¶é—´
         /// </summary>		
         public DateTime assessment_time { get; set; }
 

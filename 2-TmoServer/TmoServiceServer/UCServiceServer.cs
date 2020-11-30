@@ -6,6 +6,7 @@ using System.Net.Http.Formatting;
 using System.Web.Http;
 using System.Web.Http.SelfHost;
 using System.Windows.Forms;
+using Newtonsoft.Json.Serialization;
 using TmoCommon;
 
 namespace TmoServiceServer
@@ -118,7 +119,8 @@ namespace TmoServiceServer
                 config.Routes.MapHttpRoute("API Default", ServicePath + "/{controller}/{action}/{id}", new {id = RouteParameter.Optional});
                 config.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
                 config.Formatters.JsonFormatter.MediaTypeMappings.Add(new QueryStringMapping("datatype", "json", "application/json"));
-                
+                config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new DefaultContractResolver() {IgnoreSerializableAttribute = true};
+
                 _serviceHost = new HttpSelfHostServer(config);
                 _serviceHost.OpenAsync().Wait();
 
