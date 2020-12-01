@@ -24,26 +24,12 @@ namespace TmoGeneral
 
         #region 组件设计器生成的代码
 
-        /// <summary> 
-        /// 设计器支持所需的方法 - 不要
-        /// 使用代码编辑器修改此方法的内容。
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem1 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem2 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem3 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem4 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem5 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem6 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem7 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem8 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem9 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem10 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.RadioGroupItem radioGroupItem1 = new DevExpress.XtraEditors.Controls.RadioGroupItem();
-            DevExpress.XtraEditors.Controls.RadioGroupItem radioGroupItem2 = new DevExpress.XtraEditors.Controls.RadioGroupItem();
-            DevExpress.XtraEditors.Controls.RadioGroupItem radioGroupItem3 = new DevExpress.XtraEditors.Controls.RadioGroupItem();
-            DevExpress.XtraEditors.Controls.RadioGroupItem radioGroupItem4 = new DevExpress.XtraEditors.Controls.RadioGroupItem();
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.labelEmRelation = new DevExpress.XtraEditors.LabelControl();
             this.emergency_relation = new DevExpress.XtraEditors.TextEdit();
@@ -111,47 +97,61 @@ namespace TmoGeneral
             this.is_stopvip = new DevExpress.XtraEditors.RadioGroup();
             this.lblIstnb = new DevExpress.XtraEditors.LabelControl();
             this.is_tnb = new DevExpress.XtraEditors.RadioGroup();
+            this.lblIsGxy = new DevExpress.XtraEditors.LabelControl();
+            this.is_gxy = new DevExpress.XtraEditors.RadioGroup();
+            ((System.ComponentModel.ISupportInitialize) (this.panelControlMain)).BeginInit();
+            this.panelControlMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize) (this.panelControlBotton)).BeginInit();
             this.tableLayoutPanelMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.emergency_relation.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.name.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.identity.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gender.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nation.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.address.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phone.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.birthday.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.birthday.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.city_id.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eare_id.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.occupation.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.marital.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tel.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qq.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.live_type.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.work_place.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.education.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.email.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emergency.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emergency_phone.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.province_id.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.user_pwd.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.account.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dpt_id.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.plan_birthday.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.plan_birthday.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.familymem1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.familymem2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.familymem3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.familymem4.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.familymem5.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vip_type.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.is_stopvip.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.is_tnb.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.emergency_relation.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.name.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.identity.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.gender.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.nation.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.address.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.phone.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.birthday.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.birthday.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.city_id.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.eare_id.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.occupation.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.marital.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.tel.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.qq.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.live_type.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.work_place.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.education.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.email.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.emergency.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.emergency_phone.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.province_id.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.user_pwd.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.account.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dpt_id.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.plan_birthday.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.plan_birthday.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.familymem1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.familymem2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.familymem3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.familymem4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.familymem5.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.vip_type.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.is_stopvip.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.is_tnb.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.is_gxy.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControlMain
             // 
             this.panelControlMain.Controls.Add(this.tableLayoutPanelMain);
+            this.panelControlMain.Size = new System.Drawing.Size(628, 526);
+            // 
+            // panelControlBotton
+            // 
+            this.panelControlBotton.Appearance.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (247)))), ((int) (((byte) (245)))), ((int) (((byte) (241)))));
+            this.panelControlBotton.Appearance.Options.UseBackColor = true;
+            this.panelControlBotton.Location = new System.Drawing.Point(0, 526);
+            this.panelControlBotton.Size = new System.Drawing.Size(628, 42);
             // 
             // tableLayoutPanelMain
             // 
@@ -227,8 +227,10 @@ namespace TmoGeneral
             this.tableLayoutPanelMain.Controls.Add(this.is_stopvip, 3, 15);
             this.tableLayoutPanelMain.Controls.Add(this.lblIstnb, 0, 16);
             this.tableLayoutPanelMain.Controls.Add(this.is_tnb, 1, 16);
+            this.tableLayoutPanelMain.Controls.Add(this.lblIsGxy, 2, 16);
+            this.tableLayoutPanelMain.Controls.Add(this.is_gxy, 3, 16);
             this.tableLayoutPanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelMain.Location = new System.Drawing.Point(7, 2);
+            this.tableLayoutPanelMain.Location = new System.Drawing.Point(2, 2);
             this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
             this.tableLayoutPanelMain.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.tableLayoutPanelMain.RowCount = 17;
@@ -249,7 +251,7 @@ namespace TmoGeneral
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelMain.Size = new System.Drawing.Size(619, 522);
+            this.tableLayoutPanelMain.Size = new System.Drawing.Size(624, 522);
             this.tableLayoutPanelMain.TabIndex = 39;
             this.tableLayoutPanelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanelMain_Paint);
             // 
@@ -307,9 +309,6 @@ namespace TmoGeneral
             // 
             this.identity.Location = new System.Drawing.Point(109, 38);
             this.identity.Name = "identity";
-            // 
-            // 
-            // 
             this.identity.Properties.MaxLength = 18;
             this.identity.Size = new System.Drawing.Size(137, 20);
             this.identity.TabIndex = 3;
@@ -318,21 +317,9 @@ namespace TmoGeneral
             // 
             this.gender.Location = new System.Drawing.Point(415, 8);
             this.gender.Name = "gender";
-            // 
-            // 
-            // 
-            this.gender.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.gender.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.gender.Properties.DropDownRows = 3;
-            imageComboBoxItem1.Description = "请选择...";
-            imageComboBoxItem2.Description = "男";
-            imageComboBoxItem2.Value = 1;
-            imageComboBoxItem3.Description = "女";
-            imageComboBoxItem3.Value = 2;
-            this.gender.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            imageComboBoxItem1,
-            imageComboBoxItem2,
-            imageComboBoxItem3});
+            this.gender.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {new DevExpress.XtraEditors.Controls.ImageComboBoxItem("请选择...", null, -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("男", 1, -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("女", 2, -1)});
             this.gender.Size = new System.Drawing.Size(137, 20);
             this.gender.TabIndex = 2;
             // 
@@ -349,11 +336,7 @@ namespace TmoGeneral
             // 
             this.nation.Location = new System.Drawing.Point(415, 38);
             this.nation.Name = "nation";
-            // 
-            // 
-            // 
-            this.nation.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.nation.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.nation.Size = new System.Drawing.Size(137, 20);
             this.nation.TabIndex = 4;
             // 
@@ -395,9 +378,6 @@ namespace TmoGeneral
             // 
             this.phone.Location = new System.Drawing.Point(415, 68);
             this.phone.Name = "phone";
-            // 
-            // 
-            // 
             this.phone.Properties.Mask.EditMask = "[1-9]{2}[0-9]{9}";
             this.phone.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.phone.Size = new System.Drawing.Size(137, 20);
@@ -408,16 +388,8 @@ namespace TmoGeneral
             this.birthday.EditValue = new System.DateTime(2017, 11, 20, 0, 0, 0, 0);
             this.birthday.Location = new System.Drawing.Point(109, 68);
             this.birthday.Name = "birthday";
-            // 
-            // 
-            // 
-            this.birthday.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            // 
-            // 
-            // 
-            this.birthday.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.birthday.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.birthday.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.birthday.Properties.Mask.EditMask = "D";
             this.birthday.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.birthday.Size = new System.Drawing.Size(137, 20);
@@ -446,11 +418,7 @@ namespace TmoGeneral
             this.city_id.Enabled = false;
             this.city_id.Location = new System.Drawing.Point(415, 158);
             this.city_id.Name = "city_id";
-            // 
-            // 
-            // 
-            this.city_id.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.city_id.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.city_id.Size = new System.Drawing.Size(137, 20);
             this.city_id.TabIndex = 12;
             // 
@@ -468,11 +436,7 @@ namespace TmoGeneral
             this.eare_id.Enabled = false;
             this.eare_id.Location = new System.Drawing.Point(109, 188);
             this.eare_id.Name = "eare_id";
-            // 
-            // 
-            // 
-            this.eare_id.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.eare_id.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.eare_id.Size = new System.Drawing.Size(137, 20);
             this.eare_id.TabIndex = 13;
             // 
@@ -498,11 +462,7 @@ namespace TmoGeneral
             // 
             this.occupation.Location = new System.Drawing.Point(109, 218);
             this.occupation.Name = "occupation";
-            // 
-            // 
-            // 
-            this.occupation.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.occupation.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.occupation.Size = new System.Drawing.Size(137, 20);
             this.occupation.TabIndex = 15;
             // 
@@ -510,11 +470,7 @@ namespace TmoGeneral
             // 
             this.marital.Location = new System.Drawing.Point(415, 98);
             this.marital.Name = "marital";
-            // 
-            // 
-            // 
-            this.marital.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.marital.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.marital.Size = new System.Drawing.Size(137, 20);
             this.marital.TabIndex = 8;
             // 
@@ -531,9 +487,6 @@ namespace TmoGeneral
             // 
             this.tel.Location = new System.Drawing.Point(109, 128);
             this.tel.Name = "tel";
-            // 
-            // 
-            // 
             this.tel.Properties.Mask.EditMask = "\\d{3,4}-\\d{8}";
             this.tel.Properties.Mask.IgnoreMaskBlank = false;
             this.tel.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
@@ -554,9 +507,6 @@ namespace TmoGeneral
             // 
             this.qq.Location = new System.Drawing.Point(415, 128);
             this.qq.Name = "qq";
-            // 
-            // 
-            // 
             this.qq.Properties.Mask.EditMask = "\\d{6,}";
             this.qq.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.qq.Size = new System.Drawing.Size(137, 20);
@@ -575,20 +525,8 @@ namespace TmoGeneral
             // 
             this.live_type.Location = new System.Drawing.Point(415, 188);
             this.live_type.Name = "live_type";
-            // 
-            // 
-            // 
-            this.live_type.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            imageComboBoxItem4.Description = "请选择...";
-            imageComboBoxItem5.Description = "户籍";
-            imageComboBoxItem5.Value = 1;
-            imageComboBoxItem6.Description = "非户籍";
-            imageComboBoxItem6.Value = 2;
-            this.live_type.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            imageComboBoxItem4,
-            imageComboBoxItem5,
-            imageComboBoxItem6});
+            this.live_type.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.live_type.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {new DevExpress.XtraEditors.Controls.ImageComboBoxItem("请选择...", null, -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("户籍", 1, -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("非户籍", 2, -1)});
             this.live_type.Size = new System.Drawing.Size(137, 20);
             this.live_type.TabIndex = 14;
             // 
@@ -621,11 +559,7 @@ namespace TmoGeneral
             // 
             this.education.Location = new System.Drawing.Point(109, 248);
             this.education.Name = "education";
-            // 
-            // 
-            // 
-            this.education.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.education.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.education.Size = new System.Drawing.Size(137, 20);
             this.education.TabIndex = 17;
             // 
@@ -642,9 +576,6 @@ namespace TmoGeneral
             // 
             this.email.Location = new System.Drawing.Point(415, 248);
             this.email.Name = "email";
-            // 
-            // 
-            // 
             this.email.Properties.Mask.EditMask = "\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
             this.email.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.email.Size = new System.Drawing.Size(137, 20);
@@ -695,11 +626,7 @@ namespace TmoGeneral
             // 
             this.province_id.Location = new System.Drawing.Point(109, 158);
             this.province_id.Name = "province_id";
-            // 
-            // 
-            // 
-            this.province_id.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.province_id.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.province_id.Size = new System.Drawing.Size(137, 20);
             this.province_id.TabIndex = 11;
             // 
@@ -707,9 +634,6 @@ namespace TmoGeneral
             // 
             this.user_pwd.Location = new System.Drawing.Point(415, 338);
             this.user_pwd.Name = "user_pwd";
-            // 
-            // 
-            // 
             this.user_pwd.Properties.Mask.EditMask = "([\\u0000-\\u4e00]|[\\u9fa5-\\uffff])+";
             this.user_pwd.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.user_pwd.Size = new System.Drawing.Size(137, 20);
@@ -719,9 +643,6 @@ namespace TmoGeneral
             // 
             this.account.Location = new System.Drawing.Point(109, 338);
             this.account.Name = "account";
-            // 
-            // 
-            // 
             this.account.Properties.Mask.EditMask = "([A-Z]|[a-z]|[0-9])+";
             this.account.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.account.Size = new System.Drawing.Size(137, 20);
@@ -749,11 +670,7 @@ namespace TmoGeneral
             // 
             this.dpt_id.Location = new System.Drawing.Point(415, 308);
             this.dpt_id.Name = "dpt_id";
-            // 
-            // 
-            // 
-            this.dpt_id.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dpt_id.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dpt_id.Size = new System.Drawing.Size(137, 20);
             this.dpt_id.TabIndex = 22;
             // 
@@ -771,16 +688,8 @@ namespace TmoGeneral
             this.plan_birthday.EditValue = new System.DateTime(2017, 11, 20, 0, 0, 0, 0);
             this.plan_birthday.Location = new System.Drawing.Point(109, 368);
             this.plan_birthday.Name = "plan_birthday";
-            // 
-            // 
-            // 
-            this.plan_birthday.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            // 
-            // 
-            // 
-            this.plan_birthday.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.plan_birthday.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.plan_birthday.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.plan_birthday.Properties.Mask.EditMask = "D";
             this.plan_birthday.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.plan_birthday.Size = new System.Drawing.Size(137, 20);
@@ -799,9 +708,6 @@ namespace TmoGeneral
             // 
             this.familymem1.Location = new System.Drawing.Point(415, 368);
             this.familymem1.Name = "familymem1";
-            // 
-            // 
-            // 
             this.familymem1.Properties.MaxLength = 18;
             this.familymem1.Size = new System.Drawing.Size(137, 20);
             this.familymem1.TabIndex = 3;
@@ -846,9 +752,6 @@ namespace TmoGeneral
             // 
             this.familymem2.Location = new System.Drawing.Point(109, 398);
             this.familymem2.Name = "familymem2";
-            // 
-            // 
-            // 
             this.familymem2.Properties.MaxLength = 18;
             this.familymem2.Size = new System.Drawing.Size(137, 20);
             this.familymem2.TabIndex = 3;
@@ -857,9 +760,6 @@ namespace TmoGeneral
             // 
             this.familymem3.Location = new System.Drawing.Point(415, 398);
             this.familymem3.Name = "familymem3";
-            // 
-            // 
-            // 
             this.familymem3.Properties.MaxLength = 18;
             this.familymem3.Size = new System.Drawing.Size(137, 20);
             this.familymem3.TabIndex = 3;
@@ -868,9 +768,6 @@ namespace TmoGeneral
             // 
             this.familymem4.Location = new System.Drawing.Point(109, 428);
             this.familymem4.Name = "familymem4";
-            // 
-            // 
-            // 
             this.familymem4.Properties.MaxLength = 18;
             this.familymem4.Size = new System.Drawing.Size(137, 20);
             this.familymem4.TabIndex = 3;
@@ -879,9 +776,6 @@ namespace TmoGeneral
             // 
             this.familymem5.Location = new System.Drawing.Point(415, 428);
             this.familymem5.Name = "familymem5";
-            // 
-            // 
-            // 
             this.familymem5.Properties.MaxLength = 18;
             this.familymem5.Size = new System.Drawing.Size(137, 20);
             this.familymem5.TabIndex = 3;
@@ -897,28 +791,11 @@ namespace TmoGeneral
             // 
             // vip_type
             // 
-            this.vip_type.EditValue = ((byte)(0));
+            this.vip_type.EditValue = ((byte) (0));
             this.vip_type.Location = new System.Drawing.Point(109, 458);
             this.vip_type.Name = "vip_type";
-            this.vip_type.EditValueChanged += Vip_type_EditValueChanged;
-            // 
-            // 
-            // 
-            this.vip_type.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            imageComboBoxItem7.Description = "非会员";
-            imageComboBoxItem7.Value = ((byte)(0));
-            imageComboBoxItem8.Description = "铜卡会员";
-            imageComboBoxItem8.Value = ((byte)(1));
-            imageComboBoxItem9.Description = "银卡会员";
-            imageComboBoxItem9.Value = ((byte)(2));
-            imageComboBoxItem10.Description = "金卡会员";
-            imageComboBoxItem10.Value = ((byte)(3));
-            this.vip_type.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            imageComboBoxItem7,
-            imageComboBoxItem8,
-            imageComboBoxItem9,
-            imageComboBoxItem10});
+            this.vip_type.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.vip_type.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {new DevExpress.XtraEditors.Controls.ImageComboBoxItem("非会员", ((byte) (0)), -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("铜卡会员", ((byte) (1)), -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("银卡会员", ((byte) (2)), -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("金卡会员", ((byte) (3)), -1)});
             this.vip_type.Size = new System.Drawing.Size(137, 20);
             this.vip_type.TabIndex = 17;
             // 
@@ -933,19 +810,10 @@ namespace TmoGeneral
             // 
             // is_stopvip
             // 
-            this.is_stopvip.EditValue = ((sbyte)(0));
+            this.is_stopvip.EditValue = ((sbyte) (0));
             this.is_stopvip.Location = new System.Drawing.Point(415, 458);
             this.is_stopvip.Name = "is_stopvip";
-            // 
-            // 
-            // 
-            radioGroupItem1.Description = "停服";
-            radioGroupItem1.Value = ((sbyte)(1));
-            radioGroupItem2.Description = "未停服";
-            radioGroupItem2.Value = ((sbyte)(0));
-            this.is_stopvip.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            radioGroupItem1,
-            radioGroupItem2});
+            this.is_stopvip.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {new DevExpress.XtraEditors.Controls.RadioGroupItem(((sbyte) (1)), "停服"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((sbyte) (0)), "未停服")});
             this.is_stopvip.Size = new System.Drawing.Size(137, 23);
             this.is_stopvip.TabIndex = 63;
             // 
@@ -960,21 +828,30 @@ namespace TmoGeneral
             // 
             // is_tnb
             // 
-            this.is_tnb.EditValue = ((sbyte)(0));
+            this.is_tnb.EditValue = ((sbyte) (0));
             this.is_tnb.Location = new System.Drawing.Point(109, 488);
             this.is_tnb.Name = "is_tnb";
-            // 
-            // 
-            // 
-            radioGroupItem3.Description = "有";
-            radioGroupItem3.Value = ((sbyte)(1));
-            radioGroupItem4.Description = "没有";
-            radioGroupItem4.Value = ((sbyte)(0));
-            this.is_tnb.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            radioGroupItem3,
-            radioGroupItem4});
+            this.is_tnb.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {new DevExpress.XtraEditors.Controls.RadioGroupItem(((sbyte) (1)), "有"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((sbyte) (0)), "没有")});
             this.is_tnb.Size = new System.Drawing.Size(137, 23);
             this.is_tnb.TabIndex = 64;
+            // 
+            // lblIsGxy
+            // 
+            this.lblIsGxy.Appearance.Font = new System.Drawing.Font("微软雅黑", 10F);
+            this.lblIsGxy.Location = new System.Drawing.Point(309, 488);
+            this.lblIsGxy.Name = "lblIsGxy";
+            this.lblIsGxy.Size = new System.Drawing.Size(98, 20);
+            this.lblIsGxy.TabIndex = 62;
+            this.lblIsGxy.Text = "是否有高血压：";
+            // 
+            // is_gxy
+            // 
+            this.is_gxy.EditValue = ((sbyte) (0));
+            this.is_gxy.Location = new System.Drawing.Point(415, 488);
+            this.is_gxy.Name = "is_gxy";
+            this.is_gxy.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {new DevExpress.XtraEditors.Controls.RadioGroupItem(((sbyte) (1)), "有"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((sbyte) (0)), "没有")});
+            this.is_gxy.Size = new System.Drawing.Size(137, 23);
+            this.is_gxy.TabIndex = 64;
             // 
             // UCUserEditor
             // 
@@ -982,46 +859,53 @@ namespace TmoGeneral
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "UCUserEditor";
             this.Size = new System.Drawing.Size(628, 568);
+            ((System.ComponentModel.ISupportInitialize) (this.panelControlMain)).EndInit();
+            this.panelControlMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize) (this.panelControlBotton)).EndInit();
             this.tableLayoutPanelMain.ResumeLayout(false);
             this.tableLayoutPanelMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.emergency_relation.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.name.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.identity.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gender.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nation.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.address.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phone.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.birthday.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.birthday.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.city_id.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eare_id.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.occupation.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.marital.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tel.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qq.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.live_type.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.work_place.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.education.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.email.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emergency.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emergency_phone.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.province_id.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.user_pwd.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.account.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dpt_id.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.plan_birthday.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.plan_birthday.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.familymem1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.familymem2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.familymem3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.familymem4.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.familymem5.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vip_type.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.is_stopvip.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.is_tnb.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.emergency_relation.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.name.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.identity.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.gender.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.nation.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.address.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.phone.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.birthday.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.birthday.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.city_id.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.eare_id.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.occupation.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.marital.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.tel.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.qq.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.live_type.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.work_place.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.education.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.email.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.emergency.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.emergency_phone.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.province_id.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.user_pwd.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.account.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dpt_id.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.plan_birthday.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.plan_birthday.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.familymem1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.familymem2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.familymem3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.familymem4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.familymem5.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.vip_type.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.is_stopvip.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.is_tnb.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.is_gxy.Properties)).EndInit();
             this.ResumeLayout(false);
-
         }
+
+        private DevExpress.XtraEditors.RadioGroup is_gxy;
+
+        private DevExpress.XtraEditors.LabelControl lblIsGxy;
 
         #endregion
 

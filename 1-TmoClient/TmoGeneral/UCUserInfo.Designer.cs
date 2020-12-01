@@ -22,47 +22,18 @@
 
         #region 组件设计器生成的代码
 
-        /// <summary> 
-        /// 设计器支持所需的方法 - 不要
-        /// 使用代码编辑器修改此方法的内容。
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem5 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem6 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem7 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem8 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem12 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem13 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem14 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue2 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue3 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem1 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem2 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem3 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem4 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem9 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem10 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem11 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem15 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem16 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem17 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem18 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem19 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem20 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem21 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem22 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem23 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem24 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem25 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem26 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem27 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-            DevExpress.XtraEditors.Controls.ImageComboBoxItem imageComboBoxItem28 = new DevExpress.XtraEditors.Controls.ImageComboBoxItem();
-
             this.gc_vip_type = new DevExpress.XtraGrid.Columns.GridColumn();
             this.rp_vip_type = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gc_name = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -129,8 +100,10 @@
             this.dteBirthdayBegin = new DevExpress.XtraEditors.DateEdit();
             this.ckBirthday = new DevExpress.XtraEditors.CheckEdit();
             this.spTop = new DevExpress.XtraEditors.SplitContainerControl();
+            this.lblIsGxy = new DevExpress.XtraEditors.LabelControl();
             this.doc_id = new DevExpress.XtraEditors.ComboBoxEdit();
             this.is_stopvip = new DevExpress.XtraEditors.ImageComboBoxEdit();
+            this.is_gxy = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.is_tnb = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.bindDev = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.dpt_id = new DevExpress.XtraEditors.PopupContainerEdit();
@@ -141,48 +114,48 @@
             this.btnChangeDoc = new DevExpress.XtraEditors.SimpleButton();
             this.btnDevBind = new DevExpress.XtraEditors.SimpleButton();
             this.btnPHR = new DevExpress.XtraEditors.SimpleButton();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControlMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.panelControlMain)).BeginInit();
             this.panelControlMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControlButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.panelControlButton)).BeginInit();
             this.panelControlButton.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rp_vip_type)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rp_gc_name)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phone.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.name.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.user_id.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gender.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlMain)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewMain)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rp_user_id)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rp_gender)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rp_nation)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rp_live_type)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rp_occupagtion)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rp_education)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rp_marital)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rp_source)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.province_id.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.city_id.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eare_id.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dteInputTimeEnd.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dteInputTimeEnd.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dteInputTimeBegin.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dteInputTimeBegin.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckInputTime.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dteBirthdayEnd.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dteBirthdayEnd.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dteBirthdayBegin.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dteBirthdayBegin.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckBirthday.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spTop)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spTop.Panel1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spTop.Panel2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.doc_id.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.is_stopvip.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.is_tnb.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindDev.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dpt_id.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vip_type.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.rp_vip_type)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.rp_gc_name)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.phone.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.name.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.user_id.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.gender.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.gridControlMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.gridViewMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.rp_user_id)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.rp_gender)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.rp_nation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.rp_live_type)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.rp_occupagtion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.rp_education)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.rp_marital)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.rp_source)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.province_id.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.city_id.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.eare_id.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dteInputTimeEnd.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dteInputTimeEnd.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dteInputTimeBegin.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dteInputTimeBegin.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.ckInputTime.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dteBirthdayEnd.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dteBirthdayEnd.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dteBirthdayBegin.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dteBirthdayBegin.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.ckBirthday.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.spTop)).BeginInit();
+            this.spTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize) (this.doc_id.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.is_stopvip.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.is_gxy.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.is_tnb.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.bindDev.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dpt_id.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.vip_type.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControlMain
@@ -194,7 +167,7 @@
             this.panelControlMain.Size = new System.Drawing.Size(1310, 540);
             // 
             // panelControlButton
-            //
+            // 
             this.panelControlButton.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.panelControlButton.Appearance.Options.UseBackColor = true;
             this.panelControlButton.Controls.Add(this.btnQues);
@@ -210,8 +183,8 @@
             this.panelControlButton.Controls.SetChildIndex(this.btnAdd, 0);
             // 
             // btnAdd
-            //
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.Location = new System.Drawing.Point(442, 9);
             this.btnAdd.Text = "新建客户";
             // 
@@ -231,21 +204,8 @@
             // rp_vip_type
             // 
             this.rp_vip_type.AutoHeight = false;
-            this.rp_vip_type.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            imageComboBoxItem5.Description = "非会员";
-            imageComboBoxItem5.Value = ((byte)(0));
-            imageComboBoxItem6.Description = "铜卡会员";
-            imageComboBoxItem6.Value = ((byte)(1));
-            imageComboBoxItem7.Description = "银卡会员";
-            imageComboBoxItem7.Value = ((byte)(2));
-            imageComboBoxItem8.Description = "金卡会员";
-            imageComboBoxItem8.Value = ((byte)(3));
-            this.rp_vip_type.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            imageComboBoxItem5,
-            imageComboBoxItem6,
-            imageComboBoxItem7,
-            imageComboBoxItem8});
+            this.rp_vip_type.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.rp_vip_type.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {new DevExpress.XtraEditors.Controls.ImageComboBoxItem("非会员", ((byte) (0)), -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("铜卡会员", ((byte) (1)), -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("银卡会员", ((byte) (2)), -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("金卡会员", ((byte) (3)), -1)});
             this.rp_vip_type.Name = "rp_vip_type";
             // 
             // gc_name
@@ -314,6 +274,7 @@
             this.phone.Location = new System.Drawing.Point(708, 3);
             this.phone.Margin = new System.Windows.Forms.Padding(0, 3, 10, 3);
             this.phone.Name = "phone";
+            this.phone.Size = new System.Drawing.Size(100, 20);
             this.phone.TabIndex = 1;
             // 
             // name
@@ -321,6 +282,7 @@
             this.name.Location = new System.Drawing.Point(219, 3);
             this.name.Margin = new System.Windows.Forms.Padding(0, 3, 10, 3);
             this.name.Name = "name";
+            this.name.Size = new System.Drawing.Size(100, 20);
             this.name.TabIndex = 1;
             // 
             // user_id
@@ -328,6 +290,7 @@
             this.user_id.Location = new System.Drawing.Point(56, 3);
             this.user_id.Margin = new System.Windows.Forms.Padding(0, 3, 10, 3);
             this.user_id.Name = "user_id";
+            this.user_id.Size = new System.Drawing.Size(100, 20);
             this.user_id.TabIndex = 0;
             // 
             // gender
@@ -335,21 +298,10 @@
             this.gender.Location = new System.Drawing.Point(382, 3);
             this.gender.Margin = new System.Windows.Forms.Padding(0, 3, 10, 3);
             this.gender.Name = "gender";
-            // 
-            // 
-            // 
-            this.gender.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.gender.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.gender.Properties.DropDownRows = 3;
-            imageComboBoxItem12.Description = "请选择...";
-            imageComboBoxItem13.Description = "男";
-            imageComboBoxItem13.Value = "1";
-            imageComboBoxItem14.Description = "女";
-            imageComboBoxItem14.Value = "2";
-            this.gender.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            imageComboBoxItem12,
-            imageComboBoxItem13,
-            imageComboBoxItem14});
+            this.gender.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {new DevExpress.XtraEditors.Controls.ImageComboBoxItem("请选择...", null, -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("男", "1", -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("女", "2", -1)});
+            this.gender.Size = new System.Drawing.Size(100, 20);
             this.gender.TabIndex = 3;
             // 
             // gridControlMain
@@ -358,50 +310,14 @@
             this.gridControlMain.Location = new System.Drawing.Point(2, 81);
             this.gridControlMain.MainView = this.gridViewMain;
             this.gridControlMain.Name = "gridControlMain";
-            this.gridControlMain.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.rp_gender,
-            this.rp_nation,
-            this.rp_user_id,
-            this.rp_occupagtion,
-            this.rp_education,
-            this.rp_marital,
-            this.rp_live_type,
-            this.rp_source,
-            this.rp_gc_name,
-            this.rp_vip_type});
-            this.gridControlMain.Size = new System.Drawing.Size(1306, 483);
+            this.gridControlMain.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {this.rp_gender, this.rp_nation, this.rp_user_id, this.rp_occupagtion, this.rp_education, this.rp_marital, this.rp_live_type, this.rp_source, this.rp_gc_name, this.rp_vip_type});
+            this.gridControlMain.Size = new System.Drawing.Size(1306, 457);
             this.gridControlMain.TabIndex = 1;
-            this.gridControlMain.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewMain});
+            this.gridControlMain.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {this.gridViewMain});
             // 
             // gridViewMain
             // 
-            this.gridViewMain.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gc_user_id,
-            this.gc_name,
-            this.gc_gender,
-            this.gc_age,
-            this.gc_nation,
-            this.gc_identity,
-            this.gc_birthday,
-            this.gc_address,
-            this.gc_Province_id,
-            this.gc_City_id,
-            this.gc_Eare_id,
-            this.gc_live_type,
-            this.gc_phone,
-            this.gc_tel,
-            this.gc_qq,
-            this.gc_email,
-            this.gc_occupation,
-            this.gc_work_place,
-            this.gc_education,
-            this.gc_marital,
-            this.gc_retire,
-            this.gc_doc_name,
-            this.gc_vip_type,
-            this.gc_source,
-            this.gc_input_time});
+            this.gridViewMain.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {this.gc_user_id, this.gc_name, this.gc_gender, this.gc_age, this.gc_nation, this.gc_identity, this.gc_birthday, this.gc_address, this.gc_Province_id, this.gc_City_id, this.gc_Eare_id, this.gc_live_type, this.gc_phone, this.gc_tel, this.gc_qq, this.gc_email, this.gc_occupation, this.gc_work_place, this.gc_education, this.gc_marital, this.gc_retire, this.gc_doc_name, this.gc_vip_type, this.gc_source, this.gc_input_time});
             gridFormatRule1.Column = this.gc_vip_type;
             gridFormatRule1.ColumnApplyTo = this.gc_vip_type;
             gridFormatRule1.Name = "vipColorGreen";
@@ -410,7 +326,7 @@
             formatConditionRuleValue1.Appearance.Options.UseBackColor = true;
             formatConditionRuleValue1.Appearance.Options.UseForeColor = true;
             formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue1.Value1 = ((byte)(1));
+            formatConditionRuleValue1.Value1 = ((byte) (1));
             gridFormatRule1.Rule = formatConditionRuleValue1;
             gridFormatRule2.Column = this.gc_vip_type;
             gridFormatRule2.ColumnApplyTo = this.gc_vip_type;
@@ -420,7 +336,7 @@
             formatConditionRuleValue2.Appearance.Options.UseBackColor = true;
             formatConditionRuleValue2.Appearance.Options.UseForeColor = true;
             formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue2.Value1 = ((byte)(2));
+            formatConditionRuleValue2.Value1 = ((byte) (2));
             gridFormatRule2.Rule = formatConditionRuleValue2;
             gridFormatRule3.Column = this.gc_vip_type;
             gridFormatRule3.ColumnApplyTo = this.gc_vip_type;
@@ -430,7 +346,7 @@
             formatConditionRuleValue3.Appearance.Options.UseBackColor = true;
             formatConditionRuleValue3.Appearance.Options.UseForeColor = true;
             formatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue3.Value1 = ((byte)(3));
+            formatConditionRuleValue3.Value1 = ((byte) (3));
             gridFormatRule3.Rule = formatConditionRuleValue3;
             this.gridViewMain.FormatRules.Add(gridFormatRule1);
             this.gridViewMain.FormatRules.Add(gridFormatRule2);
@@ -474,15 +390,8 @@
             // rp_gender
             // 
             this.rp_gender.AutoHeight = false;
-            this.rp_gender.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            imageComboBoxItem1.Description = "男";
-            imageComboBoxItem1.Value = 1;
-            imageComboBoxItem2.Description = "女";
-            imageComboBoxItem2.Value = 2;
-            this.rp_gender.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            imageComboBoxItem1,
-            imageComboBoxItem2});
+            this.rp_gender.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.rp_gender.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {new DevExpress.XtraEditors.Controls.ImageComboBoxItem("男", 1, -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("女", 2, -1)});
             this.rp_gender.Name = "rp_gender";
             // 
             // gc_age
@@ -511,8 +420,7 @@
             // rp_nation
             // 
             this.rp_nation.AutoHeight = false;
-            this.rp_nation.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.rp_nation.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.rp_nation.Name = "rp_nation";
             // 
             // gc_identity
@@ -586,15 +494,8 @@
             // rp_live_type
             // 
             this.rp_live_type.AutoHeight = false;
-            this.rp_live_type.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            imageComboBoxItem3.Description = "户籍";
-            imageComboBoxItem3.Value = 1;
-            imageComboBoxItem4.Description = "非户籍";
-            imageComboBoxItem4.Value = 2;
-            this.rp_live_type.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            imageComboBoxItem3,
-            imageComboBoxItem4});
+            this.rp_live_type.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.rp_live_type.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {new DevExpress.XtraEditors.Controls.ImageComboBoxItem("户籍", 1, -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("非户籍", 2, -1)});
             this.rp_live_type.Name = "rp_live_type";
             // 
             // gc_phone
@@ -649,8 +550,7 @@
             // rp_occupagtion
             // 
             this.rp_occupagtion.AutoHeight = false;
-            this.rp_occupagtion.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.rp_occupagtion.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.rp_occupagtion.Name = "rp_occupagtion";
             // 
             // gc_work_place
@@ -674,8 +574,7 @@
             // rp_education
             // 
             this.rp_education.AutoHeight = false;
-            this.rp_education.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.rp_education.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.rp_education.Name = "rp_education";
             // 
             // gc_marital
@@ -692,8 +591,7 @@
             // rp_marital
             // 
             this.rp_marital.AutoHeight = false;
-            this.rp_marital.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.rp_marital.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.rp_marital.Name = "rp_marital";
             // 
             // gc_retire
@@ -731,18 +629,8 @@
             // rp_source
             // 
             this.rp_source.AutoHeight = false;
-            this.rp_source.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            imageComboBoxItem9.Description = "客户端";
-            imageComboBoxItem9.Value = 0;
-            imageComboBoxItem10.Description = "网站";
-            imageComboBoxItem10.Value = 1;
-            imageComboBoxItem11.Description = "手机";
-            imageComboBoxItem11.Value = 2;
-            this.rp_source.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            imageComboBoxItem9,
-            imageComboBoxItem10,
-            imageComboBoxItem11});
+            this.rp_source.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.rp_source.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {new DevExpress.XtraEditors.Controls.ImageComboBoxItem("客户端", 0, -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("网站", 1, -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("手机", 2, -1)});
             this.rp_source.Name = "rp_source";
             // 
             // gc_input_time
@@ -780,7 +668,7 @@
             this.lblIsStopVip.Location = new System.Drawing.Point(6, 58);
             this.lblIsStopVip.Margin = new System.Windows.Forms.Padding(3, 5, 2, 3);
             this.lblIsStopVip.Name = "lblIsStopVip";
-            this.lblIsStopVip.Size = new System.Drawing.Size(24, 14);
+            this.lblIsStopVip.Size = new System.Drawing.Size(48, 14);
             this.lblIsStopVip.TabIndex = 2;
             this.lblIsStopVip.Text = "是否停服";
             // 
@@ -817,12 +705,9 @@
             this.province_id.Location = new System.Drawing.Point(382, 29);
             this.province_id.Margin = new System.Windows.Forms.Padding(0, 3, 10, 3);
             this.province_id.Name = "province_id";
-            // 
-            // 
-            // 
-            this.province_id.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.province_id.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.province_id.Properties.DropDownRows = 10;
+            this.province_id.Size = new System.Drawing.Size(100, 20);
             this.province_id.TabIndex = 3;
             // 
             // lblCity_id
@@ -840,12 +725,9 @@
             this.city_id.Location = new System.Drawing.Point(545, 29);
             this.city_id.Margin = new System.Windows.Forms.Padding(0, 3, 10, 3);
             this.city_id.Name = "city_id";
-            // 
-            // 
-            // 
-            this.city_id.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.city_id.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.city_id.Properties.DropDownRows = 10;
+            this.city_id.Size = new System.Drawing.Size(100, 20);
             this.city_id.TabIndex = 3;
             // 
             // lblEare_id
@@ -863,29 +745,20 @@
             this.eare_id.Location = new System.Drawing.Point(708, 29);
             this.eare_id.Margin = new System.Windows.Forms.Padding(0, 3, 10, 3);
             this.eare_id.Name = "eare_id";
-            // 
-            // 
-            // 
-            this.eare_id.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.eare_id.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.eare_id.Properties.DropDownRows = 10;
+            this.eare_id.Size = new System.Drawing.Size(100, 20);
             this.eare_id.TabIndex = 3;
             // 
             // dteInputTimeEnd
             // 
+            this.dteInputTimeEnd.EditValue = new System.DateTime(2020, 12, 1, 0, 0, 0, 0);
             this.dteInputTimeEnd.Location = new System.Drawing.Point(1012, 29);
             this.dteInputTimeEnd.Name = "dteInputTimeEnd";
-            // 
-            // 
-            // 
             this.dteInputTimeEnd.Properties.AutoHeight = false;
-            this.dteInputTimeEnd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            // 
-            // 
-            // 
-            this.dteInputTimeEnd.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dteInputTimeEnd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dteInputTimeEnd.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dteInputTimeEnd.Size = new System.Drawing.Size(100, 20);
             this.dteInputTimeEnd.TabIndex = 1;
             // 
             // lbl2
@@ -900,19 +773,13 @@
             // 
             // dteInputTimeBegin
             // 
+            this.dteInputTimeBegin.EditValue = new System.DateTime(2020, 12, 1, 0, 0, 0, 0);
             this.dteInputTimeBegin.Location = new System.Drawing.Point(894, 29);
             this.dteInputTimeBegin.Name = "dteInputTimeBegin";
-            // 
-            // 
-            // 
             this.dteInputTimeBegin.Properties.AutoHeight = false;
-            this.dteInputTimeBegin.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            // 
-            // 
-            // 
-            this.dteInputTimeBegin.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dteInputTimeBegin.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dteInputTimeBegin.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dteInputTimeBegin.Size = new System.Drawing.Size(100, 20);
             this.dteInputTimeBegin.TabIndex = 1;
             // 
             // ckInputTime
@@ -920,9 +787,6 @@
             this.ckInputTime.Location = new System.Drawing.Point(821, 29);
             this.ckInputTime.Margin = new System.Windows.Forms.Padding(0);
             this.ckInputTime.Name = "ckInputTime";
-            // 
-            // 
-            // 
             this.ckInputTime.Properties.AutoHeight = false;
             this.ckInputTime.Properties.AutoWidth = true;
             this.ckInputTime.Properties.Caption = "注册时间";
@@ -932,20 +796,14 @@
             // 
             // dteBirthdayEnd
             // 
+            this.dteBirthdayEnd.EditValue = new System.DateTime(2020, 12, 1, 0, 0, 0, 0);
             this.dteBirthdayEnd.Location = new System.Drawing.Point(1012, 2);
             this.dteBirthdayEnd.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.dteBirthdayEnd.Name = "dteBirthdayEnd";
-            // 
-            // 
-            // 
             this.dteBirthdayEnd.Properties.AutoHeight = false;
-            this.dteBirthdayEnd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            // 
-            // 
-            // 
-            this.dteBirthdayEnd.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dteBirthdayEnd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dteBirthdayEnd.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dteBirthdayEnd.Size = new System.Drawing.Size(100, 20);
             this.dteBirthdayEnd.TabIndex = 1;
             // 
             // lbl1
@@ -960,20 +818,14 @@
             // 
             // dteBirthdayBegin
             // 
+            this.dteBirthdayBegin.EditValue = new System.DateTime(2020, 12, 1, 0, 0, 0, 0);
             this.dteBirthdayBegin.Location = new System.Drawing.Point(894, 3);
             this.dteBirthdayBegin.Margin = new System.Windows.Forms.Padding(0, 5, 3, 3);
             this.dteBirthdayBegin.Name = "dteBirthdayBegin";
-            // 
-            // 
-            // 
             this.dteBirthdayBegin.Properties.AutoHeight = false;
-            this.dteBirthdayBegin.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            // 
-            // 
-            // 
-            this.dteBirthdayBegin.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dteBirthdayBegin.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dteBirthdayBegin.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dteBirthdayBegin.Size = new System.Drawing.Size(100, 20);
             this.dteBirthdayBegin.TabIndex = 1;
             // 
             // ckBirthday
@@ -981,9 +833,6 @@
             this.ckBirthday.AutoSizeInLayoutControl = true;
             this.ckBirthday.Location = new System.Drawing.Point(821, 3);
             this.ckBirthday.Name = "ckBirthday";
-            // 
-            // 
-            // 
             this.ckBirthday.Properties.AutoHeight = false;
             this.ckBirthday.Properties.AutoWidth = true;
             this.ckBirthday.Properties.Caption = "出生日期";
@@ -996,9 +845,6 @@
             this.spTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.spTop.Location = new System.Drawing.Point(2, 2);
             this.spTop.Name = "spTop";
-            // 
-            // 
-            // 
             this.spTop.Panel1.Controls.Add(this.dteBirthdayEnd);
             this.spTop.Panel1.Controls.Add(this.dteInputTimeEnd);
             this.spTop.Panel1.Controls.Add(this.lbl1);
@@ -1015,6 +861,7 @@
             this.spTop.Panel1.Controls.Add(this.province_id);
             this.spTop.Panel1.Controls.Add(this.lblDoc_id);
             this.spTop.Panel1.Controls.Add(this.lblIsStopVip);
+            this.spTop.Panel1.Controls.Add(this.lblIsGxy);
             this.spTop.Panel1.Controls.Add(this.lblIstnb);
             this.spTop.Panel1.Controls.Add(this.lblBindDev);
             this.spTop.Panel1.Controls.Add(this.lblCity_id);
@@ -1029,29 +876,28 @@
             this.spTop.Panel1.Controls.Add(this.lblUserId);
             this.spTop.Panel1.Controls.Add(this.doc_id);
             this.spTop.Panel1.Controls.Add(this.is_stopvip);
+            this.spTop.Panel1.Controls.Add(this.is_gxy);
             this.spTop.Panel1.Controls.Add(this.is_tnb);
             this.spTop.Panel1.Controls.Add(this.bindDev);
             this.spTop.Panel1.Controls.Add(this.dpt_id);
             this.spTop.Panel1.Controls.Add(this.vip_type);
-            this.spTop.Panel1.Location = new System.Drawing.Point(0, 0);
-            this.spTop.Panel1.Name = "";
-            this.spTop.Panel1.Size = new System.Drawing.Size(1134, 79);
-            this.spTop.Panel1.TabIndex = 0;
             this.spTop.Panel1.Text = "PanelTL";
-            // 
-            // 
-            // 
             this.spTop.Panel2.Controls.Add(this.btnClear);
             this.spTop.Panel2.Controls.Add(this.btnSelcet);
-            this.spTop.Panel2.Location = new System.Drawing.Point(1139, 0);
-            this.spTop.Panel2.Name = "";
             this.spTop.Panel2.Padding = new System.Windows.Forms.Padding(10);
-            this.spTop.Panel2.Size = new System.Drawing.Size(167, 79);
-            this.spTop.Panel2.TabIndex = 1;
             this.spTop.Panel2.Text = "PanelTR";
             this.spTop.Size = new System.Drawing.Size(1306, 79);
             this.spTop.SplitterPosition = 1134;
             this.spTop.TabIndex = 5;
+            // 
+            // lblIsGxy
+            // 
+            this.lblIsGxy.Location = new System.Drawing.Point(495, 58);
+            this.lblIsGxy.Margin = new System.Windows.Forms.Padding(3, 5, 2, 3);
+            this.lblIsGxy.Name = "lblIsGxy";
+            this.lblIsGxy.Size = new System.Drawing.Size(36, 14);
+            this.lblIsGxy.TabIndex = 2;
+            this.lblIsGxy.Text = "高血压";
             // 
             // doc_id
             // 
@@ -1059,59 +905,43 @@
             this.doc_id.Location = new System.Drawing.Point(56, 29);
             this.doc_id.Margin = new System.Windows.Forms.Padding(0, 3, 10, 3);
             this.doc_id.Name = "doc_id";
-            // 
-            // 
-            // 
-            this.doc_id.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.doc_id.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.doc_id.Properties.DropDownRows = 10;
             this.doc_id.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.doc_id.Size = new System.Drawing.Size(100, 20);
             this.doc_id.TabIndex = 3;
             // 
             // is_stopvip
             // 
-            this.is_stopvip.EditValue = "全部";
             this.is_stopvip.Location = new System.Drawing.Point(56, 55);
             this.is_stopvip.Margin = new System.Windows.Forms.Padding(0, 3, 10, 3);
             this.is_stopvip.Name = "is_stopvip";
-            this.is_stopvip.SelectedIndex = 0;
-            // 
-            // 
-            // 
-            this.is_stopvip.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.is_stopvip.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.is_stopvip.Properties.DropDownRows = 10;
-            imageComboBoxItem15.Description = "全部";
-            imageComboBoxItem16.Description = "是";
-            imageComboBoxItem16.Value = 1;
-            imageComboBoxItem17.Description = "否";
-            imageComboBoxItem17.Value = 0;
-            this.is_stopvip.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            imageComboBoxItem15,
-            imageComboBoxItem16,
-            imageComboBoxItem17});
+            this.is_stopvip.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {new DevExpress.XtraEditors.Controls.ImageComboBoxItem("全部", null, -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("是", 1, -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("否", 0, -1)});
+            this.is_stopvip.Size = new System.Drawing.Size(100, 20);
             this.is_stopvip.TabIndex = 3;
+            // 
+            // is_gxy
+            // 
+            this.is_gxy.Location = new System.Drawing.Point(545, 55);
+            this.is_gxy.Margin = new System.Windows.Forms.Padding(0, 3, 10, 3);
+            this.is_gxy.Name = "is_gxy";
+            this.is_gxy.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.is_gxy.Properties.DropDownRows = 10;
+            this.is_gxy.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {new DevExpress.XtraEditors.Controls.ImageComboBoxItem("全部", null, -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("有", 1, -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("无", 0, -1)});
+            this.is_gxy.Size = new System.Drawing.Size(100, 20);
+            this.is_gxy.TabIndex = 3;
             // 
             // is_tnb
             // 
             this.is_tnb.Location = new System.Drawing.Point(219, 55);
             this.is_tnb.Margin = new System.Windows.Forms.Padding(0, 3, 10, 3);
             this.is_tnb.Name = "is_tnb";
-            // 
-            // 
-            // 
-            this.is_tnb.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.is_tnb.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.is_tnb.Properties.DropDownRows = 10;
-            imageComboBoxItem18.Description = "全部";
-            imageComboBoxItem19.Description = "有";
-            imageComboBoxItem19.Value = 1;
-            imageComboBoxItem20.Description = "无";
-            imageComboBoxItem20.Value = 0;
-            this.is_tnb.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            imageComboBoxItem18,
-            imageComboBoxItem19,
-            imageComboBoxItem20});
+            this.is_tnb.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {new DevExpress.XtraEditors.Controls.ImageComboBoxItem("全部", null, -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("有", 1, -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("无", 0, -1)});
+            this.is_tnb.Size = new System.Drawing.Size(100, 20);
             this.is_tnb.TabIndex = 3;
             // 
             // bindDev
@@ -1119,21 +949,10 @@
             this.bindDev.Location = new System.Drawing.Point(382, 55);
             this.bindDev.Margin = new System.Windows.Forms.Padding(0, 3, 10, 3);
             this.bindDev.Name = "bindDev";
-            // 
-            // 
-            // 
-            this.bindDev.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.bindDev.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.bindDev.Properties.DropDownRows = 10;
-            imageComboBoxItem21.Description = "全部";
-            imageComboBoxItem22.Description = "血压计";
-            imageComboBoxItem22.Value = 1;
-            imageComboBoxItem23.Description = "血糖仪";
-            imageComboBoxItem23.Value = 2;
-            this.bindDev.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            imageComboBoxItem21,
-            imageComboBoxItem22,
-            imageComboBoxItem23});
+            this.bindDev.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {new DevExpress.XtraEditors.Controls.ImageComboBoxItem("全部", null, -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("血压计", 1, -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("血糖仪", 2, -1)});
+            this.bindDev.Size = new System.Drawing.Size(100, 20);
             this.bindDev.TabIndex = 3;
             // 
             // dpt_id
@@ -1141,11 +960,8 @@
             this.dpt_id.Location = new System.Drawing.Point(219, 29);
             this.dpt_id.Margin = new System.Windows.Forms.Padding(0, 3, 10, 3);
             this.dpt_id.Name = "dpt_id";
-            // 
-            // 
-            // 
-            this.dpt_id.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dpt_id.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dpt_id.Size = new System.Drawing.Size(100, 20);
             this.dpt_id.TabIndex = 1;
             // 
             // vip_type
@@ -1153,26 +969,9 @@
             this.vip_type.Location = new System.Drawing.Point(545, 3);
             this.vip_type.Margin = new System.Windows.Forms.Padding(0, 3, 10, 3);
             this.vip_type.Name = "vip_type";
-            // 
-            // 
-            // 
-            this.vip_type.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            imageComboBoxItem24.Description = "全部";
-            imageComboBoxItem25.Description = "非会员";
-            imageComboBoxItem25.Value = ((byte)(0));
-            imageComboBoxItem26.Description = "铜卡会员";
-            imageComboBoxItem26.Value = ((byte)(1));
-            imageComboBoxItem27.Description = "银卡会员";
-            imageComboBoxItem27.Value = ((byte)(2));
-            imageComboBoxItem28.Description = "金卡会员";
-            imageComboBoxItem28.Value = ((byte)(3));
-            this.vip_type.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            imageComboBoxItem24,
-            imageComboBoxItem25,
-            imageComboBoxItem26,
-            imageComboBoxItem27,
-            imageComboBoxItem28});
+            this.vip_type.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.vip_type.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {new DevExpress.XtraEditors.Controls.ImageComboBoxItem("全部", null, -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("非会员", ((byte) (0)), -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("铜卡会员", ((byte) (1)), -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("银卡会员", ((byte) (2)), -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("金卡会员", ((byte) (3)), -1)});
+            this.vip_type.Size = new System.Drawing.Size(100, 20);
             this.vip_type.TabIndex = 1;
             // 
             // btnClear
@@ -1193,7 +992,7 @@
             // 
             // btnQues
             // 
-            this.btnQues.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnQues.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnQues.Location = new System.Drawing.Point(361, 9);
             this.btnQues.Name = "btnQues";
             this.btnQues.Size = new System.Drawing.Size(75, 25);
@@ -1202,7 +1001,7 @@
             // 
             // btnChangeDoc
             // 
-            this.btnChangeDoc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnChangeDoc.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnChangeDoc.Location = new System.Drawing.Point(179, 9);
             this.btnChangeDoc.Name = "btnChangeDoc";
             this.btnChangeDoc.Size = new System.Drawing.Size(95, 25);
@@ -1211,7 +1010,7 @@
             // 
             // btnDevBind
             // 
-            this.btnDevBind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDevBind.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDevBind.Location = new System.Drawing.Point(280, 9);
             this.btnDevBind.Name = "btnDevBind";
             this.btnDevBind.Size = new System.Drawing.Size(75, 25);
@@ -1220,7 +1019,7 @@
             // 
             // btnPHR
             // 
-            this.btnPHR.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPHR.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPHR.Location = new System.Drawing.Point(98, 9);
             this.btnPHR.Name = "btnPHR";
             this.btnPHR.Size = new System.Drawing.Size(75, 25);
@@ -1233,52 +1032,54 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "UCUserInfo";
             this.Size = new System.Drawing.Size(1310, 585);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControlMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.panelControlMain)).EndInit();
             this.panelControlMain.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControlButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.panelControlButton)).EndInit();
             this.panelControlButton.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.rp_vip_type)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rp_gc_name)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phone.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.name.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.user_id.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gender.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlMain)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewMain)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rp_user_id)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rp_gender)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rp_nation)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rp_live_type)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rp_occupagtion)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rp_education)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rp_marital)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rp_source)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.province_id.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.city_id.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eare_id.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dteInputTimeEnd.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dteInputTimeEnd.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dteInputTimeBegin.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dteInputTimeBegin.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckInputTime.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dteBirthdayEnd.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dteBirthdayEnd.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dteBirthdayBegin.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dteBirthdayBegin.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckBirthday.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spTop.Panel1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spTop.Panel2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spTop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.rp_vip_type)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.rp_gc_name)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.phone.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.name.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.user_id.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.gender.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.gridControlMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.gridViewMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.rp_user_id)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.rp_gender)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.rp_nation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.rp_live_type)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.rp_occupagtion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.rp_education)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.rp_marital)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.rp_source)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.province_id.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.city_id.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.eare_id.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dteInputTimeEnd.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dteInputTimeEnd.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dteInputTimeBegin.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dteInputTimeBegin.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.ckInputTime.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dteBirthdayEnd.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dteBirthdayEnd.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dteBirthdayBegin.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dteBirthdayBegin.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.ckBirthday.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.spTop)).EndInit();
             this.spTop.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.doc_id.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.is_stopvip.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.is_tnb.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindDev.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dpt_id.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vip_type.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.doc_id.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.is_stopvip.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.is_gxy.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.is_tnb.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.bindDev.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dpt_id.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.vip_type.Properties)).EndInit();
             this.ResumeLayout(false);
-
         }
+
+        private DevExpress.XtraEditors.ImageComboBoxEdit is_gxy;
+
+        private DevExpress.XtraEditors.LabelControl lblIsGxy;
 
         #endregion
 

@@ -949,9 +949,9 @@ namespace TmoServiceServer
 
         public static bool SubmitData(object fe_SubmitDataParam)
         {
-            FE_SubmitDataParam param = fe_SubmitDataParam as FE_SubmitDataParam;
+            var param = fe_SubmitDataParam as JObject;
             if (param == null) return false;
-            bool suc = Tmo_FakeEntityManager.Instance.SubmitData(param);
+            bool suc = Tmo_FakeEntityManager.Instance.SubmitData(param.ToObject<FE_SubmitDataParam>());
             return suc;
         }
 
