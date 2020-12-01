@@ -19,9 +19,9 @@ namespace DBDAL.MySqlDal
                 //查询次数
                 object pushCountobj = MySQLHelper.GetSingle("select push_count from tmo_push_list where push_id='" + pushID + "'");
                 int pushCount = 1;
-                if (pushCountobj != null && !string.IsNullOrWhiteSpace(pushCount.ToString()))
+                if (pushCountobj != null && !string.IsNullOrWhiteSpace(pushCountobj.ToString()))
                 {
-                    pushCount = Convert.ToInt32(pushCountobj.ToString());
+                    pushCount = Convert.ToInt32(pushCountobj);
                 }
                 pushCount++;   //每次自动加1
                 List<string> sqlList = new List<string>();

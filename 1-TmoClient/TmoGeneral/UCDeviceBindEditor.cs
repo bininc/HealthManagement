@@ -28,13 +28,23 @@ namespace TmoGeneral
 
         protected override bool AfterSaveButtonClick()
         {
-            string _dev_sn = dev_sn.EditValue.ToString();
+            string _dev_sn = dev_sn.EditValue?.ToString();
             if (string.IsNullOrWhiteSpace(_dev_sn))
             {
                 DXMessageBox.ShowWarning2("设备S/N不能为空");
                 dev_sn.Focus();
                 return false;
             }
+            
+            //处理错误的输入
+            _dev_sn = _dev_sn.ToUpper();
+            int index = _dev_sn.IndexOf(':');
+            if (index == -1)
+                index = _dev_sn.IndexOf("：");
+            if (index > 0)
+                _dev_sn = _dev_sn.Substring(index + 1);
+            _dev_sn = _dev_sn.Replace("/", "");
+            dev_sn.EditValue = _dev_sn;
             return true;
         }
 

@@ -32,14 +32,15 @@ namespace TmoServer
 
         #region 单例模式
 
-        protected static PlanService _instence = null;
+        public static PlanService Instence => InnerClass.instance;
 
-        public static PlanService Instence
+        class InnerClass
         {
-            get
+            static InnerClass()
             {
-                return _instence ?? (_instence = new PlanService());
             }
+
+            internal static PlanService instance = new PlanService();
         }
 
         #endregion 单例模式
@@ -61,12 +62,12 @@ namespace TmoServer
         private void Init()
         {
             planFuncDic.Clear();
-            planFuncDic.Add(ExecIntervene, null);
-            planFuncDic.Add(CalAge, null);
-            planFuncDic.Add(MoveMonitorReceived, null);
-            planFuncDic.Add(BirthdayRemind, null);
+            //planFuncDic.Add(ExecIntervene, null);
+            //planFuncDic.Add(CalAge, null);
+            //planFuncDic.Add(MoveMonitorReceived, null);
+            //planFuncDic.Add(BirthdayRemind, null);
             planFuncDic.Add(MonitorSendWe, null);
-            planFuncDic.Add(PushMessage, null);
+            //planFuncDic.Add(PushMessage, null);
         }
 
         /// <summary>
@@ -95,6 +96,7 @@ namespace TmoServer
                 th_ExecPlanService.IsBackground = true;
                 th_ExecPlanService.SetApartmentState(ApartmentState.MTA);
             }
+
             th_ExecPlanService.Start();
             Thread.Sleep(10);
             return th_ExecPlanService.IsAlive;
@@ -119,7 +121,7 @@ namespace TmoServer
         {
             while (true)
             {
-                if (isFirst)
+                if (isFirst && !Debugger.IsAttached)
                 {
                     Thread.Sleep(30000);
                     isFirst = false;
@@ -135,17 +137,22 @@ namespace TmoServer
                         {
                             if (item.Key != null)
                             {
-                                doneEvents[i] = new ManualResetEvent(false);    //非终止事件状态
+                                doneEvents[i] = new ManualResetEvent(false); //非终止事件状态
                                 WaitCallback threadPoolCallBack = new WaitCallback(item.Key);
-                                ThreadPool.QueueUserWorkItem(threadPoolCallBack, new object[] { doneEvents[i], item.Value });
+                                ThreadPool.QueueUserWorkItem(threadPoolCallBack, new object[] {doneEvents[i], item.Value});
                                 // ((ManualResetEvent)((object[])state)[0]).Set();   //在等待回调方法中必须把事件状态设置为终止
                             }
+
                             i++;
                         }
+
                         WaitHandle.WaitAll(doneEvents); //等待线程池中线程执行完毕
                     }
                 }
-                catch { }
+                catch
+                {
+                }
+
                 Thread.Sleep(scanInerval);
             }
         }
@@ -155,7 +162,7 @@ namespace TmoServer
         #region 健康干预
 
         private DateTime lastNoticeTime = DateTime.MinValue; //上次消息提醒日期
-        private DateTime lastMianTime = DateTime.MinValue;  //面访上次提醒日期
+        private DateTime lastMianTime = DateTime.MinValue; //面访上次提醒日期
 
         /// <summary>
         /// 定时执行干预任务
@@ -167,8 +174,8 @@ namespace TmoServer
             {
                 Sources = "tmo_intervene",
                 PrimaryKey = "inte_id",
-                Columns = { "tmo_userinfo.name", "tmo_userinfo.gender", "tmo_userinfo.age", "tmo_userinfo.phone", "tmo_intervene.*" },
-                JoinConditions = { new JoinCondition() { JoinType = EmJoinType.LeftJoin, Table = "tmo_userinfo", OnCol = "user_id" } }
+                Columns = {"tmo_userinfo.name", "tmo_userinfo.gender", "tmo_userinfo.age", "tmo_userinfo.phone", "tmo_intervene.*"},
+                JoinConditions = {new JoinCondition() {JoinType = EmJoinType.LeftJoin, Table = "tmo_userinfo", OnCol = "user_id"}}
             };
             param.AddWhere("inte_status in (1,2)");
 
@@ -184,12 +191,12 @@ namespace TmoServer
                     try
                     {
                         string inte_content = dr.GetDataRowStringValue("inte_content");
-                        int inte_way = dr.GetDataRowIntValue("inte_way");  //干预方式 1-邮件 2-短信  3-电话 4-面访
+                        int inte_way = dr.GetDataRowIntValue("inte_way"); //干预方式 1-邮件 2-短信  3-电话 4-面访
                         int doc_id = dr.GetDataRowIntValue("doc_id");
                         string inte_addr = dr.GetDataRowStringValue("inte_addr");
                         DateTime inte_plantime = dr.GetDataRowDateTimeValue("inte_plantime");
-                        TimeSpan diffSpan = DateTime.Now - inte_plantime;   //现在时间距离计划时间的时间差
-                        int failMin = 30;   //过期时间 单位:分钟
+                        TimeSpan diffSpan = DateTime.Now - inte_plantime; //现在时间距离计划时间的时间差
+                        int failMin = 30; //过期时间 单位:分钟
                         if (Debugger.IsAttached)
                             failMin = 60 * 24 * 3;
                         if (inte_way == 3) failMin = 60 * 12; //电话12小时过期
@@ -209,10 +216,12 @@ namespace TmoServer
                                     if (sendsuc)
                                         lastMianTime = DateTime.Now;
                                 }
+
                                 continue;
                             }
                         }
-                        if (diffSpan.Ticks < 0) continue;   //未到执行时间
+
+                        if (diffSpan.Ticks < 0) continue; //未到执行时间
                         if (diffSpan.TotalMinutes > failMin) //干预过期
                         {
                             tmo_interveneManager.Instance.SetInterveneFailed(inte_id, "干预过期");
@@ -226,7 +235,7 @@ namespace TmoServer
                             continue;
                         }
 
-                        PushType pushtype = PushType.doc_wechat;    //默认类型 此类型无效
+                        PushType pushtype = PushType.doc_wechat; //默认类型 此类型无效
                         switch (inte_way)
                         {
                             case 1:
@@ -242,13 +251,15 @@ namespace TmoServer
                                 {
                                     string title = "请执行电话干预";
                                     string msg = string.Format("有一个电话干预需要执行：\n时间 [{0}]\n客户信息 [{1},{2},{3}岁]\n电话号码 [{4}]\n点击查看详情并填写执行结果！",
-                                                                inte_plantime.ToString("yyyy年MM月dd日HH点mm分"), dr.GetDataRowStringValue("name"), dr.GetDataRowIntValue("gender") == 1 ? "男" : "女",
-                                                                dr.GetDataRowStringValue("age"), inte_addr);
+                                        inte_plantime.ToString("yyyy年MM月dd日HH点mm分"), dr.GetDataRowStringValue("name"),
+                                        dr.GetDataRowIntValue("gender") == 1 ? "男" : "女",
+                                        dr.GetDataRowStringValue("age"), inte_addr);
                                     string sendStr = title + ";" + msg + ";" + inte_id;
                                     bool sendsuc = PushInvoke.SendDocInvoke(doc_id.ToString(), 100, sendStr);
                                     if (sendsuc)
                                         lastNoticeTime = DateTime.Now;
                                 }
+
                                 break;
 
                             case 4: //面访干预
@@ -256,13 +267,15 @@ namespace TmoServer
                                 {
                                     string title = "请执行面访干预";
                                     string msg = string.Format("有一个面访干预需要执行：\n时间 [{0}]\n客户信息 [{1},{2},{3}岁]\n手机号码 [{4}]\n面访地址 {5}\n点击查看详情并填写执行结果！",
-                                                                inte_plantime.ToString("yyyy年MM月dd日HH点mm分"), dr.GetDataRowStringValue("name"), dr.GetDataRowIntValue("gender") == 1 ? "男" : "女",
-                                                                dr.GetDataRowStringValue("age"), dr.GetDataRowStringValue("phone"), inte_addr);
+                                        inte_plantime.ToString("yyyy年MM月dd日HH点mm分"), dr.GetDataRowStringValue("name"),
+                                        dr.GetDataRowIntValue("gender") == 1 ? "男" : "女",
+                                        dr.GetDataRowStringValue("age"), dr.GetDataRowStringValue("phone"), inte_addr);
                                     string sendStr = title + ";" + msg + ";" + inte_id;
                                     bool sendsuc = PushInvoke.SendDocInvoke(doc_id.ToString(), 101, sendStr);
                                     if (sendsuc)
                                         lastNoticeTime = DateTime.Now;
                                 }
+
                                 break;
 
                             default:
@@ -271,7 +284,7 @@ namespace TmoServer
 
                         if (pushtype == PushType.doc_wechat || pushtype == PushType.None) continue; //未知方式取消推送
                         string inte_reason = dr.GetDataRowStringValue("inte_reason");
-                        if (inte_reason == "sending") continue;   //发送中跳过
+                        if (inte_reason == "sending") continue; //发送中跳过
 
                         string inte_title = dr.GetDataRowStringValue("inte_title");
                         if (string.IsNullOrWhiteSpace(inte_title)) inte_title = "健康干预";
@@ -280,7 +293,7 @@ namespace TmoServer
                         Dictionary<string, object> dicVals = new Dictionary<string, object>();
                         dicVals.Add("push_id", inte_id);
                         dicVals.Add("user_code", user_id);
-                        dicVals.Add("push_type", (int)pushtype);
+                        dicVals.Add("push_type", (int) pushtype);
                         dicVals.Add("push_address", inte_addr);
                         dicVals.Add("content_type", "1");
                         dicVals.Add("content_title", inte_title);
@@ -303,25 +316,27 @@ namespace TmoServer
                     }
                 }
             }
-            ((ManualResetEvent)((object[])state)[0]).Set();
+
+            ((ManualResetEvent) ((object[]) state)[0]).Set();
         }
 
         #endregion 健康干预
 
         #region 年龄和生日提醒
+
         /// <summary>
         /// 定时更新年龄信息
         /// </summary>
         /// <param name="state"></param>
         private void CalAge(object state)
         {
-            if (DateTime.Now.TimeOfDay.TotalMinutes < 30)   //12点到12点半之间更新
+            if (DateTime.Now.TimeOfDay.TotalMinutes < 30) //12点到12点半之间更新
             {
                 int timestmp = ConfigHelper.GetConfigInt("AgeUpTime", 0, true);
                 DateTime lasTime = DateTimeHelper.StampToTime(timestmp);
                 if (DateTime.Today != lasTime.Date)
                 {
-                    var dtUser = Tmo_FakeEntityManager.Instance.GetData("tmo_userinfo", new[] { "user_id", "birthday" });
+                    var dtUser = Tmo_FakeEntityManager.Instance.GetData("tmo_userinfo", new[] {"user_id", "birthday"});
                     if (TmoShare.DataTableIsNotEmpty(dtUser))
                     {
                         List<string> sqlList = new List<string>();
@@ -341,20 +356,24 @@ namespace TmoServer
                                     continue;
                                 }
                             }
+
                             int age = TmoShare.CalAge(birthTime);
                             sqlList.Add(string.Format("update tmo_userinfo set age='{0}' where user_id='{1}'", age, userid));
                         }
+
                         int count = MySQLHelper.ExecuteSqlList(sqlList);
                         if (count > 0)
                             ConfigHelper.UpdateConfig("AgeUpTime", DateTimeHelper.TimeToStamp(DateTime.Now).ToString(), true);
                     }
                 }
             }
-            ((ManualResetEvent)((object[])state)[0]).Set();
+
+            ((ManualResetEvent) ((object[]) state)[0]).Set();
         }
 
         //上次提醒扫描日期
         DateTime lastRemindTime = DateTime.MinValue;
+
         /// <summary>
         /// 生日提醒任务
         /// </summary>
@@ -364,7 +383,7 @@ namespace TmoServer
             if ((DateTime.Now - lastRemindTime).TotalSeconds >= 60) //1分钟提醒一次
             {
                 var dtUser = Tmo_FakeEntityManager.Instance.GetData("tmo_userinfo",
-                    new[] { "user_id", "name", "plan_birthday", "doc_id" },
+                    new[] {"user_id", "name", "plan_birthday", "doc_id"},
                     string.Format(
                         "(birthday_remid_year is null or birthday_remid_year<{0}) and plan_birthday is not null and doc_id is not null",
                         DateTime.Now.Year));
@@ -385,13 +404,17 @@ namespace TmoServer
 
                 lastRemindTime = DateTime.Now;
             }
-            ((ManualResetEvent)((object[])state)[0]).Set();
+
+            ((ManualResetEvent) ((object[]) state)[0]).Set();
         }
+
         #endregion
 
         #region 消息推送
+
         //上次消息扫描日期
         DateTime lastPushMsgTime = DateTime.MinValue;
+
         /// <summary>
         /// 消息推送任务
         /// </summary>
@@ -400,7 +423,8 @@ namespace TmoServer
         {
             if ((DateTime.Now - lastPushMsgTime).TotalSeconds >= 30) //30秒检查一次
             {
-                var dtMsg = Tmo_FakeEntityManager.Instance.GetData("tmo_pushmsg", new[] { "id", "doc_code", "doc_department", "doc_group", "read_user" }, "isRead='1' and input_time>=date_sub(NOW(),INTERVAL 1 MONTH);");
+                var dtMsg = Tmo_FakeEntityManager.Instance.GetData("tmo_pushmsg", new[] {"id", "doc_code", "doc_department", "doc_group", "read_user"},
+                    "isRead='1' and input_time>=date_sub(NOW(),INTERVAL 1 MONTH);");
                 if (TmoShare.DataTableIsNotEmpty(dtMsg))
                 {
                     foreach (TCPServerClient client in TCPServer.Instance.Clients.ToArray())
@@ -408,10 +432,12 @@ namespace TmoServer
                         if (client.DocInfo != null)
                         {
                             DataRow[] rows = dtMsg.Select(
-                                  string.Format("doc_code='{0}' or (doc_department LIKE '%,{1},%' and (read_user not like '%,{0},%' or read_user is null)) or (doc_group='{2}' and (read_user not like '%,{0},%' or read_user is null))",
-                                      client.DocInfo.doc_loginid, client.DocInfo.doc_department, client.DocInfo.doc_group));
+                                string.Format(
+                                    "doc_code='{0}' or (doc_department LIKE '%,{1},%' and (read_user not like '%,{0},%' or read_user is null)) or (doc_group='{2}' and (read_user not like '%,{0},%' or read_user is null))",
+                                    client.DocInfo.doc_loginid, client.DocInfo.doc_department, client.DocInfo.doc_group));
                             if (rows.Length > 0)
-                            {   //有消息推送
+                            {
+                                //有消息推送
                                 PushInvoke.SendDocInvoke(client.DocInfo.doc_id.ToString(), 103, rows.Length.ToString());
                             }
                         }
@@ -420,13 +446,17 @@ namespace TmoServer
 
                 lastPushMsgTime = DateTime.Now;
             }
-            ((ManualResetEvent)((object[])state)[0]).Set();
+
+            ((ManualResetEvent) ((object[]) state)[0]).Set();
         }
+
         #endregion
 
         #region 微信推送移动设备数据
+
         //上次微信推送日期
         DateTime lastMonitorSendWeTime = DateTime.MinValue;
+
         /// <summary>
         /// 监测数据推送微信
         /// </summary>
@@ -460,7 +490,8 @@ namespace TmoServer
             if ((DateTime.Now - lastMonitorSendWeTime).TotalSeconds >= 30) //30秒查询一次
             {
                 var dtUser = Tmo_FakeEntityManager.Instance.GetData("tmo_monitor",
-                    new[] { "user_id", "mt_code", "mt_valueint", "mt_time", "mt_valuefloat", "mt_isnormal", "id", "mt_timestamp" }, "mt_code in (100,101,102,103) and we_send ='2' and mt_time>=date_add(NOW(), interval -7 day)");
+                    new[] {"user_id", "mt_code", "mt_valueint", "mt_time", "mt_valuefloat", "mt_isnormal", "id", "mt_timestamp"},
+                    "mt_code in (100,101,102,103) and we_send ='2' and mt_time>=date_add(NOW(), interval -7 day)");
                 if (TmoShare.DataTableIsNotEmpty(dtUser))
                 {
                     List<string> skipIds = new List<string>();
@@ -476,16 +507,18 @@ namespace TmoServer
                         //查询亲友是否绑定微信
                         DataSet familyds = tmo_userinfoManager.Instance.IsBindFamily(userid);
                         if (string.IsNullOrWhiteSpace(myweixin) && TmoShare.DataSetIsEmpty(familyds))
-                            continue;   //没有绑定微信 跳过
+                            continue; //没有绑定微信 跳过
 
                         List<string> ids = new List<string>();
                         ids.Add(id);
 
                         string timestamp = dr.GetDataRowStringValue("mt_timestamp");
+
                         #region 组织发送内容
+
                         switch (dr["mt_code"].ToString())
                         {
-                            case "100"://舒张压
+                            case "100": //舒张压
                                 DataRow[] rows = dtUser.Select(string.Format("mt_code=101 and user_id='{0}' and mt_timestamp='{1}'", userid, timestamp));
                                 string ssy = null;
                                 if (rows.Length > 0)
@@ -495,13 +528,14 @@ namespace TmoServer
                                     skipIds.Add(ssyid);
                                     ids.Add(ssyid);
                                 }
+
                                 if (ssy == null)
                                     result = "【舒张压】" + dr["mt_valueint"].ToString() + "mmHg";
                                 else
                                     result = ssy + "/" + dr.GetDataRowStringValue("mt_valueint") + " mmHg";
                                 testName = "血压";
                                 break;
-                            case "101"://收缩压
+                            case "101": //收缩压
                                 DataRow[] row1s = dtUser.Select(string.Format("mt_code=100 and user_id='{0}' and mt_timestamp='{1}'", userid, timestamp));
                                 string szy = null;
                                 if (row1s.Length > 0)
@@ -511,17 +545,18 @@ namespace TmoServer
                                     skipIds.Add(szyid);
                                     ids.Add(szyid);
                                 }
+
                                 if (szy == null)
                                     result = "【收缩压】" + dr["mt_valueint"].ToString() + "mmHg";
                                 else
                                     result = dr.GetDataRowStringValue("mt_valueint") + "/" + szy + " mmHg";
                                 testName = "血压";
                                 break;
-                            case "102"://心率
+                            case "102": //心率
                                 result = dr["mt_valueint"].ToString() + "次/分钟";
                                 testName = "心率";
                                 break;
-                            case "103"://血糖
+                            case "103": //血糖
                                 result = dr["mt_valuefloat"].ToString() + "mmol/L";
                                 testName = "血糖";
                                 break;
@@ -532,6 +567,7 @@ namespace TmoServer
                         #endregion
 
                         #region 发送给自己
+
                         //查询自己是否绑定微信
                         if (!string.IsNullOrEmpty(myweixin))
                         {
@@ -565,19 +601,24 @@ namespace TmoServer
 
                             bool suc = tmo_push_listManager.Instance.AddToPushList(dicVals);
                             if (suc)
-                                tmo_monitorManager.Instance.UpdateWXState(idstr, 3);    //推送中
+                                tmo_monitorManager.Instance.UpdateWXState(idstr, 3); //推送中
                         }
+
                         #endregion
 
                         #region 发送给绑定的家人
+
                         if (TmoShare.DataSetIsNotEmpty(familyds))
                         {
                             #region 用户信息
+
                             string username = userid;
                             Userinfo user = tmo_userinfoManager.Instance.GetUserInfoByID(userid);
                             if (user != null)
                                 username = user.name;
+
                             #endregion
+
                             for (int i = 0; i < familyds.Tables[0].Columns.Count; i++)
                             {
                                 DataColumn cloum = familyds.Tables[0].Columns[i];
@@ -617,24 +658,26 @@ namespace TmoServer
 
                                     bool suc = tmo_push_listManager.Instance.AddToPushList(dicVals);
                                     if (suc)
-                                        tmo_monitorManager.Instance.UpdateWXState(idstr, 3);    //推送中
+                                        tmo_monitorManager.Instance.UpdateWXState(idstr, 3); //推送中
                                 }
                             }
-
                         }
+
                         #endregion
                     }
                 }
 
                 lastMonitorSendWeTime = DateTime.Now;
             }
-            ((ManualResetEvent)((object[])state)[0]).Set();
+
+            ((ManualResetEvent) ((object[]) state)[0]).Set();
         }
+
         #endregion
 
         #region 移动设备监测
 
-        private DateTime lastScanTime = DateTime.MinValue;  //上次扫描日期
+        private DateTime lastScanTime = DateTime.MinValue; //上次扫描日期
 
         /// <summary>
         /// 处理无线设备临时接收表里的数据
@@ -648,38 +691,41 @@ namespace TmoServer
                 {
                     List<string> sqlList = new List<string>();
                     DataTable tmo_monitor_devicebind = MemoryCacheHelper.GetCacheItem<DataTable>("tmo_monitor_devicebind",
-        () => MySQLHelper.QueryTable("select a.*,b.is_del from tmo_monitor_devicebind a left join tmo_userinfo b on a.dev_userid=b.user_id where b.is_del!=1"),
-        DateTime.Now.AddMinutes(30));
+                        () => MySQLHelper.QueryTable(
+                            "select a.*,b.is_del from tmo_monitor_devicebind a left join tmo_userinfo b on a.dev_userid=b.user_id where b.is_del!=1"),
+                        DateTime.Now.AddMinutes(30));
                     if (TmoShare.DataTableIsEmpty(tmo_monitor_devicebind)) return;
-                    DataTable dtstruct = MemoryCacheHelper.GetCacheItem<DataTable>("ts_tmo_monitor", () => MySQLHelper.QueryTableStruct("tmo_monitor").Tables[0], DateTime.Now.AddHours(24));
-                    DataTable tmo_monitor_received = Tmo_FakeEntityManager.Instance.GetData("tmo_monitor_received", null);
+                    DataTable dtstruct = MemoryCacheHelper.GetCacheItem<DataTable>("ts_tmo_monitor", () => MySQLHelper.QueryTableStruct("tmo_monitor").Tables[0],
+                        DateTime.Now.AddHours(24));
+                    DataTable tmo_monitor_received = Tmo_FakeEntityManager.Instance.GetData("tmo_monitor_received", null, $"input_time>='{DateTime.Now.AddDays(-30)}'" );
                     if (TmoShare.DataTableIsNotEmpty(tmo_monitor_received))
                         foreach (DataRow row in tmo_monitor_received.Rows)
                         {
                             string user_id = row.GetDataRowStringValue("user_id");
 
                             //int dev_type = row.GetDataRowIntValue("remark");
-                            DataRow[] drs = tmo_monitor_devicebind.Select(string.Format("dev_sn like '%{0}%'", user_id));
+                            DataRow[] drs = tmo_monitor_devicebind.Select($"dev_sn = '{user_id}'");
                             if (drs.Length == 0)
                             {
                                 if (Regex.IsMatch(user_id, @"^[\s|\S]"))
                                 {
                                     user_id = user_id.Substring(user_id.Length - 2, 2) + user_id.Remove(user_id.Length - 2);
-                                    drs = tmo_monitor_devicebind.Select(string.Format("dev_sn like '%{0}%'", user_id));
+                                    drs = tmo_monitor_devicebind.Select($"dev_sn = '{user_id}'");
                                 }
                             }
+
                             if (drs.Length > 0)
                             {
-                                user_id = drs[0].GetDataRowStringValue("dev_userid");   //找到绑定关系
+                                user_id = drs[0].GetDataRowStringValue("dev_userid"); //找到绑定关系
                                 Dictionary<string, string> colVals = new Dictionary<string, string>();
                                 colVals.Add("user_id", user_id);
 
                                 foreach (DataColumn dc in tmo_monitor_received.Columns)
                                 {
                                     string colname = dc.ColumnName;
-                                    if (colname.ToLower() == "id" || colname.ToLower() == "input_time") continue;  //跳过主键
-                                    if (colVals.ContainsKey(colname)) continue;     //已添加字段跳过
-                                    if (!dtstruct.Columns.Contains(colname)) continue;  //非monitor表中字段跳过
+                                    if (colname.ToLower() == "id" || colname.ToLower() == "input_time") continue; //跳过主键
+                                    if (colVals.ContainsKey(colname)) continue; //已添加字段跳过
+                                    if (!dtstruct.Columns.Contains(colname)) continue; //非monitor表中字段跳过
 
                                     colVals.Add(colname, row[dc].ToString());
                                 }
@@ -691,6 +737,7 @@ namespace TmoServer
                                     sbsql.Append(item.Key + ",");
                                     sbsqlval.AppendFormat("'{0}',", item.Value);
                                 }
+
                                 sbsql.Append("input_time)");
                                 sbsqlval.Append("SYSDATE())");
                                 sqlList.Add(sbsql.ToString() + sbsqlval.ToString());
@@ -710,7 +757,7 @@ namespace TmoServer
             }
             finally
             {
-                ((ManualResetEvent)((object[])state)[0]).Set();
+                ((ManualResetEvent) ((object[]) state)[0]).Set();
             }
         }
 

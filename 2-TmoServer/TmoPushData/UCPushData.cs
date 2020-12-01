@@ -162,11 +162,12 @@ namespace TmoPushData
             }
         }
 
+        //修改推送次数为3
+        private int trySendTimes = 3; // 5 * 60 * 1000 / scanInerval; //尝试推送5分钟
         private void SendItemData(object obj)
         {
             try
             {
-                int trySendTimes = 5 * 60 * 1000 / scanInerval; //尝试推送5分钟
                 DataRow dr = (DataRow)((object[])obj)[1];
                 string push_type = dr.GetDataRowStringValue("push_type");
                 string push_id = dr.GetDataRowStringValue("push_id");
@@ -184,7 +185,7 @@ namespace TmoPushData
                 if (string.IsNullOrWhiteSpace(push_type)) return;
                 PushType pushtype = (PushType)Enum.Parse(typeof(PushType), push_type);
                 string strTxt = string.Format("推送 {0} {1} ...", TmoShare.GetDescription(pushtype), push_address);
-                SendMessage(strTxt);
+                // SendMessage(strTxt);
 
                 string emailTitle = content_title;
                 string err_tip = "";    //发送失败提示
@@ -272,10 +273,10 @@ namespace TmoPushData
                         tmo_monitorManager.Instance.UpdateWXState(push_id, 4); //推送失败
                     else
                     {
-                        tmo_interveneManager.Instance.SetInterveneFailed(push_id, string.Format("失败:{1} 已尝试{0}次发送", pushcount, err_tip));
+                        tmo_interveneManager.Instance.SetInterveneFailed(push_id, string.Format("失败:{1} 重试{0}次", pushcount, err_tip));
                     }
-                    strTxt = pushcount + "次失败：" + rt_code + " " + err_tip;
-                    TmoShare.WriteLog(string.Format("{0}第{1}次发送失败!=>{2}", pushtype, pushcount, err_tip));
+                    strTxt +=$"失败：{rt_code} {err_tip} (重试{pushcount}次)";
+                    TmoShare.WriteLog($"{pushtype}第{pushcount}次发送失败!=>{rt_code} {err_tip}");
                 }
                 SendMessage(strTxt);
             }
