@@ -237,17 +237,17 @@ namespace TmoServiceServer
         public static object SaveQuestionnaires(object[] funParams)
         {
             if (funParams == null || funParams.Length < 1 || funParams[0] == null || string.IsNullOrWhiteSpace(funParams[0].ToString())) return false;
-            List<tmo_questionnaire_result> data = funParams[0] as List<tmo_questionnaire_result>;
+            var data = funParams[0] as JArray;
             if (data == null) return false;
-            return tmo_questionnaireManager.Instance.SaveQuestionnaires(data);
+            return tmo_questionnaireManager.Instance.SaveQuestionnaires(data.ToObject<List<tmo_questionnaire_result>>());
         }
 
         public static object SubmitQuestionnaires(object[] funParams)
         {
             if (funParams == null || funParams.Length < 1 || funParams[0] == null || string.IsNullOrWhiteSpace(funParams[0].ToString())) return null;
-            List<tmo_questionnaire_result> data = funParams[0] as List<tmo_questionnaire_result>;
+            var data = funParams[0] as JArray;
             if (data == null) return null;
-            return tmo_questionnaireManager.Instance.SubmitQuestionnaires(data);
+            return tmo_questionnaireManager.Instance.SubmitQuestionnaires(data.ToObject<List<tmo_questionnaire_result>>());
         }
 
         public static object GetQuestionnaires(object[] funParams)
@@ -1153,7 +1153,7 @@ namespace TmoServiceServer
         public static bool AddIntervene(object[] funParams)
         {
             if (funParams == null || funParams[0] == null) return false;
-            tmo_intervene model = (tmo_intervene)funParams[0];
+            tmo_intervene model = ((JObject)funParams[0]).ToObject<tmo_intervene>();
             return tmo_interveneManager.Instance.AddIntervene(model);
         }
         #endregion
@@ -1220,8 +1220,15 @@ namespace TmoServiceServer
             string userid = param[0].ToString();
             int usertimes = Convert.ToInt32(param[1].ToString());
             string content = param[2].ToString();
-            byte[] pdfbs = param[3] as byte[];
+            byte[] pdfbs = (param[3] as JObject)?.ToObject<byte[]>();
             return tmo_actionplanManager.Instance.SaveActionPlan(userid, usertimes, content, pdfbs);
+        }
+
+        public static Userinfo GetUserinfo(object[] param)
+        {
+            if (param == null || param.Length < 1 || param[0] == null)
+                throw new Exception("err_params");
+            return tmo_userinfoManager.Instance.GetUserInfoByID(param[0].ToString());
         }
     }
 }

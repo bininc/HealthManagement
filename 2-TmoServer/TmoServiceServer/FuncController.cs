@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Web.Http;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using TmoCommon;
 using TmoCommon.SocketLib;
 
@@ -32,7 +33,7 @@ namespace TmoServiceServer
             string checkData = param.CheckData;
             string checkKey = param.CheckKey;
             object[] funParams = param.FunParams;
-            
+
             //默认返回码 
             dynamic returnObj = "err_Unkonwn"; //未知错误
             try
@@ -102,14 +103,14 @@ namespace TmoServiceServer
                         returnObj = FunctionClass.GetRiskResult(funParams[0].ToString(), funParams[1].ToString());
                         break;
                     case funCode.InsertAttach:
-                        returnObj = FunctionClass.InsertAttach(funParams[0] as byte[], funParams[1].ToString(), funParams[2].ToString(),
+                        returnObj = FunctionClass.InsertAttach((funParams[0] as JObject)?.ToObject<byte[]>(), funParams[1].ToString(), funParams[2].ToString(),
                             funParams[3].ToString());
                         break;
                     case funCode.GetAttach:
                         returnObj = FunctionClass.GetAttach(funParams[0].ToString(), funParams[1].ToString(), funParams[2].ToString());
                         break;
                     case funCode.UpdateAttch:
-                        returnObj = FunctionClass.UpdateAttch(funParams[0].ToString(), funParams[1] as byte[], funParams[2].ToString());
+                        returnObj = FunctionClass.UpdateAttch(funParams[0].ToString(), (funParams[1] as JObject)?.ToObject<byte[]>(), funParams[2].ToString());
                         break;
                     case funCode.DelAttach:
                         returnObj = FunctionClass.DelAttach(funParams[0].ToString(), funParams[1].ToString());
@@ -681,6 +682,9 @@ namespace TmoServiceServer
                     case funCode.SaveActionPlan: //保存健康行动计划
                         returnObj = FunctionClass.SaveActionPlan(funParams);
                         break;
+                    case funCode.GetUserInfo:
+                        returnObj = FunctionClass.GetUserinfo(funParams);
+                        break;
                     default:
                         returnObj = "err_unKnowFuncode";
                         break;
@@ -700,6 +704,7 @@ namespace TmoServiceServer
         #endregion
 
         #region 方法
+
         private const string HttpContext = "MS_HttpContext";
         private const string RemoteEndpointMessage = "System.ServiceModel.Channels.RemoteEndpointMessageProperty";
         private const string OwinContext = "MS_OwinContext";
@@ -719,7 +724,7 @@ namespace TmoServiceServer
                     return ctx.Request.UserHostAddress;
                 }
             }
- 
+
             // Self-hosting. Needs reference to System.ServiceModel.dll. 
             if (Request.Properties.ContainsKey(RemoteEndpointMessage))
             {
@@ -729,7 +734,7 @@ namespace TmoServiceServer
                     return remoteEndpoint.Address;
                 }
             }
- 
+
             // Self-hosting using Owin. Needs reference to Microsoft.Owin.dll. 
             if (Request.Properties.ContainsKey(OwinContext))
             {
@@ -739,11 +744,10 @@ namespace TmoServiceServer
                     return owinContext.Request.RemoteIpAddress;
                 }
             }
- 
-            return null;
 
+            return null;
         }
-        
+
         /// <summary>
         /// 调用事件
         /// </summary>

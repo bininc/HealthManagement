@@ -26,9 +26,10 @@ namespace TmoGeneral
             ckBirthday.CheckedChanged += ckBirthday_CheckedChanged;
             ckInputTime.CheckedChanged += ckInputTime_CheckedChanged;
             btnQues.Click += btnQues_Click;
-            Columns = new[] { "tmo_userinfo.*", "tmo_docinfo.doc_name" };
+            Columns = new[] { "tmo_userinfo.*", "tmo_docinfo.doc_name" }; //TODO 明确列加速查询
             JoinConditions.Add(new JoinCondition { JoinType = EmJoinType.LeftJoin, Table = "tmo_docinfo", OnCol = "doc_id" });
             JoinConditions.Add(new JoinCondition { JoinType = EmJoinType.LeftJoin, Table = "tmo_monitor_devicebind", OnCol = "dev_userid", MainTable = "tmo_userinfo", MainCol = "user_id" });
+            
             OrderByConditons.Add(new OrderByCondition("tmo_userinfo.update_time", true));
             btnChangeDoc.Click += btnChangeDoc_Click;
             doc_id.Click += doc_id_Click;

@@ -205,7 +205,7 @@
             this.RibbonControlMain.Name = "RibbonControlMain";
             this.RibbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.funrpHealth,
-            this.funrpOld,
+            //this.funrpOld,
             this.funrpManage});
             this.RibbonControlMain.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.RibbonControlMain.ShowToolbarCustomizeItem = false;

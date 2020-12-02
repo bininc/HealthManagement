@@ -62,12 +62,12 @@ namespace TmoServer
         private void Init()
         {
             planFuncDic.Clear();
-            //planFuncDic.Add(ExecIntervene, null);
-            //planFuncDic.Add(CalAge, null);
-            //planFuncDic.Add(MoveMonitorReceived, null);
-            //planFuncDic.Add(BirthdayRemind, null);
+            planFuncDic.Add(ExecIntervene, null);
+            planFuncDic.Add(CalAge, null);
+            planFuncDic.Add(MoveMonitorReceived, null);
+            planFuncDic.Add(BirthdayRemind, null);
             planFuncDic.Add(MonitorSendWe, null);
-            //planFuncDic.Add(PushMessage, null);
+            planFuncDic.Add(PushMessage, null);
         }
 
         /// <summary>
@@ -491,7 +491,7 @@ namespace TmoServer
             {
                 var dtUser = Tmo_FakeEntityManager.Instance.GetData("tmo_monitor",
                     new[] {"user_id", "mt_code", "mt_valueint", "mt_time", "mt_valuefloat", "mt_isnormal", "id", "mt_timestamp"},
-                    "mt_code in (100,101,102,103) and we_send ='2' and mt_time>=date_add(NOW(), interval -7 day)");
+                    "mt_code in (100,101,102,103) and we_send ='2' and mt_time>=date_add(NOW(), interval -7 day)", null, null, null, false, 1000);
                 if (TmoShare.DataTableIsNotEmpty(dtUser))
                 {
                     List<string> skipIds = new List<string>();
@@ -697,7 +697,8 @@ namespace TmoServer
                     if (TmoShare.DataTableIsEmpty(tmo_monitor_devicebind)) return;
                     DataTable dtstruct = MemoryCacheHelper.GetCacheItem<DataTable>("ts_tmo_monitor", () => MySQLHelper.QueryTableStruct("tmo_monitor").Tables[0],
                         DateTime.Now.AddHours(24));
-                    DataTable tmo_monitor_received = Tmo_FakeEntityManager.Instance.GetData("tmo_monitor_received", null, $"input_time>='{DateTime.Now.AddDays(-30)}'" );
+                    DataTable tmo_monitor_received =
+                        Tmo_FakeEntityManager.Instance.GetData("tmo_monitor_received", null, $"input_time>='{DateTime.Now.AddDays(-30)}'");
                     if (TmoShare.DataTableIsNotEmpty(tmo_monitor_received))
                         foreach (DataRow row in tmo_monitor_received.Rows)
                         {

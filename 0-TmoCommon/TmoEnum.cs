@@ -310,8 +310,14 @@ namespace TmoCommon
 
         //保存健康行动计划
         SaveActionPlan,
-        
-        UnKnow
+        /// <summary>
+        /// 未知
+        /// </summary>
+        UnKnow,
+        /// <summary>
+        /// 获得用户信息
+        /// </summary>
+        GetUserInfo,
     }
 
     public class FuncMainParam

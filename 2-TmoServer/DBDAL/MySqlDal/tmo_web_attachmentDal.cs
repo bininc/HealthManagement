@@ -14,6 +14,8 @@ namespace DBDAL.MySqlDal
     {
         public bool insterAttch(byte[] array, string useId, string userITme, string exName)
         {
+            if (array == null) return false;
+            
             exName = ".pdf";
             //byte[] array = Convert.FromBase64String(cont);
             string atId = Guid.NewGuid().ToString().Replace("-", "");
@@ -92,6 +94,8 @@ namespace DBDAL.MySqlDal
 
         public bool UpdateAttch(string at_id, byte[] array, string ExName)
         {
+            if (array == null) return false;
+            
             ExName = ".pdf";
          //   byte[] array = Convert.FromBase64String(cont);
             ReturnPhoto(array, ExName, at_id);

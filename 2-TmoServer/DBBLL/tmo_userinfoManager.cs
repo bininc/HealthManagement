@@ -4,58 +4,72 @@ using System.Linq;
 using System.Text;
 using DBInterface;
 using System.Data;
+
 namespace DBBLL
 {
     public class tmo_userinfoManager : Itmo_userinfo
     {
         #region 单例模式
-        private static tmo_userinfoManager _instance = null;
-        public static tmo_userinfoManager Instance
+        public static tmo_userinfoManager Instance => InnerClass.instance;
+
+        class InnerClass
         {
-            get
+            static InnerClass()
             {
-                if (_instance == null)
-                    _instance = new tmo_userinfoManager();
-                return _instance;
             }
+
+            internal static tmo_userinfoManager instance = new tmo_userinfoManager();
         }
+
         #endregion
 
         #region 字段
+
         Itmo_userinfo dal = null;
+
         #endregion
 
         #region 构造函数
+
         public tmo_userinfoManager()
         {
             dal = BLLCommon.GetDALInstance<Itmo_userinfo>();
         }
+
         #endregion
+
         #region 获取人员基本信息
+
         public DataSet GetPersonData(DataTable dtQuery)
         {
             return dal.GetPersonData(dtQuery);
         }
+
         public DataSet GetGetNewPersonData(DataTable dtQuery)
         {
             return dal.GetGetNewPersonData(dtQuery);
         }
+
         public DataSet GetNewReportData(DataTable dtQuery)
         {
             return dal.GetNewReportData(dtQuery);
         }
+
         public bool RiskNewReport(string userid, string usertime)
         {
             return dal.RiskNewReport(userid, usertime);
         }
+
         #endregion
+
         #region 获取评估数据
+
         public DataSet GetRiskData(DataTable dtQuery)
         {
             return dal.GetRiskData(dtQuery);
         }
-        #endregion
 
+        #endregion
 
 
         public DataSet GetProjectDataPerson(DataTable dtQuery)
@@ -67,6 +81,7 @@ namespace DBBLL
         {
             return dal.GetProjectData(dtQuery);
         }
+
         public DataSet GetReportData(DataTable dtQuery)
         {
             return dal.GetReportData(dtQuery);
@@ -150,6 +165,7 @@ namespace DBBLL
         {
             return dal.GetdocInfo(id);
         }
+
         public string GetIds(string userid, string userTimes)
         {
             return dal.GetIds(userid, userTimes);
@@ -170,6 +186,7 @@ namespace DBBLL
         {
             return dal.GetUserInfo(user_id);
         }
+
         public DataSet IsBindFamily(string userId)
         {
             return dal.IsBindFamily(userId);

@@ -147,7 +147,7 @@ namespace TmoClient
             if (obj is bool && ((bool)obj))
             {
                 ConfigHelper.UpdateConfig("ServerIP", txtServerIP.Text, true);
-                ConfigHelper.UpdateConfig("RemotingPort", txtServerPort.Text, true);
+                ConfigHelper.UpdateConfig("ServerPort", txtServerPort.Text, true);
                 TmoServiceClient.RefreshIpPort();
                 TCPClient.Instance.ClostSocket();
                 TCPClient._ip = TmoServiceClient.Ip;
@@ -159,7 +159,7 @@ namespace TmoClient
                 DXMessageBox.btnOKClick += (object sender0, EventArgs e0) =>
                 {
                     ConfigHelper.UpdateConfig("ServerIP", txtServerIP.Text, true);
-                    ConfigHelper.UpdateConfig("RemotingPort", txtServerPort.Text, true);
+                    ConfigHelper.UpdateConfig("ServerPort", txtServerPort.Text, true);
                     TmoServiceClient.RefreshIpPort();
                     TCPClient.Instance.ClostSocket();
                     TCPClient._ip = TmoServiceClient.Ip;

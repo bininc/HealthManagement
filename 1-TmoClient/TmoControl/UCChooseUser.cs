@@ -24,11 +24,11 @@ namespace TmoControl
         /// </summary>
         public bool SingleMode
         {
-            get { return (bool)lblSelectedMode.Tag; }
+            get { return (bool) lblSelectedMode.Tag; }
             set
             {
                 lblSelectedMode.Text = value ? "单选模式" : "多选模式";
-                btnAllToSelected.Enabled = !value;  //单选模式 全部选择按钮禁止点击
+                btnAllToSelected.Enabled = !value; //单选模式 全部选择按钮禁止点击
                 lblSelectedMode.Tag = value;
             }
         }
@@ -38,6 +38,7 @@ namespace TmoControl
             Title = "请选择用户";
             InitializeComponent();
             Init("tmo_userinfo", "user_id");
+            Columns = new[] {"user_id", "name"}; 
             btnSelcet.Click += btnSelcet_Click;
             ChooseMode = true;
             _GridControl = gridControlUnSelected;
@@ -58,10 +59,11 @@ namespace TmoControl
 
         protected override void BeforeGetData()
         {
-            FixWhere = string.Format("(tmo_userinfo.doc_id in ({0}) or tmo_userinfo.doc_id is null)", TmoComm.login_docInfo.children_docid);
+            FixWhere = $"(tmo_userinfo.doc_id in ({TmoComm.login_docInfo.children_docid}) or tmo_userinfo.doc_id is null)";
         }
 
         UCChooseDoc cd = null;
+
         void doc_id_Click(object sender, EventArgs e)
         {
             if (cd != null) return;
@@ -84,6 +86,7 @@ namespace TmoControl
                 else
                     doc_id.Text = "所有健康师";
             }
+
             cd.Dispose();
             cd = null;
         }
@@ -113,6 +116,7 @@ namespace TmoControl
         }
 
         #region 选择用户
+
         void btnAllToSelected_Click(object sender, EventArgs e)
         {
             DataTable source = gridControlUnSelected.DataSource as DataTable;
@@ -179,12 +183,17 @@ namespace TmoControl
         void AddUserToSelected(Userinfo user)
         {
             if (user != null && SelectedUsers.All(x => x.user_id != user.user_id))
+            {
+                user = TmoServiceClient.InvokeServerMethodT<Userinfo>(funCode.GetUserInfo, user.user_id);
                 SelectedUsers.Add(user);
+            }
             gridControlSelected.RefreshDataSource();
         }
+
         #endregion
 
         #region 取消选择用户
+
         void btnAllToUnSelected_Click(object sender, EventArgs e)
         {
             SelectedUsers.Clear();
@@ -196,7 +205,6 @@ namespace TmoControl
             int[] selectedRows = this.gridView2.GetSelectedRows();
             if (selectedRows.Length < 1)
             {
-
             }
             else
             {
@@ -221,6 +229,7 @@ namespace TmoControl
             SelectedUsers.Remove(user);
             gridControlSelected.RefreshDataSource();
         }
+
         #endregion
 
         protected override void OnAddClick(EventArgs e)
