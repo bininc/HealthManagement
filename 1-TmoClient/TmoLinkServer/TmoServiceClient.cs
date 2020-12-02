@@ -126,6 +126,8 @@ namespace TmoLinkServer
             try
             {
                 string result = InvokeServerMethod(ip, port, funCode, funParams);
+                if (result != null && result.StartsWith("err_"))
+                    throw new Exception(result);
                 if (typeof(T) == typeof(DataSet))
                 {
                     if (!string.IsNullOrWhiteSpace(result))
