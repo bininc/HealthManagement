@@ -76,6 +76,8 @@ namespace tmoProject
             nurtype.Properties.Items.Add(item4);
             nurtype.SelectedIndex = 0;
             _mtValuetype = mtValuetype;
+            endDate.EditValue = DateTime.Now;
+            startTime.EditValue = DateTime.Now.AddYears(-1);
             GetData();
         }
         public void GetData()
@@ -174,7 +176,7 @@ namespace tmoProject
                         _seriesold = (Series)chartControl1.Series[0].Clone();
                     }
                     _seriesold.Points.Clear();
-                    var series = (Series)chartControl1.Series[0].Clone();
+                    var series = (Series)_seriesold.Clone();
                     series.Points.Clear();
                     series.Name = @"舒张压";
                     Series series2 = _seriesold;

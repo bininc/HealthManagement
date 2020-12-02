@@ -26,17 +26,30 @@ namespace TmoGeneral
             ckBirthday.CheckedChanged += ckBirthday_CheckedChanged;
             ckInputTime.CheckedChanged += ckInputTime_CheckedChanged;
             btnQues.Click += btnQues_Click;
-            Columns = new[] { "tmo_userinfo.*", "tmo_docinfo.doc_name" }; //TODO 明确列加速查询
-            JoinConditions.Add(new JoinCondition { JoinType = EmJoinType.LeftJoin, Table = "tmo_docinfo", OnCol = "doc_id" });
-            JoinConditions.Add(new JoinCondition { JoinType = EmJoinType.LeftJoin, Table = "tmo_monitor_devicebind", OnCol = "dev_userid", MainTable = "tmo_userinfo", MainCol = "user_id" });
-            
+            Columns = new[]
+            {
+                "tmo_userinfo.vip_type",
+                "tmo_userinfo.name",
+                "tmo_userinfo.user_id",
+                "tmo_userinfo.gender",
+                "tmo_userinfo.age",
+                "tmo_userinfo.identity",
+                "tmo_userinfo.birthday",
+                "tmo_userinfo.address",
+                "tmo_userinfo.phone",
+                "tmo_userinfo.tel",
+                "tmo_userinfo.retire",
+                "tmo_userinfo.source",
+                "tmo_userinfo.input_time",
+                "tmo_userinfo.doc_id",
+                "tmo_docinfo.doc_name"
+            }; //TODO 明确列加速查询
             OrderByConditons.Add(new OrderByCondition("tmo_userinfo.update_time", true));
             btnChangeDoc.Click += btnChangeDoc_Click;
             doc_id.Click += doc_id_Click;
             btnDevBind.Click += btnDevBind_Click;
             btnPHR.Click += btnPHR_Click;
         }
-
 
 
         void btnPHR_Click(object sender, EventArgs e)
@@ -75,6 +88,7 @@ namespace TmoGeneral
         }
 
         UCChooseDoc cd = null;
+
         void doc_id_Click(object sender, EventArgs e)
         {
             if (cd != null) return;
@@ -97,13 +111,33 @@ namespace TmoGeneral
                 else
                     doc_id.Text = "所有健康师";
             }
+
             cd.Dispose();
             cd = null;
         }
 
         protected override void BeforeGetData()
         {
-            FixWhere = string.Format("(tmo_userinfo.doc_id in ({0}) or tmo_userinfo.doc_id is null)", TmoComm.login_docInfo.children_docid);
+            JoinConditions.Clear();
+            JoinConditions.Add(new JoinCondition {JoinType = EmJoinType.LeftJoin, Table = "tmo_docinfo", OnCol = "doc_id"});
+            if (bindDev.EditValue != null)
+            {
+                JoinConditions.Add(new JoinCondition
+                {
+                    JoinType = EmJoinType.RightJoin,
+                    Table = $"(select dev_userid from tmo_monitor_devicebind where dev_type={bindDev.EditValue} GROUP BY dev_userid)",
+                    TableAsName = "b", OnCol = "dev_userid", MainTable = "tmo_userinfo", MainCol = "user_id"
+                });
+            }
+            else
+            {
+                JoinConditions.Add(new JoinCondition
+                {
+                    JoinType = EmJoinType.LeftJoin, Table = "(select dev_userid from tmo_monitor_devicebind GROUP BY dev_userid)", TableAsName = "b",
+                    OnCol = "dev_userid", MainTable = "tmo_userinfo", MainCol = "user_id"
+                });
+            }
+            FixWhere = $"(tmo_userinfo.doc_id in ({TmoComm.login_docInfo.children_docid}) or tmo_userinfo.doc_id is null)";
         }
 
         void btnChangeDoc_Click(object sender, EventArgs e)
@@ -146,9 +180,10 @@ namespace TmoGeneral
                 foreach (Control ctl in ctls)
                 {
                     if (ctl is DevExpress.XtraEditors.BaseEdit)
-                        ((DevExpress.XtraEditors.BaseEdit)ctl).EditValue = null;
+                        ((DevExpress.XtraEditors.BaseEdit) ctl).EditValue = null;
                 }
             }
+
             ckBirthday.Checked = ckInputTime.Checked = false;
             bindDev.EditValue = null;
         }
@@ -168,12 +203,7 @@ namespace TmoGeneral
             PageIndex = 1;
             var dicWhere = GetControlData();
             StringBuilder sbWhere = new StringBuilder();
-
-            if (bindDev.EditValue != null)
-            {
-                sbWhere.AppendFormat(" tmo_monitor_devicebind.dev_type={0} and ", bindDev.EditValue);
-            }
-
+            
             if (ckBirthday.Checked)
                 sbWhere.AppendFormat(" tmo_userinfo.birthday between '{0}' and '{1}' and ", dteBirthdayBegin.DateTime, dteBirthdayEnd.DateTime);
             if (ckInputTime.Checked)
@@ -213,45 +243,46 @@ namespace TmoGeneral
         protected override void OnFirstLoad()
         {
             #region GridControl中特殊字段绑定
+
             //读取民族数据
-            DataTable dicNation = MemoryCacheHelper.GetCacheItem<DataTable>("nationality", () =>
-                {
-                    return Tmo_FakeEntityClient.Instance.GetData("tmo_nationality", new[] { "code", "name" });
-                }, DateTime.Now.AddHours(24)); //由于民族数据基本不变 24小时过期
+            DataTable dicNation = MemoryCacheHelper.GetCacheItem<DataTable>("nationality",
+                () => { return Tmo_FakeEntityClient.Instance.GetData("tmo_nationality", new[] {"code", "name"}); },
+                DateTime.Now.AddHours(24)); //由于民族数据基本不变 24小时过期
             TSCommon.BindRepositoryImageComboBox(rp_nation, dicNation, "name", "code");
             //绑定职业类型
-            DataTable dicOccupation = MemoryCacheHelper.GetCacheItem<DataTable>("occupation", () =>
-                {
-                    return Tmo_FakeEntityClient.Instance.GetData("tmo_occupation");
-                }, DateTime.Now.AddHours(24));
+            DataTable dicOccupation = MemoryCacheHelper.GetCacheItem<DataTable>("occupation",
+                () => { return Tmo_FakeEntityClient.Instance.GetData("tmo_occupation"); }, DateTime.Now.AddHours(24));
             TSCommon.BindRepositoryImageComboBox(rp_occupagtion, dicOccupation, "name", "code");
             //绑定文化程度
-            DataTable dicEducation = MemoryCacheHelper.GetCacheItem<DataTable>("education", () =>
-                {
-                    return Tmo_FakeEntityClient.Instance.GetData("tmo_education");
-                }, DateTime.Now.AddHours(24));
+            DataTable dicEducation = MemoryCacheHelper.GetCacheItem<DataTable>("education",
+                () => { return Tmo_FakeEntityClient.Instance.GetData("tmo_education"); }, DateTime.Now.AddHours(24));
             TSCommon.BindRepositoryImageComboBox(rp_education, dicEducation, "name", "code");
             //绑定婚姻状况
-            DataTable dicMarital = MemoryCacheHelper.GetCacheItem<DataTable>("marital", () =>
-            {
-                return Tmo_FakeEntityClient.Instance.GetData("tmo_marital");
-            }, DateTime.Now.AddHours(24));
+            DataTable dicMarital = MemoryCacheHelper.GetCacheItem<DataTable>("marital", () => { return Tmo_FakeEntityClient.Instance.GetData("tmo_marital"); },
+                DateTime.Now.AddHours(24));
             TSCommon.BindRepositoryImageComboBox(rp_marital, dicMarital, "name", "code");
+
             #endregion
 
             #region 查询条件绑定
+
             //绑定省数据
-            DataTable dicProvincecode = MemoryCacheHelper.GetCacheItem<DataTable>("provincecode", () => Tmo_FakeEntityClient.Instance.GetData("tmo_provincecode"), DateTime.Now.AddHours(24));
+            DataTable dicProvincecode = MemoryCacheHelper.GetCacheItem<DataTable>("provincecode",
+                () => Tmo_FakeEntityClient.Instance.GetData("tmo_provincecode"), DateTime.Now.AddHours(24));
             province_id.SelectedValueChanged += (object sender0, EventArgs e0) =>
-            {//绑定市数据
+            {
+                //绑定市数据
                 city_id.Enabled = province_id.EditValue != null;
-                DataTable dicCitycode = MemoryCacheHelper.GetCacheItem<DataTable>("citycode", () => Tmo_FakeEntityClient.Instance.GetData("tmo_citycode"), DateTime.Now.AddHours(24));
+                DataTable dicCitycode = MemoryCacheHelper.GetCacheItem<DataTable>("citycode", () => Tmo_FakeEntityClient.Instance.GetData("tmo_citycode"),
+                    DateTime.Now.AddHours(24));
                 TSCommon.BindImageComboBox(city_id, dicCitycode, "province_id='" + province_id.EditValue + "'", "city_name", "city_id", true);
             };
             city_id.SelectedValueChanged += (object sender0, EventArgs e0) =>
-            {//绑定区数据
+            {
+                //绑定区数据
                 eare_id.Enabled = city_id.EditValue != null;
-                DataTable dicAreacode = MemoryCacheHelper.GetCacheItem<DataTable>("areacode", () => Tmo_FakeEntityClient.Instance.GetData("tmo_areacode"), DateTime.Now.AddHours(24));
+                DataTable dicAreacode = MemoryCacheHelper.GetCacheItem<DataTable>("areacode", () => Tmo_FakeEntityClient.Instance.GetData("tmo_areacode"),
+                    DateTime.Now.AddHours(24));
                 TSCommon.BindImageComboBox(eare_id, dicAreacode, "city_id='" + city_id.EditValue + "'", "area_name", "area_id", true);
             };
             TSCommon.BindImageComboBox(province_id, dicProvincecode, null, "province_name", "province_id", true);
@@ -262,13 +293,16 @@ namespace TmoGeneral
             dteInputTimeEnd.DateTime = TmoShare.TodayEnd;
             ckInputTime_CheckedChanged(null, null);
             ckBirthday_CheckedChanged(null, null);
+
             #endregion
 
-            DataTable dicDpt = Tmo_FakeEntityClient.Instance.GetData("tmo_department", new[] { "dpt_id", "dpt_name", "dpt_parent" }, "dpt_id in (" + TmoComm.login_docInfo.children_department + ")");
+            DataTable dicDpt = Tmo_FakeEntityClient.Instance.GetData("tmo_department", new[] {"dpt_id", "dpt_name", "dpt_parent"},
+                "dpt_id in (" + TmoComm.login_docInfo.children_department + ")");
             selCheck.InitData(dpt_id, dicDpt, "dpt_id", "dpt_parent", "dpt_name", true);
 
             base.OnFirstLoad();
         }
+
         void btnQues_Click(object sender, EventArgs e)
         {
             int[] rowHandles = this.gridViewMain.GetSelectedRows();
@@ -289,13 +323,14 @@ namespace TmoGeneral
                 //frmda.ShowDialog(identity, 1);
             }
         }
+
         /// <summary>
         /// 添加用户事件
         /// </summary>
         /// <param name="e"></param>
         protected override void OnAddClick(EventArgs e)
         {
-            UCUserEditor useredit = new UCUserEditor { DbOperaType = DBOperateType.Add, Title = "新建个人用户" };
+            UCUserEditor useredit = new UCUserEditor {DbOperaType = DBOperateType.Add, Title = "新建个人用户"};
             DialogResult dr = useredit.ShowDialog();
             if (dr == DialogResult.OK)
             {
@@ -316,7 +351,7 @@ namespace TmoGeneral
         protected override void OnEditClick(DataRow selectedRow)
         {
             string pkVal = selectedRow[PrimaryKey].ToString();
-            UCUserEditor useredit = new UCUserEditor { DbOperaType = DBOperateType.Update, PrimaryKeyValue = pkVal, Title = "修改用户信息" };
+            UCUserEditor useredit = new UCUserEditor {DbOperaType = DBOperateType.Update, PrimaryKeyValue = pkVal, Title = "修改用户信息"};
             DialogResult dr = useredit.ShowDialog();
             if (dr == DialogResult.OK)
             {
@@ -350,15 +385,15 @@ namespace TmoGeneral
             if (e.Column.Name == "gc_user_id")
             {
                 string pkVal = dr[PrimaryKey].ToString();
-                UCUserEditor useredit = new UCUserEditor { DbOperaType = DBOperateType.View, PrimaryKeyValue = pkVal, Title = "查看用户信息" };
+                UCUserEditor useredit = new UCUserEditor {DbOperaType = DBOperateType.View, PrimaryKeyValue = pkVal, Title = "查看用户信息"};
                 useredit.ShowDialog();
             }
             else if (e.Column.Name == "gc_name")
-            {//PHR
+            {
+                //PHR
                 if (ShowPHR != null)
                     ShowPHR(this, ModelConvertHelper<Userinfo>.ConvertToOneModel(dr));
             }
         }
-
     }
 }

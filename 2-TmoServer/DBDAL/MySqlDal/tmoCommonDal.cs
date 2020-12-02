@@ -12,8 +12,8 @@ namespace DBDAL.MySqlDal
     public class tmoCommonDal
     {
        /// <summary>
-        /// ¹¦ÄÜËµÃ÷£º×Ô¶¯Éú³ÉSqlÓï¾ä  update 1 Îª Insert 2 Îª Update
-        /// ¿ª·¢ÈËÔ±£ºldd
+        /// åŠŸèƒ½è¯´æ˜ï¼šè‡ªåŠ¨ç”ŸæˆSqlè¯­å¥  update 1 ä¸º Insert 2 ä¸º Update
+        /// å¼€å‘äººå‘˜ï¼šldd
         /// </summary>
         public static string GetFormatSql(string tableName, DataRow drSave, string primaryKey, string primaryKey2, string primaryKey3, string message, MySqlParameter[] parameters)
         {
@@ -36,7 +36,7 @@ namespace DBDAL.MySqlDal
                 { update = 1; }
                 else
                 {
-                    #region ÅĞ¶Ï±£´æ×´Ì¬
+                    #region åˆ¤æ–­ä¿å­˜çŠ¶æ€
                     MySqlParameter[] param = null;
 
                     if (primaryKey != string.Empty && primaryKey2 != string.Empty && primaryKey3 != string.Empty)
@@ -347,7 +347,7 @@ namespace DBDAL.MySqlDal
             return MySQLHelper.Query(strSQL).Tables[0];
         }
         /// <summary>
-        /// »ñÈ¡±ê×¼»¯µÄÌá½»ÊµÌå¼¯
+        /// è·å–æ ‡å‡†åŒ–çš„æäº¤å®ä½“é›†
         /// </summary>
         /// <param name="tableName"></param>
         /// <param name="dsSubmit"></param>
@@ -380,14 +380,14 @@ namespace DBDAL.MySqlDal
             return dt;
         }
         /// <summary>
-        /// »ñÈ¡·ÖÒ³Êı¾İ
+        /// è·å–åˆ†é¡µæ•°æ®
         /// ldd  
         /// </summary>
-        /// <param name="sbColumns">²éÑ¯ËùÓĞÁĞÃû¡¡°üº¬select Èç£ºselect a,b,c from </param>
-        /// <param name="sbBody">²éÑ¯Ìõ¼şºÍËùÓĞ¹ØÁª±í table A inner join table B where  ...</param>
-        /// <param name="groupStr">·Ö×éºÍÅÅĞò×Ö·û´® group by... order by...</param>
-        /// <param name="PageSize">Ã¿Ò³ÏÔÊ¾¶àÉÙÌõÊı¾İ£¬Èç¹ûÎª-1Ôò²»·ÖÒ³²éÑ¯ËùÓĞÊı¾İ¡¡</param>
-        /// <param name="NowPage">µ±Ç°µÚ¼¸Ò³</param>
+        /// <param name="sbColumns">æŸ¥è¯¢æ‰€æœ‰åˆ—åã€€åŒ…å«select å¦‚ï¼šselect a,b,c from </param>
+        /// <param name="sbBody">æŸ¥è¯¢æ¡ä»¶å’Œæ‰€æœ‰å…³è”è¡¨ table A inner join table B where  ...</param>
+        /// <param name="groupStr">åˆ†ç»„å’Œæ’åºå­—ç¬¦ä¸² group by... order by...</param>
+        /// <param name="PageSize">æ¯é¡µæ˜¾ç¤ºå¤šå°‘æ¡æ•°æ®ï¼Œå¦‚æœä¸º-1åˆ™ä¸åˆ†é¡µæŸ¥è¯¢æ‰€æœ‰æ•°æ®ã€€</param>
+        /// <param name="NowPage">å½“å‰ç¬¬å‡ é¡µ</param>
         /// <returns></returns>
         public static DataSet GetPagingData(StringBuilder sbColumns, StringBuilder sbBody, string groupStr, int PageSize, int NowPage, out string err_tip)
         {
@@ -410,7 +410,7 @@ namespace DBDAL.MySqlDal
 
                 string sql = sbBody.ToString() + "" + groupStr;
            
-                if (PageSize != -1)//Èç¹ûÎª-1Ôò²»·ÖÒ³²éÑ¯ËùÓĞÊı¾İ
+                if (PageSize != -1)//å¦‚æœä¸º-1åˆ™ä¸åˆ†é¡µæŸ¥è¯¢æ‰€æœ‰æ•°æ®
                 {
                     if (NowPage >= 1)
                     {
@@ -470,8 +470,8 @@ namespace DBDAL.MySqlDal
                 return obj;
         }
         /// <summary>
-        /// Î´µÃµ½µÄDataTableÌí¼ÓÍ¼Æ¬
-        /// Àî¶¬¶¬
+        /// æœªå¾—åˆ°çš„DataTableæ·»åŠ å›¾ç‰‡
+        /// æå†¬å†¬
         /// </summary>
         public static void AddImgToTable(DataRow dr, string path, string columnPathName, string columnName)
         {
