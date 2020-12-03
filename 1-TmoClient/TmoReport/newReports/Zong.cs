@@ -255,25 +255,25 @@ namespace TmoReport
                     }//805E2FAC0F3B442DBBBFAFB4BF61F427
                     if (p_id == "805E2FAC0F3B442DBBBFAFB4BF61F427")
                     {
-                        if (TmoShare.GetValueFromJson<float>(row["qr_result"].ToString()) == 0)
+                        if (TmoShare.GetValueFromJson<float>(row["qr_result"].ToString(),false) == 0)
                             continue;
                         niaodan.Text = TmoShare.GetValueFromJson<float>(row["qr_result"].ToString()).ToString();
                     }
                     if (p_id == "4CD308E584744A36BC499CECCADAEB18")
                     {
-                        if (TmoShare.GetValueFromJson<float>(row["qr_result"].ToString()) == 0)
+                        if (TmoShare.GetValueFromJson<float>(row["qr_result"].ToString(),false) == 0)
                             continue;
                         niaobai.Text = TmoShare.GetValueFromJson<float>(row["qr_result"].ToString()).ToString();
                     }
                     if (p_id == "6501E7A0165648A6BD9409430028ADEB")
                     {
-                        if (TmoShare.GetValueFromJson<float>(row["qr_result"].ToString()) == 0)
+                        if (TmoShare.GetValueFromJson<float>(row["qr_result"].ToString(),false) == 0)
                             continue;
                         tongxing.Text = TmoShare.GetValueFromJson<float>(row["qr_result"].ToString()).ToString();
                     }
                     if (p_id == "C1443DA657174BC696008614A6659A99")
                     {
-                        if (TmoShare.GetValueFromJson<float>(row["qr_result"].ToString()) == 0)
+                        if (TmoShare.GetValueFromJson<float>(row["qr_result"].ToString(),false) == 0)
                             continue;
                         xuehong.Text = TmoShare.GetValueFromJson<float>(row["qr_result"].ToString()).ToString();
                     }

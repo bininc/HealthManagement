@@ -256,9 +256,9 @@ namespace TmoServiceServer
                 string.IsNullOrWhiteSpace(funParams[0].ToString()) || string.IsNullOrWhiteSpace(funParams[1].ToString()) || string.IsNullOrWhiteSpace(funParams[1].ToString())) return null;
             string userid = funParams[0].ToString();
             int usertimes = Convert.ToInt32(funParams[1]);
-            string[] ids = funParams[2] as string[];
+            var ids = funParams[2] as JArray;
             if (ids == null) return null;
-            return tmo_questionnaireManager.Instance.GetQuestionnaires(userid, usertimes, ids);
+            return tmo_questionnaireManager.Instance.GetQuestionnaires(userid, usertimes, ids.ToObject<string[]>());
         }
 
         public static object DeleteQuestionnaires(object[] funParams)
@@ -1220,7 +1220,23 @@ namespace TmoServiceServer
             string userid = param[0].ToString();
             int usertimes = Convert.ToInt32(param[1].ToString());
             string content = param[2].ToString();
-            byte[] pdfbs = (param[3] as JObject)?.ToObject<byte[]>();
+            byte[] pdfbs = null;
+            if (param[3] != null)
+            {
+                if (param[3] is string)
+                {
+                    pdfbs = Convert.FromBase64String(param[3].ToString());
+                }
+                else if (param[3] is JArray)
+                {
+                   pdfbs = ((JArray)param[3]).ToObject<byte[]>();
+                }
+                else if (param[3] is JObject)
+                {
+                    pdfbs = ((JObject)param[3]).ToObject<byte[]>();
+                }
+            }
+
             return tmo_actionplanManager.Instance.SaveActionPlan(userid, usertimes, content, pdfbs);
         }
 

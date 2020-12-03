@@ -120,6 +120,7 @@ namespace TmoServiceServer
                 config.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
                 config.Formatters.JsonFormatter.MediaTypeMappings.Add(new QueryStringMapping("datatype", "json", "application/json"));
                 config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new DefaultContractResolver() {IgnoreSerializableAttribute = true};
+                config.MaxReceivedMessageSize = 20480000;
 
                 _serviceHost = new HttpSelfHostServer(config);
                 _serviceHost.OpenAsync().Wait();

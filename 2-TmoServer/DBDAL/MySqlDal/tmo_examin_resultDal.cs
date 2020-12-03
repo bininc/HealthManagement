@@ -223,7 +223,7 @@ namespace DBDAL.MySqlDal
                                 dr["qr_result"] = "";
                         }
                         else
-                            dr["qr_result"] = TmoShare.GetValueFromJson<float>(qrres);
+                            dr["qr_result"] = TmoShare.GetValueFromJson<float>(qrres,false);
                  
                   
                 }

@@ -17,6 +17,7 @@ namespace DBDAL.MySqlDal
     public class tmo_questionnaireDal : Itmo_questionnaire
     {
         #region 旧问卷相关
+
         public bool AddQuestionnaire(DataSet ds)
         {
             int num = -1;
@@ -29,10 +30,13 @@ namespace DBDAL.MySqlDal
                 int usertimes = 0;
 
                 #region 个人基本信息
+
                 DataRow userdr = ds.Tables["tmo_userinfo"].Rows[0];
                 DateTime birthday = Convert.ToDateTime(userdr["birthday"].ToString());
                 int age = TmoCommon.TmoShare.CalAge(birthday, System.DateTime.Now);
+
                 #region 用户是否存在
+
                 string strsql = "select identity,user_times from tmo_userinfo where identity='" + userdr["identity"] + "'";
                 DataSet identityds = MySQLHelper.Query(strsql);
                 //是否有问卷
@@ -44,7 +48,9 @@ namespace DBDAL.MySqlDal
                         usertimes = Convert.ToInt16(identityds.Tables[0].Rows[0]["user_times"].ToString());
                     }
                 }
+
                 #endregion
+
                 if (identityds.Tables[0].Rows.Count > 0)
                 {
                     strSQL.Append("update tmo_userinfo set ");
@@ -89,8 +95,11 @@ namespace DBDAL.MySqlDal
                 }
 
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
+
                 #region 个人与家庭病史
+
                 DataRow sickdr = ds.Tables["tmo_sicken_history"].Rows[0];
                 strSQL.Append("insert into tmo_sicken_history(");
                 strSQL.Append(@"user_id,user_times,questionnaire_id,eh_self,chd_self,cvd_self,nti_self,hbl_self,
@@ -189,9 +198,11 @@ gastric_ulcer,colorectal,heart_disease,myocardial,menses_age,abnormal,menopause,
 
                 SQLList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 #region 现有症状
+
                 DataRow persondr = ds.Tables["tmo_personnal_symptom"].Rows[0];
 
                 strSQL.Append("insert into tmo_personnal_symptom(");
@@ -278,13 +289,15 @@ hemp_hot,astriction,perspire,uroclepsia,palpitation,postural,infarction,chest_di
                 strSQL.Append(persondr["dhf"].ToString() + "','");
                 strSQL.Append(input_time + "','");
                 strSQL.Append(persondr["pageindex"].ToString() + "','");
-                strSQL.Append(persondr["isrisk"].ToString() + "');");//1等待评估  3问卷暂存
+                strSQL.Append(persondr["isrisk"].ToString() + "');"); //1等待评估  3问卷暂存
 
                 SQLList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 #region 饮食习惯
+
                 DataRow eattr = ds.Tables["tmo_eating_habits"].Rows[0];
                 strSQL.Append("insert into tmo_eating_habits(");
                 strSQL.Append(@"user_id,user_times,questionnaire_id,breakfast,frumentum_food,vegetable_weight,
@@ -313,9 +326,11 @@ fruit_weight,beans,oil,milk_rise,salt,spirits,livestockt_weight,aquatic_weight,e
 
                 SQLList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
-                #region  运动习惯
+                #region 运动习惯
+
                 DataRow exetr = ds.Tables["tmo_exercise_habit"].Rows[0];
 
                 strSQL.Append("insert into tmo_exercise_habit(");
@@ -344,9 +359,11 @@ exercise_intensity,breakfast_before,breakfast_after,lunch_after,dinner_after,lun
 
                 SQLList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
-                #region  起居习惯
+                #region 起居习惯
+
                 DataRow livetr = ds.Tables["tmo_living_habit"].Rows[0];
 
                 strSQL.Append("insert into tmo_living_habit(");
@@ -371,13 +388,16 @@ sleep_habit,drinking_habit,drinking_per,drinking_more,drinking_sleep,smoke,input
 
                 SQLList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 #region 用药历史
+
                 DataRow phartr = ds.Tables["tmo_pharmacy_history"].Rows[0];
 
                 strSQL.Append("insert into tmo_pharmacy_history(");
-                strSQL.Append(@"user_id,user_times,questionnaire_id,hypotensor,fibrate,antidiabetic,elsehope1,elsehope2,elsefibrate1,elsefibrate2,elseantid1,elseantid2,input_time)");
+                strSQL.Append(
+                    @"user_id,user_times,questionnaire_id,hypotensor,fibrate,antidiabetic,elsehope1,elsehope2,elsefibrate1,elsefibrate2,elseantid1,elseantid2,input_time)");
                 strSQL.Append("values ('");
                 strSQL.Append(userdr["user_id"].ToString() + "','");
                 strSQL.Append(times.ToString() + "','");
@@ -395,9 +415,11 @@ sleep_habit,drinking_habit,drinking_per,drinking_more,drinking_sleep,smoke,input
 
                 SQLList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
-                #region  健康指标
+                #region 健康指标
+
                 DataRow healthtr = ds.Tables["tmo_health_indicator"].Rows[0];
                 strSQL.Append("insert into tmo_health_indicator(");
                 strSQL.Append(@"user_id,user_times,questionnaire_id,height,weight,waistline,fbg,pbg,dbp,sbp,hdl,
@@ -460,6 +482,7 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
 
                 SQLList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 num = MySQLHelper.ExecuteSqlTran(SQLList);
@@ -471,6 +494,7 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
 
             return num == 8 ? true : false;
         }
+
         public bool UpdateQuestionnaire(DataSet ds)
         {
             int num = -1;
@@ -480,6 +504,7 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
             try
             {
                 #region 个人基本信息
+
                 DataRow userdr = ds.Tables["tmo_userinfo"].Rows[0];
                 int usertimes = Convert.ToInt16(userdr["user_times"].ToString()) + 1;
                 DateTime birthday = Convert.ToDateTime(userdr["birthday"].ToString());
@@ -515,9 +540,11 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
                 //strSQL.Append("where user_id='" + userdr["identity"].ToString() + "' and user_times=" + usertimesUser + ";");
                 //SQLList.Add(strSQL.ToString());
                 //strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 #region 个人与家庭病史
+
                 DataRow sickdr = ds.Tables["tmo_sicken_history"].Rows[0];
 
                 strSQL.Append("update tmo_sicken_history set ");
@@ -605,9 +632,11 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
 
                 SQLList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 #region 现有症状
+
                 DataRow persondr = ds.Tables["tmo_personnal_symptom"].Rows[0];
 
                 strSQL.Append("update tmo_personnal_symptom set ");
@@ -687,9 +716,11 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
 
                 SQLList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 #region 饮食习惯
+
                 DataRow eattr = ds.Tables["tmo_eating_habits"].Rows[0];
 
                 strSQL.Append("update tmo_eating_habits set ");
@@ -714,9 +745,11 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
 
                 SQLList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 #region 运动习惯
+
                 DataRow exetr = ds.Tables["tmo_exercise_habit"].Rows[0];
 
                 strSQL.Append("update tmo_exercise_habit set ");
@@ -740,9 +773,11 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
 
                 SQLList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 #region 起居习惯
+
                 DataRow livetr = ds.Tables["tmo_living_habit"].Rows[0];
 
                 strSQL.Append("update tmo_living_habit set ");
@@ -762,9 +797,11 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
 
                 SQLList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 #region 用药历史
+
                 DataRow phartr = ds.Tables["tmo_pharmacy_history"].Rows[0];
 
                 strSQL.Append("update tmo_pharmacy_history set ");
@@ -782,9 +819,11 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
 
                 SQLList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 #region 健康指标
+
                 DataRow healthtr = ds.Tables["tmo_health_indicator"].Rows[0];
 
                 strSQL.Append("update tmo_health_indicator set ");
@@ -842,11 +881,15 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
 
                 SQLList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 num = MySQLHelper.ExecuteSqlTran(SQLList);
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+            }
+
             return num > 0 ? true : false;
         }
 
@@ -867,52 +910,70 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
                 //#endregion
 
                 #region 删除疾病历史表
+
                 strSql.Append("delete from tmo_sicken_history where user_id='" + user_id + "' and user_times='" + times + "';");
                 SQLList.Add(strSql.ToString());
                 strSql.Remove(0, strSql.Length);
+
                 #endregion
 
                 #region 删除现有症状
+
                 strSql.Append("delete from tmo_personnal_symptom where user_id='" + user_id + "' and user_times='" + times + "';");
                 SQLList.Add(strSql.ToString());
                 strSql.Remove(0, strSql.Length);
+
                 #endregion
 
                 #region 删除饮食习惯
+
                 strSql.Append("delete from tmo_eating_habits where user_id='" + user_id + "' and user_times='" + times + "';");
                 SQLList.Add(strSql.ToString());
                 strSql.Remove(0, strSql.Length);
+
                 #endregion
 
                 #region 删除运动习惯
+
                 strSql.Append("delete from tmo_exercise_habit where user_id='" + user_id + "' and user_times='" + times + "';");
                 SQLList.Add(strSql.ToString());
                 strSql.Remove(0, strSql.Length);
+
                 #endregion
 
                 #region 删除起居习惯
+
                 strSql.Append("delete from tmo_living_habit where user_id='" + user_id + "' and user_times='" + times + "';");
                 SQLList.Add(strSql.ToString());
                 strSql.Remove(0, strSql.Length);
+
                 #endregion
 
                 #region 删除用药历史
+
                 strSql.Append("delete from tmo_pharmacy_history where user_id='" + user_id + "' and user_times='" + times + "';");
                 SQLList.Add(strSql.ToString());
                 strSql.Remove(0, strSql.Length);
+
                 #endregion
 
                 #region 删除健康指标
+
                 strSql.Append("delete from tmo_health_indicator where user_id='" + user_id + "' and user_times='" + times + "';");
                 SQLList.Add(strSql.ToString());
                 strSql.Remove(0, strSql.Length);
+
                 #endregion
 
                 num = MySQLHelper.ExecuteSqlTran(SQLList);
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+            }
+
             return num == 7 ? true : false;
         }
+
         public DataSet SelectQuestionnaire(string user_id, string times)
         {
             //问卷只能查询未评估问卷记录，新建问卷，users.user_time不变，其他加一，评估以后 users.user_time加一 
@@ -926,7 +987,8 @@ pain_ambulatory,per.obtusion,per.leg_notown,per.walk_cotton,per.constipation,per
 retardation,per.memory,per.without_memory,per.headache,per.swirl,per.limbs,per.limply,per.collaspe,per.heart_irregular,per.premature_beat,per.
 muscle_loss,per.microangioma,per.bleeder,per.softhard_out,per.hemorrhage,per.fibroplasia,per.macular_edema,per.amotio_retinae,per.hemp_code,per.
 hemp_hot,per.astriction,per.perspire,per.uroclepsia,per.palpitation,per.postural,per.infarction,per.chest_distress,per.dhf,per.input_time,per.isrisk,");
-            strSql.Append(@"users.user_id,users.user_times,users.`name`,users.gender,users.identity,users.nation,users.address,users.phone,users.tel,users.work_place,
+            strSql.Append(
+                @"users.user_id,users.user_times,users.`name`,users.gender,users.identity,users.nation,users.address,users.phone,users.tel,users.work_place,
             users.education,users.marital,users.retire,users.birthday,users.account,users.email,users.qq,users.emergency,users.emergency_phone,users.emergency_relation,users.input_time,users.user_pwd,users.occupation,users.live_type,users.province_id,users.city_id,users.eare_id,users.medical_code,");
             strSql.Append(@"sic.user_id,sic.user_times,sic.questionnaire_id,sic.eh_self,sic.chd_self,sic.cvd_self,sic.nti_self,sic.hbl_self,sic.
 dm_family,sic.eh_family,sic.chd_family,sic.psd_family,sic.tumour_family,sic.penicillin,sic.sulfanilamide,sic.sm,sic.eh_time,sic.mody_self,sic.mody_time,sic.chd_time,sic.con_self,
@@ -941,14 +1003,17 @@ sic.gastric_ulcer,sic.colorectal,sic.heart_disease,sic.myocardial,sic.menses_age
 eat.fruit_weight,eat.beans,eat.oil,eat.milk_rise,eat.salt,eat.spirits,eat.livestockt_weight,eat.aquatic_weight,eat.egg_weight,eat.frumentum_days,eat.livestockt_days,eat.vegetable_days,eat.fruit_days,eat.input_time,");
             strSql.Append(@"exe.user_id,exe.user_times,exe.questionnaire_id,exe.housework,exe.walk,exe.dance,exe.shadowboxing,exe.exercise_frequence,exe.
 exercise_intensity,exe.breakfast_before,exe.breakfast_after,exe.lunch_after,exe.dinner_after,exe.lunch_befor,exe.dinner_befor,exe.sleep_befor,exe.exercise_times,exe.exercise_time_per,exe.input_time,");
-            strSql.Append(@"live.user_id,live.user_times,live.questionnaire_id,live.getup_time,live.sleep_time,live.defecate_habit,live.siesta_habit,live.bath_habit,live.
+            strSql.Append(
+                @"live.user_id,live.user_times,live.questionnaire_id,live.getup_time,live.sleep_time,live.defecate_habit,live.siesta_habit,live.bath_habit,live.
 sleep_habit,live.drinking_habit,live.drinking_per,live.drinking_more,live.drinking_sleep,live.smoke,live.input_time,");
-            strSql.Append(@"pha.user_id,pha.user_times,pha.questionnaire_id,pha.hypotensor,pha.fibrate,pha.antidiabetic,pha.elsehope1,pha.elsehope2,pha.elsefibrate1,pha.elsefibrate2,pha.elseantid1,pha.elseantid2,pha.input_time,");
+            strSql.Append(
+                @"pha.user_id,pha.user_times,pha.questionnaire_id,pha.hypotensor,pha.fibrate,pha.antidiabetic,pha.elsehope1,pha.elsehope2,pha.elsefibrate1,pha.elsefibrate2,pha.elseantid1,pha.elseantid2,pha.input_time,");
             strSql.Append(@"hea.user_id,hea.user_times,hea.questionnaire_id,hea.height,hea.weight,hea.waistline,hea.fbg,hea.pbg,hea.dbp,hea.sbp,hea.hdl,
 hea.baby_big,hea.ccvd,hea.rbg,hea.ogtt,hea.glu_abrakfast,hea.glu_blunch,hea.glu_alunch,hea.glu_bdinner,hea.glu_adinner,hea.glu_bsleep,hea.glu_asleep,hea.rpo,hea.gf,hea.cre,hea.hbpi,hea.claudication,hea.dpa,hea.vasr,hea.doppler,hea.blood_nosmooth,hea.blood_narrowed,hea.ldvt,
 
 hea.vfi,hea.blood_thick,hea.blood_full,hea.blood_spot,hea.smi,hea.inchemic,hea.hemipgia,hea.bucking,hea.focal,hea.hace,hea.ich,hea.anoxia,hea.blood_type,hea.ldl,hea.tg,hea.chol,hea.hcy,hea.hbac,hea.input_time ");
-            strSql.Append("from tmo_personnal_symptom  as per  left join tmo_sicken_history as sic on per.user_id = sic.user_id and per.user_times=sic.user_times ");
+            strSql.Append(
+                "from tmo_personnal_symptom  as per  left join tmo_sicken_history as sic on per.user_id = sic.user_id and per.user_times=sic.user_times ");
             strSql.Append("left join tmo_userinfo as users on per.user_id=users.user_id and per.user_times=users.user_times+1 ");
             strSql.Append("left join tmo_eating_habits as eat on per.user_id=eat.user_id and per.user_times=eat.user_times ");
             strSql.Append("left join tmo_exercise_habit as  exe on  per.user_id=exe.user_id and per.user_times=exe.user_times ");
@@ -958,6 +1023,7 @@ hea.vfi,hea.blood_thick,hea.blood_full,hea.blood_spot,hea.smi,hea.inchemic,hea.h
             strSql.Append(" where per.user_id='" + user_id + "' and per.user_times='" + usertimes + "'");
             return MySQLHelper.Query(strSql.ToString());
         }
+
         public DataSet SelectLookQuestionnaire(string user_id, string times)
         {
             //问卷只能查询未评估问卷记录，新建问卷，users.user_time不变，其他加一，评估以后 users.user_time加一 
@@ -971,7 +1037,8 @@ pain_ambulatory,per.obtusion,per.leg_notown,per.walk_cotton,per.constipation,per
 retardation,per.memory,per.without_memory,per.headache,per.swirl,per.limbs,per.limply,per.collaspe,per.heart_irregular,per.premature_beat,per.
 muscle_loss,per.microangioma,per.bleeder,per.softhard_out,per.hemorrhage,per.fibroplasia,per.macular_edema,per.amotio_retinae,per.hemp_code,per.
 hemp_hot,per.astriction,per.perspire,per.uroclepsia,per.palpitation,per.postural,per.infarction,per.chest_distress,per.dhf,per.input_time,per.isrisk,");
-            strSql.Append(@"users.user_id,users.user_times,users.`name`,users.gender,users.identity,users.nation,users.address,users.phone,users.tel,users.work_place,
+            strSql.Append(
+                @"users.user_id,users.user_times,users.`name`,users.gender,users.identity,users.nation,users.address,users.phone,users.tel,users.work_place,
             users.education,users.marital,users.retire,users.birthday,users.account,users.email,users.qq,users.emergency,users.emergency_phone,users.emergency_relation,users.input_time,users.user_pwd,users.occupation,users.live_type,users.province_id,users.city_id,users.eare_id,users.medical_code,");
             strSql.Append(@"sic.user_id,sic.user_times,sic.questionnaire_id,sic.eh_self,sic.chd_self,sic.cvd_self,sic.nti_self,sic.hbl_self,sic.
 dm_family,sic.eh_family,sic.chd_family,sic.psd_family,sic.tumour_family,sic.penicillin,sic.sulfanilamide,sic.sm,sic.eh_time,sic.mody_self,sic.mody_time,sic.chd_time,sic.con_self,
@@ -986,14 +1053,17 @@ sic.gastric_ulcer,sic.colorectal,sic.heart_disease,sic.myocardial,sic.menses_age
 eat.fruit_weight,eat.beans,eat.oil,eat.milk_rise,eat.salt,eat.spirits,eat.livestockt_weight,eat.aquatic_weight,eat.egg_weight,eat.frumentum_days,eat.livestockt_days,eat.vegetable_days,eat.fruit_days,eat.input_time,");
             strSql.Append(@"exe.user_id,exe.user_times,exe.questionnaire_id,exe.housework,exe.walk,exe.dance,exe.shadowboxing,exe.exercise_frequence,exe.
 exercise_intensity,exe.breakfast_before,exe.breakfast_after,exe.lunch_after,exe.dinner_after,exe.lunch_befor,exe.dinner_befor,exe.sleep_befor,exe.exercise_times,exe.exercise_time_per,exe.input_time,");
-            strSql.Append(@"live.user_id,live.user_times,live.questionnaire_id,live.getup_time,live.sleep_time,live.defecate_habit,live.siesta_habit,live.bath_habit,live.
+            strSql.Append(
+                @"live.user_id,live.user_times,live.questionnaire_id,live.getup_time,live.sleep_time,live.defecate_habit,live.siesta_habit,live.bath_habit,live.
 sleep_habit,live.drinking_habit,live.drinking_per,live.drinking_more,live.drinking_sleep,live.smoke,live.input_time,");
-            strSql.Append(@"pha.user_id,pha.user_times,pha.questionnaire_id,pha.hypotensor,pha.fibrate,pha.antidiabetic,pha.elsehope1,pha.elsehope2,pha.elsefibrate1,pha.elsefibrate2,pha.elseantid1,pha.elseantid2,pha.input_time,");
+            strSql.Append(
+                @"pha.user_id,pha.user_times,pha.questionnaire_id,pha.hypotensor,pha.fibrate,pha.antidiabetic,pha.elsehope1,pha.elsehope2,pha.elsefibrate1,pha.elsefibrate2,pha.elseantid1,pha.elseantid2,pha.input_time,");
             strSql.Append(@"hea.user_id,hea.user_times,hea.questionnaire_id,hea.height,hea.weight,hea.waistline,hea.fbg,hea.pbg,hea.dbp,hea.sbp,hea.hdl,
 hea.baby_big,hea.ccvd,hea.rbg,hea.ogtt,hea.glu_abrakfast,hea.glu_blunch,hea.glu_alunch,hea.glu_bdinner,hea.glu_adinner,hea.glu_bsleep,hea.glu_asleep,hea.rpo,hea.gf,hea.cre,hea.hbpi,hea.claudication,hea.dpa,hea.vasr,hea.doppler,hea.blood_nosmooth,hea.blood_narrowed,hea.ldvt,
 
 hea.vfi,hea.blood_thick,hea.blood_full,hea.blood_spot,hea.smi,hea.inchemic,hea.hemipgia,hea.bucking,hea.focal,hea.hace,hea.ich,hea.anoxia,hea.blood_type,hea.ldl,hea.tg,hea.chol,hea.hcy,hea.hbac,hea.input_time ");
-            strSql.Append("from tmo_personnal_symptom  as per  left join tmo_sicken_history as sic on per.user_id = sic.user_id and per.user_times=sic.user_times ");
+            strSql.Append(
+                "from tmo_personnal_symptom  as per  left join tmo_sicken_history as sic on per.user_id = sic.user_id and per.user_times=sic.user_times ");
             strSql.Append("left join tmo_userinfo as users on per.user_id=users.user_id and per.user_times=users.user_times+1 ");
             strSql.Append("left join tmo_eating_habits as eat on per.user_id=eat.user_id and per.user_times=eat.user_times ");
             strSql.Append("left join tmo_exercise_habit as  exe on  per.user_id=exe.user_id and per.user_times=exe.user_times ");
@@ -1006,10 +1076,10 @@ hea.vfi,hea.blood_thick,hea.blood_full,hea.blood_spot,hea.smi,hea.inchemic,hea.h
 
         public DataSet SelectQuestionnaireSite(string user_id, string times)
         {
-
             var strSql = new StringBuilder();
             strSql.Append(@"select * ");
-            strSql.Append("from tmo_personnal_symptom  as per  left join tmo_sicken_history as sic on per.user_id = sic.user_id and per.user_times=sic.user_times ");
+            strSql.Append(
+                "from tmo_personnal_symptom  as per  left join tmo_sicken_history as sic on per.user_id = sic.user_id and per.user_times=sic.user_times ");
             strSql.Append("left join tmo_eating_habits as eat on per.user_id=eat.user_id and per.user_times=eat.user_times ");
             strSql.Append("left join tmo_exercise_habit as  exe on  per.user_id=exe.user_id and per.user_times=exe.user_times ");
             strSql.Append("left join tmo_living_habit as live on per.user_id = live.user_id and per.user_times=live.user_times ");
@@ -1018,17 +1088,22 @@ hea.vfi,hea.blood_thick,hea.blood_full,hea.blood_spot,hea.smi,hea.inchemic,hea.h
             strSql.Append(" where per.user_id='" + user_id + "' and per.user_times='" + times + "'");
             return MySQLHelper.Query(strSql.ToString());
         }
+
         public DataSet SelectUserinfo(string user_id)
         {
             string strSql = "select * from tmo_userinfo where user_id='" + user_id + "'";
             return MySQLHelper.Query(strSql);
         }
+
         public DataSet SelectLastQues(string identity)
         {
-            string sqlstr = "select users.identity,users.user_times,users.medical_code,per.isrisk,per.user_times,per.pageindex from tmo_userinfo as users LEFT JOIN tmo_personnal_symptom as per  on  users.user_times+1=per.user_times and users.user_id = per.user_id where users.user_id='" + identity + "'";
+            string sqlstr =
+                "select users.identity,users.user_times,users.medical_code,per.isrisk,per.user_times,per.pageindex from tmo_userinfo as users LEFT JOIN tmo_personnal_symptom as per  on  users.user_times+1=per.user_times and users.user_id = per.user_id where users.user_id='" +
+                identity + "'";
 
             return MySQLHelper.Query(sqlstr);
         }
+
         public DataSet GetPublicList(string tableName, string condition)
         {
             string sqlstr = "select * from " + tableName;
@@ -1051,7 +1126,9 @@ users.user_id,users.user_times,(CASE WHEN per.isrisk =3 THEN '暂存问卷' WHEN
 users.gender,users.name,date_format(users.birthday,'%Y-%m-%d')as birth_date,
 users.marital as marital_status FROM ");
             StringBuilder sbBody = new StringBuilder();
-            sbBody.Append(" tmo_userinfo as users INNER JOIN tmo_personnal_symptom as per  on  users.user_times+1=per.user_times and users.user_id = per.user_id where users.user_id='" + user_code + "'");
+            sbBody.Append(
+                " tmo_userinfo as users INNER JOIN tmo_personnal_symptom as per  on  users.user_times+1=per.user_times and users.user_id = per.user_id where users.user_id='" +
+                user_code + "'");
             //sbBody.Append(" tmo_personnal_symptom  where user_id='" + user_code + "'");
             //sbBody.Append(" tmo_userinfo  as users  left join tmo_sicken_history as sic on users.user_id = sic.user_id and users.user_times=sic.user_times ");
             //sbBody.Append("left join tmo_personnal_symptom as per on per.user_id=users.user_id and per.user_times=users.user_times ");
@@ -1078,6 +1155,7 @@ users.marital as marital_status FROM ");
             {
                 mtValueint = ds.Tables[0].Rows[0]["mt_valueint"].ToString();
             }
+
             return mtValueint;
         }
 
@@ -1091,7 +1169,9 @@ users.marital as marital_status FROM ");
                 string inputTime = TmoShare.DateTimeNow;
 
                 DataRow userdr = ds.Tables["tmo_userinfo"].Rows[0];
+
                 #region 个人与家庭病史
+
                 DataRow sickdr = ds.Tables["tmo_sicken_history"].Rows[0];
                 strSQL.Append("insert into tmo_sicken_history(");
                 strSQL.Append(@"user_id,user_times,questionnaire_id,eh_self,chd_self,cvd_self,nti_self,hbl_self,
@@ -1190,9 +1270,11 @@ gastric_ulcer,colorectal,heart_disease,myocardial,menses_age,abnormal,menopause,
 
                 sqlList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 #region 现有症状
+
                 DataRow persondr = ds.Tables["tmo_personnal_symptom"].Rows[0];
 
                 strSQL.Append("insert into tmo_personnal_symptom(");
@@ -1279,13 +1361,15 @@ hemp_hot,astriction,perspire,uroclepsia,palpitation,postural,infarction,chest_di
                 strSQL.Append(persondr["dhf"] + "','");
                 strSQL.Append(inputTime + "','");
                 strSQL.Append(persondr["pageindex"] + "','");
-                strSQL.Append(persondr["isrisk"] + "');");//1等待评估  3问卷暂存
+                strSQL.Append(persondr["isrisk"] + "');"); //1等待评估  3问卷暂存
 
                 sqlList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 #region 饮食习惯
+
                 DataRow eattr = ds.Tables["tmo_eating_habits"].Rows[0];
                 strSQL.Append("insert into tmo_eating_habits(");
                 strSQL.Append(@"user_id,user_times,questionnaire_id,breakfast,frumentum_food,vegetable_weight,
@@ -1314,9 +1398,11 @@ fruit_weight,beans,oil,milk_rise,salt,spirits,livestockt_weight,aquatic_weight,e
 
                 sqlList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
-                #region  运动习惯
+                #region 运动习惯
+
                 DataRow exetr = ds.Tables["tmo_exercise_habit"].Rows[0];
 
                 strSQL.Append("insert into tmo_exercise_habit(");
@@ -1345,9 +1431,11 @@ exercise_intensity,breakfast_before,breakfast_after,lunch_after,dinner_after,lun
 
                 sqlList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
-                #region  起居习惯
+                #region 起居习惯
+
                 DataRow livetr = ds.Tables["tmo_living_habit"].Rows[0];
 
                 strSQL.Append("insert into tmo_living_habit(");
@@ -1372,13 +1460,16 @@ sleep_habit,drinking_habit,drinking_per,drinking_more,drinking_sleep,smoke,input
 
                 sqlList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 #region 用药历史
+
                 DataRow phartr = ds.Tables["tmo_pharmacy_history"].Rows[0];
 
                 strSQL.Append("insert into tmo_pharmacy_history(");
-                strSQL.Append(@"user_id,user_times,questionnaire_id,hypotensor,fibrate,antidiabetic,elsehope1,elsehope2,elsefibrate1,elsefibrate2,elseantid1,elseantid2,input_time)");
+                strSQL.Append(
+                    @"user_id,user_times,questionnaire_id,hypotensor,fibrate,antidiabetic,elsehope1,elsehope2,elsefibrate1,elsefibrate2,elseantid1,elseantid2,input_time)");
                 strSQL.Append("values ('");
                 strSQL.Append(userdr["user_id"] + "','");
                 strSQL.Append(userdr["user_times"] + "','");
@@ -1396,9 +1487,11 @@ sleep_habit,drinking_habit,drinking_per,drinking_more,drinking_sleep,smoke,input
 
                 sqlList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
-                #region  健康指标
+                #region 健康指标
+
                 DataRow healthtr = ds.Tables["tmo_health_indicator"].Rows[0];
                 strSQL.Append("insert into tmo_health_indicator(");
                 strSQL.Append(@"user_id,user_times,questionnaire_id,height,weight,waistline,fbg,pbg,dbp,sbp,hdl,
@@ -1460,13 +1553,13 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
 
                 sqlList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 num = MySQLHelper.ExecuteSqlTran(sqlList);
             }
             catch (Exception)
             {
-
             }
 
             return num == 7;
@@ -1483,8 +1576,8 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
                 DataRow userdr = ds.Tables["tmo_userinfo"].Rows[0];
 
 
-
                 #region 个人与家庭病史
+
                 DataRow sickdr = ds.Tables["tmo_sicken_history"].Rows[0];
 
                 strSQL.Append("update tmo_sicken_history set ");
@@ -1572,9 +1665,11 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
 
                 sqlList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 #region 现有症状
+
                 DataRow persondr = ds.Tables["tmo_personnal_symptom"].Rows[0];
 
                 strSQL.Append("update tmo_personnal_symptom set ");
@@ -1654,9 +1749,11 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
 
                 sqlList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 #region 饮食习惯
+
                 DataRow eattr = ds.Tables["tmo_eating_habits"].Rows[0];
 
                 strSQL.Append("update tmo_eating_habits set ");
@@ -1681,9 +1778,11 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
 
                 sqlList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 #region 运动习惯
+
                 DataRow exetr = ds.Tables["tmo_exercise_habit"].Rows[0];
 
                 strSQL.Append("update tmo_exercise_habit set ");
@@ -1707,9 +1806,11 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
 
                 sqlList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 #region 起居习惯
+
                 DataRow livetr = ds.Tables["tmo_living_habit"].Rows[0];
 
                 strSQL.Append("update tmo_living_habit set ");
@@ -1729,9 +1830,11 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
 
                 sqlList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 #region 用药历史
+
                 DataRow phartr = ds.Tables["tmo_pharmacy_history"].Rows[0];
 
                 strSQL.Append("update tmo_pharmacy_history set ");
@@ -1749,9 +1852,11 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
 
                 sqlList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 #region 健康指标
+
                 DataRow healthtr = ds.Tables["tmo_health_indicator"].Rows[0];
 
                 strSQL.Append("update tmo_health_indicator set ");
@@ -1809,17 +1914,22 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
 
                 sqlList.Add(strSQL.ToString());
                 strSQL.Remove(0, strSQL.Length);
+
                 #endregion
 
                 num = MySQLHelper.ExecuteSqlTran(sqlList);
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+            }
+
             return num > 0;
         }
+
         #endregion
 
 
-        public const string firsrt_qc_id = "35CE93AF912447C5AAD5E160D97BB61A";//筛选问卷
+        public const string firsrt_qc_id = "35CE93AF912447C5AAD5E160D97BB61A"; //筛选问卷
 
         /// <summary>
         /// 得到筛选问卷
@@ -1878,13 +1988,13 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
                         }
                     }
 
-                    if (qc_id[0] != firsrt_qc_id)  //选择要做问卷后 保存选的问卷
+                    if (qc_id[0] != firsrt_qc_id) //选择要做问卷后 保存选的问卷
                     {
                         lastStatus.qc_ids = TmoShare.SetValueToJson(qc_id);
                     }
                 }
                 else
-                    lastStatus = new tmo_userstatus() { user_id = user_id, usertimes = 1, id = TmoShare.GetGuidString() };
+                    lastStatus = new tmo_userstatus() {user_id = user_id, usertimes = 1, id = TmoShare.GetGuidString()};
                 //第一次填写问卷
 
 
@@ -1933,6 +2043,7 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
                                                 dic.Add(dataRow.GetDataRowStringValue("disease"),
                                                     dataRow.GetDataRowIntValue("d_id"));
                                             }
+
                                             que.q_value = JsonConvert.SerializeObject(dic);
                                         }
                                     }
@@ -1974,6 +2085,7 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
                         resList.AddRange(qcList);
                     }
                 }
+
                 return resList.Any() ? resList : null;
             }
             catch (Exception ex)
@@ -1991,7 +2103,8 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
         {
             if (qc_ids == null || qc_ids.Length == 0) return null;
 
-            DataTable dtqc = MemoryCacheHelper.GetCacheItem<DataTable>("tmo_questionnaire_category", () => MySQLHelper.QueryTable("select * from tmo_questionnaire_category"), DateTime.Now.AddDays(1));
+            DataTable dtqc = MemoryCacheHelper.GetCacheItem<DataTable>("tmo_questionnaire_category",
+                () => MySQLHelper.QueryTable("select * from tmo_questionnaire_category"), DateTime.Now.AddDays(1));
             DataRow[] rows = dtqc.Select(string.Format("qc_id in ({0})", StringPlus.GetArrayStr(qc_ids, ",", "'{0}'")));
             if (rows.Length > 0)
             {
@@ -2015,7 +2128,8 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
             if (string.IsNullOrWhiteSpace(qc_id)) return list;
 
             list.Add(qc_id);
-            DataTable dtqc = MemoryCacheHelper.GetCacheItem<DataTable>("tmo_questionnaire_category", () => MySQLHelper.QueryTable("select * from tmo_questionnaire_category"), DateTime.Now.AddDays(1));
+            DataTable dtqc = MemoryCacheHelper.GetCacheItem<DataTable>("tmo_questionnaire_category",
+                () => MySQLHelper.QueryTable("select * from tmo_questionnaire_category"), DateTime.Now.AddDays(1));
             DataRow[] rows = dtqc.Select(string.Format("qc_pid='{0}'", qc_id));
             if (rows.Length > 0)
             {
@@ -2025,6 +2139,7 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
                     list.AddRange(GetChildrenQcID(tmp));
                 }
             }
+
             return list;
         }
 
@@ -2038,7 +2153,7 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
             if (dataList == null) return false;
 
             DataTable dtq = MemoryCacheHelper.GetCacheItem<DataTable>("tmo_questionnaire",
-                                                            () => MySQLHelper.QueryTable("select * from tmo_questionnaire"), DateTime.Now.AddDays(1));
+                () => MySQLHelper.QueryTable("select * from tmo_questionnaire"), DateTime.Now.AddDays(1));
 
             List<tmo_questionnaire_result> addList = new List<tmo_questionnaire_result>();
             List<tmo_questionnaire_result> updateList = new List<tmo_questionnaire_result>();
@@ -2053,21 +2168,23 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
                 {
                     updateList.Add(result);
                 }
-                result.qr_score = CalQuestionScore(result.q_id, result.qr_result, result.user_id);   //结果Json串
+
+                result.qr_score = CalQuestionScore(result.q_id, result.qr_result, result.user_id); //结果Json串
                 DataRow qRow = dtq.Select(string.Format("q_id='{0}'", result.q_id))[0];
                 float qRiskValue = qRow.GetDataRowFloatValue("q_risk_value");
                 if (qRiskValue == -2)
                     qRiskValue = 0;
-                result.qr_is_risk = result.qr_score > qRiskValue ? (byte)1 : (byte)0;    //是否触发危险因素
+                result.qr_is_risk = result.qr_score > qRiskValue ? (byte) 1 : (byte) 0; //是否触发危险因素
             }
 
             bool suc = false;
             if (addList.Any())
                 suc = MySQLHelper.AddDatas("tmo_questionnaire_result", ModelConvertHelper<tmo_questionnaire_result>.ConvertModelToDictionaries(addList));
             if (updateList.Any())
-                suc = MySQLHelper.UpdateDatas("tmo_questionnaire_result", "qr_id='{qr_id}'", ModelConvertHelper<tmo_questionnaire_result>.ConvertModelToDictionaries(updateList));
+                suc = MySQLHelper.UpdateDatas("tmo_questionnaire_result", "qr_id='{qr_id}'",
+                    ModelConvertHelper<tmo_questionnaire_result>.ConvertModelToDictionaries(updateList));
 
-            if (suc)    //更新UserState表
+            if (suc) //更新UserState表
             {
                 tmo_questionnaire_result qr = dataList.FirstOrDefault();
                 tmo_userstatus status = qr.Userstatus;
@@ -2080,14 +2197,17 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
                 dicExits.Add("usertimes", qr.user_times.ToString());
                 bool isupdate = MySQLHelper.Exists("tmo_userstatus", dicExits);
                 if (isupdate)
-                {   //修改
+                {
+                    //修改
                     return MySQLHelper.UpdateData("tmo_userstatus", "id", status.id, datas);
                 }
                 else
-                {   //添加
+                {
+                    //添加
                     return MySQLHelper.AddData("tmo_userstatus", datas);
                 }
             }
+
             return suc;
         }
 
@@ -2127,7 +2247,6 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
                 //}
                 //else
                 {
-
                     DataTable dtq = MemoryCacheHelper.GetCacheItem<DataTable>("tmo_questionnaire",
                         () => MySQLHelper.QueryTable("select * from tmo_questionnaire"), DateTime.Now.AddDays(1));
                     DataRow[] rows = dtq.Select("q_target_qc is not null");
@@ -2162,6 +2281,7 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
                         {
                         }
                     }
+
                     list.Add("F00CE8EC103449A3B6DDC87A4FD32481"); //膳食评估
                     list.Add("6C9AC930C9FB41529D4BF87FD5C6EBD0"); //运动评估
                     if (!list.Contains("D3CAD02F2C9742B4ACD44ED9FE2C8616")) //肥胖评估
@@ -2173,7 +2293,8 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
                 }
             }
             else
-            {   //提交问卷
+            {
+                //提交问卷
                 status.questionnare_status = 1;
                 Dictionary<string, string> datas = ModelConvertHelper<tmo_userstatus>.ConvertOneModelToDictionary(status);
                 bool s = MySQLHelper.UpdateData("tmo_userstatus", "id", status.id, datas);
@@ -2189,7 +2310,8 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
         /// <returns></returns>
         private string GetFirstLevelqcid(string qc_id)
         {
-            DataTable dtqc = MemoryCacheHelper.GetCacheItem<DataTable>("tmo_questionnaire_category", () => MySQLHelper.QueryTable("select * from tmo_questionnaire_category"), DateTime.Now.AddDays(1));
+            DataTable dtqc = MemoryCacheHelper.GetCacheItem<DataTable>("tmo_questionnaire_category",
+                () => MySQLHelper.QueryTable("select * from tmo_questionnaire_category"), DateTime.Now.AddDays(1));
             DataRow row = dtqc.Select(string.Format("qc_id='{0}'", qc_id))[0];
             if (row["qc_level"].ToString() == "1")
                 return qc_id;
@@ -2205,30 +2327,31 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
         private float CalQuestionScore(string q_id, string jsonValue, string userid)
         {
             DataTable dtq = MemoryCacheHelper.GetCacheItem<DataTable>("tmo_questionnaire",
-                            () => MySQLHelper.QueryTable("select * from tmo_questionnaire"), DateTime.Now.AddDays(1));
+                () => MySQLHelper.QueryTable("select * from tmo_questionnaire"), DateTime.Now.AddDays(1));
             DataRow row = dtq.Select("q_id='" + q_id + "'")[0];
             string value_type = row["q_value_type"].ToString();
             string score_value = row["q_score_value"].ToString();
             float score = row.GetDataRowFloatValue("q_score");
 
-            if (string.IsNullOrWhiteSpace(score_value)) return 0;   //没有条件的直接0分
+            if (string.IsNullOrWhiteSpace(score_value)) return 0; //没有条件的直接0分
 
-            if (score_value == "-1")    //-1 直接取值就是分
+            if (score_value == "-1") //-1 直接取值就是分
                 return TmoShare.GetValueFromJson<float>(jsonValue);
             if (score_value == "-2") //-2 值不为空就是分
             {
                 string value = TmoShare.GetValueFromJson<string>(jsonValue);
                 return !string.IsNullOrWhiteSpace(value) ? score : 0;
             }
+
             if (score == -1)
             {
-                var tj = TmoShare.GetValueFromJson<Dictionary<float, float[]>>(score_value);
+                var tj = TmoShare.GetValueFromJson<Dictionary<float, float[]>>(score_value, false);
                 if (tj == null)
                 {
                     var tjs = TmoShare.GetValueFromJson<Dictionary<float, Dictionary<string, float[]>>>(score_value);
                     if (tjs != null)
                     {
-                        float[] _values = TmoShare.GetValueFromJson<float[]>(jsonValue);
+                        float[] _values = TmoShare.GetValueFromJson<float[]>(jsonValue, false);
                         if (_values != null)
                         {
                             foreach (var item in tjs)
@@ -2244,16 +2367,17 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
                                     _tsame.Add(CalRangeValue(_tmp, _val));
                                 }
 
-                                _score = _tsame.Max();    //获取最大得分
+                                _score = _tsame.Max(); //获取最大得分
                                 if (_score > score)
                                     score = _score;
                             }
+
                             return score;
                         }
                         else
                         {
                             bool isgender = tjs.FirstOrDefault().Value.ContainsKey("m") || tjs.FirstOrDefault().Value.ContainsKey("w");
-                            if (isgender)   //性别判断
+                            if (isgender) //性别判断
                             {
                                 float _value = TmoShare.GetValueFromJson<float>(jsonValue);
                                 Userinfo user = new tmo_userinfoDal().GetUserInfoByID(userid);
@@ -2268,11 +2392,13 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
                                     _tmp.Add(_score, range);
                                     _tsame.Add(CalRangeValue(_tmp, _value));
                                 }
+
                                 score = _tsame.Max();
                                 return score;
                             }
                         }
                     }
+
                     return 0;
                 }
                 else
@@ -2286,6 +2412,7 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
                     return CalRangeValue(tj, value);
                 }
             }
+
             if (value_type.Equals("bool"))
             {
                 bool scorevalue = TmoShare.GetValueFromJson<bool>(score_value);
@@ -2294,6 +2421,7 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
                 if (scorevalue == value)
                     return score;
             }
+
             if (value_type.Equals("float"))
             {
                 float scorevalue = TmoShare.GetValueFromJson<float>(score_value);
@@ -2301,6 +2429,7 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
                 if (scorevalue == value)
                     return score;
             }
+
             if (value_type.Equals("int[]"))
             {
                 int[] scorevalue = TmoShare.GetValueFromJson<int[]>(score_value);
@@ -2308,6 +2437,7 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
                 if (scorevalue == value)
                     return score;
             }
+
             if (value_type.Equals("datetime"))
             {
                 DateTime scorevalue = TmoShare.GetValueFromJson<DateTime>(score_value);
@@ -2318,10 +2448,10 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
                     if (value != scorevalue && value != DateTime.MinValue)
                         return score;
                 }
-                else
-                    if (scorevalue == value)
-                        return score;
+                else if (scorevalue == value)
+                    return score;
             }
+
             if (value_type.Equals("string"))
             {
                 string scorevalue = TmoShare.GetValueFromJson<string>(score_value);
@@ -2339,8 +2469,8 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
                     if (scorevalues.Contains(value))
                         return score;
                 }
-
             }
+
             return 0;
         }
 
@@ -2355,14 +2485,17 @@ blood_full,blood_spot,smi,inchemic,hemipgia,bucking,focal,hace,ich,anoxia,blood_
                     if (value < max)
                         return t.Key;
                 }
+
                 if (max == 65535)
                 {
                     if (value >= min)
                         return t.Key;
                 }
+
                 if (value >= min && value < max)
                     return t.Key;
             }
+
             return 0;
         }
 

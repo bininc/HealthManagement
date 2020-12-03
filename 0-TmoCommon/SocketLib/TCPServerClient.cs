@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
@@ -282,7 +283,7 @@ namespace TmoCommon.SocketLib
                         strData = ParserString(receiveBytes);
                         string[] infos = strData.Split(';');
                         ClientVer = infos[0];
-                        DocInfo = TmoShare.GetValueFromJson<DocInfo>(infos[1]);
+                        DocInfo = TmoShare.GetValueFromJson<DocInfo>(infos.LastOrDefault());
                         
                         if (ShowAllData && DisplayMsg != null)
                             DisplayMsg(this, "收到心跳包：" + strData, DateTime.Now);

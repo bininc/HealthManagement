@@ -1821,7 +1821,7 @@ namespace TmoCommon
         /// 获得值
         /// </summary>
         /// <returns></returns>
-        public static T GetValueFromJson<T>(string jsonValue)
+        public static T GetValueFromJson<T>(string jsonValue, bool writeLog = true)
         {
             T value = default(T);
             if (string.IsNullOrWhiteSpace(jsonValue)) return value;
@@ -1832,7 +1832,8 @@ namespace TmoCommon
             }
             catch (Exception ex)
             {
-                LogHelper.WriteError(ex, "Json字符串解析错误");
+                if (writeLog)
+                    LogHelper.WriteError(ex, "Json字符串解析错误");
             }
 
             return value;
@@ -1898,7 +1899,7 @@ namespace TmoCommon
 
             return (T) retval;
         }
-        
+
         /// <summary>
         /// 获取客户端IP地址（无视代理）
         /// </summary>
@@ -1911,6 +1912,7 @@ namespace TmoCommon
                 if (System.Web.HttpContext.Current.Request.ServerVariables["HTTP_VIA"] != null)
                     userHostAddress = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"].ToString().Split(',')[0].Trim();
             }
+
             if (string.IsNullOrEmpty(userHostAddress))
             {
                 userHostAddress = HttpContext.Current.Request.UserHostAddress;
@@ -1921,6 +1923,7 @@ namespace TmoCommon
             {
                 return userHostAddress;
             }
+
             return "127.0.0.1";
         }
 

@@ -11,9 +11,9 @@ namespace TmoControl
 {
     public partial class UCQuestion : UCBase
     {
-        private const int left = 30;    //内部内容距离左边距离
-        private const int top = 5;     //内部内容距离上边距离
-        private const int width = 850;  //整体宽度
+        private const int left = 30; //内部内容距离左边距离
+        private const int top = 5; //内部内容距离上边距离
+        private const int width = 850; //整体宽度
 
         /// <summary>
         /// 选中值发生改变
@@ -28,17 +28,18 @@ namespace TmoControl
                 ValueChanged(this);
         }
 
-        public readonly List<Control> _valueControls = new List<Control>();   //选项控件
+        public readonly List<Control> _valueControls = new List<Control>(); //选项控件
         public tmo_questionnaire Question { get; private set; }
         private readonly Type _type;
+
         public UCQuestion(tmo_questionnaire question)
         {
             InitializeComponent();
             BackColor = Color.Transparent; //背景透明
 
-            Question = question;    //题目赋值
+            Question = question; //题目赋值
             //题目类型 1-判断题 2-选择题 3-多项选择题 4-填空题 5-问答题
-            if (question.q_type == 2)   //选择题
+            if (question.q_type == 2) //选择题
             {
                 if (question.q_value_type.Equals("bool")) //bool类型
                 {
@@ -47,14 +48,14 @@ namespace TmoControl
                     tmp.SelectedChanged += (sender, args) => OnValueChanged();
                     _valueControls.Add(tmp);
                 }
-                else if (question.q_value_type.Equals("datetime"))  //date类型
+                else if (question.q_value_type.Equals("datetime")) //date类型
                 {
                     _type = typeof(DateTime);
                     var tmp = new UcRadioGroup<DateTime>(question.q_value, question.QuestionnaireResult.qr_result);
                     tmp.SelectedChanged += (sender, args) => OnValueChanged();
                     _valueControls.Add(tmp);
                 }
-                else if (question.q_value_type.Equals("float"))  //float类型
+                else if (question.q_value_type.Equals("float")) //float类型
                 {
                     _type = typeof(float);
                     var tmp = new UcRadioGroup<float>(question.q_value, question.QuestionnaireResult.qr_result);
@@ -69,9 +70,10 @@ namespace TmoControl
                     _valueControls.Add(tmp);
                 }
             }
+
             if (question.q_type == 3) //多选题
             {
-                if (question.q_value_type.Equals("int[]"))    //int类型
+                if (question.q_value_type.Equals("int[]")) //int类型
                 {
                     _type = typeof(int[]);
                     var tmp = new CheckBoxGroup<int>(question.q_value, question.QuestionnaireResult.qr_result);
@@ -79,15 +81,16 @@ namespace TmoControl
                     _valueControls.Add(tmp);
                 }
             }
-            if (question.q_type == 4)   //填空题
+
+            if (question.q_type == 4) //填空题
             {
                 if (question.q_value_type.Equals("float")) //float类型
                     _type = typeof(float);
 
                 flowLayoutPanel1.FlowDirection = FlowDirection.LeftToRight;
-                string[] values = TmoShare.GetValueFromJson<string[]>(Question.QuestionnaireResult.qr_result);
+                string[] values = TmoShare.GetValueFromJson<string[]>(Question.QuestionnaireResult.qr_result, false);
                 if (values == null)
-                    values = new[] { TmoShare.GetValueFromJson<string>(question.QuestionnaireResult.qr_result) };
+                    values = new[] {TmoShare.GetValueFromJson<string>(question.QuestionnaireResult.qr_result)};
                 int vindex = 0;
                 string tmp = question.q_name;
                 int index = -1;
@@ -106,6 +109,7 @@ namespace TmoControl
                         lbl.AutoSize = true;
                         flowLayoutPanel1.Controls.Add(lbl);
                     }
+
                     if (index != -1)
                     {
                         string laststr = tmp.Remove(0, index + 1);
@@ -130,8 +134,6 @@ namespace TmoControl
                         tmp = laststr;
                     }
                 } while (index != -1);
-
-
             }
             else
             {
@@ -173,6 +175,7 @@ namespace TmoControl
             {
                 Height = top + lblQuestion.Height + top;
             }
+
             //flowLayoutPanel1.Height = Height;
         }
 
@@ -188,45 +191,46 @@ namespace TmoControl
             try
             {
                 Type type = _type;
-                if (Question.q_type == 4) type = typeof(string);   //填空题暂时按string处理
+                if (Question.q_type == 4) type = typeof(string); //填空题暂时按string处理
 
                 Type tobjarray = type.MakeArrayType();
-                Array objarray = (Array)Activator.CreateInstance(tobjarray, length);
+                Array objarray = (Array) Activator.CreateInstance(tobjarray, length);
 
                 for (var i = 0; i < length; i++)
                 {
                     Control valueControl = _valueControls[i];
                     if (valueControl is TextBox)
                     {
-                        var vc = (TextBox)valueControl;
+                        var vc = (TextBox) valueControl;
                         objarray.SetValue(vc.Text, i);
                     }
                     else if (valueControl is UcRadioGroup<bool?>)
                     {
-                        var vc = (UcRadioGroup<bool?>)valueControl;
+                        var vc = (UcRadioGroup<bool?>) valueControl;
                         objarray.SetValue(vc.Value, i);
                     }
                     else if (valueControl is UcRadioGroup<DateTime>)
                     {
-                        var vc = (UcRadioGroup<DateTime>)valueControl;
+                        var vc = (UcRadioGroup<DateTime>) valueControl;
                         objarray.SetValue(vc.Value, i);
                     }
                     else if (valueControl is CheckBoxGroup<int>)
                     {
-                        var vc = (CheckBoxGroup<int>)valueControl;
+                        var vc = (CheckBoxGroup<int>) valueControl;
                         objarray.SetValue(vc.Value.ToArray(), i);
                     }
                     else if (valueControl is UcRadioGroup<float>)
                     {
-                        var vc = (UcRadioGroup<float>)valueControl;
+                        var vc = (UcRadioGroup<float>) valueControl;
                         objarray.SetValue(vc.Value, i);
                     }
                     else if (valueControl is UcRadioGroup<string>)
                     {
-                        var vc = (UcRadioGroup<string>)valueControl;
+                        var vc = (UcRadioGroup<string>) valueControl;
                         objarray.SetValue(vc.Value, i);
                     }
                 }
+
                 if (length == 1)
                     return objarray.GetValue(0);
                 else
@@ -234,8 +238,8 @@ namespace TmoControl
             }
             catch (Exception ex)
             {
-
             }
+
             return null;
         }
 
@@ -263,7 +267,7 @@ namespace TmoControl
             {
                 Array valuearray = value as Array;
                 if (valuearray == null && length == 1)
-                    valuearray = new[] { value };
+                    valuearray = new[] {value};
 
                 for (var i = 0; i < length; i++)
                 {
@@ -271,40 +275,39 @@ namespace TmoControl
                     object val = valuearray.GetValue(i);
                     if (valueControl is TextBox)
                     {
-                        var vc = (TextBox)valueControl;
+                        var vc = (TextBox) valueControl;
                         vc.Text = TmoComm.Convert2Type<string>(val);
                     }
                     else if (valueControl is UcRadioGroup<bool?>)
                     {
-                        var vc = (UcRadioGroup<bool?>)valueControl;
+                        var vc = (UcRadioGroup<bool?>) valueControl;
                         vc.Value = TmoComm.Convert2Type<bool?>(val);
                     }
                     else if (valueControl is UcRadioGroup<DateTime>)
                     {
-                        var vc = (UcRadioGroup<DateTime>)valueControl;
+                        var vc = (UcRadioGroup<DateTime>) valueControl;
                         vc.Value = TmoComm.Convert2Type<DateTime>(val);
                     }
                     else if (valueControl is CheckBoxGroup<int>)
                     {
-                        var vc = (CheckBoxGroup<int>)valueControl;
-                        vc.Value = (List<int>)valuearray.GetValue(i);
+                        var vc = (CheckBoxGroup<int>) valueControl;
+                        vc.Value = (List<int>) valuearray.GetValue(i);
                     }
                     else if (valueControl is UcRadioGroup<float>)
                     {
-                        var vc = (UcRadioGroup<float>)valueControl;
+                        var vc = (UcRadioGroup<float>) valueControl;
                         if (val == null) val = -1;
                         vc.Value = TmoComm.Convert2Type<float>(val);
                     }
                     else if (valueControl is UcRadioGroup<string>)
                     {
-                        var vc = (UcRadioGroup<string>)valueControl;
-                        vc.Value = (string)valuearray.GetValue(i);
+                        var vc = (UcRadioGroup<string>) valueControl;
+                        vc.Value = (string) valuearray.GetValue(i);
                     }
                 }
             }
             catch (Exception ex)
             {
-
             }
         }
 
@@ -358,7 +361,7 @@ namespace TmoControl
                     picIcon.Image = Properties.Resources.info_gray;
                 else if (value is Array)
                 {
-                    Array array = (Array)value;
+                    Array array = (Array) value;
                     if (array.Length == 0)
                         picIcon.Image = Properties.Resources.info_gray;
                     else
@@ -374,6 +377,7 @@ namespace TmoControl
         }
 
         private bool _isRequired;
+
         /// <summary>
         /// 是否是必填的
         /// </summary>
@@ -419,7 +423,7 @@ namespace TmoControl
                 picIcon.Image = Properties.Resources.info_gray;
             else if (value is Array)
             {
-                Array array = (Array)value;
+                Array array = (Array) value;
                 if (array.Length == 0)
                     picIcon.Image = Properties.Resources.info_gray;
                 else
