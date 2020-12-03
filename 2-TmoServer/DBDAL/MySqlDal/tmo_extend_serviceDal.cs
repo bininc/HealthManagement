@@ -158,7 +158,7 @@ namespace DBDAL.MySqlDal
                 strWhere.Append(" and u.input_time>= '" + dr["reg_time_begin"].ToString() + "'");
                 strWhere.Append(" and u.input_time < '" + dr["reg_time_end"].ToString() + "'");
             }
-            groupStr.Append(" order by s.pay_time desc ");
+            groupStr.Append(" order by c.questionnaire_time desc ");
 
             dsSel = tmoCommonDal.GetPagingData(strSql, strWhere, groupStr.ToString(), PageSize, NowPage);
             return dsSel;

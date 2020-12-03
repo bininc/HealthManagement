@@ -1,4 +1,6 @@
-﻿namespace TmoExtendServer
+﻿using System;
+
+namespace TmoExtendServer
 {
     partial class ExtendServerNew
     {
@@ -577,6 +579,7 @@
             this.llblStart.TabIndex = 26;
             this.llblStart.TabStop = true;
             this.llblStart.Text = "首页";
+            this.llblStart.Click+= new EventHandler(llblStart_LinkClicked);
             // 
             // llblUp
             // 
@@ -588,6 +591,7 @@
             this.llblUp.TabIndex = 27;
             this.llblUp.TabStop = true;
             this.llblUp.Text = "上页";
+            this.llblUp.Click+= new EventHandler(llblUp_LinkClicked);
             // 
             // llblDown
             // 
@@ -599,6 +603,7 @@
             this.llblDown.TabIndex = 36;
             this.llblDown.TabStop = true;
             this.llblDown.Text = "下页";
+            this.llblDown.Click+= new EventHandler(llblDown_LinkClicked);
             // 
             // llblEnd
             // 
@@ -610,6 +615,7 @@
             this.llblEnd.TabIndex = 37;
             this.llblEnd.TabStop = true;
             this.llblEnd.Text = "尾页";
+            this.llblEnd.Click+= new EventHandler(llblEnd_LinkClicked);
             // 
             // lblPageIndex
             // 

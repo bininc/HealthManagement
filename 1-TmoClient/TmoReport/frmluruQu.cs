@@ -83,12 +83,11 @@ namespace TmoReport
 
                 foreach (DataRow dsrow in dt.Rows)
                 {
-
-
                     if (dsrow["input_time"] != null && !string.IsNullOrEmpty(dsrow["input_time"].ToString()))
                     {
-                        string val = dsrow[_dc].ToString();
-
+                        string val = dsrow[_dc]?.ToString();
+                        if(string.IsNullOrWhiteSpace(val)) continue;
+                        
                         string Pinput_time = Convert.ToDateTime(dsrow["input_time"]).ToString();
                         Pinput_time = "*" + Pinput_time;
                         DevExpress.XtraCharts.SeriesPoint op = new DevExpress.XtraCharts.SeriesPoint((object)Pinput_time, new object[] {
