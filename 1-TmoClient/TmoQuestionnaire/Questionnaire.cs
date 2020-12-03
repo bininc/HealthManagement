@@ -953,7 +953,7 @@ namespace TmoQuestionnaire
                 DataRow dr0 = ds.Tables[0].NewRow();
                 foreach (DataColumn dc in ds.Tables[0].Columns)
                 {
-                    switch (dc.ColumnName.ToString())
+                    switch (dc.ColumnName)
                     {
                         case "user_id":
                             dr0[dc] = identity.Text;
@@ -1060,7 +1060,7 @@ namespace TmoQuestionnaire
                 DataRow dr1 = ds.Tables[1].NewRow();
                 foreach (DataColumn dc in ds.Tables[1].Columns)
                 {
-                    switch (dc.ColumnName.ToString())
+                    switch (dc.ColumnName)
                     {
                         case "eh_self":
                             dr1[dc] = eh_self.Checked ? 1 : 2;
@@ -1311,7 +1311,7 @@ namespace TmoQuestionnaire
                 DataRow dr2 = ds.Tables[2].NewRow();
                 foreach (DataColumn dc in ds.Tables[2].Columns)
                 {
-                    switch (dc.ColumnName.ToString())
+                    switch (dc.ColumnName)
                     {
                         case "polydipsia":
                             dr2[dc] = polydipsia.Checked ? 1 : 2;
@@ -1537,7 +1537,7 @@ namespace TmoQuestionnaire
                 DataRow dr3 = ds.Tables[3].NewRow();
                 foreach (DataColumn dc in ds.Tables[3].Columns)
                 {
-                    switch (dc.ColumnName.ToString())
+                    switch (dc.ColumnName)
                     {
                         case "breakfast":
                             dr3[dc] = breakfast.SelectedIndex;
@@ -1604,7 +1604,7 @@ namespace TmoQuestionnaire
                 DataRow dr4 = ds.Tables[4].NewRow();
                 foreach (DataColumn dc in ds.Tables[4].Columns)
                 {
-                    switch (dc.ColumnName.ToString())
+                    switch (dc.ColumnName)
                     {
                         case "housework":
                             dr4[dc] = housework.Checked ? 1 : 2;
@@ -1662,7 +1662,7 @@ namespace TmoQuestionnaire
                 DataRow dr5 = ds.Tables[5].NewRow();
                 foreach (DataColumn dc in ds.Tables[5].Columns)
                 {
-                    switch (dc.ColumnName.ToString())
+                    switch (dc.ColumnName)
                     {
                         case "getup_time":
                             dr5[dc] = getup_time.Checked ? 1 : 2;
@@ -1708,7 +1708,7 @@ namespace TmoQuestionnaire
                 DataRow dr6 = ds.Tables[6].NewRow();
                 foreach (DataColumn dc in ds.Tables[6].Columns)
                 {
-                    switch (dc.ColumnName.ToString())
+                    switch (dc.ColumnName)
                     {
                         case "hypotensor":
                             StringBuilder sb = new StringBuilder();
@@ -1767,7 +1767,7 @@ namespace TmoQuestionnaire
                 DataRow dr7 = ds.Tables[7].NewRow();
                 foreach (DataColumn dc in ds.Tables[7].Columns)
                 {
-                    switch (dc.ColumnName.ToString())
+                    switch (dc.ColumnName)
                     {
                         case "height":
                             dr7[dc] = height.Text;
@@ -1953,13 +1953,13 @@ namespace TmoQuestionnaire
         {
             if (string.IsNullOrWhiteSpace(sbp.Text))
                 //收缩压
-                sbp.Text = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetDeviceValue, "101", identity).ToString();
+                sbp.Text = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetDeviceValue, "101", identity);
             if (string.IsNullOrWhiteSpace(dbp.Text))
                 //舒张压
-                dbp.Text = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetDeviceValue, "100", identity).ToString();
+                dbp.Text = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetDeviceValue, "100", identity);
             if (string.IsNullOrWhiteSpace(fbg.Text))
                 //空腹血糖
-                fbg.Text = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetDeviceValue, "103", identity).ToString();
+                fbg.Text = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetDeviceValue, "103", identity);
         }
         #endregion
 
@@ -2271,24 +2271,24 @@ namespace TmoQuestionnaire
 
             #region 用药历史
             string[] hypotensor = dr["hypotensor"].ToString().Split(',');
-            hypotensor1.Checked = hypotensor[0].ToString() == "1" ? true : false;
-            hypotensor2.Checked = hypotensor[1].ToString() == "1" ? true : false;
-            hypotensor3.Checked = hypotensor[2].ToString() == "1" ? true : false;
-            hypotensor4.Checked = hypotensor[3].ToString() == "1" ? true : false;
-            hypotensor5.Checked = hypotensor[4].ToString() == "1" ? true : false;
-            hypotensor6.Checked = hypotensor[5].ToString() == "1" ? true : false;
+            hypotensor1.Checked = hypotensor[0] == "1" ? true : false;
+            hypotensor2.Checked = hypotensor[1] == "1" ? true : false;
+            hypotensor3.Checked = hypotensor[2] == "1" ? true : false;
+            hypotensor4.Checked = hypotensor[3] == "1" ? true : false;
+            hypotensor5.Checked = hypotensor[4] == "1" ? true : false;
+            hypotensor6.Checked = hypotensor[5] == "1" ? true : false;
             string[] fibrate = dr["fibrate"].ToString().Split(',');
-            fibrate1.Checked = fibrate[0].ToString() == "1" ? true : false;
-            fibrate2.Checked = fibrate[1].ToString() == "1" ? true : false;
-            fibrate3.Checked = fibrate[2].ToString() == "1" ? true : false;
-            fibrate4.Checked = fibrate[3].ToString() == "1" ? true : false;
-            fibrate5.Checked = fibrate[4].ToString() == "1" ? true : false;
+            fibrate1.Checked = fibrate[0] == "1" ? true : false;
+            fibrate2.Checked = fibrate[1] == "1" ? true : false;
+            fibrate3.Checked = fibrate[2] == "1" ? true : false;
+            fibrate4.Checked = fibrate[3] == "1" ? true : false;
+            fibrate5.Checked = fibrate[4] == "1" ? true : false;
             string[] antidiabetic = dr["antidiabetic"].ToString().Split(',');
-            antidiabetic1.Checked = antidiabetic[0].ToString() == "1" ? true : false;
-            antidiabetic2.Checked = antidiabetic[1].ToString() == "1" ? true : false;
-            antidiabetic3.Checked = antidiabetic[2].ToString() == "1" ? true : false;
-            antidiabetic4.Checked = antidiabetic[3].ToString() == "1" ? true : false;
-            antidiabetic5.Checked = antidiabetic[4].ToString() == "1" ? true : false;
+            antidiabetic1.Checked = antidiabetic[0] == "1" ? true : false;
+            antidiabetic2.Checked = antidiabetic[1] == "1" ? true : false;
+            antidiabetic3.Checked = antidiabetic[2] == "1" ? true : false;
+            antidiabetic4.Checked = antidiabetic[3] == "1" ? true : false;
+            antidiabetic5.Checked = antidiabetic[4] == "1" ? true : false;
 
             elsehope1.Text = dr["elsehope1"].ToString();
             elsehope2.Text = dr["elsehope2"].ToString();

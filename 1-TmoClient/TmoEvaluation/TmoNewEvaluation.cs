@@ -220,7 +220,7 @@ namespace TmoEvaluation
                     }
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetNewReportData, new object[] { selexml }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetNewReportData, new object[] { selexml });
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {

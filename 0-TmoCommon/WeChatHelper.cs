@@ -114,7 +114,7 @@ namespace TmoCommon
             catch (Exception e)
             {
                 strRecode = "err_wx_001";
-                TmoShare.WriteLog("当前医生" + infoValue[0].ToString() + "获取列表失败！ 原因：err_cdp_001(未知异常失败)" + e.Message.ToString());
+                TmoShare.WriteLog("当前医生" + infoValue[0] + "获取列表失败！ 原因：err_cdp_001(未知异常失败)" + e.Message);
             }
             strRecode = TmoShare.WX_ACCESS_TOKEN;
             return strRecode;
@@ -648,8 +648,8 @@ namespace TmoCommon
             }
             catch (Exception e)
             {
-                strRecode = "当前医生" + infoValue[0].ToString() + "获取列表失败！ 原因：err_wx_001(未知异常失败)";
-                TmoShare.WriteLog(strRecode + e.Message.ToString());
+                strRecode = "当前医生" + infoValue[0] + "获取列表失败！ 原因：err_wx_001(未知异常失败)";
+                TmoShare.WriteLog(strRecode + e.Message);
                 return "err_wx_001";
             }
             return "";

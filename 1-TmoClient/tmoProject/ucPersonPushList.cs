@@ -73,7 +73,7 @@ namespace tmoProject
                     _dsQueryXml.Tables[0].Rows[0]["doc_group"] = TmoComm.login_docInfo.doc_group;
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetPushlist, new object[] { selexml }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetPushlist, new object[] { selexml });
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {

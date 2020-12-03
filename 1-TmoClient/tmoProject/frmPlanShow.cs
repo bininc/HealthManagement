@@ -76,7 +76,7 @@ namespace tmoProject
 
                 try
                 {
-                    string xmlreturn = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProResult, new object[] { user_id, user_times, "" }).ToString();
+                    string xmlreturn = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProResult, new object[] { user_id, user_times, "" });
                     DataSet ds = TmoShare.getDataSetFromXML(xmlreturn);
                     if (TmoShare.DataSetIsNotEmpty(ds))
                     {

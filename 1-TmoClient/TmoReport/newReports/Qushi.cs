@@ -40,7 +40,7 @@ namespace TmoReport.Reoprts
             try
             {
                 DataSet ds = null;
-                ds = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(TmoCommon.funCode.GetNewFiveData, new object[] { user_id, user_times }).ToString());
+                ds = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(TmoCommon.funCode.GetNewFiveData, new object[] { user_id, user_times }));
                 if (TmoCommon.TmoShare.DataSetIsNotEmpty(ds))
                 {
                     xuetang.Series[0].Points.Clear();
@@ -52,6 +52,8 @@ namespace TmoReport.Reoprts
                     xuezhi.Series[2].Points.Clear();
                     xuezhi.Series[3].Points.Clear();
                     bmi1.Series[0].Points.Clear();
+                    xrChart1.Series[0].Points.Clear();
+
                     foreach (DataRow dsrow in ds.Tables[0].Rows)
                     {
 
@@ -60,11 +62,12 @@ namespace TmoReport.Reoprts
                         {
                             string qid = dsrow["q_id"].ToString();
 
-                            string Pinput_time = Convert.ToDateTime(dsrow["input_time"]).ToString("yyyy年MM月dd日 HH点mm分");
+                            string Pinput_time = Convert.ToDateTime(dsrow["input_time"]).ToString("yyyy/MM/dd HH:mm");
                             Pinput_time = "*" + Pinput_time;
                             if (qid == "ADF9331BADAB48BF9147611A9BBD1C79")
                             {
                                 string fvalue = dsrow["qr_result"].ToString() == "" ? "0" : dsrow["qr_result"].ToString();//空腹血糖
+                                if (fvalue == "0") continue;
                                 DevExpress.XtraCharts.SeriesPoint op = new DevExpress.XtraCharts.SeriesPoint((object)Pinput_time, new object[] {
             ((object)(fvalue))});
                                 xuetang.Series[0].Points.Add(op);
@@ -72,6 +75,7 @@ namespace TmoReport.Reoprts
                             if (qid == "0C1553EA1A274B56A211CCFC5F4A429E")
                             {
                                 string pvalue = dsrow["qr_result"].ToString() == "" ? "0" : dsrow["qr_result"].ToString();//餐后血糖
+                                if (pvalue == "0") continue;
                                 DevExpress.XtraCharts.SeriesPoint op1 = new DevExpress.XtraCharts.SeriesPoint((object)Pinput_time, new object[] {
             ((object)(pvalue))});
                                 xuetang.Series[1].Points.Add(op1);
@@ -87,6 +91,7 @@ namespace TmoReport.Reoprts
                                     sbp = sb.Split('/')[0];
                                     dbp = sb.Split('/')[1];
                                 }
+                                else { continue; }
                                 DevExpress.XtraCharts.SeriesPoint op3 = new DevExpress.XtraCharts.SeriesPoint(Pinput_time, new object[] {
             ((object)(sbp))});
                                 DevExpress.XtraCharts.SeriesPoint op4 = new DevExpress.XtraCharts.SeriesPoint(Pinput_time, new object[] {
@@ -97,6 +102,7 @@ namespace TmoReport.Reoprts
                             if (qid == "D2198A7F78CF4DEFA821C4F41893E415")
                             {
                                 string hdl = dsrow["qr_result"].ToString() == "" ? "0" : dsrow["qr_result"].ToString();//高密度胆固醇
+                                if (hdl == "0") continue;
                                 DevExpress.XtraCharts.SeriesPoint op5 = new DevExpress.XtraCharts.SeriesPoint(Pinput_time, new object[] {
             ((object)(hdl))});
                                 xuezhi.Series[0].Points.Add(op5);
@@ -104,7 +110,7 @@ namespace TmoReport.Reoprts
                             if (qid == "6A67F0E229964527AB541B5DD318E2C3")
                             {
                                 string ldl = dsrow["qr_result"].ToString() == "" ? "0" : dsrow["qr_result"].ToString();//低密度单股
-
+                                if (ldl == "0") continue;
                                 DevExpress.XtraCharts.SeriesPoint op6 = new DevExpress.XtraCharts.SeriesPoint(Pinput_time, new object[] {
             ((object)(ldl))});
                                 xuezhi.Series[1].Points.Add(op6);
@@ -113,14 +119,15 @@ namespace TmoReport.Reoprts
                             if (qid == "225368D504EB431CA2E597FAD50D2949")
                             {
                                 string tg = dsrow["qr_result"].ToString() == "" ? "0" : dsrow["qr_result"].ToString();//甘油三酯
+                                if (tg == "0") continue;
                                 DevExpress.XtraCharts.SeriesPoint op7 = new DevExpress.XtraCharts.SeriesPoint(Pinput_time, new object[] {
             ((object)(tg))});
                                 xuezhi.Series[2].Points.Add(op7);
                             }
                             if (qid == "6E3658E76CE141CEB0264BA1ADEF9664")
                             {
-
                                 string chol = dsrow["qr_result"].ToString() == "" ? "0" : dsrow["qr_result"].ToString();//总胆固醇
+                                if (chol == "0") continue;
                                 DevExpress.XtraCharts.SeriesPoint op8 = new DevExpress.XtraCharts.SeriesPoint(Pinput_time, new object[] {
             ((object)(chol))});
                                 xuezhi.Series[3].Points.Add(op8);
@@ -128,8 +135,8 @@ namespace TmoReport.Reoprts
 
                             if (qid == "D9115BD44B1344B88A45EF121EADCBA5")
                             {
-
                                 string Bmi = dsrow["qr_result"].ToString() == "" ? "0" : dsrow["qr_result"].ToString();//Bmi
+                                if (Bmi == "0") continue;
                                 DevExpress.XtraCharts.SeriesPoint op8 = new DevExpress.XtraCharts.SeriesPoint(Pinput_time, new object[] {
             ((object)(Bmi))});
                                 bmi1.Series[0].Points.Add(op8);
@@ -137,8 +144,8 @@ namespace TmoReport.Reoprts
 
                             if (qid == "C1443DA657174BC696008614A6659A99")
                             {
-
                                 string Bmi = dsrow["qr_result"].ToString() == "" ? "0" : dsrow["qr_result"].ToString();//Bmi
+                                if (Bmi == "0") continue;
                                 DevExpress.XtraCharts.SeriesPoint op8 = new DevExpress.XtraCharts.SeriesPoint(Pinput_time, new object[] {
             ((object)(Bmi))});
                                 xrChart1.Series[0].Points.Add(op8);
@@ -148,6 +155,26 @@ namespace TmoReport.Reoprts
 
                     }
 
+                    if (xuetang.Series[0].Points.Count > 10)
+                        xuetang.Series[0].Points.RemoveRange(0, xuetang.Series[0].Points.Count - 10);
+                    if (xuetang.Series[1].Points.Count > 10)
+                        xuetang.Series[1].Points.RemoveRange(0, xuetang.Series[1].Points.Count - 10);
+                    if (xueya.Series[0].Points.Count > 10)
+                        xueya.Series[0].Points.RemoveRange(0, xueya.Series[0].Points.Count - 10);
+                    if (xueya.Series[1].Points.Count > 10)
+                        xueya.Series[1].Points.RemoveRange(0, xueya.Series[1].Points.Count - 10);
+                    if (xuezhi.Series[0].Points.Count > 10)
+                        xuezhi.Series[0].Points.RemoveRange(0, xuezhi.Series[0].Points.Count - 10);
+                    if (xuezhi.Series[1].Points.Count > 10)
+                        xuezhi.Series[1].Points.RemoveRange(0, xuezhi.Series[1].Points.Count - 10);
+                    if (xuezhi.Series[2].Points.Count > 10)
+                        xuezhi.Series[2].Points.RemoveRange(0, xuezhi.Series[2].Points.Count - 10);
+                    if (xuezhi.Series[3].Points.Count > 10)
+                        xuezhi.Series[3].Points.RemoveRange(0, xuezhi.Series[3].Points.Count - 10);
+                    if (bmi1.Series[0].Points.Count > 10)
+                        bmi1.Series[0].Points.RemoveRange(0, bmi1.Series[0].Points.Count - 10);
+                    if (xrChart1.Series[0].Points.Count > 10)
+                        xrChart1.Series[0].Points.RemoveRange(0, xrChart1.Series[0].Points.Count - 10);
                 }
             }
             catch (Exception ex)

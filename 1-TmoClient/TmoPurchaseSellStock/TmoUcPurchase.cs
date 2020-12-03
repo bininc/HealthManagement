@@ -87,7 +87,7 @@ namespace TmoPurchaseSellStock
             DataRow dr0 = ds.Tables[0].NewRow();
             foreach (DataColumn dc in ds.Tables[0].Columns)
             {
-                switch (dc.ColumnName.ToString())
+                switch (dc.ColumnName)
                 {
                     case "product_num":
                         dr0[dc] = product_num.Text;

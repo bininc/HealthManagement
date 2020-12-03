@@ -60,7 +60,7 @@ namespace TmoExtendServer
             DataRow dr0 = ds.Tables[0].NewRow();
             foreach (DataColumn dc in ds.Tables[0].Columns)
             {
-                switch (dc.ColumnName.ToString())
+                switch (dc.ColumnName)
                 {
                     case "pay_money":
                         dr0[dc] = money.Text;

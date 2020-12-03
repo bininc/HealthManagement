@@ -50,7 +50,7 @@ namespace TmoGeneral
             if (!string.IsNullOrWhiteSpace(name.Text))
                 sbWhere.AppendFormat(" u.name like '%{0}%' and ", name.Text);
             if (gender.EditValue != null)
-                sbWhere.AppendFormat(" u.gender='{0}' and ", gender.EditValue.ToString());
+                sbWhere.AppendFormat(" u.gender='{0}' and ", gender.EditValue);
             if (!string.IsNullOrWhiteSpace(user_times.Text))
                 sbWhere.AppendFormat(" tmo_question_save.user_times='{0}' and ", user_times.Text);
 

@@ -35,16 +35,16 @@ namespace TmoPointsCenter
 
                     foreach (DataColumn dc in ds.Tables[0].Columns)
                     {
-                        if (det.Name.ToString() == dc.ColumnName.ToString())
+                        if (det.Name == dc.ColumnName)
                         {
                             if (det.GetType().ToString() == "DevExpress.XtraEditors.RadioGroup")
                             {
-                                if (!string.IsNullOrEmpty(datarow[det.Name.ToString()].ToString()))
+                                if (!string.IsNullOrEmpty(datarow[det.Name].ToString()))
                                     ((DevExpress.XtraEditors.RadioGroup)det).SelectedIndex = Convert.ToInt16(datarow[det.Name]);
                             }
                             else if (det.GetType().ToString() == "DevExpress.XtraEditors.CheckEdit")
                             {
-                                if (datarow[det.Name.ToString()].ToString() == "1")
+                                if (datarow[det.Name].ToString() == "1")
                                     ((DevExpress.XtraEditors.CheckEdit)det).Checked = true;
                                 else
                                     ((DevExpress.XtraEditors.CheckEdit)det).Checked = false;
@@ -109,7 +109,7 @@ namespace TmoPointsCenter
                 return;
             }
             string result = "-2";
-            string data = diary_date.Text.ToString();
+            string data = diary_date.Text;
             DataSet ds = TmoShare.getDataSetFromXML(xmlSportDiary, true);
             DataRow dr = ds.Tables[0].NewRow();
             try
@@ -120,9 +120,9 @@ namespace TmoPointsCenter
 
                         foreach (DataColumn dc in ds.Tables[0].Columns)
                         {
-                            if (det.Name.ToString() == dc.ColumnName.ToString())
+                            if (det.Name == dc.ColumnName)
                             {
-                                dr[dc] = det.Text.ToString();
+                                dr[dc] = det.Text;
                             }
                         }
                 }
@@ -153,7 +153,7 @@ namespace TmoPointsCenter
 
                     foreach (DataColumn dc in ds.Tables[0].Columns)
                     {
-                        if (det.Name.ToString() == dc.ColumnName.ToString())
+                        if (det.Name == dc.ColumnName)
                         {
                             if (det.GetType().ToString() == "DevExpress.XtraEditors.RadioGroup")
                             {

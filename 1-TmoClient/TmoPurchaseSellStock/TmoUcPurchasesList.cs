@@ -92,7 +92,7 @@ namespace TmoPurchaseSellStock
                     }
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetPurchasesList, new object[] { selexml }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetPurchasesList, new object[] { selexml });
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {

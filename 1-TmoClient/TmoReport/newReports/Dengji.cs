@@ -66,7 +66,7 @@ namespace TmoReport
         public void getData(string userId, string user_times,string mquesTypeId)
         {
             List<string> md5res = new List<string>();
-            string resultxml = TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(funCode.getTangniao, new object[] { userId, user_times, mquesTypeId }).ToString();
+            string resultxml = TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(funCode.getTangniao, new object[] { userId, user_times, mquesTypeId });
             DataTable DsReslut = TmoShare.getDataTableFromXML(resultxml);
             double zongfen = 0;
             string jianyi = "";
@@ -113,7 +113,7 @@ namespace TmoReport
                     { }
                     else
                     {
-                        yinsu = yinsu + row["q_resik"].ToString() + "，";
+                        yinsu = yinsu + row["q_resik"] + "，";
                         md5res.Add(val);
                     }
                 }
@@ -138,7 +138,7 @@ namespace TmoReport
             ds.Tables[0].Rows[0]["user_id"] = userId;
             ds.Tables[0].Rows[0]["user_time"] = user_times;
             string xml = TmoShare.getXMLFromDataSet(ds);
-            string resultxml = TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(funCode.GetRiskData, new object[] { xml }).ToString();
+            string resultxml = TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(funCode.GetRiskData, new object[] { xml });
             DataSet DsReslut = TmoShare.getDataSetFromXML(resultxml);
             return DsReslut;
         }

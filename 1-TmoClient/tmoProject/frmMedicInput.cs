@@ -178,7 +178,7 @@ namespace tmoProject
                 }
                 else if (controltype == "4")
                 {
-                    string cur_value_strc = e.Node.GetValue("m_value").ToString() + "-" + e.Node.GetValue("cur_value").ToString();
+                    string cur_value_strc = e.Node.GetValue("m_value") + "-" + e.Node.GetValue("cur_value");
                     #region 单选
                     rg_cur_value.Properties.Items.Clear();
 
@@ -190,8 +190,8 @@ namespace tmoProject
                         if (element1.Length > 1)
                         {
                             DevExpress.XtraEditors.Controls.RadioGroupItem item = new DevExpress.XtraEditors.Controls.RadioGroupItem();
-                            item.Description = element1[1].ToString();
-                            item.Value = element1[0].ToString() + "-" + element1[1].ToString();
+                            item.Description = element1[1];
+                            item.Value = element1[0] + "-" + element1[1];
                             rg_cur_value.Properties.Items.Add(item);
                         }
                     }
@@ -224,9 +224,9 @@ namespace tmoProject
                         if (element1.Length > 1)
                         {
                             DevExpress.XtraEditors.Controls.CheckedListBoxItem item = new DevExpress.XtraEditors.Controls.CheckedListBoxItem();
-                            item.Description = element1[1].ToString();
-                            item.Value = element1[0].ToString() + "-" + element1[1].ToString();
-                            if (ss.Contains(element1[0].ToString() + "-" + element1[1].ToString()))
+                            item.Description = element1[1];
+                            item.Value = element1[0] + "-" + element1[1];
+                            if (ss.Contains(element1[0] + "-" + element1[1]))
                                 item.CheckState = CheckState.Checked;
                             ccbe_cur_value.Items.Add(item);
                         }
@@ -283,7 +283,7 @@ namespace tmoProject
 
                 try
                 {
-      string xmlreturn = TmoServiceClient.InvokeServerMethodT<string>(funCode.medicQuery, new object[] { ""}).ToString();
+      string xmlreturn = TmoServiceClient.InvokeServerMethodT<string>(funCode.medicQuery, new object[] { ""});
                     DataSet ds = TmoShare.getDataSetFromXML(xmlreturn);
                     if (TmoShare.DataSetIsNotEmpty(ds))
                     {

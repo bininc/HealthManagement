@@ -803,7 +803,10 @@ namespace TmoServiceServer
             }
 
             string msg = $"{DateTime.Now.ToFormatTimeStr()} [{getIPAddress()} ] {docName}-> {fun}({(int) fun})-{(isSuccess ? "TRUE" : "ERROR")}-{runSeconds}";
-            LogHelper.WriteInfo(msg + ":" + sbArg);
+            if (fun != funCode.SaveActionPlan && fun != funCode.InsertAttach && fun != funCode.UpdateAttch)
+                LogHelper.WriteInfo(msg + ":" + sbArg);
+            else
+                LogHelper.WriteInfo(msg);
             OnInvokedMain?.Invoke(msg);
         }
 

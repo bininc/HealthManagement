@@ -37,7 +37,7 @@ namespace TmoReport
                 _rate = value;
                 try
                 {
-                    lbInfo.Text = Math.Round(_rate, 2).ToString() + "%";
+                    lbInfo.Text = Math.Round(_rate, 2) + "%";
                     pbSync.EditValue = _rate;
                 }
                 catch

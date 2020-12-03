@@ -28,6 +28,7 @@ namespace TmoReport
         bool isupdate = false;
         public string atId = "";
         string UserName = "";
+        private readonly DataRow _dr;
         public FrmUp(DataRow dr, bool isupdate)
         {
             InitializeComponent();
@@ -40,8 +41,15 @@ namespace TmoReport
                 lable2.Visible = false;
             }
             UserName = dr["name"].ToString();
-            loadData(dr);
+            _dr = dr;
+           
 
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            loadData(_dr);
         }
 
         void ricEc_DocumentLoaded(object sender, EventArgs e)
@@ -120,7 +128,7 @@ namespace TmoReport
             userTime = dr["user_times"].ToString();
 
 
-            string xmlData = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetAttach, new object[] { userid, userTime,"new"}).ToString();
+            string xmlData = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetAttach, new object[] { userid, userTime,"new"});
             if (xmlData != "")
             {
                 DataTable dt = TmoShare.getDataTableFromXML(xmlData);
@@ -162,6 +170,15 @@ namespace TmoReport
                         pdfViewer1.Visible = true;
                         return;
                     }
+                }
+            }
+            else
+            {
+                if (!isupdate)
+                {
+                    htmlS1.Visible = false;
+                    pdfViewer1.Visible = true;
+                    return;
                 }
             }
 

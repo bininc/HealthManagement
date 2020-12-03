@@ -48,7 +48,7 @@ namespace TmoPurchaseSellStock
             DataRow dr0 = ds.Tables[0].NewRow();
             foreach (DataColumn dc in ds.Tables[0].Columns)
             {
-                switch (dc.ColumnName.ToString())
+                switch (dc.ColumnName)
                 {
                     case "type_id":
                         if (type_id.EditValue == null || type_id.EditValue.ToString() == "") dr0[dc] = "-1";

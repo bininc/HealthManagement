@@ -93,7 +93,7 @@ namespace TmoReport
                 Index index = new Index();
                 string userID = personDr["user_id"].ToString();
                 string user_times = personDr["user_times"].ToString();
-                DataSet advicDs = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(TmoCommon.funCode.GetMainData, new object[] { userID, user_times }).ToString());
+                DataSet advicDs = TmoShare.getDataSetFromXML(TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(TmoCommon.funCode.GetMainData, new object[] { userID, user_times }));
                 string XXX = "";
                 for (int i = 0; i < nums; i++)
                 {

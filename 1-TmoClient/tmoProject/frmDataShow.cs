@@ -79,7 +79,7 @@ namespace tmoProject
         public void GetItemData()
         {
 
-            string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetItemData, new object[] { "" }).ToString();
+            string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetItemData, new object[] { "" });
             DataSet ds = TmoShare.getDataSetFromXML(strmlx);
             if (ds != null && ds.Tables.Count > 0)
             {
@@ -154,7 +154,7 @@ namespace tmoProject
                     string selexml = TmoShare.getXMLFromDataSet(DsQueryXml);
                     if (_dicCode == "111" || _dicCode == "112" || _dicCode == "113" || _dicCode == "114")
                     {
-                       string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetMonitorData24, new object[] { selexml }).ToString();
+                       string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetMonitorData24, new object[] { selexml });
                         _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                         if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                         {
@@ -173,7 +173,7 @@ namespace tmoProject
                             _pageSize = 10;
                         else
                             _pageSize = 5;
-                        string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetMonitorData, new object[] { selexml }).ToString();
+                        string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetMonitorData, new object[] { selexml });
                         _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                         if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                         {

@@ -27,12 +27,12 @@ namespace TmoReport
         public void GetData() {
 
 
-            DataSet ds = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(TmoCommon.funCode.GettuiDataUser, new object[] { userIDDD,userTimesss }).ToString());
+            DataSet ds = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(TmoCommon.funCode.GettuiDataUser, new object[] { userIDDD,userTimesss }));
             btnsave.Text = "修改";
             if (!TmoShare.DataSetIsNotEmpty(ds))
             {
                 btnsave.Text = "添加";
-                ds = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(TmoCommon.funCode.getTuiData, new object[] { "" }).ToString());
+                ds = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(TmoCommon.funCode.getTuiData, new object[] { "" }));
             }
             if (TmoShare.DataSetIsNotEmpty(ds))
             {

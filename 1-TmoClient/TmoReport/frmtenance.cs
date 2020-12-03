@@ -162,7 +162,7 @@ namespace TmoReport
 
 
             DataSet ds = null;
-            ds = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(TmoCommon.funCode.GetNewFiveData, new object[] { userID, user_times }).ToString());
+            ds = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(TmoCommon.funCode.GetNewFiveData, new object[] { userID, user_times }));
             if (TmoCommon.TmoShare.DataSetIsNotEmpty(ds))
             {
                 string up_times = "0";
@@ -231,7 +231,7 @@ namespace TmoReport
             }
 
 
-            DataSet advicDs = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(TmoCommon.funCode.GetMainData, new object[] { userID, user_times }).ToString());
+            DataSet advicDs = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(TmoCommon.funCode.GetMainData, new object[] { userID, user_times }));
             if (TmoCommon.TmoShare.DataSetIsNotEmpty(advicDs))
             {
                 if (advicDs.Tables[0] != null)

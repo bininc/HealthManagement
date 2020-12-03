@@ -106,7 +106,7 @@ namespace TmoPurchaseSellStock
                         _dsQueryXml.Tables[0].Rows[0]["product_id"] = this.productId.EditValue;
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetStockList, new object[] { selexml }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetStockList, new object[] { selexml });
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {

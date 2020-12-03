@@ -214,7 +214,7 @@
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrLabel10.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel10.LocationFloat = new DevExpress.Utils.PointFloat(70.54216F, 916.5001F);
+            this.xrLabel10.LocationFloat = new DevExpress.Utils.PointFloat(71F, 916.5001F);
             this.xrLabel10.Name = "xrLabel10";
             this.xrLabel10.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel10.SizeF = new System.Drawing.SizeF(697.8828F, 29.24999F);
@@ -250,8 +250,9 @@
             this.xrChart1.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.BottomOutside;
             this.xrChart1.Legend.Direction = DevExpress.XtraCharts.LegendDirection.LeftToRight;
             this.xrChart1.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            this.xrChart1.LocationFloat = new DevExpress.Utils.PointFloat(70.51204F, 1099.792F);
+            this.xrChart1.LocationFloat = new DevExpress.Utils.PointFloat(71F, 1099.792F);
             this.xrChart1.Name = "xrChart1";
+            this.xrChart1.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 5, 0, 96F);
             this.xrChart1.PaletteName = "Marquee";
             pointSeriesLabel1.Antialiasing = true;
             pointSeriesLabel1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -263,16 +264,17 @@
         series1};
             this.xrChart1.SeriesTemplate.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.DateTime;
             this.xrChart1.SeriesTemplate.View = splineSeriesView2;
-            this.xrChart1.SizeF = new System.Drawing.SizeF(697.8829F, 150F);
+            this.xrChart1.SizeF = new System.Drawing.SizeF(697.8829F, 210F);
             this.xrChart1.StylePriority.UseBorderColor = false;
             this.xrChart1.StylePriority.UseBorders = false;
+            this.xrChart1.StylePriority.UsePadding = false;
             // 
             // xrLabel11
             // 
             this.xrLabel11.BorderColor = System.Drawing.Color.LightSkyBlue;
             this.xrLabel11.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel11.Font = new System.Drawing.Font("宋体", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.xrLabel11.LocationFloat = new DevExpress.Utils.PointFloat(71.18497F, 945.7502F);
+            this.xrLabel11.LocationFloat = new DevExpress.Utils.PointFloat(71F, 945.7502F);
             this.xrLabel11.Multiline = true;
             this.xrLabel11.Name = "xrLabel11";
             this.xrLabel11.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -306,7 +308,7 @@
             this.xrLabel5.BorderColor = System.Drawing.Color.LightSkyBlue;
             this.xrLabel5.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel5.Font = new System.Drawing.Font("宋体", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(70.51205F, 1291.042F);
+            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(70.51205F, 1352.458F);
             this.xrLabel5.Multiline = true;
             this.xrLabel5.Name = "xrLabel5";
             this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -328,7 +330,7 @@
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrLabel8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(70.54216F, 1261.792F);
+            this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(70.54216F, 1323.208F);
             this.xrLabel8.Name = "xrLabel8";
             this.xrLabel8.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel8.SizeF = new System.Drawing.SizeF(697.8828F, 29.24999F);
@@ -365,8 +367,9 @@
             this.xueya.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.BottomOutside;
             this.xueya.Legend.Direction = DevExpress.XtraCharts.LegendDirection.LeftToRight;
             this.xueya.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            this.xueya.LocationFloat = new DevExpress.Utils.PointFloat(70.52206F, 1418.584F);
+            this.xueya.LocationFloat = new DevExpress.Utils.PointFloat(70.52206F, 1480F);
             this.xueya.Name = "xueya";
+            this.xueya.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 5, 0, 96F);
             this.xueya.PaletteName = "Marquee";
             stackedLineSeriesLabel1.Antialiasing = true;
             stackedLineSeriesLabel1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -381,15 +384,16 @@
         series3};
             this.xueya.SeriesTemplate.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.DateTime;
             this.xueya.SeriesTemplate.View = stackedLineSeriesView3;
-            this.xueya.SizeF = new System.Drawing.SizeF(697.8829F, 170.3331F);
+            this.xueya.SizeF = new System.Drawing.SizeF(697.8829F, 260F);
             this.xueya.StylePriority.UseBorderColor = false;
             this.xueya.StylePriority.UseBorders = false;
+            this.xueya.StylePriority.UsePadding = false;
             // 
             // xrLabel7
             // 
             this.xrLabel7.BorderColor = System.Drawing.Color.LightSkyBlue;
             this.xrLabel7.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
-            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(70.52206F, 1849.75F);
+            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(71F, 1849.75F);
             this.xrLabel7.Multiline = true;
             this.xrLabel7.Name = "xrLabel7";
             this.xrLabel7.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -405,7 +409,7 @@
             this.xrLabel1.BorderColor = System.Drawing.Color.LightSkyBlue;
             this.xrLabel1.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel1.Font = new System.Drawing.Font("宋体", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(71.02421F, 400.2082F);
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(71.02421F, 455F);
             this.xrLabel1.Multiline = true;
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -425,7 +429,7 @@
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrLabel6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(70.53211F, 1820.5F);
+            this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(71F, 1820.5F);
             this.xrLabel6.Name = "xrLabel6";
             this.xrLabel6.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel6.SizeF = new System.Drawing.SizeF(697.8828F, 29.24999F);
@@ -458,8 +462,9 @@
             this.xuezhi.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Center;
             this.xuezhi.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.BottomOutside;
             this.xuezhi.Legend.Direction = DevExpress.XtraCharts.LegendDirection.LeftToRight;
-            this.xuezhi.LocationFloat = new DevExpress.Utils.PointFloat(71.02419F, 2047.667F);
+            this.xuezhi.LocationFloat = new DevExpress.Utils.PointFloat(71F, 2047.667F);
             this.xuezhi.Name = "xuezhi";
+            this.xuezhi.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 5, 0, 96F);
             this.xuezhi.PaletteName = "Apex";
             series4.Name = "高密度胆固醇";
             series4.View = splineSeriesView3;
@@ -479,6 +484,7 @@
             this.xuezhi.SizeF = new System.Drawing.SizeF(697.8829F, 336.4584F);
             this.xuezhi.StylePriority.UseBorderColor = false;
             this.xuezhi.StylePriority.UseBorders = false;
+            this.xuezhi.StylePriority.UsePadding = false;
             // 
             // bmi1
             // 
@@ -504,8 +510,9 @@
             this.bmi1.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.BottomOutside;
             this.bmi1.Legend.Direction = DevExpress.XtraCharts.LegendDirection.LeftToRight;
             this.bmi1.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            this.bmi1.LocationFloat = new DevExpress.Utils.PointFloat(70.51204F, 202.8332F);
+            this.bmi1.LocationFloat = new DevExpress.Utils.PointFloat(70.51204F, 203F);
             this.bmi1.Name = "bmi1";
+            this.bmi1.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 5, 0, 96F);
             this.bmi1.PaletteName = "Marquee";
             pointSeriesLabel2.Antialiasing = true;
             pointSeriesLabel2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -517,9 +524,10 @@
         series8};
             this.bmi1.SeriesTemplate.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.DateTime;
             this.bmi1.SeriesTemplate.View = splineSeriesView9;
-            this.bmi1.SizeF = new System.Drawing.SizeF(697.8828F, 156.6666F);
+            this.bmi1.SizeF = new System.Drawing.SizeF(697.8828F, 212F);
             this.bmi1.StylePriority.UseBorderColor = false;
             this.bmi1.StylePriority.UseBorders = false;
+            this.bmi1.StylePriority.UsePadding = false;
             // 
             // BMI
             // 
@@ -549,7 +557,7 @@
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrLabel4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(71.02421F, 370.9582F);
+            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(71.02421F, 425.75F);
             this.xrLabel4.Name = "xrLabel4";
             this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel4.SizeF = new System.Drawing.SizeF(698.0535F, 29.25F);
@@ -582,8 +590,9 @@
             this.xuetang.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Center;
             this.xuetang.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.BottomOutside;
             this.xuetang.Legend.Direction = DevExpress.XtraCharts.LegendDirection.LeftToRight;
-            this.xuetang.LocationFloat = new DevExpress.Utils.PointFloat(71.02421F, 541.9165F);
+            this.xuetang.LocationFloat = new DevExpress.Utils.PointFloat(71.02421F, 596.8F);
             this.xuetang.Name = "xuetang";
+            this.xuetang.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 5, 0, 96F);
             this.xuetang.PaletteName = "Marquee";
             series9.DataSource = this.chartNum11;
             series9.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
@@ -598,9 +607,10 @@
             this.xuetang.SeriesTemplate.ArgumentDataMember = "numTime";
             this.xuetang.SeriesTemplate.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.DateTime;
             this.xuetang.SeriesTemplate.View = splineSeriesView12;
-            this.xuetang.SizeF = new System.Drawing.SizeF(697.8828F, 211.4585F);
+            this.xuetang.SizeF = new System.Drawing.SizeF(697.8828F, 250F);
             this.xuetang.StylePriority.UseBorderColor = false;
             this.xuetang.StylePriority.UseBorders = false;
+            this.xuetang.StylePriority.UsePadding = false;
             // 
             // tarcom1BindingSource
             // 

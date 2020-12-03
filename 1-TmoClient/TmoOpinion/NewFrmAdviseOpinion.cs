@@ -83,7 +83,7 @@ namespace TmoOpinion
                 {
                     foreach (string xx in user_id.Text.Split(','))
                     {
-                        string openid = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetBindId, new object[] { xx }).ToString();
+                        string openid = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetBindId, new object[] { xx });
                         if (string.IsNullOrWhiteSpace(openid))
                         {
                             DXMessageBox.ShowWarning2("用户" + xx + "未绑定微信！");
@@ -92,13 +92,13 @@ namespace TmoOpinion
                     }
                     foreach (string xx in user_id.Text.Split(','))
                     {
-                        string openid = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetBindId, new object[] { xx }).ToString();
+                        string openid = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetBindId, new object[] { xx });
                         sendmessage(openid, xx);
                     }
                 }
                 else
                 {
-                    string openid = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetBindId, new object[] { user_id.Text }).ToString();
+                    string openid = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetBindId, new object[] { user_id.Text });
                     if (string.IsNullOrWhiteSpace(openid))
                     {
                         DXMessageBox.ShowWarning2("该用户未绑定微信！");

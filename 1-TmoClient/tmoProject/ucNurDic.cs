@@ -63,7 +63,7 @@ namespace tmoProject
         }
         public void SetControl()
         {
-            string nurXml = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetnurtypeItem, new object[] { "" }).ToString();
+            string nurXml = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetnurtypeItem, new object[] { "" });
             DataSet nurDs = TmoShare.getDataSetFromXML(nurXml);
             if (TmoShare.DataSetIsNotEmpty(nurDs))
             {
@@ -82,7 +82,7 @@ namespace tmoProject
                   
                 nurtype.SelectedIndex = 0;
             }
-            string hotXml = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetHotDic, new object[] { "" }).ToString();
+            string hotXml = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetHotDic, new object[] { "" });
             DataSet hotDs = TmoShare.getDataSetFromXML(hotXml);
             if (TmoShare.DataSetIsNotEmpty(hotDs))
             {
@@ -114,7 +114,7 @@ namespace tmoProject
                 {
 
 
-                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetNurData, new object[] { parentid,hotid }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetNurData, new object[] { parentid,hotid });
                     DataSet ds = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(ds))
                    return ds.Tables[0];

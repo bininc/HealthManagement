@@ -73,7 +73,7 @@ namespace TmoPointsCenter
                     }
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetExpenseDetial, new object[] { selexml }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetExpenseDetial, new object[] { selexml });
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {

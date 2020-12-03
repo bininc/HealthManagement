@@ -55,7 +55,7 @@ namespace TmoReport
 
                         foreach (DataColumn dc in ds.Tables[0].Columns)
                         {
-                            if (det.Name.ToString() == dc.ColumnName.ToString())
+                            if (det.Name == dc.ColumnName)
                             {
                                 if (det.Tag == null)
                                     det.Tag = "";
@@ -70,7 +70,7 @@ namespace TmoReport
                                     }
                                 }
                                
-                                dr[dc] = det.Text.ToString();
+                                dr[dc] = det.Text;
                             }
                         }
                 }
@@ -103,7 +103,7 @@ namespace TmoReport
 
                     foreach (DataColumn dc in ds.Tables[0].Columns)
                     {
-                        if (det.Name.ToString() == dc.ColumnName.ToString())
+                        if (det.Name == dc.ColumnName)
                         {
                             det.Text = "";
                         }

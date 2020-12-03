@@ -66,7 +66,7 @@ namespace TmoReport
         {
 
             List<string> md5res = new List<string>();
-            string resultxml = TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(funCode.getFeiPang, new object[] { userId, user_times, querisd }).ToString();
+            string resultxml = TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(funCode.getFeiPang, new object[] { userId, user_times, querisd });
             DataTable DsReslut = TmoShare.getDataTableFromXML(resultxml);
             double zongfen = 0;
             string jianyi = "";
@@ -113,7 +113,7 @@ namespace TmoReport
                     { }
                     else
                     {
-                        yinsu = yinsu + row["q_resik"].ToString() + "，";
+                        yinsu = yinsu + row["q_resik"] + "，";
                         md5res.Add(val);
                     }
                 }

@@ -263,7 +263,7 @@ namespace TmoExtendServer
 
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetNewServiceData, new object[] {selexml}).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetNewServiceData, new object[] {selexml});
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {
@@ -305,7 +305,7 @@ namespace TmoExtendServer
                     if (dt == null) return;
 
                     lblCount.Text = string.Format("共[{0}]条", count);
-                    lblPageIndex.Text = string.Format("第[{0}]页,共[{1}]页", _currentPage.ToString(), pageCount.ToString());
+                    lblPageIndex.Text = string.Format("第[{0}]页,共[{1}]页", _currentPage.ToString(), pageCount);
                     txtPageIndex.Text = _currentPage.ToString();
                     txtPageSize.Text = _pageSize.ToString();
 

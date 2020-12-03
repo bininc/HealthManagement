@@ -101,7 +101,7 @@ namespace TmoCommon
                             {
                                 if (!dt.Columns.Contains(sss.Key))
                                 {
-                                    dt.Columns.Add(sss.Key.ToString());
+                                    dt.Columns.Add(sss.Key);
                                 }
 
                                 dr[sss.Key] = sss.Value;

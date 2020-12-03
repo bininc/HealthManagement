@@ -87,7 +87,7 @@ namespace tmoProject
                 {
                     string name = txtName.Text;
                   
-                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GeVideoList, new object[] {name, "" }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GeVideoList, new object[] {name, "" });
                     DataSet ds = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(ds))
                     {

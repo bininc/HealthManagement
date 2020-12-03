@@ -95,7 +95,7 @@ namespace tmoProject
                 }
                 string user_idd = dr["user_id"].ToString();
                 string user_timesd = dr["user_times"].ToString();
-                string xmlreturn = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProResult, new object[] { user_idd, user_timesd, "" }).ToString();
+                string xmlreturn = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProResult, new object[] { user_idd, user_timesd, "" });
                 DataSet ds = TmoShare.getDataSetFromXML(xmlreturn);
                 if (!TmoShare.DataSetIsEmpty(ds) && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
                 {
@@ -115,7 +115,7 @@ namespace tmoProject
                 string user_idd = dr["user_id"].ToString();
                 string user_timesd = dr["user_times"].ToString();
 
-                string xmlreturn = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProResult, new object[] { user_idd, user_timesd, "" }).ToString();
+                string xmlreturn = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProResult, new object[] { user_idd, user_timesd, "" });
                 DataSet ds = TmoShare.getDataSetFromXML(xmlreturn);
                 if (!TmoShare.DataSetIsEmpty(ds) && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
                 {
@@ -199,7 +199,7 @@ namespace tmoProject
                         inputProds.Tables[0].Rows.Clear();
                     }
 
-                    string resxml = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetRiskResult, new object[] { user_idd, user_timesd }).ToString();
+                    string resxml = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetRiskResult, new object[] { user_idd, user_timesd });
                     DataSet ds = TmoShare.getDataSetFromXML(resxml);
                     if (TmoShare.DataSetIsEmpty(ds))
                         return "2";
@@ -212,7 +212,7 @@ namespace tmoProject
                         }
                     }
 
-                    string resxmlprodic = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProjectDic, new object[] { "", "", "" }).ToString();
+                    string resxmlprodic = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProjectDic, new object[] { "", "", "" });
                     DataSet dsprodic = TmoShare.getDataSetFromXML(resxmlprodic);
                     if (TmoShare.DataSetIsEmpty(dsprodic))
                         return "2";
@@ -420,7 +420,7 @@ namespace tmoProject
                     }
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProjectData, new object[] { selexml }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProjectData, new object[] { selexml });
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {

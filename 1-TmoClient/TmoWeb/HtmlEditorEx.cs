@@ -613,7 +613,7 @@ namespace TmoWeb
                     }
 
                 }
-                objAllAttInfo = TmoCommon.TmoShare.getXMLFromDataSet(dsXml).ToString();
+                objAllAttInfo = TmoCommon.TmoShare.getXMLFromDataSet(dsXml);
                 //if (!well_web_attachmentManager.Instance.AddAttachment(WellCommon.WellCareShare.LoginCode, WellCommon.WellCareShare._GetXml(dsXml).ToString()))
                 //{
                 //    UserMessageBox.MessageQuestion("保存图片失败");

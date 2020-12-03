@@ -44,7 +44,7 @@ namespace TmoReport
         /// <returns></returns>
         public void GetNowRisk(string userId, string user_times)
         {
-            DataSet ds = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(TmoCommon.funCode.GettuiDataUser, new object[] { userId, user_times }).ToString());
+            DataSet ds = TmoCommon.TmoShare.getDataSetFromXML(TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(TmoCommon.funCode.GettuiDataUser, new object[] { userId, user_times }));
             if (TmoShare.DataSetIsNotEmpty(ds))
             {
                 foreach (DataRow row in ds.Tables[0].Rows)

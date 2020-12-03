@@ -61,7 +61,7 @@ namespace TmoCommon
                 StringBuilder sb = new StringBuilder();
                 foreach (CompilerError ce in result.Errors)
                 {
-                    sb.Append(ce.ToString());
+                    sb.Append(ce);
                     sb.Append(Environment.NewLine);
                 }
                 throw new Exception(sb.ToString());

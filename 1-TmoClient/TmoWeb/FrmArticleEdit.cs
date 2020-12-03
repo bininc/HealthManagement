@@ -86,7 +86,7 @@ namespace TmoWeb
                 dr0["opt_id"] = optId;
             foreach (DataColumn dc in ds.Tables[0].Columns)
             {
-                switch (dc.ColumnName.ToString())
+                switch (dc.ColumnName)
                 {
 
                     case "section_type":

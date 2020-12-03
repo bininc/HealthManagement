@@ -192,7 +192,7 @@ namespace tmoProject
         }
         public void GetCommdata()
         {
-            DataSet ds = TmoShare.getDataSetFromXML(TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProType, new object[] { "" }).ToString());
+            DataSet ds = TmoShare.getDataSetFromXML(TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProType, new object[] { "" }));
              dttype = ds != null ? ds.Tables[0] : null;
         }
         void DXMessageBox_btnOKClick(object sender, EventArgs e)
@@ -220,7 +220,7 @@ namespace tmoProject
 
                 try
                 {
-                    string xmlreturn = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProResult, new object[] { user_id, user_times, "" }).ToString();
+                    string xmlreturn = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProResult, new object[] { user_id, user_times, "" });
                     DataSet ds = TmoShare.getDataSetFromXML(xmlreturn);
                     if (TmoShare.DataSetIsNotEmpty(ds))
                     {

@@ -65,7 +65,7 @@ namespace tmoProject
                     DsQueryXml.Tables[0].Rows[0]["mt_code"] = _dicCode;
                     DsQueryXml.Tables[0].Rows[0]["mt_time"] = Convert.ToDateTime(this.dateEdit1.EditValue).ToString("yyyy-MM-dd 00:00:00");
                     string selexml = TmoShare.getXMLFromDataSet(DsQueryXml);
-                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetMonitorData24, new object[] { selexml }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetMonitorData24, new object[] { selexml });
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {

@@ -228,7 +228,7 @@ namespace TmoCommon
             }
             catch (Exception ex)
             {
-                TmoShare.WriteLog("电子邮件发送失败！服务器返回信息：" + ex.Message.ToString());
+                TmoShare.WriteLog("电子邮件发送失败！服务器返回信息：" + ex.Message);
                 return false;
             }
         }
@@ -782,7 +782,7 @@ namespace TmoCommon
                     mailhead.Append(Convert.ToBase64String(Encoding.UTF8.GetBytes(TmoShare.GB2312ToUTF8("单位").ToCharArray()), 0, Encoding.UTF8.GetBytes(TmoShare.GB2312ToUTF8("单位").ToCharArray()).Length) + CRLF + CRLF + CRLF + "." + CRLF);
                 //mailhead.Append(Convert.ToBase64String(Encoding.UTF8.GetBytes(TmoShare.GB2312ToUTF8(msg).ToCharArray()), 0, Encoding.UTF8.GetBytes(TmoShare.GB2312ToUTF8(msg).ToCharArray()).Length) + CRLF + CRLF + CRLF + "." + CRLF);
                 mailhead.Append("--=====003_Dragon310083331177_=====--" + CRLF + CRLF + CRLF + "." + CRLF);
-                check = SendCommand(ref stream, mailhead.ToString()
+                check = SendCommand(ref stream, mailhead
                     + "\n\r\n.\r\n", "信已发出,服务器", "250", false);
                 string s = TmoShare.GB2312ToUTF8(msg);
                 round = 0;
@@ -790,7 +790,7 @@ namespace TmoCommon
                 {
                     round++;
 
-                    check = SendCommand(ref stream, mailhead.ToString()
+                    check = SendCommand(ref stream, mailhead
                     + "\n\r\n.\r\n", "信已发出,服务器", "250", false);
                 }
             }

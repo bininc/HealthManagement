@@ -66,7 +66,7 @@ namespace TmoReport
                     object objrisk = TmoServiceClient.InvokeServerMethodT<string>(funCode.SelectLookQuestionnaire, dr["user_id"].ToString(), user_times);
                     DataSet dsrisk = TmoShare.getDataSetFromXML(objrisk.ToString());
 
-                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.Getdis_dic, new object[] { "" }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.Getdis_dic, new object[] { "" });
                     DataSet ds = TmoShare.getDataSetFromXML(strmlx);
                     SetData(dsrisk, ds);
                     return ds.Tables[0];

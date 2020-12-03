@@ -96,12 +96,12 @@ namespace tmoProject
                     DsQueryXml.Tables[0].Rows[0]["user_id"] = _uid;
                     DsQueryXml.Tables[0].Rows[0]["mt_code"] = _dicCode;
                     string dd = nurtype.EditValue.ToString();
-                    string sqlWhere = "and a.mt_time>='" + this.startTime.EditValue.ToString() + "'" + " and a.mt_time<='"+this.endDate.EditValue.ToString()+"'";
+                    string sqlWhere = "and a.mt_time>='" + this.startTime.EditValue + "'" + " and a.mt_time<='"+this.endDate.EditValue+"'";
                     DsQueryXml.Tables[0].Rows[0]["mt_time"] = sqlWhere;
 
                     string selexml = TmoShare.getXMLFromDataSet(DsQueryXml);
 
-                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetMonitorDataBy, new object[] { selexml }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetMonitorDataBy, new object[] { selexml });
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {

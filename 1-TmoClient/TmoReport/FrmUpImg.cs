@@ -54,7 +54,7 @@ namespace TmoReport
                 userid = dr["user_id"].ToString();
                
                 userTime = dr["user_times"].ToString();
-                string xmlData = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetAttach, new object[] { userid, userTime, "old" }).ToString();
+                string xmlData = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetAttach, new object[] { userid, userTime, "old" });
                 if (xmlData != "")
                 {
                     DataTable dt = TmoShare.getDataTableFromXML(xmlData);

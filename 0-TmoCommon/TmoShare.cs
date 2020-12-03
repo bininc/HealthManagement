@@ -656,7 +656,7 @@ namespace TmoCommon
                         catch
                         {
                             TmoShare.WriteLog(@"XML字段格式错误！原因：源数据保存时格式没有验证。其中时间类型默认转变为【当天yyyy-MM-dd 11:58:58】 \n字段名："
-                                              + col.ColumnName + " 字段值：" + dr[col.ColumnName].ToString() + " 字段类型:" + col.DataType.ToString());
+                                              + col.ColumnName + " 字段值：" + dr[col.ColumnName] + " 字段类型:" + col.DataType);
                         }
 
                         sbXml.Append("</" + col.ColumnName.ToLower() + ">\r");
@@ -1910,7 +1910,7 @@ namespace TmoCommon
             if (string.IsNullOrEmpty(userHostAddress))
             {
                 if (System.Web.HttpContext.Current.Request.ServerVariables["HTTP_VIA"] != null)
-                    userHostAddress = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"].ToString().Split(',')[0].Trim();
+                    userHostAddress = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"].Split(',')[0].Trim();
             }
 
             if (string.IsNullOrEmpty(userHostAddress))

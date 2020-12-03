@@ -135,7 +135,7 @@ namespace tmoProject
 
                 try
                 {
-                    string xmlreturn = TmoServiceClient.InvokeServerMethodT<string>(funCode.medicQuery, new object[] { "" }).ToString();
+                    string xmlreturn = TmoServiceClient.InvokeServerMethodT<string>(funCode.medicQuery, new object[] { "" });
                     DataSet ds = TmoShare.getDataSetFromXML(xmlreturn);
                     if (TmoShare.DataSetIsNotEmpty(ds))
                     {

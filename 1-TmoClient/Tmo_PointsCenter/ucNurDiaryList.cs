@@ -97,7 +97,7 @@ namespace TmoPointsCenter
                     }
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetNurDiaryList, new object[] { selexml }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetNurDiaryList, new object[] { selexml });
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {
@@ -259,7 +259,7 @@ namespace TmoPointsCenter
             if (rowHandles!=null&&rowHandles.Length>0)
             {
                 var userID = gridView1.GetRowCellValue(rowHandles[0], "user_id").ToString();
-                da.SetValue(userID.ToString());
+                da.SetValue(userID);
             }
             DialogResult dr = da.ShowDialog();
             if (dr == DialogResult.OK)

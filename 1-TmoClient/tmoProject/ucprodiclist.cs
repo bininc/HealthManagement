@@ -30,7 +30,7 @@ namespace tmoProject
         }
         public void GetComdata()
         {
-            DataSet ds = TmoShare.getDataSetFromXML(TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProType, new object[] { "" }).ToString());
+            DataSet ds = TmoShare.getDataSetFromXML(TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProType, new object[] { "" }));
             DataTable dt = ds != null ? ds.Tables[0] : null;
             int intCount = (dt != null) ? dt.Rows.Count : 0;
             cmproType.Properties.TextEditStyle = TextEditStyles.DisableTextEditor; // 设置 comboBox的文本值不能被编辑  
@@ -109,7 +109,7 @@ namespace tmoProject
                     if (!string.IsNullOrEmpty(txtproject.Text))
                         project = txtproject.Text;
 
-                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProjectDic, new object[] { projecttype,project,"" }).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProjectDic, new object[] { projecttype,project,"" });
                     DataSet ds = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(ds))
                     {

@@ -36,7 +36,7 @@ namespace tmoProject
                 this.Text = "视频修改";
                 btnAdd.Text = "确定修改";
                 isadd = videoId;
-                string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetVideoId, new object[] { videoId }).ToString();
+                string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetVideoId, new object[] { videoId });
                 DataSet ds = TmoShare.getDataSetFromXML(strmlx);
                 if (TmoShare.DataSetIsNotEmpty(ds))
                 {

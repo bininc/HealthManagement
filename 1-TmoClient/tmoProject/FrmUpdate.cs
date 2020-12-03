@@ -25,7 +25,7 @@ namespace tmoProject
         }
         public void SetControl(DataRowView drView)
         {
-            string nurXml = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetnurtypeItem, new object[] { "" }).ToString();
+            string nurXml = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetnurtypeItem, new object[] { "" });
             DataSet nurDs = TmoShare.getDataSetFromXML(nurXml);
             if (TmoShare.DataSetIsNotEmpty(nurDs))
             {
@@ -45,7 +45,7 @@ namespace tmoProject
                 else
                     nurtype.SelectedIndex = 0;
             }
-            string hotXml = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetHotDic, new object[] { "" }).ToString();
+            string hotXml = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetHotDic, new object[] { "" });
             DataSet hotDs = TmoShare.getDataSetFromXML(hotXml);
             if (TmoShare.DataSetIsNotEmpty(hotDs))
             {

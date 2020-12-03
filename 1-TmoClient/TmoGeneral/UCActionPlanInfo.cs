@@ -148,11 +148,11 @@ namespace TmoGeneral
             if (!string.IsNullOrWhiteSpace(name.Text))
                 sbWhere.AppendFormat(" tmo_userinfo.name like '%{0}%' and ", name.Text);
             if (gender.EditValue != null)
-                sbWhere.AppendFormat(" tmo_userinfo.gender='{0}' and ", gender.EditValue.ToString());
+                sbWhere.AppendFormat(" tmo_userinfo.gender='{0}' and ", gender.EditValue);
             if (!string.IsNullOrWhiteSpace(usertimes.Text))
                 sbWhere.AppendFormat(" tmo_userstatus.usertimes='{0}' and ", usertimes.Text);
             if (questionnare_status.EditValue != null)
-                sbWhere.AppendFormat(" tmo_userstatus.questionnare_status='{0}' and ", questionnare_status.EditValue.ToString());
+                sbWhere.AppendFormat(" tmo_userstatus.questionnare_status='{0}' and ", questionnare_status.EditValue);
             if (acstate.EditValue != null)
             {
                 if (acstate.EditValue.ToString() == "1")

@@ -74,7 +74,7 @@ namespace TmoReport
 
                 try
                 {
-                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetMedicalIn, new object[] { _user_id}).ToString();
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetMedicalIn, new object[] { _user_id});
                     DataTable dt= TmoShare.getDataTableFromXML(strmlx);
                     if (TmoShare.DataTableIsNotEmpty(dt))
                     {
@@ -108,54 +108,54 @@ namespace TmoReport
                     foreach (DataColumn dc in dt.Columns)
                     {
                         DataRow newRow = dtNew.NewRow();
-                        if (dc.ColumnName.ToString() == "user_id" || dc.ColumnName.ToString() == "id" || dc.ColumnName.ToString() == "input_time")
+                        if (dc.ColumnName == "user_id" || dc.ColumnName == "id" || dc.ColumnName == "input_time")
                         {
                             continue;
                         }
-                        if (dc.ColumnName.ToString() == "fbg")
+                        if (dc.ColumnName == "fbg")
                         {
                             newRow["luru_name"] = "空腹血糖";
                             newRow["dc"] = "fbg";
                           
                         }
-                        if (dc.ColumnName.ToString() == "pbg")
+                        if (dc.ColumnName == "pbg")
                         {
                             newRow["luru_name"] = "餐后血糖";
                             newRow["dc"] = "pbg";
 
                         }
-                        if (dc.ColumnName.ToString() == "chol")
+                        if (dc.ColumnName == "chol")
                         {
                             newRow["luru_name"] = "总胆固醇";
                             newRow["dc"] = "chol";
 
                         }
 
-                        if (dc.ColumnName.ToString() == "trig")
+                        if (dc.ColumnName == "trig")
                         {
                             newRow["luru_name"] = "甘油三酯";
                             newRow["dc"] = "trig";
 
                         }
-                        if (dc.ColumnName.ToString() == "hdl")
+                        if (dc.ColumnName == "hdl")
                         {
                             newRow["luru_name"] = "高密度胆固醇";
                             newRow["dc"] = "hdl";
 
                         }
-                        if (dc.ColumnName.ToString() == "ldl")
+                        if (dc.ColumnName == "ldl")
                         {
                             newRow["luru_name"] = "低密度胆固醇";
                             newRow["dc"] = "ldl";
 
                         }
-                        if (dc.ColumnName.ToString() == "dbp")
+                        if (dc.ColumnName == "dbp")
                         {
                             newRow["luru_name"] = "舒张压";
                             newRow["dc"] = "dbp";
 
                         }
-                        if (dc.ColumnName.ToString() == "sbp")
+                        if (dc.ColumnName == "sbp")
                         {
                             newRow["luru_name"] = "收缩压";
                             newRow["dc"] = "sbp";

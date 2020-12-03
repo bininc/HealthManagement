@@ -32,7 +32,7 @@ namespace tmoProject
 
         public void Getdata()
         {
-            DataSet ds = TmoShare.getDataSetFromXML(TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProType, new object[] { "" }).ToString());
+            DataSet ds = TmoShare.getDataSetFromXML(TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProType, new object[] { "" }));
             DataTable dt = ds != null ? ds.Tables[0] : null;
             int intCount = (dt != null) ? dt.Rows.Count : 0;
             cmproType.Properties.TextEditStyle = TextEditStyles.DisableTextEditor; // 设置 comboBox的文本值不能被编辑  
@@ -56,7 +56,7 @@ namespace tmoProject
                 this.Text = "方案修改";
                 btnAdd.Text = "确定修改";
                 isadd = project_id;
-                string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProjectDic, new object[] { "", "", project_id }).ToString();
+                string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProjectDic, new object[] { "", "", project_id });
                 DataSet ds = TmoShare.getDataSetFromXML(strmlx);
                 if (TmoShare.DataSetIsNotEmpty(ds))
                 {

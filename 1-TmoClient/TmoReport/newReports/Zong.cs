@@ -138,9 +138,9 @@ namespace TmoReport
             {
                 uptimes = (int.Parse(user_times) - 1).ToString();
             }
-            string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.getScreenData, new object[] { userId, user_times, quesIDs }).ToString();
+            string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.getScreenData, new object[] { userId, user_times, quesIDs });
             DataTable dt = TmoShare.getDataTableFromXML(strmlx);
-            string upxml = TmoServiceClient.InvokeServerMethodT<string>(funCode.getScreenData, new object[] { userId, uptimes, quesIDs }).ToString();
+            string upxml = TmoServiceClient.InvokeServerMethodT<string>(funCode.getScreenData, new object[] { userId, uptimes, quesIDs });
             DataTable updtdd = TmoShare.getDataTableFromXML(upxml);
             if (TmoShare.DataTableIsNotEmpty(dt))
             {

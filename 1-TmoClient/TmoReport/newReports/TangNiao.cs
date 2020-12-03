@@ -73,9 +73,9 @@ namespace TmoReport
             shenHuo.Add("吸烟");
             shenHuo.Add("长期过量饮酒");
             string ssHeng = "无";
-            string resultxml = TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(funCode.getTest, new object[] { userId, user_times, quesTypeId }).ToString();
+            string resultxml = TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(funCode.getTest, new object[] { userId, user_times, quesTypeId });
             DataTable DsReslut = TmoShare.getDataTableFromXML(resultxml);
-            string resultxml1 = TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(funCode.getScreenData, new object[] { userId, user_times, "'02390D277242464192B05F08D03D298B','751624508AA94D05864287B3CB6B723B'" }).ToString();
+            string resultxml1 = TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(funCode.getScreenData, new object[] { userId, user_times, "'02390D277242464192B05F08D03D298B','751624508AA94D05864287B3CB6B723B'" });
 
             DataTable DsReslut1 = TmoShare.getDataTableFromXML(resultxml1);
             double zongfen = 0;
@@ -173,7 +173,7 @@ namespace TmoReport
                             break;
                         if (row["q_resik"].ToString() == "年龄*")
                             break;
-                        yinsu = yinsu  + row["q_resik"].ToString() + "，";
+                        yinsu = yinsu  + row["q_resik"] + "，";
                         md5res.Add(val);
                     }
                  
@@ -206,7 +206,7 @@ namespace TmoReport
             ds.Tables[0].Rows[0]["user_id"] = userId;
             ds.Tables[0].Rows[0]["user_time"] = user_times;
             string xml = TmoShare.getXMLFromDataSet(ds);
-            string resultxml = TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(funCode.GetRiskData, new object[] { xml }).ToString();
+            string resultxml = TmoLinkServer.TmoServiceClient.InvokeServerMethodT<string>(funCode.GetRiskData, new object[] { xml });
             DataSet DsReslut = TmoShare.getDataSetFromXML(resultxml);
             return DsReslut;
         }
