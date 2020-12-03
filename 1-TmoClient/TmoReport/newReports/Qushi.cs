@@ -60,7 +60,7 @@ namespace TmoReport.Reoprts
                         {
                             string qid = dsrow["q_id"].ToString();
 
-                            string Pinput_time = Convert.ToDateTime(dsrow["input_time"]).ToString("yyyy年MM月dd日");
+                            string Pinput_time = Convert.ToDateTime(dsrow["input_time"]).ToString("yyyy年MM月dd日 HH点mm分");
                             Pinput_time = "*" + Pinput_time;
                             if (qid == "ADF9331BADAB48BF9147611A9BBD1C79")
                             {

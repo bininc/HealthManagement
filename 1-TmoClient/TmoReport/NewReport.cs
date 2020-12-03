@@ -476,7 +476,7 @@ namespace TmoReport
                 string userId = row["user_id"].ToString();
                 string userTmes = row["user_times"].ToString();
 
-                string xmlData = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetAttach, new object[] { userId, userTmes }).ToString();
+                string xmlData = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetAttach, new object[] { userId, userTmes,"new" }).ToString();
                 if (xmlData != "")
                 {
                     DataTable dt = TmoShare.getDataTableFromXML(xmlData);

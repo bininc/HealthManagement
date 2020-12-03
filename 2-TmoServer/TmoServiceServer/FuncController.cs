@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -36,10 +37,10 @@ namespace TmoServiceServer
 
             //默认返回码 
             dynamic returnObj = "err_Unkonwn"; //未知错误
+            bool invokeSuccess = true;
+            Stopwatch stopwatch = Stopwatch.StartNew();
             try
             {
-                InvokeEvent(funCode, checkData, checkKey, funParams);
-
                 #region 加密狗验证
 
                 #endregion
@@ -103,14 +104,16 @@ namespace TmoServiceServer
                         returnObj = FunctionClass.GetRiskResult(funParams[0].ToString(), funParams[1].ToString());
                         break;
                     case funCode.InsertAttach:
-                        returnObj = FunctionClass.InsertAttach((funParams[0] as JObject)?.ToObject<byte[]>(), funParams[1].ToString(), funParams[2].ToString(),
+                        returnObj = FunctionClass.InsertAttach(Convert.FromBase64String(funParams[0].ToString()), funParams[1].ToString(),
+                            funParams[2].ToString(),
                             funParams[3].ToString());
                         break;
                     case funCode.GetAttach:
                         returnObj = FunctionClass.GetAttach(funParams[0].ToString(), funParams[1].ToString(), funParams[2].ToString());
                         break;
                     case funCode.UpdateAttch:
-                        returnObj = FunctionClass.UpdateAttch(funParams[0].ToString(), (funParams[1] as JObject)?.ToObject<byte[]>(), funParams[2].ToString());
+                        returnObj = FunctionClass.UpdateAttch(funParams[0].ToString(), Convert.FromBase64String(funParams[1].ToString()),
+                            funParams[2].ToString());
                         break;
                     case funCode.DelAttach:
                         returnObj = FunctionClass.DelAttach(funParams[0].ToString(), funParams[1].ToString());
@@ -696,7 +699,12 @@ namespace TmoServiceServer
             {
                 TmoShare.WriteLog("InvokeMain错误 funCode:" + funCode, ex);
                 returnObj = ex.Message;
+                invokeSuccess = false;
             }
+
+            stopwatch.Stop();
+
+            InvokeEvent(funCode, checkData, checkKey, funParams, invokeSuccess, stopwatch.Elapsed.TotalSeconds);
 
             return returnObj;
         }
@@ -752,7 +760,7 @@ namespace TmoServiceServer
         /// 调用事件
         /// </summary>
         /// <param name="fun"></param>
-        private void InvokeEvent(funCode fun, string docid, string docloginid, object[] args)
+        private void InvokeEvent(funCode fun, string docid, string docloginid, object[] args, bool isSuccess, double runSeconds)
         {
             DocInfo doc = null;
             if (!string.IsNullOrWhiteSpace(docid))
@@ -794,7 +802,7 @@ namespace TmoServiceServer
                 }
             }
 
-            string msg = DateTime.Now.ToFormatTimeStr() + " [" + getIPAddress() + "] " + docName + "-> " + fun;
+            string msg = $"{DateTime.Now.ToFormatTimeStr()} [{getIPAddress()} ] {docName}-> {fun}({(int) fun})-{(isSuccess ? "TRUE" : "ERROR")}-{runSeconds}";
             LogHelper.WriteInfo(msg + ":" + sbArg);
             OnInvokedMain?.Invoke(msg);
         }

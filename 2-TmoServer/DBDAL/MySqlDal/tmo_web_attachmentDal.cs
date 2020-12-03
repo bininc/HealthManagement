@@ -47,7 +47,7 @@ namespace DBDAL.MySqlDal
             if(newOrold=="old")
             sql = "select * from tmo_web_attachment where user_id='" + userID + "' and user_times='"+userTImes+"'";
             DataSet ds = MySQLHelper.Query(sql);
-            if (ds == null || ds.Tables.Count <= 0)
+            if (TmoShare.DataSetIsEmpty(ds))
                 return null;
             else {
                 DataRow drData = ds.Tables[0].Rows[0];
