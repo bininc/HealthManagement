@@ -15,11 +15,13 @@ namespace TmoReport
     public partial class NewReport : TmoSkin.UCBase
     {
         #region member
+
         int _pageSize = 100;
         int _currentPage = 1;
         protected DataSet _dsQueryXml = null;
+
         string SubmitXml = TmoShare.XML_TITLE +
-@"<tmo>
+                           @"<tmo>
     <page_size></page_size>
 	<now_page></now_page>
     <user_id></user_id>
@@ -32,12 +34,15 @@ namespace TmoReport
     <reg_time_begin></reg_time_begin> 
      <reg_time_end></reg_time_end> 
 </tmo>";
+
         string riskxml = TmoShare.XML_TITLE +
-@"<tmo>
+                         @"<tmo>
    <user_id></user_id>
     <user_time></user_time>
 </tmo>";
+
         DataSet _dsGetDataResult = null;
+
         public string Userid
         {
             get { return user_codetxt.Text; }
@@ -48,7 +53,9 @@ namespace TmoReport
                     user_codetxt.ReadOnly = true;
             }
         }
+
         #endregion
+
         public NewReport()
         {
             InitializeComponent();
@@ -64,18 +71,8 @@ namespace TmoReport
             TSCommon.SetGridControl(dgcTree);
         }
 
-      
-        void btnnewReport_Click(object sender, EventArgs e)
-        {
-            
-            //FrmNewRepor frmReport = new FrmNewRepor();
-            //frmReport.inidata();
-          
-            //frmReport.initPersonData();
-
-            //frmReport.ShowDialog();
-        }
         DataRow drDel = null;
+
         void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
             DataRow dr = gridView1.GetDataRow(e.RowHandle);
@@ -88,7 +85,6 @@ namespace TmoReport
                     return;
                 DXMessageBox.btnOKClick += DXMessageBox_btnOKClick;
                 DXMessageBox.ShowQuestion("确定要删除吗？");
-
             }
             else if (e.Column.Name == "look_report")
             {
@@ -106,7 +102,7 @@ namespace TmoReport
             else if (e.Column.Name == "lookImg")
             {
                 //if(filename)
-                FrmUp frmUpImg = new FrmUp(dr, true);
+                FrmUp frmUpImg = new FrmUp(dr);
                 frmUpImg.Enabled = true;
                 frmUpImg.ShowDialog();
             }
@@ -117,28 +113,26 @@ namespace TmoReport
                 frmUpImg.ShowDialog();
 
 
-
                 //if(filename)
-
             }
         }
 
         void DXMessageBox_btnOKClick(object sender, EventArgs e)
         {
-
             string user_idstr = drDel["user_id"].ToString();
             string user_timesstr = drDel["user_times"].ToString();
             bool isdel = false;
-            string reDel = TmoServiceClient.InvokeServerMethodT<string>(funCode.ReportDelNew, new object[] { user_idstr, user_timesstr });
+            string reDel = TmoServiceClient.InvokeServerMethodT<string>(funCode.ReportDelNew, new object[] {user_idstr, user_timesstr});
             if (reDel == "3")
             {
                 DXMessageBox.ShowWarning2("已购买服务不能删除！");
                 return;
             }
+
             if (reDel == "1")
                 isdel = true;
 
-          
+
             if (isdel)
             {
                 DXMessageBox.Show("删除成功！", true);
@@ -146,6 +140,7 @@ namespace TmoReport
             }
             else
                 DXMessageBox.Show("删除失败！", true);
+
             drDel = null;
         }
 
@@ -157,12 +152,13 @@ namespace TmoReport
             string user_idstr = dr["user_id"].ToString();
             string user_timesstr = dr["user_times"].ToString();
             bool isdel = false;
-            string reDel = TmoServiceClient.InvokeServerMethodT<string>(funCode.ReportDel, new object[] { user_idstr, user_timesstr });
-            if (reDel=="3")
+            string reDel = TmoServiceClient.InvokeServerMethodT<string>(funCode.ReportDel, new object[] {user_idstr, user_timesstr});
+            if (reDel == "3")
             {
-                  DXMessageBox.ShowWarning2("已购买服务不能删除！");
-                  return;
+                DXMessageBox.ShowWarning2("已购买服务不能删除！");
+                return;
             }
+
             if (reDel == "1")
                 isdel = true;
 
@@ -182,6 +178,7 @@ namespace TmoReport
             birchb.Checked = false;
             checkEdit2.Checked = false;
         }
+
         //<summary>
         //获取选中的行的索引
         //</summary>
@@ -194,13 +191,13 @@ namespace TmoReport
                 {
                     chkRowIndexs.Add(i);
                 }
+
                 return chkRowIndexs;
             }
         }
+
         void btnRisk_Click(object sender, EventArgs e)
         {
-
-
         }
 
         void btnquery_Click(object sender, EventArgs e)
@@ -210,13 +207,11 @@ namespace TmoReport
 
         void ReportList_Load(object sender, EventArgs e)
         {
-              GetData();
-       
+            GetData();
         }
 
 
         #region 获取数据
-
 
         /// <summary>
         /// 加载数据
@@ -226,10 +221,8 @@ namespace TmoReport
             assessment_time.Visible = true;
             this.ShowWaitingPanel(() =>
             {
-
                 try
                 {
-
                     _dsQueryXml = TmoShare.getDataSetFromXML(SubmitXml, true);
                     if (_dsQueryXml.Tables[0].Rows.Count == 0)
                         _dsQueryXml.Tables[0].Rows.Add(_dsQueryXml.Tables[0].NewRow());
@@ -254,17 +247,17 @@ namespace TmoReport
                     {
                         _dsQueryXml.Tables[0].Rows[0]["birth_date_begin"] = birth_datestart.EditValue.ToString();
                         _dsQueryXml.Tables[0].Rows[0]["birth_date_end"] = birth_dateend.EditValue.ToString();
-
                     }
+
                     if (checkEdit2.Checked)
                     {
                         _dsQueryXml.Tables[0].Rows[0]["reg_time_begin"] = exam_timestart.EditValue.ToString();
                         _dsQueryXml.Tables[0].Rows[0]["reg_time_end"] = exam_timeend.EditValue.ToString();
-
                     }
+
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetNewReportData, new object[] { selexml });
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetNewReportData, new object[] {selexml});
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {
@@ -278,37 +271,36 @@ namespace TmoReport
                         return null;
                 }
                 catch
-                { }
+                {
+                }
+
                 return null;
-
-
             }, x =>
             {
                 try
                 {
-
-
                     DataTable dt = x as DataTable;
                     dt.Columns.Add("lookold", typeof(string));
                     dt.Columns.Add("lookImg", typeof(string));
                     foreach (DataRow row in dt.Rows)
                     {
-                         row["lookImg"]= "浏览病历";
-                      //  row["look_report"]
-                        row["lookold"] = "浏览之前上传病历";
+                        row["lookImg"] = "浏览";
+                        //  row["look_report"]
+                        row["lookold"] = "浏览(旧)";
                     }
+
                     dgcTree.DataSource = dt;
 
                     if (gridView1.GroupCount > 0)
                     {
-
                         gridView1.ExpandAllGroups();
                     }
+
                     gridView1.MoveFirst();
                     if (dt == null) return;
 
                     lblCount.Text = string.Format("共[{0}]条", count);
-                    lblPageIndex.Text = string.Format("第[{0}]页,共[{1}]页", _currentPage.ToString(), _pageSize.ToString());
+                    lblPageIndex.Text = string.Format("第[{0}]页,共[{1}]页", _currentPage.ToString(), pageCount);
                     txtPageIndex.Text = _currentPage.ToString();
                     txtPageSize.Text = _pageSize.ToString();
 
@@ -320,25 +312,25 @@ namespace TmoReport
                     TmoShare.WriteLog("没有任何信息", ex);
                     DXMessageBox.ShowWarning2("没有任何信息！");
                 }
-
             });
         }
 
         public void GetItemData(DataRow dr)
         {
-            
             assessment_time.Visible = false;
             int user_times = 0;
             string timesStr = dr["user_times"] == null ? "" : dr["user_times"].ToString();
             int.TryParse(timesStr, out user_times);
             DataTable dt = dr.Table.Clone();
-            string times="";
+            string times = "";
             string clum = "";
-            try{
+            try
+            {
                 times = dr["assessment_time"].ToString();
                 clum = "assessment_time";
             }
-            catch {
+            catch
+            {
                 try
                 {
                     times = dr["input_time"].ToString();
@@ -346,15 +338,14 @@ namespace TmoReport
                 }
                 catch (Exception)
                 {
-
                     times = dr["questionnaire_time"].ToString();
                     clum = "questionnaire_time";
                 }
-             
             }
+
             Dictionary<string, string> dics = new Dictionary<string, string>();
             string userId = dr["user_id"].ToString();
-            string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetIds, new object[] { userId, "" });
+            string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetIds, new object[] {userId, ""});
             DataTable dtTable = TmoShare.getDataTableFromXML(strmlx);
             if (TmoShare.DataTableIsNotEmpty(dtTable))
             {
@@ -366,9 +357,9 @@ namespace TmoReport
                     }
                 }
             }
-            for (int i = 1; i <=user_times; i++)
+
+            for (int i = 1; i <= user_times; i++)
             {
-                
                 DataRow newDr = dt.NewRow();
                 newDr["user_id"] = userId;
                 newDr["user_times"] = i.ToString();
@@ -385,8 +376,8 @@ namespace TmoReport
                 else
                     newDr["del"] = "---";
                 newDr["look_report"] = dr["look_report"];
-                newDr["lookImg"] = "浏览病历";
-                newDr["lookold"] = "浏览之前上传病历";
+                newDr["lookImg"] = "浏览";
+                newDr["lookold"] = "浏览(旧)";
                 //dt.Columns.Add("lookold", typeof(string));
                 //dt.Columns.Add("lookImg", typeof(string));
                 //foreach (DataRow row in dt.Rows)
@@ -402,37 +393,27 @@ namespace TmoReport
             dgcTree.DataSource = dt;
             if (gridView1.GroupCount > 0)
             {
-
                 gridView1.ExpandAllGroups();
             }
+
             gridView1.MoveFirst();
             if (dt == null) return;
-           
-           
         }
+
         #endregion
 
         #region 分页查询的方法
+
         string count;
         string pageCount;
 
 
-
-
-
-
-
-
-
-
         void repositoryItemHyperLinkEdit1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void labelControl1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void llblStart_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -441,22 +422,18 @@ namespace TmoReport
 
         private void llblUp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            
         }
 
         private void llblDown_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-           
         }
 
         private void llblEnd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-          
         }
 
         private void btnGo_Click(object sender, EventArgs e)
         {
-            
         }
 
         #endregion
@@ -473,40 +450,9 @@ namespace TmoReport
                 DataRowView rowv = this.gridView1.GetRow(selectedHandle) as DataRowView;
                 if (rowv == null) return;
                 DataRow row = rowv.Row;
-                string userId = row["user_id"].ToString();
-                string userTmes = row["user_times"].ToString();
-
-                string xmlData = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetAttach, new object[] { userId, userTmes,"new" });
-                if (xmlData != "")
-                {
-                    DataTable dt = TmoShare.getDataTableFromXML(xmlData);
-                    if (dt != null && dt.Rows.Count > 0)
-                    {
-                        DialogResult dgResult = DXMessageBox.ShowQuestion("此次已上传图片确定要修改吗？");
-                        if (dgResult == DialogResult.OK)
-                        {
-                            FrmUp frmUpImg = new FrmUp(row, false);
-                            frmUpImg.atId = dt.Rows[0]["att_id"].ToString();
-                            frmUpImg.Up();
-                            frmUpImg.Enabled = true;
-                            frmUpImg.ShowDialog();
-                        }
-                    }
-                    else
-                    {
-
-                        FrmUp frmup = new FrmUp(row, false);
-                        frmup.Enabled = true;
-                        frmup.ShowDialog();
-                    }
-                }
-                else
-                {
-                    FrmUp frmup = new FrmUp(row, false);
-                    frmup.Enabled = true;
-                    frmup.ShowDialog();
-                }
-
+                FrmUp frmup = new FrmUp(row);
+                frmup.Enabled = true;
+                frmup.ShowDialog();
             }
         }
 
@@ -529,30 +475,28 @@ namespace TmoReport
                 {
                     try
                     {
-                        bool isscul = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.DelAttach, new object[] { userId, userTmes });
+                        bool isscul = TmoServiceClient.InvokeServerMethodT<bool>(funCode.DelAttach, new object[] {userId, userTmes});
                         if (isscul)
                         {
                             DXMessageBox.Show("删除成功", true);
                         }
-                        else { DXMessageBox.ShowWarning2("删除失败！"); }
+                        else
+                        {
+                            DXMessageBox.ShowWarning2("删除失败！");
+                        }
                     }
                     catch (Exception)
                     {
-
                         DXMessageBox.ShowWarning2("删除失败！有可能是网络原因请重试！");
                     }
-                   
                 }
-
             }
         }
 
         private void llblStar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
             if (int.Parse(pageCount) < 1)
             {
-
                 return;
             }
             else
@@ -566,14 +510,12 @@ namespace TmoReport
         {
             if (this._currentPage <= 0)
             {
-
                 return;
             }
             else
             {
                 _currentPage -= 1;
                 GetData();
-
             }
         }
 
@@ -581,7 +523,6 @@ namespace TmoReport
         {
             if (this._currentPage >= int.Parse(pageCount))
             {
-
                 //_btnNext.Visible = false;
                 return;
             }
@@ -589,7 +530,6 @@ namespace TmoReport
             {
                 _currentPage += 1;
                 GetData();
-
             }
         }
 
@@ -597,7 +537,6 @@ namespace TmoReport
         {
             if (int.Parse(pageCount) < 1)
             {
-
                 return;
             }
             else

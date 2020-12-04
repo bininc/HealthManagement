@@ -532,7 +532,7 @@
             // 
             // lookImg
             // 
-            this.lookImg.Caption = "浏览病历";
+            this.lookImg.Caption = "检验报告单";
             this.lookImg.ColumnEdit = this.repositoryItemHyperLinkEdit1;
             this.lookImg.FieldName = "lookImg";
             this.lookImg.Name = "lookImg";
@@ -547,7 +547,7 @@
             // 
             // lookold
             // 
-            this.lookold.Caption = "浏览旧病历";
+            this.lookold.Caption = "旧检验报告单";
             this.lookold.ColumnEdit = this.repositoryItemHyperLinkEdit1;
             this.lookold.FieldName = "lookold";
             this.lookold.Name = "lookold";
@@ -625,21 +625,21 @@
             // btnDel
             // 
             this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDel.Location = new System.Drawing.Point(782, 14);
+            this.btnDel.Location = new System.Drawing.Point(725, 14);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(75, 25);
+            this.btnDel.Size = new System.Drawing.Size(100, 25);
             this.btnDel.TabIndex = 56;
-            this.btnDel.Text = "删除病历";
+            this.btnDel.Text = "删除检验报告单";
             this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // btn_upImg
             // 
             this.btn_upImg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_upImg.Location = new System.Drawing.Point(863, 12);
+            this.btn_upImg.Location = new System.Drawing.Point(835, 14);
             this.btn_upImg.Name = "btn_upImg";
-            this.btn_upImg.Size = new System.Drawing.Size(75, 25);
+            this.btn_upImg.Size = new System.Drawing.Size(100, 25);
             this.btn_upImg.TabIndex = 55;
-            this.btn_upImg.Text = "上传病历";
+            this.btn_upImg.Text = "上传检验报告单";
             this.btn_upImg.Click += new System.EventHandler(this.btn_upImg_Click);
             // 
             // textEdit1

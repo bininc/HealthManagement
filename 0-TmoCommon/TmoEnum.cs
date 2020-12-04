@@ -157,7 +157,7 @@ namespace TmoCommon
         InsertAttach,
         GetAttach,
         DelAttach,
-        UpdateAttch,
+        UpdateAttach,
 
         #region 指标录入
 

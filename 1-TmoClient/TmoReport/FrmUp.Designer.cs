@@ -39,15 +39,12 @@
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pdfViewer1 = new DevExpress.XtraPdfViewer.PdfViewer();
-            this.picb1 = new System.Windows.Forms.PictureBox();
-            this.htmlS1 = new TmoWeb.htmlS();
             this.ricEc = new DevExpress.XtraRichEdit.RichEditControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picb1)).BeginInit();
             this.SuspendLayout();
             // 
             // lable2
@@ -120,7 +117,6 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.pdfViewer1);
-            this.panel1.Controls.Add(this.picb1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 50);
             this.panel1.Name = "panel1";
@@ -134,26 +130,6 @@
             this.pdfViewer1.Name = "pdfViewer1";
             this.pdfViewer1.Size = new System.Drawing.Size(817, 389);
             this.pdfViewer1.TabIndex = 1;
-            // 
-            // picb1
-            // 
-            this.picb1.Location = new System.Drawing.Point(3, 0);
-            this.picb1.Name = "picb1";
-            this.picb1.Size = new System.Drawing.Size(814, 389);
-            this.picb1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.picb1.TabIndex = 0;
-            this.picb1.TabStop = false;
-            // 
-            // htmlS1
-            // 
-            this.htmlS1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.htmlS1.Html = resources.GetString("htmlS1.Html");
-            this.htmlS1.Location = new System.Drawing.Point(0, 50);
-            this.htmlS1.Name = "htmlS1";
-            this.htmlS1.Size = new System.Drawing.Size(817, 389);
-            this.htmlS1.TabIndex = 32;
-            this.htmlS1.Title = "htmlS";
-            this.htmlS1.TitleDescription = null;
             // 
             // ricEc
             // 
@@ -173,7 +149,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 489);
             this.Controls.Add(this.ricEc);
-            this.Controls.Add(this.htmlS1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
@@ -188,7 +163,6 @@
             this.panelControl2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picb1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -203,9 +177,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton sbselect;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox picb1;
-       private TmoWeb.htmlS htmlS1;
-       private DevExpress.XtraRichEdit.RichEditControl ricEc;
+        private DevExpress.XtraRichEdit.RichEditControl ricEc;
        private DevExpress.XtraPdfViewer.PdfViewer pdfViewer1;
     }
 }

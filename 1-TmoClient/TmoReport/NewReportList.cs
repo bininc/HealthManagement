@@ -117,7 +117,7 @@ namespace TmoReport
             else if (e.Column.Name == "lookImg")
             {
                 //if(filename)
-                FrmUp frmUpImg = new FrmUp(dr, true);
+                FrmUp frmUpImg = new FrmUp(dr);
                 frmUpImg.Enabled = true;
                 frmUpImg.ShowDialog();
             }

@@ -111,7 +111,7 @@ namespace TmoServiceServer
                     case funCode.GetAttach:
                         returnObj = FunctionClass.GetAttach(funParams[0].ToString(), funParams[1].ToString(), funParams[2].ToString());
                         break;
-                    case funCode.UpdateAttch:
+                    case funCode.UpdateAttach:
                         returnObj = FunctionClass.UpdateAttch(funParams[0].ToString(), Convert.FromBase64String(funParams[1].ToString()),
                             funParams[2].ToString());
                         break;
@@ -803,7 +803,7 @@ namespace TmoServiceServer
             }
 
             string msg = $"{DateTime.Now.ToFormatTimeStr()} [{getIPAddress()} ] {docName}-> {fun}({(int) fun})-{(isSuccess ? "TRUE" : "ERROR")}-{runSeconds}";
-            if (fun != funCode.SaveActionPlan && fun != funCode.InsertAttach && fun != funCode.UpdateAttch)
+            if (fun != funCode.SaveActionPlan && fun != funCode.InsertAttach && fun != funCode.UpdateAttach)
                 LogHelper.WriteInfo(msg + ":" + sbArg);
             else
                 LogHelper.WriteInfo(msg);

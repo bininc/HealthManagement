@@ -80,6 +80,7 @@ namespace TmoReport
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            /*
            string cont = htmlE1.HandlHtml();
            if (!isupdate)
            {
@@ -93,14 +94,14 @@ namespace TmoReport
            }
            else
            {
-               bool isscul = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.UpdateAttch, new object[] { atId,cont });
+               bool isscul = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.UpdateAttach, new object[] { atId,cont });
                if (isscul)
                {
                    DXMessageBox.Show("修改上传图片成功", true);
                    this.Close();
                }
                else { DXMessageBox.ShowWarning2("修改上传图片失败！"); }
-           }
+           }*/
          
         }
     }
