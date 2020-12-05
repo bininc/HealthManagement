@@ -63,16 +63,22 @@ namespace TmoReport
             if (btnsave.Text == "修改")
             {
 
-                bool isT = (bool)TmoLinkServer.TmoServiceClient.InvokeServerMethodT<bool>(TmoCommon.funCode.TuijianUpdate, new object[] { xmldata });
+                bool isT = TmoServiceClient.InvokeServerMethodT<bool>(TmoCommon.funCode.TuijianUpdate, new object[] { xmldata });
                 if (isT)
-                    DXMessageBox.Show("修改成功！",true);
+                {
+                    DXMessageBox.Show("修改成功！", true);
+                    DialogResult = DialogResult.OK;
+                }
                 else
                     DXMessageBox.Show("修改失败！", true);
             }
             else {
-                bool isT = (bool)TmoLinkServer.TmoServiceClient.InvokeServerMethodT<bool>(TmoCommon.funCode.TuijianZhi, new object[] { xmldata });
+                bool isT = TmoServiceClient.InvokeServerMethodT<bool>(TmoCommon.funCode.TuijianZhi, new object[] { xmldata });
                 if (isT)
+                {
                     DXMessageBox.Show("添加成功！", true);
+                    DialogResult = DialogResult.OK;
+                }
                 else
                     DXMessageBox.Show("添加失败！", true);
             }

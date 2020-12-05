@@ -80,7 +80,7 @@ namespace TmoReport
             {
                 string filename = ofd.FileName;
                 ofd.Dispose();
-                
+
                 FileInfo fi = new FileInfo(filename);
                 ExName = fi.Extension.ToLower();
                 if (ExName != ".docx" && ExName != ".doc")
@@ -100,6 +100,7 @@ namespace TmoReport
                     },
                     o =>
                     {
+                        ricEc.CancelUpdate();
                         ricEc.LoadDocument(filename);
                         ricEc.Visible = true;
                     }
@@ -117,7 +118,7 @@ namespace TmoReport
 
         string userid = "";
         string userTime = "";
-        
+
         public void loadData(DataRow dr)
         {
             string user_name = dr.GetDataRowStringValue("name");
@@ -248,7 +249,7 @@ namespace TmoReport
 
         private void btnDownload_Click(object sender, EventArgs e)
         {
-            if (downBytes == null||downBytes.Length==0)
+            if (downBytes == null || downBytes.Length == 0)
             {
                 DXMessageBox.ShowWarning("还未上传过检查报告单，请先上传！");
                 return;
@@ -257,24 +258,21 @@ namespace TmoReport
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.DefaultExt = downExName;
             sfd.FileName = UserName + "-" + userTime + downExName;
-            DialogResult dr= sfd.ShowDialog(this);
-            if (dr== DialogResult.OK)
+            DialogResult dr = sfd.ShowDialog(this);
+            if (dr == DialogResult.OK)
             {
                 try
                 {
-                    Stream stream = sfd.OpenFile();
-                    StreamWriter sw = new StreamWriter(stream);
-                    sw.Write(downBytes);
-                    sw.Flush(); 
-                    sw.Close();
+                    FileStream stream = (FileStream) sfd.OpenFile();
+                    stream.Write(downBytes, 0, downBytes.Length);
                     stream.Close();
-                    sfd.Dispose();
                 }
                 catch (Exception ex)
                 {
                     DXMessageBox.ShowError("文件保存失败！\n" + ex.Message);
                 }
             }
+            sfd.Dispose();
         }
     }
 }

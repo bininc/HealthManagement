@@ -71,7 +71,7 @@ namespace TmoReport
              string user_id=dr["user_id"].ToString();
             if (e.Column.Name == "wei")
             {
-                frmtuiZhi frmtuizhi = new frmtuiZhi(dr["user_id"].ToString(), dr["user_times"].ToString());
+                var frmtuizhi = new frmtuiZhi(dr["user_id"].ToString(), dr["user_times"].ToString());
                 frmtuizhi.Enabled = true;
                 frmtuizhi.ShowDialog();
                 frmtuizhi.Dispose();

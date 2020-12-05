@@ -1,4 +1,6 @@
-﻿namespace TmoReport
+﻿using DevExpress.XtraRichEdit;
+
+namespace TmoReport
 {
     partial class FrmUp
     {
