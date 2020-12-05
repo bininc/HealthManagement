@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using DBInterface;
 using TmoCommon;
-using MySql.Data.MySqlClient;
 using DBUtility.MySQL;
-using System;
 using System.Data;
 
 namespace DBDAL.MySqlDal
