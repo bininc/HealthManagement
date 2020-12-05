@@ -74,6 +74,7 @@ namespace TmoReport
                 frmtuiZhi frmtuizhi = new frmtuiZhi(dr["user_id"].ToString(), dr["user_times"].ToString());
                 frmtuizhi.Enabled = true;
                 frmtuizhi.ShowDialog();
+                frmtuizhi.Dispose();
 
             }
             else if (e.Column.Name == "look_report")
@@ -88,12 +89,14 @@ namespace TmoReport
                
                 ucLuru luru = new ucLuru(user_id);
                 luru.ShowDialog();
+                luru.Dispose();
             }
             else if (e.Column.Name == "lookluru")
             {
                 ucluruList uclurulist = new ucluruList(user_id);
 
                 uclurulist.ShowDialog();
+                uclurulist.Dispose();
             }
 
         }

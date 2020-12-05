@@ -18,6 +18,7 @@ namespace TmoCommon
         /// 同步上下文
         /// </summary>
         public static SynchronizationContext SyncContext;
+
         /// <summary>
         /// 跨线程访问控件(扩展方法)
         /// </summary>
@@ -36,6 +37,7 @@ namespace TmoCommon
                 method();
             }
         }
+
         /// <summary>
         /// 跨线程访问控件 异步 (扩展方法)
         /// </summary>
@@ -56,10 +58,7 @@ namespace TmoCommon
                         ctrl.Invoke(new ParameterizedThreadStart(method), obj);
                     else
                     {
-                        ctrl.HandleCreated += (object sender, EventArgs e) =>
-                        {
-                            ctrl.Invoke(new ParameterizedThreadStart(method), obj);
-                        };
+                        ctrl.HandleCreated += (object sender, EventArgs e) => { ctrl.Invoke(new ParameterizedThreadStart(method), obj); };
                     }
                 });
                 dl.BeginInvoke(null, null);
@@ -70,8 +69,9 @@ namespace TmoCommon
             }
         }
 
-        private delegate void CrossDelegate();   //代理委托
-        public delegate object LongTimeMethodDelegate();    //长时间计算的委托
+        private delegate void CrossDelegate(); //代理委托
+
+        public delegate object LongTimeMethodDelegate(); //长时间计算的委托
 
         /// <summary>
         /// 服务运行状态
@@ -116,23 +116,28 @@ namespace TmoCommon
                 if (control.HasChildren && searchChildren)
                     list.AddRange(FindControl(control, searchChildren));
             }
+
             return list;
         }
 
         #region 当前登录用户信息
+
         /// <summary>
         /// 当期登录健康师信息(特别注意不能再服务端使用)
         /// </summary>
         public static DocInfo login_docInfo = null;
 
         #region 设备导入工具用
+
         /// <summary>
         /// 当前登录用户信息（特别注意不用用在客户端当成健康师使用）
         /// </summary>
         public static Userinfo login_userInfo = null;
+
         #endregion
 
         #endregion
+
         /// <summary>
         /// 句柄是否无效
         /// </summary>
@@ -140,8 +145,9 @@ namespace TmoCommon
         /// <returns></returns>
         public static bool IsInvalid(this IntPtr handle)
         {
-            return handle == (IntPtr)(-1) || handle == (IntPtr)0;
+            return handle == (IntPtr) (-1) || handle == (IntPtr) 0;
         }
+
         /// <summary>
         /// 关闭句柄
         /// </summary>
@@ -151,6 +157,7 @@ namespace TmoCommon
         {
             return Kernel32.CloseHandle(handle);
         }
+
         /// <summary>
         /// 获取数据行String类型值
         /// </summary>
@@ -171,6 +178,7 @@ namespace TmoCommon
                 return string.Empty;
             }
         }
+
         public static string GetDataRowStringValue(this DataRow dr, int columnIndex)
         {
             if (dr == null || dr[columnIndex] == null)
@@ -196,9 +204,10 @@ namespace TmoCommon
                 if (suc)
                     return val;
                 else
-                    return byte.MaxValue;  //非float类型
+                    return byte.MaxValue; //非float类型
             }
         }
+
         public static byte GetDataRowByteValue(this DataRow dr, int columnIndex)
         {
             if (dr == null || dr[columnIndex] == null)
@@ -210,7 +219,7 @@ namespace TmoCommon
                 if (suc)
                     return val;
                 else
-                    return byte.MaxValue;  //非float类型
+                    return byte.MaxValue; //非float类型
             }
         }
 
@@ -231,9 +240,10 @@ namespace TmoCommon
                 if (suc)
                     return val;
                 else
-                    return -2;  //非float类型
+                    return -2; //非float类型
             }
         }
+
         public static float GetDataRowFloatValue(this DataRow dr, int columnIndex)
         {
             if (dr == null || dr[columnIndex] == null)
@@ -245,7 +255,7 @@ namespace TmoCommon
                 if (suc)
                     return val;
                 else
-                    return -2;  //非float类型
+                    return -2; //非float类型
             }
         }
 
@@ -255,10 +265,10 @@ namespace TmoCommon
         /// <param name="dr"></param>
         /// <param name="columnName"></param>
         /// <returns></returns>
-        public static int GetDataRowIntValue(this DataRow dr, string columnName)
+        public static int GetDataRowIntValue(this DataRow dr, string columnName, int defaultValue = -1)
         {
             if (dr == null || dr[columnName] == null)
-                return -1;
+                return defaultValue;
             else
             {
                 int val = -1;
@@ -266,13 +276,14 @@ namespace TmoCommon
                 if (suc)
                     return val;
                 else
-                    return -2;  //非int类型
+                    return defaultValue; //非int类型
             }
         }
-        public static int GetDataRowIntValue(this DataRow dr, int columnIndex)
+
+        public static int GetDataRowIntValue(this DataRow dr, int columnIndex, int defaultValue = -1)
         {
             if (dr == null || dr[columnIndex] == null)
-                return -1;
+                return defaultValue;
             else
             {
                 int val = -1;
@@ -280,9 +291,10 @@ namespace TmoCommon
                 if (suc)
                     return val;
                 else
-                    return -2;  //非int类型
+                    return defaultValue; //非int类型
             }
         }
+
         /// <summary>
         /// 获取数据行指定字段double类型值
         /// </summary>
@@ -300,9 +312,10 @@ namespace TmoCommon
                 if (suc)
                     return val;
                 else
-                    return -2;  //非double类型
+                    return -2; //非double类型
             }
         }
+
         public static double GetDataRowDoubleValue(this DataRow dr, int columnIndex)
         {
             if (dr == null || dr[columnIndex] == null)
@@ -314,9 +327,10 @@ namespace TmoCommon
                 if (suc)
                     return val;
                 else
-                    return -2;  //非double类型
+                    return -2; //非double类型
             }
         }
+
         /// <summary>
         /// 获取数据行指定字段DateTime类型值
         /// </summary>
@@ -337,6 +351,7 @@ namespace TmoCommon
                     return DateTime.MaxValue; //非DateTime类型
             }
         }
+
         public static DateTime GetDataRowDateTimeValue(this DataRow dr, int columnIndex)
         {
             if (dr == null || dr[columnIndex] == null)
@@ -358,7 +373,7 @@ namespace TmoCommon
         public static T Convert2Type<T>(object val)
         {
             Type type = typeof(T);
-            return (T)Convert2Type(type, val);
+            return (T) Convert2Type(type, val);
         }
 
         /// <summary>
@@ -376,6 +391,7 @@ namespace TmoCommon
                 {
                     return Convert.ToByte(val);
                 }
+
                 if (type == typeof(short))
                 {
                     return Convert.ToInt16(val);
@@ -384,7 +400,7 @@ namespace TmoCommon
                 {
                     return Convert.ToUInt16(val);
                 }
-                else if (type == typeof(int))    //int类型
+                else if (type == typeof(int)) //int类型
                 {
                     int res;
                     int.TryParse(val.ToString(), out res);
@@ -399,7 +415,7 @@ namespace TmoCommon
                     catch (Exception ex)
                     {
                         //超出范围默认为0
-                        return (uint)0;
+                        return (uint) 0;
                     }
                 }
                 else if (type == typeof(float))
@@ -450,6 +466,7 @@ namespace TmoCommon
                     if (all && control.HasChildren)
                         list.AddRange(GetChildrenControl(control, true));
                 }
+
             return list;
         }
     }

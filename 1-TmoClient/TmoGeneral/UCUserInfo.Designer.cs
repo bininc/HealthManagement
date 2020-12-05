@@ -100,9 +100,11 @@
             this.dteBirthdayBegin = new DevExpress.XtraEditors.DateEdit();
             this.ckBirthday = new DevExpress.XtraEditors.CheckEdit();
             this.spTop = new DevExpress.XtraEditors.SplitContainerControl();
+            this.lblYdjcy = new DevExpress.XtraEditors.LabelControl();
             this.lblIsGxy = new DevExpress.XtraEditors.LabelControl();
             this.doc_id = new DevExpress.XtraEditors.ComboBoxEdit();
             this.is_stopvip = new DevExpress.XtraEditors.ImageComboBoxEdit();
+            this.is_ydjcy = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.is_gxy = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.is_tnb = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.bindDev = new DevExpress.XtraEditors.ImageComboBoxEdit();
@@ -151,6 +153,7 @@
             this.spTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.doc_id.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize) (this.is_stopvip.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.is_ydjcy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize) (this.is_gxy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize) (this.is_tnb.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize) (this.bindDev.Properties)).BeginInit();
@@ -307,11 +310,11 @@
             // gridControlMain
             // 
             this.gridControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlMain.Location = new System.Drawing.Point(2, 81);
+            this.gridControlMain.Location = new System.Drawing.Point(2, 83);
             this.gridControlMain.MainView = this.gridViewMain;
             this.gridControlMain.Name = "gridControlMain";
             this.gridControlMain.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {this.rp_gender, this.rp_nation, this.rp_user_id, this.rp_occupagtion, this.rp_education, this.rp_marital, this.rp_live_type, this.rp_source, this.rp_gc_name, this.rp_vip_type});
-            this.gridControlMain.Size = new System.Drawing.Size(1306, 457);
+            this.gridControlMain.Size = new System.Drawing.Size(1306, 455);
             this.gridControlMain.TabIndex = 1;
             this.gridControlMain.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {this.gridViewMain});
             // 
@@ -683,7 +686,7 @@
             // 
             // lblBindDev
             // 
-            this.lblBindDev.Location = new System.Drawing.Point(332, 58);
+            this.lblBindDev.Location = new System.Drawing.Point(495, 58);
             this.lblBindDev.Margin = new System.Windows.Forms.Padding(3, 5, 2, 3);
             this.lblBindDev.Name = "lblBindDev";
             this.lblBindDev.Size = new System.Drawing.Size(48, 14);
@@ -861,6 +864,7 @@
             this.spTop.Panel1.Controls.Add(this.province_id);
             this.spTop.Panel1.Controls.Add(this.lblDoc_id);
             this.spTop.Panel1.Controls.Add(this.lblIsStopVip);
+            this.spTop.Panel1.Controls.Add(this.lblYdjcy);
             this.spTop.Panel1.Controls.Add(this.lblIsGxy);
             this.spTop.Panel1.Controls.Add(this.lblIstnb);
             this.spTop.Panel1.Controls.Add(this.lblBindDev);
@@ -876,6 +880,7 @@
             this.spTop.Panel1.Controls.Add(this.lblUserId);
             this.spTop.Panel1.Controls.Add(this.doc_id);
             this.spTop.Panel1.Controls.Add(this.is_stopvip);
+            this.spTop.Panel1.Controls.Add(this.is_ydjcy);
             this.spTop.Panel1.Controls.Add(this.is_gxy);
             this.spTop.Panel1.Controls.Add(this.is_tnb);
             this.spTop.Panel1.Controls.Add(this.bindDev);
@@ -886,13 +891,22 @@
             this.spTop.Panel2.Controls.Add(this.btnSelcet);
             this.spTop.Panel2.Padding = new System.Windows.Forms.Padding(10);
             this.spTop.Panel2.Text = "PanelTR";
-            this.spTop.Size = new System.Drawing.Size(1306, 79);
+            this.spTop.Size = new System.Drawing.Size(1306, 81);
             this.spTop.SplitterPosition = 1134;
             this.spTop.TabIndex = 5;
             // 
+            // lblYdjcy
+            // 
+            this.lblYdjcy.Location = new System.Drawing.Point(658, 58);
+            this.lblYdjcy.Margin = new System.Windows.Forms.Padding(3, 5, 2, 3);
+            this.lblYdjcy.Name = "lblYdjcy";
+            this.lblYdjcy.Size = new System.Drawing.Size(60, 14);
+            this.lblYdjcy.TabIndex = 2;
+            this.lblYdjcy.Text = "运动监测仪";
+            // 
             // lblIsGxy
             // 
-            this.lblIsGxy.Location = new System.Drawing.Point(495, 58);
+            this.lblIsGxy.Location = new System.Drawing.Point(332, 58);
             this.lblIsGxy.Margin = new System.Windows.Forms.Padding(3, 5, 2, 3);
             this.lblIsGxy.Name = "lblIsGxy";
             this.lblIsGxy.Size = new System.Drawing.Size(36, 14);
@@ -922,9 +936,20 @@
             this.is_stopvip.Size = new System.Drawing.Size(100, 20);
             this.is_stopvip.TabIndex = 3;
             // 
+            // is_ydjcy
+            // 
+            this.is_ydjcy.Location = new System.Drawing.Point(720, 55);
+            this.is_ydjcy.Margin = new System.Windows.Forms.Padding(0, 3, 10, 3);
+            this.is_ydjcy.Name = "is_ydjcy";
+            this.is_ydjcy.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.is_ydjcy.Properties.DropDownRows = 10;
+            this.is_ydjcy.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {new DevExpress.XtraEditors.Controls.ImageComboBoxItem("全部", null, -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("有", 1, -1), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("无", 0, -1)});
+            this.is_ydjcy.Size = new System.Drawing.Size(88, 20);
+            this.is_ydjcy.TabIndex = 3;
+            // 
             // is_gxy
             // 
-            this.is_gxy.Location = new System.Drawing.Point(545, 55);
+            this.is_gxy.Location = new System.Drawing.Point(382, 55);
             this.is_gxy.Margin = new System.Windows.Forms.Padding(0, 3, 10, 3);
             this.is_gxy.Name = "is_gxy";
             this.is_gxy.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -946,7 +971,7 @@
             // 
             // bindDev
             // 
-            this.bindDev.Location = new System.Drawing.Point(382, 55);
+            this.bindDev.Location = new System.Drawing.Point(545, 55);
             this.bindDev.Margin = new System.Windows.Forms.Padding(0, 3, 10, 3);
             this.bindDev.Name = "bindDev";
             this.bindDev.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1069,6 +1094,7 @@
             this.spTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize) (this.doc_id.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize) (this.is_stopvip.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.is_ydjcy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize) (this.is_gxy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize) (this.is_tnb.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize) (this.bindDev.Properties)).EndInit();
@@ -1076,6 +1102,9 @@
             ((System.ComponentModel.ISupportInitialize) (this.vip_type.Properties)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private DevExpress.XtraEditors.ImageComboBoxEdit is_ydjcy;
+        private DevExpress.XtraEditors.LabelControl lblYdjcy;
 
         private DevExpress.XtraEditors.ImageComboBoxEdit is_gxy;
 

@@ -9,7 +9,7 @@ using DBInterface;
 
 namespace DBDAL.MySqlDal
 {
-    public class tmo_web_comfigDal : Itmo_web_config
+    public class tmo_web_configDal : Itmo_web_config
     {
         #region 关于我们
         public bool AddOrUpdateAboutUs(string doc_code, string hos_code, DataSet dsAboutUs)
@@ -38,7 +38,7 @@ namespace DBDAL.MySqlDal
                 strSQL.Append("hos_code='" + hos_code + "',");
                 strSQL.Append("c_type='" + int.Parse(dtAboutUs.Rows[0]["c_type"].ToString()) + "',");
                 strSQL.Append("input_time='" + input_time + "'");
-                strSQL.Append(" where c_id='" + int.Parse(dtAboutUs.Rows[0]["c_id"].ToString()) + "',");
+                strSQL.Append(" where c_id='" + int.Parse(dtAboutUs.Rows[0]["c_id"].ToString()) + "'");
             }
             num = MySQLHelper.ExecuteSql(strSQL.ToString());
             return num > 0 ? true : false;

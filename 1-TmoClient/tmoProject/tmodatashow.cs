@@ -78,6 +78,7 @@ namespace tmoProject
                 frmshow.GetData();
                 frmshow.Enabled = true;
                 frmshow.ShowDialog();
+                frmshow.Dispose();
             }
         }
 

@@ -184,7 +184,7 @@ namespace TmoWeb
 
             try
             {
-                mshtml.IHTMLDocument2 document = (mshtml.IHTMLDocument2)webBrowserBody.Document.DomDocument;
+                /*mshtml.IHTMLDocument2 document = (mshtml.IHTMLDocument2)webBrowserBody.Document.DomDocument;
 
                 toolStripComboBoxName.Text = document.queryCommandValue("FontName").ToString();
                 toolStripComboBoxSize.SelectedItem = FontSize.Find((int)document.queryCommandValue("FontSize"));
@@ -198,7 +198,7 @@ namespace TmoWeb
                 toolStripButtonLeft.Checked = document.queryCommandState("JustifyLeft");
                 toolStripButtonCenter.Checked = document.queryCommandState("JustifyCenter");
                 toolStripButtonRight.Checked = document.queryCommandState("JustifyRight");
-                toolStripButtonFull.Checked = document.queryCommandState("JustifyFull");
+                toolStripButtonFull.Checked = document.queryCommandState("JustifyFull");*/
             }
             catch (Exception e)
             {
@@ -292,10 +292,10 @@ namespace TmoWeb
                 return;
             }
 
-            int fontcolor = (int)((mshtml.IHTMLDocument2)webBrowserBody.Document.DomDocument).queryCommandValue("ForeColor");
+            //int fontcolor = (int)((mshtml.IHTMLDocument2)webBrowserBody.Document.DomDocument).queryCommandValue("ForeColor");
 
             ColorDialog dialog = new ColorDialog();
-            dialog.Color = Color.FromArgb(0xff, fontcolor & 0xff, (fontcolor >> 8) & 0xff, (fontcolor >> 16) & 0xff);
+            //dialog.Color = Color.FromArgb(0xff, fontcolor & 0xff, (fontcolor >> 8) & 0xff, (fontcolor >> 16) & 0xff);
 
             DialogResult result = dialog.ShowDialog();
             if (result == DialogResult.OK)

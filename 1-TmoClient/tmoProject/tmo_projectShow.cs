@@ -15,11 +15,13 @@ namespace tmoProject
     public partial class tmo_projectShow : TmoSkin.UCBase
     {
         #region member
+
         int _pageSize = 100;
         int _currentPage = 1;
         protected DataSet _dsQueryXml = null;
+
         string SubmitXml = TmoShare.XML_TITLE +
-@"<tmo>
+                           @"<tmo>
     <page_size></page_size>
 	<now_page></now_page>
     <user_id></user_id>
@@ -32,17 +34,22 @@ namespace tmoProject
     <reg_time_begin></reg_time_begin> 
      <reg_time_end></reg_time_end> 
 </tmo>";
+
         string proxml = TmoShare.XML_TITLE +
-@"<tmo>
+                        @"<tmo>
    <user_id></user_id>
     <user_times></user_times>
     <project_type></project_type>
     <project_name></project_name>
     <solve_content></solve_content>
  </tmo>";
+
         DataSet _dsGetDataResult = null;
+
         #endregion
+
         DataRow Delrow = null;
+
         public tmo_projectShow()
         {
             InitializeComponent();
@@ -55,30 +62,31 @@ namespace tmoProject
             linkdel.Click += linkdel_Click;
             _pageSize = Convert.ToInt32(this.txtPageSize.Text);
             gridView2.RowCellClick += gridView1_RowCellClick;
-           user_codetxt.KeyDown += ReportShow_KeyDown;
-           btntest.Click += btntest_Click;
-           TSCommon.SetGridControl(dgcTree);
+            user_codetxt.KeyDown += ReportShow_KeyDown;
+            btntest.Click += btntest_Click;
+            TSCommon.SetGridControl(dgcTree);
         }
 
         void btntest_Click(object sender, EventArgs e)
         {
             frmmedicDic frm = new frmmedicDic();
-             frm.ShowDialog();
+            frm.ShowDialog();
+            frm.Dispose();
         }
 
         void ReportShow_KeyDown(object sender, KeyEventArgs e)
         {
-
             if (e.KeyCode == Keys.N && e.Control)
             {
                 btntest.Visible = !btntest.Visible;
-
-
             }
         }
+
         void btnWeihu_Click(object sender, EventArgs e)
         {
-            new frmdic().ShowDialog();
+            var frm = new frmdic();
+            frm.ShowDialog();
+            frm.Dispose();
         }
 
         void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
@@ -93,53 +101,52 @@ namespace tmoProject
                     DXMessageBox.ShowWarning2("该用户此次评估已有解决方案!不能重复生成");
                     return;
                 }
+
                 string user_idd = dr["user_id"].ToString();
                 string user_timesd = dr["user_times"].ToString();
-                string xmlreturn = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProResult, new object[] { user_idd, user_timesd, "" });
+                string xmlreturn = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProResult, new object[] {user_idd, user_timesd, ""});
                 DataSet ds = TmoShare.getDataSetFromXML(xmlreturn);
                 if (!TmoShare.DataSetIsEmpty(ds) && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
                 {
-
                     DXMessageBox.ShowWarning2("该用户此次评估已有解决方案!不能重复生成");
                     return;
                 }
                 else
                 {
-                    if (new FrmSelectNur(user_idd, user_timesd).ShowDialog() == DialogResult.OK)
+                    var frm = new FrmSelectNur(user_idd, user_timesd);
+                    if (frm.ShowDialog() == DialogResult.OK)
                         ShengPro(user_idd, user_timesd);
+                    frm.Dispose();
                 }
-
             }
             else if (e.Column.Name == "look_project")
             {
                 string user_idd = dr["user_id"].ToString();
                 string user_timesd = dr["user_times"].ToString();
 
-                string xmlreturn = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProResult, new object[] { user_idd, user_timesd, "" });
+                string xmlreturn = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProResult, new object[] {user_idd, user_timesd, ""});
                 DataSet ds = TmoShare.getDataSetFromXML(xmlreturn);
                 if (!TmoShare.DataSetIsEmpty(ds) && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
                 {
-
                     string named = dr["name"].ToString();
                     //frmPlanShow frmp = new frmPlanShow();
                     frmtest frmp = new frmtest();
                     frmp.Indata(user_idd, user_timesd, named, dr);
                     frmp.Enabled = true;
                     frmp.ShowDialog();
+                    frmp.Dispose();
                 }
                 else
                 {
                     DXMessageBox.ShowWarning2("该用户此次评估暂无解决方案!请先生成解决方案");
                     return;
                 }
-
-
             }
             else if (e.Column.Name == "del")
             {
                 if (dr["del"].ToString() == "---")
                     return;
-                if (dr["projectState"].ToString()== "已生成")
+                if (dr["projectState"].ToString() == "已生成")
                 {
                     Delrow = dr;
 
@@ -148,16 +155,13 @@ namespace tmoProject
                 }
                 else
                 {
-
                     DXMessageBox.Show("没有生成方案不能删除！");
                 }
-
             }
             else if (e.Column.Name == "user_id")
             {
                 GetItemData(dr);
             }
-
         }
 
         void DXMessageBox_btnCancelClick(object sender, EventArgs e)
@@ -167,10 +171,9 @@ namespace tmoProject
 
         void DXMessageBox_btnOKClick(object sender, EventArgs e)
         {
-           
             string user_idd = Delrow["user_id"].ToString();
             string user_timesd = Delrow["user_times"].ToString();
-            bool issuc = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.DelPerProre, new object[] { user_idd, user_timesd, "" });
+            bool issuc = (bool) TmoServiceClient.InvokeServerMethodT<bool>(funCode.DelPerProre, new object[] {user_idd, user_timesd, ""});
             if (issuc)
             {
                 DXMessageBox.Show("删除成功", true);
@@ -178,8 +181,10 @@ namespace tmoProject
             }
             else
                 DXMessageBox.Show("删除失败", true);
+
             Delrow = null;
         }
+
         /// <summary>
         /// 生成解决方案
         /// </summary>
@@ -199,20 +204,19 @@ namespace tmoProject
                         inputProds.Tables[0].Rows.Clear();
                     }
 
-                    string resxml = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetRiskResult, new object[] { user_idd, user_timesd });
+                    string resxml = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetRiskResult, new object[] {user_idd, user_timesd});
                     DataSet ds = TmoShare.getDataSetFromXML(resxml);
                     if (TmoShare.DataSetIsEmpty(ds))
                         return "2";
                     else
                     {
-
                         foreach (DataRow disanem in ds.Tables[0].Rows)
                         {
                             disnames.Add(disanem["moment_type"].ToString());
                         }
                     }
 
-                    string resxmlprodic = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProjectDic, new object[] { "", "", "" });
+                    string resxmlprodic = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProjectDic, new object[] {"", "", ""});
                     DataSet dsprodic = TmoShare.getDataSetFromXML(resxmlprodic);
                     if (TmoShare.DataSetIsEmpty(dsprodic))
                         return "2";
@@ -221,7 +225,7 @@ namespace tmoProject
                         foreach (string disname in disnames)
                         {
                             var disnamenew = disname;
-                            if (disname == "肾病五期")//糖尿病Ⅲ期肾病,糖尿病Ⅳ期肾病,糖尿病Ⅴ期肾病
+                            if (disname == "肾病五期") //糖尿病Ⅲ期肾病,糖尿病Ⅳ期肾病,糖尿病Ⅴ期肾病
                                 disnamenew = "糖尿病Ⅴ期肾病";
                             if (disname == "肾病四期")
                                 disnamenew = "糖尿病Ⅳ期肾病";
@@ -240,7 +244,6 @@ namespace tmoProject
 
                                 if (dicstrs.Contains(disnamenew))
                                 {
-
                                     project_ids.Add(project_id);
                                     DataRow newdr = inputProds.Tables[0].NewRow();
                                     newdr["user_id"] = user_idd;
@@ -250,40 +253,28 @@ namespace tmoProject
                                     newdr["solve_content"] = row["solve_content"];
                                     inputProds.Tables[0].Rows.Add(newdr);
                                 }
-
                             }
                         }
 
                         project_ids.Clear();
                         string inputproxml = TmoShare.getXMLFromDataSet(inputProds);
-                        bool isuc = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.InProResult, new object[] { inputproxml });
+                        bool isuc = (bool) TmoServiceClient.InvokeServerMethodT<bool>(funCode.InProResult, new object[] {inputproxml});
                         if (isuc)
                             return "1";
                         else
                             return "2";
                     }
-
-
                 }
                 catch (Exception)
                 {
-
                     return "2";
                 }
-
-
-
-
-
-
             }, x =>
             {
                 try
                 {
-
                     if (x.ToString() == "1")
                     {
-
                         DXMessageBox.Show("生成解决方案成功！", true);
                         GetData();
                     }
@@ -297,7 +288,6 @@ namespace tmoProject
                     TmoShare.WriteLog("实体加载数据出错", ex);
                     DXMessageBox.ShowWarning2("数据加载失败！请重试！");
                 }
-
             });
         }
 
@@ -308,7 +298,7 @@ namespace tmoProject
             DataRow dr = gridView1.GetDataRow(CheckedRowIndexs[0]);
             string user_idstr = dr["user_id"].ToString();
             string user_timesstr = dr["user_times"].ToString();
-            bool isdel = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.ReportDel, new object[] { user_idstr, user_timesstr });
+            bool isdel = (bool) TmoServiceClient.InvokeServerMethodT<bool>(funCode.ReportDel, new object[] {user_idstr, user_timesstr});
             if (isdel)
                 DXMessageBox.ShowWarning2("删除成功！");
             else
@@ -325,6 +315,7 @@ namespace tmoProject
             birchb.Checked = false;
             checkEdit2.Checked = false;
         }
+
         //<summary>
         //获取选中的行的索引
         //</summary>
@@ -337,13 +328,13 @@ namespace tmoProject
                 {
                     chkRowIndexs.Add(i);
                 }
+
                 return chkRowIndexs;
             }
         }
+
         void btnRisk_Click(object sender, EventArgs e)
         {
-
-
         }
 
         void btnquery_Click(object sender, EventArgs e)
@@ -353,7 +344,6 @@ namespace tmoProject
 
         void ReportList_Load(object sender, EventArgs e)
         {
-
             GetData();
             if (_dsGetDataResult != null && _dsGetDataResult.Tables.Count > 0)
             {
@@ -364,28 +354,27 @@ namespace tmoProject
                     //_dgvMain.ExpandGroupRow(-1);
                     gridView2.ExpandAllGroups();
                 }
+
                 gridView2.MoveFirst();
             }
+
             //dgcTree.DataSource=
         }
 
 
         #region 获取数据
 
-
         /// <summary>
         /// 加载数据
         /// </summary>
         public void GetData()
         {
-            input_time.Visible =true;
+            input_time.Visible = true;
             money.Visible = true;
             this.ShowWaitingPanel(() =>
             {
-
                 try
                 {
-
                     _dsQueryXml = TmoShare.getDataSetFromXML(SubmitXml, true);
                     if (_dsQueryXml.Tables[0].Rows.Count == 0)
                         _dsQueryXml.Tables[0].Rows.Add(_dsQueryXml.Tables[0].NewRow());
@@ -410,17 +399,17 @@ namespace tmoProject
                     {
                         _dsQueryXml.Tables[0].Rows[0]["birth_date_begin"] = birth_datestart.EditValue.ToString();
                         _dsQueryXml.Tables[0].Rows[0]["birth_date_end"] = birth_dateend.EditValue.ToString();
-
                     }
+
                     if (checkEdit2.Checked)
                     {
                         _dsQueryXml.Tables[0].Rows[0]["reg_time_begin"] = exam_timestart.EditValue.ToString();
                         _dsQueryXml.Tables[0].Rows[0]["reg_time_end"] = exam_timeend.EditValue.ToString();
-
                     }
+
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProjectData, new object[] { selexml });
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetProjectData, new object[] {selexml});
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {
@@ -434,16 +423,14 @@ namespace tmoProject
                         return null;
                 }
                 catch
-                { }
+                {
+                }
+
                 return null;
-
-
             }, x =>
             {
                 try
                 {
-
-
                     DataTable dt = x as DataTable;
                     if (dt != null)
                     {
@@ -460,12 +447,13 @@ namespace tmoProject
                             row["look_project"] = "查看方案";
                         }
                     }
+
                     dgcTree.DataSource = dt;
                     if (gridView2.GroupCount > 0)
                     {
-
                         gridView2.ExpandAllGroups();
                     }
+
                     gridView2.MoveFirst();
                     if (dt == null) return;
 
@@ -482,13 +470,11 @@ namespace tmoProject
                     TmoShare.WriteLog("实体加载数据出错", ex);
                     DXMessageBox.ShowWarning2("数据加载失败！请重试！");
                 }
-
             });
         }
 
         public void GetItemData(DataRow dr)
         {
-
             input_time.Visible = false;
             money.Visible = false;
             int user_times = 0;
@@ -497,7 +483,6 @@ namespace tmoProject
             DataTable dt = dr.Table.Clone();
             for (int i = 1; i <= user_times; i++)
             {
-
                 DataRow newDr = dt.NewRow();
                 newDr["user_id"] = dr["user_id"];
                 newDr["user_times"] = i.ToString();
@@ -524,7 +509,6 @@ namespace tmoProject
                 newDr["look_project"] = dr["look_project"];
 
 
-
                 dt.Rows.Add(newDr);
             }
 
@@ -532,19 +516,20 @@ namespace tmoProject
             dgcTree.DataSource = dt;
             if (gridView1.GroupCount > 0)
             {
-
                 gridView1.ExpandAllGroups();
             }
+
             gridView1.MoveFirst();
             if (dt == null) return;
-
-
         }
+
         #endregion
 
         #region 分页查询的方法
+
         string count;
         string pageCount;
+
         void repositoryItemHyperLinkEdit1_Click(object sender, EventArgs e)
         {
             if (CheckedRowIndexs.Count == 0)
@@ -558,14 +543,12 @@ namespace tmoProject
 
         private void labelControl1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void llblStart_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (int.Parse(pageCount) < 1)
             {
-
                 return;
             }
             else
@@ -579,14 +562,12 @@ namespace tmoProject
         {
             if (this._currentPage <= 0)
             {
-
                 return;
             }
             else
             {
                 _currentPage -= 1;
                 GetData();
-
             }
         }
 
@@ -594,7 +575,6 @@ namespace tmoProject
         {
             if (this._currentPage >= int.Parse(pageCount))
             {
-
                 //_btnNext.Visible = false;
                 return;
             }
@@ -602,7 +582,6 @@ namespace tmoProject
             {
                 _currentPage += 1;
                 GetData();
-
             }
         }
 
@@ -610,7 +589,6 @@ namespace tmoProject
         {
             if (int.Parse(pageCount) < 1)
             {
-
                 return;
             }
             else
@@ -630,14 +608,10 @@ namespace tmoProject
 
         private void flowLayoutPanelPage_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void btnquery_Click_1(object sender, EventArgs e)
         {
-
         }
-
-
     }
 }

@@ -143,6 +143,7 @@ namespace TmoPurchaseSellStock
                 address.Text = cu.SelectedUsers[0].address;
                 phone.Text = cu.SelectedUsers[0].phone;
             }
+            cu.Dispose();
         }
 
         void sell_num_Click(object sender, EventArgs e)

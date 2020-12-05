@@ -85,6 +85,7 @@ namespace TmoEvaluation
                 frmReport.initPersonData(dr);
 
                 frmReport.ShowDialog();
+                frmReport.Dispose();
             }
         }
 

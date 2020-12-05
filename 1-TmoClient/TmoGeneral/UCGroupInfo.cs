@@ -30,6 +30,7 @@ namespace TmoGeneral
             {
                 GetData();
             }
+            edit.Dispose();
         }
 
         protected override void OnEditClick(DataRow selectedRow)
@@ -40,6 +41,7 @@ namespace TmoGeneral
             {
                 GetData();
             }
+            edit.Dispose();
         }
 
         protected override void OnDelClick(DataRow selectedRow)
@@ -84,6 +86,7 @@ namespace TmoGeneral
                             GetData();
                     }
                 }
+                edit.Dispose();
             }
             base.OnRowCellClick(dr, e);
         }

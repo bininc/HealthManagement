@@ -15,11 +15,13 @@ namespace TmoEvaluation
     public partial class EvaluationShow : TmoSkin.UCBase
     {
         #region member
+
         int _pageSize = 100;
         int _currentPage = 1;
         protected DataSet _dsQueryXml = null;
+
         string SubmitXml = TmoShare.XML_TITLE +
-@"<tmo>
+                           @"<tmo>
     <page_size></page_size>
 	<now_page></now_page>
     <user_id></user_id>
@@ -32,13 +34,17 @@ namespace TmoEvaluation
     <reg_time_begin></reg_time_begin> 
      <reg_time_end></reg_time_end> 
 </tmo>";
+
         string riskxml = TmoShare.XML_TITLE +
-@"<tmo>
+                         @"<tmo>
    <user_id></user_id>
     <user_time></user_time>
 </tmo>";
+
         DataSet _dsGetDataResult = null;
+
         #endregion
+
         public EvaluationShow()
         {
             InitializeComponent();
@@ -53,7 +59,9 @@ namespace TmoEvaluation
             gridView1.RowCellClick += gridView1_RowCellClick;
             TSCommon.SetGridControl(dgcTree);
         }
+
         DataRow drDel = null;
+
         void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
             DataRow dr = gridView1.GetDataRow(e.RowHandle);
@@ -62,18 +70,16 @@ namespace TmoEvaluation
             //DXMessageBox.btnCancelClick = (object sender,EventArgs e) => { };
             if (e.Column.Name == "del")
             {
-                
                 DXMessageBox.btnOKClick += DXMessageBox_btnOKClick;
                 DXMessageBox.ShowQuestion("确定要删除吗？");
-           
             }
             else if (e.Column.Name == "look_report")
             {
                 FrmEvalReport frmEvalReport = new FrmEvalReport();
-           frmEvalReport.inidata();
+                frmEvalReport.inidata();
                 frmEvalReport.initPersonData(dr);
-
-              frmEvalReport.ShowDialog();
+                frmEvalReport.ShowDialog();
+                frmEvalReport.Dispose();
             }
         }
 
@@ -81,14 +87,15 @@ namespace TmoEvaluation
         {
             string user_idstr = drDel["user_id"].ToString();
             string user_timesstr = drDel["user_times"].ToString();
-            bool isdel = (bool)TmoServiceClient.InvokeServerMethodT<bool>(funCode.ReportDel, new object[] { user_idstr, user_timesstr });
+            bool isdel = (bool) TmoServiceClient.InvokeServerMethodT<bool>(funCode.ReportDel, new object[] {user_idstr, user_timesstr});
             if (isdel)
             {
-                DXMessageBox.Show("删除成功！",true);
+                DXMessageBox.Show("删除成功！", true);
                 GetData();
             }
             else
-                DXMessageBox.Show("删除失败！",true);
+                DXMessageBox.Show("删除失败！", true);
+
             drDel = null;
         }
 
@@ -99,9 +106,9 @@ namespace TmoEvaluation
             DataRow dr = gridView1.GetDataRow(CheckedRowIndexs[0]);
             string user_idstr = dr["user_id"].ToString();
             string user_timesstr = dr["user_times"].ToString();
-            bool isdel =(bool) TmoServiceClient.InvokeServerMethodT<bool>(funCode.ReportDel, new object[] { user_idstr, user_timesstr });
+            bool isdel = (bool) TmoServiceClient.InvokeServerMethodT<bool>(funCode.ReportDel, new object[] {user_idstr, user_timesstr});
             if (isdel)
-              DXMessageBox.ShowWarning2("删除成功！");
+                DXMessageBox.ShowWarning2("删除成功！");
             else
                 DXMessageBox.ShowWarning2("删除失败！");
             GetData();
@@ -116,6 +123,7 @@ namespace TmoEvaluation
             birchb.Checked = false;
             checkEdit2.Checked = false;
         }
+
         //<summary>
         //获取选中的行的索引
         //</summary>
@@ -128,41 +136,41 @@ namespace TmoEvaluation
                 {
                     chkRowIndexs.Add(i);
                 }
+
                 return chkRowIndexs;
             }
         }
+
         void btnRisk_Click(object sender, EventArgs e)
         {
-          
-            
         }
 
         void btnquery_Click(object sender, EventArgs e)
         {
             GetData();
         }
-       
+
         void ReportList_Load(object sender, EventArgs e)
         {
-
             GetData();
-            if (_dsGetDataResult != null && _dsGetDataResult.Tables.Count>0)
-            { 
-            dgcTree.DataSource = _dsGetDataResult.Tables[1];
-
-            if (gridView1.GroupCount > 0)
+            if (_dsGetDataResult != null && _dsGetDataResult.Tables.Count > 0)
             {
-                //_dgvMain.ExpandGroupRow(-1);
-                gridView1.ExpandAllGroups();
+                dgcTree.DataSource = _dsGetDataResult.Tables[1];
+
+                if (gridView1.GroupCount > 0)
+                {
+                    //_dgvMain.ExpandGroupRow(-1);
+                    gridView1.ExpandAllGroups();
+                }
+
+                gridView1.MoveFirst();
             }
-            gridView1.MoveFirst();
-        }
+
             //dgcTree.DataSource=
         }
 
 
         #region 获取数据
-  
 
         /// <summary>
         /// 加载数据
@@ -171,10 +179,8 @@ namespace TmoEvaluation
         {
             this.ShowWaitingPanel(() =>
             {
-
                 try
                 {
-
                     _dsQueryXml = TmoShare.getDataSetFromXML(SubmitXml, true);
                     if (_dsQueryXml.Tables[0].Rows.Count == 0)
                         _dsQueryXml.Tables[0].Rows.Add(_dsQueryXml.Tables[0].NewRow());
@@ -190,8 +196,8 @@ namespace TmoEvaluation
                     if (!string.IsNullOrEmpty(this.user_nametxt.Text))
                         _dsQueryXml.Tables[0].Rows[0]["name"] = this.user_nametxt.Text;
                     string gender = cmgender.EditValue.ToString();
-                    if (gender=="男")
-                        _dsQueryXml.Tables[0].Rows[0]["gender"] ="1";
+                    if (gender == "男")
+                        _dsQueryXml.Tables[0].Rows[0]["gender"] = "1";
                     if (gender == "女")
                         _dsQueryXml.Tables[0].Rows[0]["gender"] = "2";
 
@@ -199,17 +205,17 @@ namespace TmoEvaluation
                     {
                         _dsQueryXml.Tables[0].Rows[0]["birth_date_begin"] = birth_datestart.EditValue.ToString();
                         _dsQueryXml.Tables[0].Rows[0]["birth_date_end"] = birth_dateend.EditValue.ToString();
-
                     }
+
                     if (checkEdit2.Checked)
                     {
                         _dsQueryXml.Tables[0].Rows[0]["reg_time_begin"] = exam_timestart.EditValue.ToString();
                         _dsQueryXml.Tables[0].Rows[0]["reg_time_end"] = exam_timeend.EditValue.ToString();
-
                     }
+
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
 
-                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetReportData, new object[] { selexml });
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetReportData, new object[] {selexml});
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {
@@ -223,16 +229,14 @@ namespace TmoEvaluation
                         return null;
                 }
                 catch
-                { }
+                {
+                }
+
                 return null;
-
-
             }, x =>
             {
                 try
                 {
-
-
                     DataTable dt = x as DataTable;
                     if (dt != null)
                     {
@@ -241,12 +245,13 @@ namespace TmoEvaluation
                             row["look_report"] = "效果评估";
                         }
                     }
+
                     dgcTree.DataSource = dt;
                     if (gridView1.GroupCount > 0)
                     {
-
                         gridView1.ExpandAllGroups();
                     }
+
                     gridView1.MoveFirst();
                     if (dt == null) return;
 
@@ -263,39 +268,29 @@ namespace TmoEvaluation
                     TmoShare.WriteLog("实体加载数据出错", ex);
                     DXMessageBox.ShowWarning2("数据加载失败！请重试！");
                 }
-
             });
         }
+
         #endregion
 
         #region 分页查询的方法
+
         string count;
         string pageCount;
 
 
-
-
-
-      
-      
-      
-    
-     
         void repositoryItemHyperLinkEdit1_Click(object sender, EventArgs e)
         {
-            
         }
 
         private void labelControl1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void llblStart_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (int.Parse(pageCount) < 1)
             {
-
                 return;
             }
             else
@@ -309,14 +304,12 @@ namespace TmoEvaluation
         {
             if (this._currentPage <= 0)
             {
-
                 return;
             }
             else
             {
                 _currentPage -= 1;
                 GetData();
-
             }
         }
 
@@ -324,7 +317,6 @@ namespace TmoEvaluation
         {
             if (this._currentPage >= int.Parse(pageCount))
             {
-
                 //_btnNext.Visible = false;
                 return;
             }
@@ -332,7 +324,6 @@ namespace TmoEvaluation
             {
                 _currentPage += 1;
                 GetData();
-
             }
         }
 
@@ -340,7 +331,6 @@ namespace TmoEvaluation
         {
             if (int.Parse(pageCount) < 1)
             {
-
                 return;
             }
             else

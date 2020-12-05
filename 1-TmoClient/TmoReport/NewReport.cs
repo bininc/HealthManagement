@@ -94,6 +94,7 @@ namespace TmoReport
                 frmReport.initPersonData(dr);
 
                 frmReport.ShowDialog();
+                frmReport.Dispose();
             }
             else if (e.Column.Name == "user_times")
             {
@@ -105,13 +106,14 @@ namespace TmoReport
                 FrmUp frmUpImg = new FrmUp(dr);
                 frmUpImg.Enabled = true;
                 frmUpImg.ShowDialog();
+                frmUpImg.Dispose();
             }
             else if (e.Column.Name == "lookold")
             {
                 FrmUpImg frmUpImg = new FrmUpImg(dr, true);
                 frmUpImg.Enabled = true;
                 frmUpImg.ShowDialog();
-
+                frmUpImg.Dispose();
 
                 //if(filename)
             }
@@ -453,6 +455,7 @@ namespace TmoReport
                 FrmUp frmup = new FrmUp(row);
                 frmup.Enabled = true;
                 frmup.ShowDialog();
+                frmup.Dispose();
             }
         }
 

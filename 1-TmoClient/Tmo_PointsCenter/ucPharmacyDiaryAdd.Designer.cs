@@ -45,11 +45,11 @@
             this.else_fibrate = new DevExpress.XtraEditors.TextEdit();
             this.else_pressure = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.checkEdit14 = new DevExpress.XtraEditors.CheckEdit();
-            this.checkEdit15 = new DevExpress.XtraEditors.CheckEdit();
-            this.checkEdit16 = new DevExpress.XtraEditors.CheckEdit();
-            this.checkEdit17 = new DevExpress.XtraEditors.CheckEdit();
-            this.checkEdit18 = new DevExpress.XtraEditors.CheckEdit();
+            this.euglycemic_agent = new DevExpress.XtraEditors.CheckEdit();
+            this.biguanides = new DevExpress.XtraEditors.CheckEdit();
+            this.agis = new DevExpress.XtraEditors.CheckEdit();
+            this.benzoic = new DevExpress.XtraEditors.CheckEdit();
+            this.su = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.fatty_acid = new DevExpress.XtraEditors.CheckEdit();
@@ -77,11 +77,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.else_antidiabetic.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.else_fibrate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.else_pressure.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit14.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit15.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit16.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit17.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit18.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.euglycemic_agent.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.biguanides.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.agis.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.benzoic.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.su.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fatty_acid.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hydrochloride.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fibrates.Properties)).BeginInit();
@@ -208,11 +208,11 @@
             this.panelControl1.Controls.Add(this.else_fibrate);
             this.panelControl1.Controls.Add(this.else_pressure);
             this.panelControl1.Controls.Add(this.labelControl5);
-            this.panelControl1.Controls.Add(this.checkEdit14);
-            this.panelControl1.Controls.Add(this.checkEdit15);
-            this.panelControl1.Controls.Add(this.checkEdit16);
-            this.panelControl1.Controls.Add(this.checkEdit17);
-            this.panelControl1.Controls.Add(this.checkEdit18);
+            this.panelControl1.Controls.Add(this.euglycemic_agent);
+            this.panelControl1.Controls.Add(this.biguanides);
+            this.panelControl1.Controls.Add(this.agis);
+            this.panelControl1.Controls.Add(this.benzoic);
+            this.panelControl1.Controls.Add(this.su);
             this.panelControl1.Controls.Add(this.labelControl4);
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.fatty_acid);
@@ -268,43 +268,43 @@
             // 
             // checkEdit14
             // 
-            this.checkEdit14.Location = new System.Drawing.Point(335, 260);
-            this.checkEdit14.Name = "checkEdit14";
-            this.checkEdit14.Properties.Caption = "噻唑烷二酮（胰岛素増敏剂）";
-            this.checkEdit14.Size = new System.Drawing.Size(202, 19);
-            this.checkEdit14.TabIndex = 113;
+            this.euglycemic_agent.Location = new System.Drawing.Point(335, 260);
+            this.euglycemic_agent.Name = "euglycemic_agent";
+            this.euglycemic_agent.Properties.Caption = "噻唑烷二酮（胰岛素増敏剂）";
+            this.euglycemic_agent.Size = new System.Drawing.Size(202, 19);
+            this.euglycemic_agent.TabIndex = 113;
             // 
             // checkEdit15
             // 
-            this.checkEdit15.Location = new System.Drawing.Point(34, 289);
-            this.checkEdit15.Name = "checkEdit15";
-            this.checkEdit15.Properties.Caption = " 双胍类 ";
-            this.checkEdit15.Size = new System.Drawing.Size(87, 19);
-            this.checkEdit15.TabIndex = 112;
+            this.biguanides.Location = new System.Drawing.Point(34, 289);
+            this.biguanides.Name = "biguanides";
+            this.biguanides.Properties.Caption = " 双胍类 ";
+            this.biguanides.Size = new System.Drawing.Size(87, 19);
+            this.biguanides.TabIndex = 112;
             // 
             // checkEdit16
             // 
-            this.checkEdit16.Location = new System.Drawing.Point(184, 260);
-            this.checkEdit16.Name = "checkEdit16";
-            this.checkEdit16.Properties.Caption = "α－糖苷酶抑制剂";
-            this.checkEdit16.Size = new System.Drawing.Size(143, 19);
-            this.checkEdit16.TabIndex = 111;
+            this.agis.Location = new System.Drawing.Point(184, 260);
+            this.agis.Name = "agis";
+            this.agis.Properties.Caption = "α－糖苷酶抑制剂";
+            this.agis.Size = new System.Drawing.Size(143, 19);
+            this.agis.TabIndex = 111;
             // 
             // checkEdit17
             // 
-            this.checkEdit17.Location = new System.Drawing.Point(184, 289);
-            this.checkEdit17.Name = "checkEdit17";
-            this.checkEdit17.Properties.Caption = "苯甲酸衍生物 （非磺脲类胰岛素促泌剂） ";
-            this.checkEdit17.Size = new System.Drawing.Size(283, 19);
-            this.checkEdit17.TabIndex = 110;
+            this.benzoic.Location = new System.Drawing.Point(184, 289);
+            this.benzoic.Name = "benzoic";
+            this.benzoic.Properties.Caption = "苯甲酸衍生物 （非磺脲类胰岛素促泌剂） ";
+            this.benzoic.Size = new System.Drawing.Size(283, 19);
+            this.benzoic.TabIndex = 110;
             // 
             // checkEdit18
             // 
-            this.checkEdit18.Location = new System.Drawing.Point(34, 260);
-            this.checkEdit18.Name = "checkEdit18";
-            this.checkEdit18.Properties.Caption = " 磺脲类";
-            this.checkEdit18.Size = new System.Drawing.Size(87, 19);
-            this.checkEdit18.TabIndex = 109;
+            this.su.Location = new System.Drawing.Point(34, 260);
+            this.su.Name = "su";
+            this.su.Properties.Caption = " 磺脲类";
+            this.su.Size = new System.Drawing.Size(87, 19);
+            this.su.TabIndex = 109;
             // 
             // labelControl4
             // 
@@ -442,11 +442,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.else_antidiabetic.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.else_fibrate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.else_pressure.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit14.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit15.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit16.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit17.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit18.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.euglycemic_agent.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.biguanides.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.agis.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.benzoic.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.su.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fatty_acid.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hydrochloride.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fibrates.Properties)).EndInit();
@@ -491,11 +491,11 @@
         private DevExpress.XtraEditors.CheckEdit ace_inhibitor;
         private DevExpress.XtraEditors.CheckEdit diuretic;
         private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.CheckEdit checkEdit14;
-        private DevExpress.XtraEditors.CheckEdit checkEdit15;
-        private DevExpress.XtraEditors.CheckEdit checkEdit16;
-        private DevExpress.XtraEditors.CheckEdit checkEdit17;
-        private DevExpress.XtraEditors.CheckEdit checkEdit18;
+        private DevExpress.XtraEditors.CheckEdit euglycemic_agent;
+        private DevExpress.XtraEditors.CheckEdit biguanides;
+        private DevExpress.XtraEditors.CheckEdit agis;
+        private DevExpress.XtraEditors.CheckEdit benzoic; 
+        private DevExpress.XtraEditors.CheckEdit su;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.TextEdit else_antidiabetic;
         private DevExpress.XtraEditors.TextEdit else_fibrate;

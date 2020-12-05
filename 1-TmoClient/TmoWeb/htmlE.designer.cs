@@ -62,8 +62,8 @@ namespace TmoWeb
             this.toolStripButtonPicture.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonPicture.Name = "toolStripButtonPicture";
             this.toolStripButtonPicture.Size = new System.Drawing.Size(76, 22);
-            this.toolStripButtonPicture.Text = "�ϴ�ͼƬ";
-            this.toolStripButtonPicture.ToolTipText = "����ͼƬ";
+            this.toolStripButtonPicture.Text = "上传图片";
+            this.toolStripButtonPicture.ToolTipText = "插入图片";
             this.toolStripButtonPicture.Click += new System.EventHandler(this.toolStripButtonPicture_Click);
             // 
             // toolStripSeparator1

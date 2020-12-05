@@ -25,6 +25,7 @@ namespace TmoGeneral
                 DXMessageBox.Show("添加监测项目成功！", true);
                 GetData();
             }
+            edit.Dispose();
 
             base.OnAddClick(e);
         }
@@ -38,6 +39,8 @@ namespace TmoGeneral
                 DXMessageBox.Show("修改监测项目信息成功！", true);
                 GetData();
             }
+            edit.Dispose();
+            
             base.OnEditClick(selectedRow);
         }
 

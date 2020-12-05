@@ -17,11 +17,13 @@ namespace TmoPurchaseSellStock
     public partial class TmoUcSellList : TmoSkin.UCBase
     {
         #region 公共
+
         int _pageSize = 100;
         int _currentPage = 1;
         protected DataSet _dsQueryXml = null;
+
         string SubmitXml = TmoShare.XML_TITLE +
-@"<tmo>
+                           @"<tmo>
     <page_size></page_size>
 	<now_page></now_page>
     <product_id></product_id>
@@ -38,8 +40,11 @@ namespace TmoPurchaseSellStock
   <recieve_type></recieve_type>
   <doc_code></doc_code>
 </tmo>";
+
         DataSet _dsGetDataResult = null;
+
         #endregion
+
         public TmoUcSellList()
         {
             InitializeComponent();
@@ -114,14 +119,13 @@ namespace TmoPurchaseSellStock
                 this.BindDataTable(productName, dtProduct, "product_name", "product_id");
             }
         }
+
         public void GetData()
         {
             this.ShowWaitingPanel(() =>
             {
-
                 try
                 {
-
                     _dsQueryXml = TmoShare.getDataSetFromXML(SubmitXml, true);
                     if (_dsQueryXml.Tables[0].Rows.Count == 0)
                         _dsQueryXml.Tables[0].Rows.Add(_dsQueryXml.Tables[0].NewRow());
@@ -150,11 +154,13 @@ namespace TmoPurchaseSellStock
                         _dsQueryXml.Tables[0].Rows[0]["sell_date_start"] = sellTimeStart.EditValue.ToString();
                         _dsQueryXml.Tables[0].Rows[0]["sell_date_end"] = sellTimeEnd.EditValue.ToString();
                     }
+
                     if (sendTimeClick.Checked)
                     {
                         _dsQueryXml.Tables[0].Rows[0]["send_date_start"] = sendTimeStart.EditValue.ToString();
                         _dsQueryXml.Tables[0].Rows[0]["send_date_end"] = sendTimeEnd.EditValue.ToString();
                     }
+
                     if (recieaveTimeClick.Checked)
                     {
                         _dsQueryXml.Tables[0].Rows[0]["recieave_date_start"] = recieaveTimeStart.EditValue.ToString();
@@ -162,7 +168,7 @@ namespace TmoPurchaseSellStock
                     }
 
                     string selexml = TmoShare.getXMLFromDataSet(_dsQueryXml);
-                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetSellList, new object[] { selexml });
+                    string strmlx = TmoServiceClient.InvokeServerMethodT<string>(funCode.GetSellList, new object[] {selexml});
                     _dsGetDataResult = TmoShare.getDataSetFromXML(strmlx);
                     if (TmoShare.DataSetIsNotEmpty(_dsGetDataResult))
                     {
@@ -176,10 +182,10 @@ namespace TmoPurchaseSellStock
                         return null;
                 }
                 catch
-                { }
+                {
+                }
+
                 return null;
-
-
             }, x =>
             {
                 try
@@ -188,9 +194,9 @@ namespace TmoPurchaseSellStock
                     dgcTree.DataSource = dt;
                     if (gridView1.GroupCount > 0)
                     {
-
                         gridView1.ExpandAllGroups();
                     }
+
                     gridView1.MoveFirst();
                     if (dt == null) return;
 
@@ -207,9 +213,9 @@ namespace TmoPurchaseSellStock
                     TmoShare.WriteLog("实体加载数据出错", ex);
                     DXMessageBox.ShowWarning2("数据加载失败！请重试！");
                 }
-
             });
         }
+
         private void ComboBoxBind()
         {
             try
@@ -220,6 +226,7 @@ namespace TmoPurchaseSellStock
                 {
                     this.BindDataTable(productType, wzds, "type_name", "type_id");
                 }
+
                 DataTable ztdt = TmoServiceClient.InvokeServerMethodT<DataSet>(funCode.GetPublicList, "tmo_product_list", " is_del='1' ").Tables[0];
 
                 if (TmoShare.DataTableIsNotEmpty(ztdt))
@@ -227,16 +234,17 @@ namespace TmoPurchaseSellStock
                     this.BindDataTable(productName, ztdt, "product_name", "product_id");
                 }
 
-                DataTable ysdt = Tmo_FakeEntityClient.Instance.GetData("tmo_sell_list", new[] { "distinct(doc_code) as doc_code" }, "is_del='1'");
+                DataTable ysdt = Tmo_FakeEntityClient.Instance.GetData("tmo_sell_list", new[] {"distinct(doc_code) as doc_code"}, "is_del='1'");
                 if (TmoShare.DataTableIsNotEmpty(ysdt))
                 {
                     this.BindDataTable(docName, ysdt, "doc_code", "doc_code");
                 }
+
                 var param = new FE_GetDataParam()
                 {
-                    Columns = { "distinct(tmo_sell_list.identity)", "name" },
+                    Columns = {"distinct(tmo_sell_list.identity)", "name"},
                     Sources = "tmo_sell_list",
-                    JoinConditions = { new JoinCondition() { JoinType = EmJoinType.LeftJoin, Table = "tmo_userinfo", OnCol = "identity" } }
+                    JoinConditions = {new JoinCondition() {JoinType = EmJoinType.LeftJoin, Table = "tmo_userinfo", OnCol = "identity"}}
                 };
                 param.AddWhere("tmo_sell_list.is_del='1'");
 
@@ -255,9 +263,9 @@ namespace TmoPurchaseSellStock
             }
             catch (Exception)
             {
-
             }
         }
+
         private void BindDataTable(ImageComboBoxEdit cmb, DataTable dtSource, string display, string valueMember)
         {
             if (dtSource == null)
@@ -276,6 +284,7 @@ namespace TmoPurchaseSellStock
                 itemtemp1.Description = dtSource.Rows[i][display].ToString();
                 cmb.Properties.Items.Add(itemtemp1);
             }
+
             if (dtSource.Rows.Count > 0)
                 cmb.SelectedIndex = 0;
             else
@@ -283,23 +292,22 @@ namespace TmoPurchaseSellStock
         }
 
         #region 分页查询的方法
+
         string count;
         string pageCount;
+
         void repositoryItemHyperLinkEdit1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void labelControl1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void llblStart_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (int.Parse(pageCount) < 1)
             {
-
                 return;
             }
             else
@@ -313,14 +321,12 @@ namespace TmoPurchaseSellStock
         {
             if (this._currentPage <= 0)
             {
-
                 return;
             }
             else
             {
                 _currentPage -= 1;
                 GetData();
-
             }
         }
 
@@ -328,7 +334,6 @@ namespace TmoPurchaseSellStock
         {
             if (this._currentPage >= int.Parse(pageCount))
             {
-
                 //_btnNext.Visible = false;
                 return;
             }
@@ -336,7 +341,6 @@ namespace TmoPurchaseSellStock
             {
                 _currentPage += 1;
                 GetData();
-
             }
         }
 
@@ -344,7 +348,6 @@ namespace TmoPurchaseSellStock
         {
             if (int.Parse(pageCount) < 1)
             {
-
                 return;
             }
             else
@@ -383,8 +386,10 @@ namespace TmoPurchaseSellStock
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            DialogResult dr = new TmoUcSell().ShowDialog();
+            var tmoUcSell = new TmoUcSell();
+            DialogResult dr = tmoUcSell.ShowDialog();
             if (dr == DialogResult.OK) GetData();
+            tmoUcSell.Dispose();
         }
 
         private void btnSend_Click(object sender, EventArgs e)
@@ -404,12 +409,13 @@ namespace TmoPurchaseSellStock
                     DXMessageBox.ShowWarning("该产品已经发货!");
                     return;
                 }
+
                 TmoUcSend uc = new TmoUcSend();
                 uc.SetValue(sellID);
                 DialogResult dr = uc.ShowDialog();
                 if (dr == DialogResult.OK) GetData();
+                uc.Dispose();
             }
-
         }
 
         private void btnRecieve_Click(object sender, EventArgs e)
@@ -429,10 +435,12 @@ namespace TmoPurchaseSellStock
                     DXMessageBox.ShowWarning("该产品已经收货!");
                     return;
                 }
+
                 TmoUcRecive uc = new TmoUcRecive();
                 uc.SetValue(sellID);
                 DialogResult dr = uc.ShowDialog();
                 if (dr == DialogResult.OK) GetData();
+                uc.Dispose();
             }
         }
     }

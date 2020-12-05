@@ -60,6 +60,7 @@ namespace TmoPointsCenter
                 DialogResult dialogresult = uclivingdiaryadd.ShowDialog();
                 if (dialogresult == DialogResult.OK)
                     GetData();
+                uclivingdiaryadd.Dispose();
             }
             if (e.Column.Name == "del")
             {
@@ -262,6 +263,7 @@ namespace TmoPointsCenter
             DialogResult dr = da.ShowDialog();
             if (dr == DialogResult.OK)
                 GetData();
+            da.Dispose();
         }
     }
 }

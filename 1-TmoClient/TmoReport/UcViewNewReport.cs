@@ -388,7 +388,11 @@ namespace TmoReport
             {
                 try
                 {
-                    frmPrintWait.CrossThreadCalls(() => frmPrintWait.Close());
+                    frmPrintWait.CrossThreadCalls(() =>
+                    {
+                        frmPrintWait.Close();
+                        frmPrintWait.Dispose();
+                    });
 
                 }
                 catch

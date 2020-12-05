@@ -72,6 +72,7 @@ namespace TmoGeneral
                         inte_addr.Text = StringPlus.GetArrayStr(_users.Select(x => x.address).ToArray(), ",");
                     }
                 }
+                cua.Dispose();
             }
         }
 
@@ -110,6 +111,7 @@ namespace TmoGeneral
                     }
                 }
             }
+            cu.Dispose();
         }
 
         private void LinkDel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -156,6 +158,7 @@ namespace TmoGeneral
                         _intelibType = Tmo_FakeEntityClient.Instance.GetData("tmo_intervenelibtype");
                         TSCommon.BindImageComboBox(lbType, _intelibType, null, "type_name", "type_id");
                     }
+                    typeEditor.Dispose();
                 }
                 else
                 {
@@ -173,6 +176,7 @@ namespace TmoGeneral
                 _intelibType = Tmo_FakeEntityClient.Instance.GetData("tmo_intervenelibtype");
                 TSCommon.BindImageComboBox(lbType, _intelibType, null, "type_name", "type_id");
             }
+            typeEditor.Dispose();
         }
 
         private void Inte_way_SelectedIndexChanged(object sender, EventArgs e)

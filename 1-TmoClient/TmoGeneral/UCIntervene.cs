@@ -181,6 +181,7 @@ namespace TmoGeneral
                 GetData();
                 DXMessageBox.Show("新建健康干预成功！", true);
             }
+            edit.Dispose();
         }
 
         protected override void OnEditClick(DataRow selectedRow)
@@ -201,6 +202,7 @@ namespace TmoGeneral
                 GetData();
                 DXMessageBox.Show("修改干预成功！", true);
             }
+            edit.Dispose();
         }
 
         protected override void GetDataAfterSync(DataTable source)
@@ -264,6 +266,7 @@ namespace TmoGeneral
                 {
                     GetData();
                 }
+                interveneFlag.Dispose();
             }
             else if (e.Column.Name.Equals("gc_detail"))
             {   //浏览
@@ -283,6 +286,7 @@ namespace TmoGeneral
                     upr.DbOperaType = DBOperateType.View;
                     upr.PrimaryKeyValue = inte_id;
                     upr.ShowDialog(this);
+                    upr.Dispose();
                 }
                 if (inte_way == 4)//面访
                 {

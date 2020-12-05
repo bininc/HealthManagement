@@ -115,6 +115,7 @@ namespace TmoControl
 
                             var ids = qc.GetSelectedCategories().Select(y => y.qc_id).ToArray();
                             LoadQuestionnaire(ids);
+                            qc.Dispose();
                         }
                         else
                         {
@@ -239,6 +240,7 @@ namespace TmoControl
                         CloseForm(true);
                         DXMessageBox.Show("问卷采集取消，未选择任何用户", true);
                     }
+                    cuser.Dispose();
                 });
             }
         }

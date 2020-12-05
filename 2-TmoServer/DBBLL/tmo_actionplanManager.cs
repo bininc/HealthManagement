@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using DBInterface;
@@ -36,6 +37,11 @@ namespace DBBLL
         public bool SaveActionPlan(string userid, int user_times, string content, byte[] pdfbytes)
         {
             return dal.SaveActionPlan(userid, user_times, content,pdfbytes);
+        }
+
+        public DataTable GetActionPlan(string apid)
+        {
+            return dal.GetActionPlan(apid);
         }
     }
 }

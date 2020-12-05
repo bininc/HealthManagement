@@ -29,39 +29,41 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUp));
             this.lable2 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.sbselect = new DevExpress.XtraEditors.SimpleButton();
             this.lblName = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.lblTips = new DevExpress.XtraEditors.LabelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pdfViewer1 = new DevExpress.XtraPdfViewer.PdfViewer();
             this.ricEc = new DevExpress.XtraRichEdit.RichEditControl();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.btnDownload = new DevExpress.XtraEditors.SimpleButton();
+            ((System.ComponentModel.ISupportInitialize) (this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lable2
             // 
-            this.lable2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lable2.Appearance.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lable2.Location = new System.Drawing.Point(594, 23);
+            this.lable2.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lable2.Appearance.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.lable2.Location = new System.Drawing.Point(592, 23);
             this.lable2.Name = "lable2";
             this.lable2.Size = new System.Drawing.Size(96, 12);
             this.lable2.TabIndex = 5;
-            this.lable2.Text = "请选择上传的病历";
+            this.lable2.Text = "请选择上传的病历:";
             // 
             // panelControl1
             // 
             this.panelControl1.Controls.Add(this.sbselect);
             this.panelControl1.Controls.Add(this.lblName);
             this.panelControl1.Controls.Add(this.labelControl1);
+            this.panelControl1.Controls.Add(this.lblTips);
             this.panelControl1.Controls.Add(this.lable2);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
@@ -71,12 +73,12 @@
             // 
             // sbselect
             // 
-            this.sbselect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.sbselect.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.sbselect.Location = new System.Drawing.Point(696, 18);
             this.sbselect.Name = "sbselect";
             this.sbselect.Size = new System.Drawing.Size(109, 21);
             this.sbselect.TabIndex = 20;
-            this.sbselect.Text = "选择";
+            this.sbselect.Text = "浏览";
             // 
             // lblName
             // 
@@ -94,8 +96,20 @@
             this.labelControl1.TabIndex = 6;
             this.labelControl1.Text = "姓名 :";
             // 
+            // lblTips
+            // 
+            this.lblTips.Appearance.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.lblTips.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.lblTips.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
+            this.lblTips.Location = new System.Drawing.Point(164, 23);
+            this.lblTips.Name = "lblTips";
+            this.lblTips.Size = new System.Drawing.Size(78, 12);
+            this.lblTips.TabIndex = 5;
+            this.lblTips.Text = "数据加载中...";
+            // 
             // panelControl2
             // 
+            this.panelControl2.Controls.Add(this.btnDownload);
             this.panelControl2.Controls.Add(this.btnSave);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl2.Location = new System.Drawing.Point(0, 439);
@@ -105,8 +119,8 @@
             // 
             // btnSave
             // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(700, 17);
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Location = new System.Drawing.Point(715, 17);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(81, 21);
             this.btnSave.TabIndex = 19;
@@ -143,6 +157,16 @@
             this.ricEc.TabIndex = 33;
             this.ricEc.Visible = false;
             // 
+            // btnDownload
+            // 
+            this.btnDownload.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDownload.Location = new System.Drawing.Point(613, 17);
+            this.btnDownload.Name = "btnDownload";
+            this.btnDownload.Size = new System.Drawing.Size(81, 21);
+            this.btnDownload.TabIndex = 19;
+            this.btnDownload.Text = "下载文件";
+            this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
+            // 
             // FrmUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -154,18 +178,19 @@
             this.Controls.Add(this.panelControl1);
             this.Name = "FrmUp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "上传病例-图片";
+            this.Text = "上传检查报告单-图片";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-
         }
+
+        private DevExpress.XtraEditors.SimpleButton btnDownload;
+        private DevExpress.XtraEditors.LabelControl lblTips;
 
         #endregion
 
@@ -178,6 +203,6 @@
         private DevExpress.XtraEditors.SimpleButton sbselect;
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraRichEdit.RichEditControl ricEc;
-       private DevExpress.XtraPdfViewer.PdfViewer pdfViewer1;
+        private DevExpress.XtraPdfViewer.PdfViewer pdfViewer1;
     }
 }

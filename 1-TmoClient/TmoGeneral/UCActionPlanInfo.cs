@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Grid;
 using TmoCommon;
 using TmoControl;
+using TmoLinkServer;
+using TmoSkin;
 
 namespace TmoGeneral
 {
@@ -21,7 +23,7 @@ namespace TmoGeneral
             TableName = "tmo_userstatus";
             Columns = new[] { "tmo_userstatus.user_id", "tmo_userstatus.usertimes as user_times", "tmo_userstatus.questionnare_status","'' as actionplan", 
                 "tmo_userinfo.name","tmo_userinfo.gender","tmo_userinfo.age","tmo_userinfo.birthday","tmo_userinfo.input_time",
-                "tmo_docinfo.doc_name","tmo_extend_service.pay_money","tmo_extend_service.pay_time","tmo_actionplan.apid","tmo_actionplan.content",
+                "tmo_docinfo.doc_name","tmo_extend_service.pay_money","tmo_extend_service.pay_time","tmo_actionplan.apid",
                 "tmo_actionplan.apstartdate","tmo_actionplan.apenddate","'' as acstate","tmo_actionplanlib.aclb_title"};
             FixWhere = "tmo_userstatus.questionnare_status>=3 and tmo_userinfo.is_del!=1 and (tmo_userinfo.doc_id is null or tmo_userinfo.doc_id in (" + TmoComm.login_docInfo.children_docid + "))";
             JoinConditions.Add(new JoinCondition() { JoinType = EmJoinType.LeftJoin, MainCol = "user_id", MainTable = "tmo_userstatus", OnCol = "user_id", Table = "tmo_userinfo" });
@@ -118,22 +120,36 @@ namespace TmoGeneral
                 int status = dr.GetDataRowIntValue("questionnare_status");
 
                 string apid = dr.GetDataRowStringValue("apid");
-                string content = dr.GetDataRowStringValue("content");
                 Userinfo user = ModelConvertHelper<Userinfo>.ConvertToOneModel(dr);
                 if (string.IsNullOrWhiteSpace(apid))
                 {
-                    new UCActionPlanEditor(user).ShowDialog(this);
+                    var ucActionPlanEditor = new UCActionPlanEditor(user);
+                    ucActionPlanEditor.ShowDialog(this);
+                    ucActionPlanEditor.Dispose();
                     GetData();
                 }
                 else
                 {
+                    DataTable dt = TmoServiceClient.InvokeServerMethodT<DataTable>(funCode.GetActionPlan, apid);
+                    if (TmoShare.DataTableIsEmpty(dt))
+                    {
+                        DXMessageBox.ShowWarning2("数据加载失败，请稍后再试！");
+                        return;
+                    }
+                    string content = dt.Rows[0].GetDataRowStringValue("content");
                     if (status <= 3)
                     {
-                        new UCActionPlanEditor(user, content).ShowDialog(this);
+                        var ucActionPlanEditor = new UCActionPlanEditor(user, content);
+                        ucActionPlanEditor.ShowDialog(this);
+                        ucActionPlanEditor.Dispose();
                         GetData();
                     }
                     else
-                        new UCActionPlan(user, content).ShowDialog(this);
+                    {
+                        var ucActionPlan = new UCActionPlan(user, content);
+                        ucActionPlan.ShowDialog(this);
+                        ucActionPlan.Dispose();
+                    }
                 }
             }
         }

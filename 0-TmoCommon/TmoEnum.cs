@@ -318,6 +318,10 @@ namespace TmoCommon
         /// 获得用户信息
         /// </summary>
         GetUserInfo,
+        /// <summary>
+        /// 获取健康行动计划信息
+        /// </summary>
+        GetActionPlan
     }
 
     public class FuncMainParam

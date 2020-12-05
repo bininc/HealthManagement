@@ -53,6 +53,7 @@ namespace TmoGeneral
                 _intelibType = Tmo_FakeEntityClient.Instance.GetData("tmo_intervenelibtype");
                 TSCommon.BindImageComboBox(intelb_type, _intelibType, null, "type_name", "type_id");
             }
+            typeEditor.Dispose();
         }
 
         private void LinkEdit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -71,6 +72,7 @@ namespace TmoGeneral
                         _intelibType = Tmo_FakeEntityClient.Instance.GetData("tmo_intervenelibtype");
                         TSCommon.BindImageComboBox(intelb_type, _intelibType, null, "type_name", "type_id");
                     }
+                    typeEditor.Dispose();
                 }
                 else
                 {

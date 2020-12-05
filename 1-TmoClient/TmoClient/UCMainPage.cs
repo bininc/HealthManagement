@@ -33,6 +33,7 @@ namespace TmoClient
             {
                 UCQuestionnaire question = new UCQuestionnaire();
                 question.ShowDialog();
+                question.Dispose();
                 //TmoQuestionnaire.frmquertions frmda = new TmoQuestionnaire.frmquertions();
                 //frmda.ShowDialog();
             };

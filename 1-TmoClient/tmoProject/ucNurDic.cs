@@ -31,10 +31,12 @@ namespace tmoProject
             DataRowView dr = GetListRow();
             if (dr != null && dr["update"].ToString() != "--")
             {
-                if (new FrmUpdate(dr).ShowDialog() == DialogResult.Cancel)
+                var frm = new FrmUpdate(dr);
+                if (frm.ShowDialog() == DialogResult.Cancel)
                 {
                     GetData(nurtype.EditValue.ToString(), hottype.EditValue.ToString());
                 }
+                frm.Dispose();
             }
         }
 
@@ -180,10 +182,12 @@ namespace tmoProject
 
         private void btncreateNur_Click(object sender, EventArgs e)
         {
-            if (new FrmNur().ShowDialog() == DialogResult.Cancel)
+            var frm = new FrmNur();
+            if (frm.ShowDialog() == DialogResult.Cancel)
             {
                 GetData(nurtype.EditValue.ToString(), hottype.EditValue.ToString());
             }
+            frm.Dispose();
         }
 
         private void treeList1_FocusedNodeChanged(object sender, FocusedNodeChangedEventArgs e)

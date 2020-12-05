@@ -88,6 +88,7 @@ namespace TmoGeneral
                         GetData();
                         DXMessageBox.Show("部门修改成功！", true);
                     }
+                    edit.Dispose();
                 }
             }
         }
@@ -160,6 +161,7 @@ namespace TmoGeneral
                 GetData();
                 DXMessageBox.Show("部门添加成功！", true);
             }
+            edit.Dispose();
         }
     }
 }

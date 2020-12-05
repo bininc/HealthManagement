@@ -99,12 +99,14 @@ namespace TmoReport
                 frmReport.initPersonData(dr);
 
                 frmReport.ShowDialog();
+                frmReport.Dispose();
             }
             else if (e.Column.Name == "user_times")
             {
               FromPHR frm=  new FromPHR(dr);
               frm.Enabled = true;
               frm.ShowDialog();
+              frm.Dispose();
             }
             else if (e.Column.Name == "user_id")
             {

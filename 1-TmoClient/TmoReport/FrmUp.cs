@@ -53,15 +53,17 @@ namespace TmoReport
             Text = UserName + "的检验报告单";
 
             //修改默认字体
-            DocumentRange range = ricEc.Document.Range;
-            CharacterProperties cp = this.ricEc.Document.BeginUpdateCharacters(range);
-            cp.FontName = "新宋体";
-            //cp.FontSize = 12;
-            this.ricEc.Document.EndUpdateCharacters(cp);
+            // DocumentRange range = ricEc.Document.Range;
+            // CharacterProperties cp = this.ricEc.Document.BeginUpdateCharacters(range);
+            // cp.FontName = "新宋体";
+            // //cp.FontSize = 12;
+            // this.ricEc.Document.EndUpdateCharacters(cp);
         }
 
         string ExName = "";
         byte[] by = null;
+        private string downExName = "";
+        private byte[] downBytes = null;
 
         void sbselect_Click(object sender, EventArgs e)
         {
@@ -74,9 +76,11 @@ namespace TmoReport
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Word文件|*.doc;*.docx";
             ofd.Multiselect = false;
-            if (ofd.ShowDialog() == DialogResult.OK)
+            if (ofd.ShowDialog(this) == DialogResult.OK)
             {
                 string filename = ofd.FileName;
+                ofd.Dispose();
+                
                 FileInfo fi = new FileInfo(filename);
                 ExName = fi.Extension.ToLower();
                 if (ExName != ".docx" && ExName != ".doc")
@@ -113,7 +117,7 @@ namespace TmoReport
 
         string userid = "";
         string userTime = "";
-
+        
         public void loadData(DataRow dr)
         {
             string user_name = dr.GetDataRowStringValue("name");
@@ -134,31 +138,33 @@ namespace TmoReport
                     {
                         DataRow drData = dt.Rows[0];
                         atId = drData.GetDataRowStringValue("att_id");
-                        if(!string.IsNullOrWhiteSpace(atId))
+                        if (!string.IsNullOrWhiteSpace(atId))
                             Up(); //判断是否是更新
-                        
+
                         var fileName = drData.GetDataRowStringValue("filename");
-                        byte[] array = drData["content_bt"] as byte[];
-                        if (string.IsNullOrEmpty(fileName) || array == null || array.Length == 0)
+                        downBytes = drData["content_bt"] as byte[];
+                        if (string.IsNullOrEmpty(fileName) || downBytes == null || downBytes.Length == 0)
                         {
-                            ricEc.Visible = false;
-                            pdfViewer1.Visible = true;
-                            pdfViewer1.Text = "当前文件已经失效，请重新上传!";
+                            lblTips.Text = "当前文件已经失效，请重新上传!";
                         }
                         else
                         {
-                            Stream stream = new MemoryStream(array);
-                            LoadPdfOrWord(stream, fileName);
+                            downExName = fileName.Substring(fileName.IndexOf('.'));
+                            Stream stream = new MemoryStream(downBytes);
+                            LoadPdfOrWord(stream, downExName);
+                            lblTips.Text = String.Empty;
                         }
                     }
                     else
                     {
-                        ricEc.Visible = false;
-                        pdfViewer1.Visible = true;
-                        pdfViewer1.Text = "当前文件已经失效，请重新上传!";
+                        lblTips.Text = "当前文件已经失效，请重新上传!";
                     }
                 }
-            },"文件下载中");
+                else
+                {
+                    lblTips.Text = "还未上传检查报告单";
+                }
+            }, "文件下载中");
         }
 
         private void LoadPdfOrWord(Stream stream, string fileName)
@@ -238,6 +244,37 @@ namespace TmoReport
                         }
                     }
                 }, watingstr);
+        }
+
+        private void btnDownload_Click(object sender, EventArgs e)
+        {
+            if (downBytes == null||downBytes.Length==0)
+            {
+                DXMessageBox.ShowWarning("还未上传过检查报告单，请先上传！");
+                return;
+            }
+
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.DefaultExt = downExName;
+            sfd.FileName = UserName + "-" + userTime + downExName;
+            DialogResult dr= sfd.ShowDialog(this);
+            if (dr== DialogResult.OK)
+            {
+                try
+                {
+                    Stream stream = sfd.OpenFile();
+                    StreamWriter sw = new StreamWriter(stream);
+                    sw.Write(downBytes);
+                    sw.Flush(); 
+                    sw.Close();
+                    stream.Close();
+                    sfd.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    DXMessageBox.ShowError("文件保存失败！\n" + ex.Message);
+                }
+            }
         }
     }
 }

@@ -1240,6 +1240,15 @@ namespace TmoServiceServer
             return tmo_actionplanManager.Instance.SaveActionPlan(userid, usertimes, content, pdfbs);
         }
 
+        public static string GetActionPlan(object[] param)
+        {
+            if (param == null || param.Length < 1 || param[0] == null)
+                throw new Exception("err_params");
+            string apid = param[0].ToString();
+            var dt= tmo_actionplanManager.Instance.GetActionPlan(apid);
+            return TmoShare.getXMLFromDataTable(dt);
+        }
+        
         public static Userinfo GetUserinfo(object[] param)
         {
             if (param == null || param.Length < 1 || param[0] == null)

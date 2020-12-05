@@ -70,6 +70,7 @@ namespace TmoPurchaseSellStock
             TmoUcProduct uc = new TmoUcProduct();
             DialogResult dr = uc.ShowDialog();
             if (dr == DialogResult.OK) GetData();
+            uc.Dispose();
         }
 
         void produtType_SelectedIndexChanged(object sender, EventArgs e)

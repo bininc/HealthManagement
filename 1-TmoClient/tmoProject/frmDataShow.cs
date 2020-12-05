@@ -57,13 +57,14 @@ namespace tmoProject
                 FrmWShow frmshow = new FrmWShow(_uid, _dicCode, _dicNamevalue);
                 frmshow.Enabled = true;
                 frmshow.ShowDialog();
-            
+                frmshow.Dispose();
             }
             else if (_dicCode == "114")
             {
                 FrmSleepShow frmsleep = new FrmSleepShow(_uid, _dicCode, _dicNamevalue);
                 frmsleep.Enabled = true;
                 frmsleep.ShowDialog();
+                frmsleep.Dispose();
             }
             else
             {
@@ -71,8 +72,9 @@ namespace tmoProject
                 dslete.Enabled = true;
                 if(dslete.ShowDialog()==System.Windows.Forms.DialogResult.OK)
                 {
-                      GetData();
+                    GetData();
                 }
+                dslete.Dispose();
             }
               
         }

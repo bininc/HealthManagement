@@ -40,6 +40,7 @@ namespace TmoGeneral
                 TmoComm.login_userInfo = login.SelectedUsers[0];
                 CheckChooseUser();
             }
+            login.Dispose();
         }
 
         void CheckChooseUser()

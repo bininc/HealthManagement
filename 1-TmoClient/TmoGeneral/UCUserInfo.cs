@@ -84,6 +84,7 @@ namespace TmoGeneral
                 string user_id = row.GetDataRowStringValue(PrimaryKey);
                 UCDeviceBindInfo ucdbi = new UCDeviceBindInfo(user_id);
                 ucdbi.ShowDialog();
+                ucdbi.Dispose();
             }
         }
 
@@ -168,6 +169,7 @@ namespace TmoGeneral
                     else
                         DXMessageBox.ShowError("所属健康师更改失败！");
                 }
+                chooseDoc.Dispose();
             }
         }
 
@@ -318,6 +320,7 @@ namespace TmoGeneral
                 user.user_times = -1;
                 UCQuestionnaire questionnaire = new UCQuestionnaire(user);
                 questionnaire.ShowDialog(this);
+                questionnaire.Dispose();
                 //var identity = gridViewMain.GetRowCellValue(selectedHandle, "user_id").ToString();
                 //frmquertions frmda = new frmquertions();
                 //frmda.ShowDialog(identity, 1);
@@ -343,9 +346,11 @@ namespace TmoGeneral
                     user.user_times = -1;
                     UCQuestionnaire questionnaire = new UCQuestionnaire(user);
                     questionnaire.ShowDialog(this);
+                    questionnaire.Dispose();
                 };
                 DXMessageBox.ShowQuestion("是否开始填写问卷？");
             }
+            useredit.Dispose();
         }
 
         protected override void OnEditClick(DataRow selectedRow)
@@ -358,6 +363,7 @@ namespace TmoGeneral
                 GetData();
                 DXMessageBox.Show("修改用户信息成功！", true);
             }
+            useredit.Dispose();
         }
 
         protected override void OnDelClick(DataRow selectedRow)
@@ -387,6 +393,7 @@ namespace TmoGeneral
                 string pkVal = dr[PrimaryKey].ToString();
                 UCUserEditor useredit = new UCUserEditor {DbOperaType = DBOperateType.View, PrimaryKeyValue = pkVal, Title = "查看用户信息"};
                 useredit.ShowDialog();
+                useredit.Dispose();
             }
             else if (e.Column.Name == "gc_name")
             {

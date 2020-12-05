@@ -84,6 +84,7 @@ namespace TmoGeneral
                 DXMessageBox.Show("新建健康干预库成功！", true);
                 GetData();
             }
+            ucInterveneLibEditor.Dispose();
         }
 
         protected override void OnEditClick(DataRow selectedRow)
@@ -104,6 +105,7 @@ namespace TmoGeneral
                 DXMessageBox.Show("修改健康干预库成功！", true);
                 GetData();
             }
+            ucInterveneLibEditor.Dispose();
         }
 
         protected override void OnDelClick(DataRow selectedRow)

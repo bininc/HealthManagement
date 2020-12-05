@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -87,6 +88,15 @@ namespace DBDAL.MySqlDal
                 suc = MySQLHelper.ExecuteSql(string.Format(updateSql, userid, user_times, DateTime.Now)) > 0;
             }
             return suc;
+        }
+
+        public DataTable GetActionPlan(string apid)
+        {
+            if (string.IsNullOrWhiteSpace(apid)) return null;
+            var dt = MySQLHelper.QueryTable($"select * from tmo_actionplan where apid='{apid}'");
+            if (dt != null)
+                dt.TableName = "tmo_actionplan";
+            return dt;
         }
     }
 }

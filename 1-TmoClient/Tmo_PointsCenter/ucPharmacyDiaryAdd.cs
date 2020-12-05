@@ -69,9 +69,10 @@ namespace TmoPointsCenter
             UCChooseUser ucchooseuser = new UCChooseUser();
             ucchooseuser.SingleMode = true;
             ucchooseuser.ShowDialog();
-            Userinfo userinfo = ucchooseuser.SelectedUsers.First();
+            Userinfo userinfo = ucchooseuser.SelectedUsers.FirstOrDefault();
             if (userinfo != null)
                 user_id.Text = userinfo.user_id;
+            ucchooseuser.Dispose();
         }
         string xmlPharmacyDiary = TmoShare.XML_TITLE +
 @"<tmoPharmacyDiary>
@@ -99,7 +100,7 @@ namespace TmoPointsCenter
 <biguanides></biguanides>
 <euglycemic_agent></euglycemic_agent>
 <else_antidiabetic></else_antidiabetic>
-<points></points>
+<points>0</points>
 <input_time></input_time>
 <is_del></is_del>
 <is_client></is_client>
@@ -149,7 +150,7 @@ namespace TmoPointsCenter
                         }
                 }
             }
-            catch { DXMessageBox.Show("用药记录失败！", true); }
+            catch { DXMessageBox.ShowError("用药记录失败！", this); }
             ds.Tables[0].Rows.Add(dr);
             ds.AcceptChanges();
             TmoServiceClient.InvokeServerMethodT<string>(funCode.CreatePointsUser, user_id.Text);
@@ -163,7 +164,7 @@ namespace TmoPointsCenter
                     this.ParentForm.Close();
                 }
             }
-            else DXMessageBox.Show("用药记录失败！", true);
+            else DXMessageBox.ShowError("用药记录失败！", this);
         }
 
         private void btnClear_Click(object sender, EventArgs e)

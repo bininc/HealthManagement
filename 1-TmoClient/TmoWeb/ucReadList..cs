@@ -84,6 +84,8 @@ namespace TmoWeb
         {
             FrmArticleEdit article = new FrmArticleEdit();
             article.ShowDialog();
+            article.Dispose();
+            GetData();
         }
         void ReportList_Load(object sender, EventArgs e)
         {
@@ -338,7 +340,7 @@ namespace TmoWeb
                 FrmArticleEdit article = new FrmArticleEdit();
                 article.indata(dr["opt_id"].ToString());
                 article.ShowDialog();
-              
+                article.Dispose();
             }
             if (e.Column.Name == "del")
             {

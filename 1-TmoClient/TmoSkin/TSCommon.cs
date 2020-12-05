@@ -26,8 +26,9 @@ namespace TmoSkin
 {
     public static class TSCommon
     {
+        public static string Default_skin_name = "Money Twins"; //"Office 2013";// 默认皮肤名字
+        private static Dictionary<Control, WaitingPanel> _waitingPanelCache = new Dictionary<Control, WaitingPanel>();
 
-        public static string Default_skin_name = "Money Twins";//"Office 2013";// 默认皮肤名字
         /// <summary>
         /// 设置皮肤
         /// </summary>
@@ -36,6 +37,7 @@ namespace TmoSkin
         {
             UserLookAndFeel.Default.SkinName = skin_name;
         }
+
         /// <summary>
         /// 设置皮肤
         /// </summary>
@@ -43,6 +45,7 @@ namespace TmoSkin
         {
             UserLookAndFeel.Default.SkinName = Default_skin_name;
         }
+
         /// <summary>
         /// 显示等待Panel
         /// </summary>
@@ -50,9 +53,22 @@ namespace TmoSkin
         /// <param name="getDataMethod"></param>
         /// <param name="getDataCompleteMethod"></param>
         /// <param name="waitingMsg"></param>
-        public static void ShowWaitingPanel(this Control ctrl, TmoComm.LongTimeMethodDelegate getDataMethod, ParameterizedThreadStart getDataCompleteMethod, string waitingMsg = "数据加载中")
+        public static void ShowWaitingPanel(this Control ctrl, TmoComm.LongTimeMethodDelegate getDataMethod, ParameterizedThreadStart getDataCompleteMethod,
+            string waitingMsg = "数据加载中")
         {
-            WaitingPanel.Instance.Show(ctrl, getDataMethod, getDataCompleteMethod, waitingMsg);
+            lock (_waitingPanelCache)
+            {
+                if (!_waitingPanelCache.ContainsKey(ctrl))
+                {
+                    _waitingPanelCache[ctrl]=new WaitingPanel();
+                    ctrl.Disposed += (sender, args) =>
+                    {
+                        _waitingPanelCache[ctrl].Dispose();
+                        _waitingPanelCache.Remove(ctrl);
+                    };
+                }
+                _waitingPanelCache[ctrl].Show(ctrl, getDataMethod, getDataCompleteMethod, waitingMsg);
+            }
         }
 
         /// <summary>
@@ -62,7 +78,19 @@ namespace TmoSkin
         /// <param name="waitingMsg"></param>
         public static void ShowWaitingPanel(this Control ctrl, string waitingMsg = "数据加载中")
         {
-            WaitingPanel.Instance.Show(ctrl, waitingMsg);
+            lock (_waitingPanelCache)
+            {
+                if (!_waitingPanelCache.ContainsKey(ctrl))
+                {
+                    _waitingPanelCache[ctrl]=new WaitingPanel();
+                    ctrl.Disposed += (sender, args) =>
+                    {
+                        _waitingPanelCache[ctrl].Dispose();
+                        _waitingPanelCache.Remove(ctrl);
+                    };
+                }
+                _waitingPanelCache[ctrl].Show(ctrl, waitingMsg);
+            }
         }
 
         /// <summary>
@@ -71,7 +99,8 @@ namespace TmoSkin
         /// <param name="ctrl"></param>
         public static void HideWaitingPanel(this Control ctrl)
         {
-            WaitingPanel.Instance.Hide(ctrl);
+            if(!_waitingPanelCache.ContainsKey(ctrl)) return;
+            _waitingPanelCache[ctrl].Hide(ctrl);
         }
 
         /// <summary>
@@ -81,15 +110,15 @@ namespace TmoSkin
         {
             if (_gridControl == null || _gridControl.MainView == null) return;
 
-            GridView mainView = (GridView)_gridControl.MainView;
-            mainView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;  //选中整行
-            mainView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.Click;   //选中整行
-            mainView.OptionsSelection.EnableAppearanceFocusedCell = false;  //禁止选中列
-            mainView.OptionsBehavior.Editable = false;  //禁止编辑
-            mainView.OptionsView.ShowGroupPanel = false;    //禁止分组面板
-            mainView.OptionsCustomization.AllowFilter = false;  //禁止过滤
-            mainView.OptionsMenu.EnableColumnMenu = false;  //禁用列右键菜单
-            mainView.OptionsCustomization.AllowQuickHideColumns = false;    //禁止隐藏列
+            GridView mainView = (GridView) _gridControl.MainView;
+            mainView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus; //选中整行
+            mainView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.Click; //选中整行
+            mainView.OptionsSelection.EnableAppearanceFocusedCell = false; //禁止选中列
+            mainView.OptionsBehavior.Editable = false; //禁止编辑
+            mainView.OptionsView.ShowGroupPanel = false; //禁止分组面板
+            mainView.OptionsCustomization.AllowFilter = false; //禁止过滤
+            mainView.OptionsMenu.EnableColumnMenu = false; //禁用列右键菜单
+            mainView.OptionsCustomization.AllowQuickHideColumns = false; //禁止隐藏列
             //mainView.OptionsCustomization.AllowColumnMoving = false;    //列头禁止移动
             //mainView.OptionsCustomization.AllowSort = false;    //列头禁止排序
             //mainView.OptionsCustomization.AllowColumnResizing = false;    //禁止各列头改变列宽
@@ -114,15 +143,16 @@ namespace TmoSkin
                     e.Info.DisplayText = (e.RowHandle + 1).ToString();
                 }
             };
-            mainView.Appearance.HeaderPanel.Options.UseTextOptions = true;  //设置标题样式
-            mainView.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;     //标题文本居中
+            mainView.Appearance.HeaderPanel.Options.UseTextOptions = true; //设置标题样式
+            mainView.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center; //标题文本居中
             for (int i = 0; i < mainView.Columns.Count; i++)
             {
                 var col = mainView.Columns[i];
-                if (col.OptionsColumn.FixedWidth)   //固定列 居中显示
+                if (col.OptionsColumn.FixedWidth) //固定列 居中显示
                     col.AppearanceCell.TextOptions.HAlignment = HorzAlignment.Center;
             }
         }
+
         /// <summary>
         /// 设置列名和列绑定
         /// </summary>
@@ -130,7 +160,7 @@ namespace TmoSkin
         {
             if (_gridControl == null || _gridControl.MainView == null || _columsBind == null || _columsBind.Count <= 0) return;
 
-            GridView mainView = (GridView)_gridControl.MainView;
+            GridView mainView = (GridView) _gridControl.MainView;
             foreach (KeyValuePair<string, string> item in _columsBind)
             {
                 GridColumn gcol = new GridColumn();
@@ -149,7 +179,8 @@ namespace TmoSkin
         /// <param name="dtSource"></param>
         /// <param name="displayCol"></param>
         /// <param name="valueCol"></param>
-        public static void BindImageComboBox(ImageComboBoxEdit cmb, DataTable dtSource, string filterExpression, string displayCol, string valueCol, bool showTipItem = false)
+        public static void BindImageComboBox(ImageComboBoxEdit cmb, DataTable dtSource, string filterExpression, string displayCol, string valueCol,
+            bool showTipItem = false)
         {
             if (TmoShare.DataTableIsEmpty(dtSource) || cmb == null || string.IsNullOrWhiteSpace(displayCol) ||
                 string.IsNullOrWhiteSpace(valueCol))
@@ -167,6 +198,7 @@ namespace TmoSkin
                 itemtemp.Description = "请选择...";
                 cmb.Properties.Items.Add(itemtemp);
             }
+
             DataRow[] rows = dtSource.Select(filterExpression);
             for (int i = 0; i < rows.Length; i++)
             {
@@ -186,6 +218,7 @@ namespace TmoSkin
             else
                 cmb.SelectedIndex = -1;
         }
+
         /// <summary>
         /// 绑定ComboBox数据项
         /// </summary>
@@ -259,23 +292,23 @@ namespace TmoSkin
                 {
                     if (special)
                     {
-                        if (checkState == CheckState.Checked || item.CheckState == CheckState.Checked)   //当前节点选中或者父节点子节点中有任何一个选中 则父节点选中
+                        if (checkState == CheckState.Checked || item.CheckState == CheckState.Checked) //当前节点选中或者父节点子节点中有任何一个选中 则父节点选中
                         {
                             parentCheckState = CheckState.Checked;
                             break;
                         }
                     }
-                    else
-                        if (!checkState.Equals(item.CheckState))//只要任意一个与其选中状态不一样即父节点状态不全选
-                        {
-                            parentCheckState = CheckState.Unchecked;
-                            break;
-                        }
-                    parentCheckState = checkState;//否则（该节点的兄弟节点选中状态都相同），则父节点选中状态为该节点的选中状态
+                    else if (!checkState.Equals(item.CheckState)) //只要任意一个与其选中状态不一样即父节点状态不全选
+                    {
+                        parentCheckState = CheckState.Unchecked;
+                        break;
+                    }
+
+                    parentCheckState = checkState; //否则（该节点的兄弟节点选中状态都相同），则父节点选中状态为该节点的选中状态
                 }
 
                 node.ParentNode.CheckState = parentCheckState;
-                SetTreeListCheckedParentNodes(node.ParentNode, checkState, special);//遍历上级节点
+                SetTreeListCheckedParentNodes(node.ParentNode, checkState, special); //遍历上级节点
             }
         }
 
@@ -287,11 +320,11 @@ namespace TmoSkin
         public static Dictionary<object, object> GetTreeListCheckedKeyValue(TreeList tree, TreeListNode node)
         {
             Dictionary<object, object> list = new Dictionary<object, object>();
-            if (node == null) return list;//递归终止
+            if (node == null) return list; //递归终止
 
             if (node.CheckState == CheckState.Checked)
             {
-                DataRowView drv = tree.GetDataRecordByNode(node) as DataRowView;//关键代码，就是不知道是这样获取数据而纠结了很久(鬼知道可以转换为DataRowView啊)
+                DataRowView drv = tree.GetDataRecordByNode(node) as DataRowView; //关键代码，就是不知道是这样获取数据而纠结了很久(鬼知道可以转换为DataRowView啊)
                 if (drv != null)
                 {
                     object name = drv[tree.PreviewFieldName];
@@ -299,11 +332,12 @@ namespace TmoSkin
                     list.Add(val, name);
                 }
             }
+
             foreach (TreeListNode item in node.Nodes)
             {
                 if (item.CheckState == CheckState.Checked && !item.HasChildren)
                 {
-                    DataRowView drv = tree.GetDataRecordByNode(item) as DataRowView;//关键代码，就是不知道是这样获取数据而纠结了很久(鬼知道可以转换为DataRowView啊)
+                    DataRowView drv = tree.GetDataRecordByNode(item) as DataRowView; //关键代码，就是不知道是这样获取数据而纠结了很久(鬼知道可以转换为DataRowView啊)
                     if (drv != null)
                     {
                         object name = drv[tree.PreviewFieldName];
@@ -311,16 +345,17 @@ namespace TmoSkin
                         list.Add(val, name);
                     }
                 }
+
                 if (item.HasChildren)
                     foreach (var dic in GetTreeListCheckedKeyValue(tree, item))
                     {
                         list.Add(dic.Key, dic.Value);
                     }
-
             }
 
             return list;
         }
+
         /// <summary>
         /// 获取TreeList已选择的主键值集合
         /// </summary>
@@ -338,8 +373,10 @@ namespace TmoSkin
                     list.Add(dic.Key, dic.Value);
                 }
             }
+
             return list;
         }
+
         /// <summary>
         /// 选中TreeList
         /// </summary>
@@ -357,6 +394,7 @@ namespace TmoSkin
                 else
                     node.Checked = true;
             }
+
             foreach (TreeListNode item in node.Nodes)
             {
                 drv = tree.GetDataRecordByNode(item) as DataRowView;
@@ -367,11 +405,12 @@ namespace TmoSkin
                     else
                         item.Checked = true;
                 }
+
                 if (item.HasChildren)
                     SetTreeListNodeChecked(tree, key, item, isFocus);
-
             }
         }
+
         /// <summary>
         /// 选中TreeList
         /// </summary>

@@ -112,6 +112,7 @@ namespace TmoReport
                 user.gender = dr.GetDataRowStringValue("gender") == "男" ? 1 : 2;
                 UCQuestionnaire questionnaire = new UCQuestionnaire(user);
                 questionnaire.ShowDialog(this);
+                questionnaire.Dispose();
                 GetData();
             }
             else if (e.Column.Name == "lookImg")
@@ -120,13 +121,14 @@ namespace TmoReport
                 FrmUp frmUpImg = new FrmUp(dr);
                 frmUpImg.Enabled = true;
                 frmUpImg.ShowDialog();
+                frmUpImg.Dispose();
             }
             else if (e.Column.Name == "lookold")
             {
                 FrmUpImg frmUpImg = new FrmUpImg(dr, true);
                 frmUpImg.Enabled = true;
                 frmUpImg.ShowDialog();
-             
+                frmUpImg.Dispose();
               
               
                 //if(filename)

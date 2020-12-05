@@ -136,7 +136,7 @@
     <Compile Include="MySqlDal\tmo_websystem_DictionaryDal.cs" />
     <Compile Include="MySqlDal\tmo_web_articleDal.cs" />
     <Compile Include="MySqlDal\tmo_web_attachmentDal.cs" />
-    <Compile Include="MySqlDal\tmo_web_comfigDal.cs" />
+    <Compile Include="MySqlDal\tmo_web_configDal.cs" />
     <Compile Include="MySqlDal\tmo_TangNiaoDal.cs" />
     <Compile Include="MySqlDal\tmo_wechat_consultingDal.cs" />
     <Compile Include="MySqlDal\tmo_weixin_answerDal.cs" />

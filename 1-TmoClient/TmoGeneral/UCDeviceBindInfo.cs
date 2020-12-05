@@ -41,6 +41,7 @@ namespace TmoGeneral
                 GetData();
                 DXMessageBox.Show("设备绑定成功！", true);
             }
+            ucdbe.Dispose();
             base.OnAddClick(e);
         }
 

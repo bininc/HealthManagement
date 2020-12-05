@@ -38,6 +38,7 @@ namespace tmoProject
                 frmPersonPro frmper = new frmPersonPro();
                 frmper.Indata(dr);
                 frmper.ShowDialog();
+                frmper.Dispose();
                 Getdata(user_idd, user_timesd);
             }
             else if (e.Column.Name == "del")
@@ -124,7 +125,7 @@ namespace tmoProject
             FrmProject frmp = new FrmProject();
             frmp.inidata(dtPro,dxrow);
             frmp.ShowDialog();
-           
+            frmp.Dispose();
         }
     }
 }

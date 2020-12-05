@@ -22,9 +22,9 @@
 
         #region 组件设计器生成的代码
 
-        /// <summary> 
-        /// 设计器支持所需的方法 - 不要
-        /// 使用代码编辑器修改此方法的内容。
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -112,56 +112,56 @@
             this.labelControl33 = new DevExpress.XtraEditors.LabelControl();
             this.diary_date = new DevExpress.XtraEditors.DateEdit();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.msmoke_way.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.msmoke.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mdeficate_times.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mdeficate_active.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mwater_gotobed.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mwater_lunch.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mwater_dinnera.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mwater_moning.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mwater_breakfast.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mwater_afternoon.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mwater_dinnerb.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mwater_getup.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mwater_intake.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nap_movingtime.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nap_activetime.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nap_time.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.morning_time.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.night_time.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sleep_time.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.manager_time.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.manager_nosmoke.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.manager_defecate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.manager_drink.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.manager_sleep.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.smoke_amount.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.smoke.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.defecate_time.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hard_stool.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dry_stool.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.loose_stool.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.defecate_habit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drink_beverage.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drink_tea.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drink_intake.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drink_attitude.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.getup_late.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sleep_early.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sleep_late.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.getup_early.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dreaminess.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.festless_sleep.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sleep_less.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.user_id.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diary_date.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diary_date.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.msmoke_way.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.msmoke.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.mdeficate_times.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.mdeficate_active.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.mwater_gotobed.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.mwater_lunch.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.mwater_dinnera.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.mwater_moning.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.mwater_breakfast.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.mwater_afternoon.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.mwater_dinnerb.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.mwater_getup.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.mwater_intake.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.nap_movingtime.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.nap_activetime.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.nap_time.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.morning_time.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.night_time.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.sleep_time.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.manager_time.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.manager_nosmoke.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.manager_defecate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.manager_drink.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.manager_sleep.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.smoke_amount.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.smoke.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.defecate_time.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.hard_stool.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dry_stool.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.loose_stool.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.defecate_habit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.drink_beverage.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.drink_tea.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.drink_intake.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.drink_attitude.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.getup_late.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.sleep_early.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.sleep_late.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.getup_early.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dreaminess.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.festless_sleep.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.sleep_less.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.user_id.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.diary_date.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.diary_date.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -280,11 +280,7 @@
             // 
             this.msmoke_way.Location = new System.Drawing.Point(184, 1112);
             this.msmoke_way.Name = "msmoke_way";
-            this.msmoke_way.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(1)), "每周减一支"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(2)), "每周减两支"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(3)), "每周减三支"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(4)), "每周减四支")});
+            this.msmoke_way.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (1)), "每周减一支"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (2)), "每周减两支"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (3)), "每周减三支"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (4)), "每周减四支")});
             this.msmoke_way.Size = new System.Drawing.Size(414, 29);
             this.msmoke_way.TabIndex = 168;
             // 
@@ -292,9 +288,7 @@
             // 
             this.msmoke.Location = new System.Drawing.Point(184, 1077);
             this.msmoke.Name = "msmoke";
-            this.msmoke.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(1)), "减量"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(2)), "戒烟")});
+            this.msmoke.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (1)), "减量"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (2)), "戒烟")});
             this.msmoke.Size = new System.Drawing.Size(182, 28);
             this.msmoke.TabIndex = 167;
             // 
@@ -302,10 +296,7 @@
             // 
             this.mdeficate_times.Location = new System.Drawing.Point(184, 1008);
             this.mdeficate_times.Name = "mdeficate_times";
-            this.mdeficate_times.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(1)), "1次"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(2)), "2次"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(3)), "3次")});
+            this.mdeficate_times.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (1)), "1次"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (2)), "2次"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (3)), "3次")});
             this.mdeficate_times.Size = new System.Drawing.Size(246, 29);
             this.mdeficate_times.TabIndex = 166;
             // 
@@ -313,9 +304,7 @@
             // 
             this.mdeficate_active.Location = new System.Drawing.Point(184, 972);
             this.mdeficate_active.Name = "mdeficate_active";
-            this.mdeficate_active.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(1)), "每日"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(2)), "隔日")});
+            this.mdeficate_active.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (1)), "每日"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (2)), "隔日")});
             this.mdeficate_active.Size = new System.Drawing.Size(182, 28);
             this.mdeficate_active.TabIndex = 165;
             // 
@@ -387,12 +376,7 @@
             // 
             this.mwater_intake.Location = new System.Drawing.Point(184, 845);
             this.mwater_intake.Name = "mwater_intake";
-            this.mwater_intake.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(1)), "1200ml "),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(2)), "1500ml"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(3)), "1800ml"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(4)), "2000ml"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(5)), "2500ml")});
+            this.mwater_intake.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (1)), "1200ml "), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (2)), "1500ml"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (3)), "1800ml"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (4)), "2000ml"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (5)), "2500ml")});
             this.mwater_intake.Size = new System.Drawing.Size(414, 29);
             this.mwater_intake.TabIndex = 156;
             // 
@@ -400,9 +384,7 @@
             // 
             this.nap_movingtime.Location = new System.Drawing.Point(416, 771);
             this.nap_movingtime.Name = "nap_movingtime";
-            this.nap_movingtime.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(1)), "运动前"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(2)), "运动后")});
+            this.nap_movingtime.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (1)), "运动前"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (2)), "运动后")});
             this.nap_movingtime.Size = new System.Drawing.Size(182, 28);
             this.nap_movingtime.TabIndex = 155;
             // 
@@ -410,9 +392,7 @@
             // 
             this.nap_activetime.Location = new System.Drawing.Point(184, 771);
             this.nap_activetime.Name = "nap_activetime";
-            this.nap_activetime.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(1)), "餐后20分钟"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(2)), "餐后30分钟")});
+            this.nap_activetime.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (1)), "餐后20分钟"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (2)), "餐后30分钟")});
             this.nap_activetime.Size = new System.Drawing.Size(226, 28);
             this.nap_activetime.TabIndex = 154;
             // 
@@ -420,10 +400,7 @@
             // 
             this.nap_time.Location = new System.Drawing.Point(184, 731);
             this.nap_time.Name = "nap_time";
-            this.nap_time.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(1)), "无"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(2)), "30分钟以内"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(3)), "1小时以内")});
+            this.nap_time.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (1)), "无"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (2)), "30分钟以内"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (3)), "1小时以内")});
             this.nap_time.Size = new System.Drawing.Size(317, 29);
             this.nap_time.TabIndex = 153;
             // 
@@ -439,15 +416,7 @@
             // 
             this.morning_time.Location = new System.Drawing.Point(184, 663);
             this.morning_time.Name = "morning_time";
-            this.morning_time.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(1)), "4:00"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(2)), "4:30"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(3)), "5:00"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(4)), "5:30"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(5)), "6:00"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(6)), "6:30"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(7)), "7:00"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(8)), "7:30")});
+            this.morning_time.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (1)), "4:00"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (2)), "4:30"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (3)), "5:00"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (4)), "5:30"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (5)), "6:00"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (6)), "6:30"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (7)), "7:00"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (8)), "7:30")});
             this.morning_time.Size = new System.Drawing.Size(414, 58);
             this.morning_time.TabIndex = 151;
             // 
@@ -455,13 +424,7 @@
             // 
             this.night_time.Location = new System.Drawing.Point(184, 626);
             this.night_time.Name = "night_time";
-            this.night_time.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(1)), "9:00"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(2)), "9:30"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(3)), "10:00"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(4)), "10:30"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(5)), "11:00"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(6)), "11:30")});
+            this.night_time.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (1)), "9:00"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (2)), "9:30"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (3)), "10:00"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (4)), "10:30"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (5)), "11:00"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (6)), "11:30")});
             this.night_time.Size = new System.Drawing.Size(414, 29);
             this.night_time.TabIndex = 150;
             // 
@@ -469,11 +432,7 @@
             // 
             this.sleep_time.Location = new System.Drawing.Point(184, 584);
             this.sleep_time.Name = "sleep_time";
-            this.sleep_time.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(1)), "5小时"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(2)), "6小时"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(3)), "7小时"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(4)), "8小时")});
+            this.sleep_time.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (1)), "5小时"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (2)), "6小时"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (3)), "7小时"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (4)), "8小时")});
             this.sleep_time.Size = new System.Drawing.Size(289, 29);
             this.sleep_time.TabIndex = 149;
             // 
@@ -481,9 +440,7 @@
             // 
             this.manager_time.Location = new System.Drawing.Point(184, 518);
             this.manager_time.Name = "manager_time";
-            this.manager_time.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(1)), "三个月"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(2)), "六个月")});
+            this.manager_time.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (1)), "三个月"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (2)), "六个月")});
             this.manager_time.Size = new System.Drawing.Size(206, 29);
             this.manager_time.TabIndex = 148;
             // 
@@ -523,10 +480,7 @@
             // 
             this.smoke_amount.Location = new System.Drawing.Point(184, 426);
             this.smoke_amount.Name = "smoke_amount";
-            this.smoke_amount.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(1)), "5—10支/天"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(2)), "10—20支/天"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(3)), "20支以上/天")});
+            this.smoke_amount.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (1)), "5—10支/天"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (2)), "10—20支/天"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (3)), "20支以上/天")});
             this.smoke_amount.Size = new System.Drawing.Size(398, 30);
             this.smoke_amount.TabIndex = 143;
             // 
@@ -534,9 +488,7 @@
             // 
             this.smoke.Location = new System.Drawing.Point(184, 390);
             this.smoke.Name = "smoke";
-            this.smoke.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(1)), "吸烟"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(2)), "不吸烟")});
+            this.smoke.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (1)), "吸烟"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (2)), "不吸烟")});
             this.smoke.Size = new System.Drawing.Size(206, 29);
             this.smoke.TabIndex = 142;
             // 
@@ -560,10 +512,7 @@
             // 
             this.defecate_time.Location = new System.Drawing.Point(184, 350);
             this.defecate_time.Name = "defecate_time";
-            this.defecate_time.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(1)), "3—5分钟"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(2)), "5—10分钟"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(3)), "10分钟以上")});
+            this.defecate_time.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (1)), "3—5分钟"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (2)), "5—10分钟"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (3)), "10分钟以上")});
             this.defecate_time.Size = new System.Drawing.Size(398, 30);
             this.defecate_time.TabIndex = 139;
             // 
@@ -619,10 +568,7 @@
             // 
             this.defecate_habit.Location = new System.Drawing.Point(184, 280);
             this.defecate_habit.Name = "defecate_habit";
-            this.defecate_habit.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(1)), "一天一便"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(2)), "两天一便"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(3)), "三天以上一便")});
+            this.defecate_habit.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (1)), "一天一便"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (2)), "两天一便"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (3)), "三天以上一便")});
             this.defecate_habit.Size = new System.Drawing.Size(398, 30);
             this.defecate_habit.TabIndex = 132;
             // 
@@ -646,10 +592,7 @@
             // 
             this.drink_intake.Location = new System.Drawing.Point(184, 191);
             this.drink_intake.Name = "drink_intake";
-            this.drink_intake.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(1)), "不足1000ml"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(2)), "1000—2000ml"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(3)), "2000ml以上")});
+            this.drink_intake.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (1)), "不足1000ml"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (2)), "1000—2000ml"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (3)), "2000ml以上")});
             this.drink_intake.Size = new System.Drawing.Size(398, 29);
             this.drink_intake.TabIndex = 129;
             // 
@@ -657,9 +600,7 @@
             // 
             this.drink_attitude.Location = new System.Drawing.Point(184, 149);
             this.drink_attitude.Name = "drink_attitude";
-            this.drink_attitude.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(1)), "主动饮水"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(2)), "不主动饮水")});
+            this.drink_attitude.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (1)), "主动饮水"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((short) (2)), "不主动饮水")});
             this.drink_attitude.Size = new System.Drawing.Size(206, 29);
             this.drink_attitude.TabIndex = 128;
             // 
@@ -964,10 +905,8 @@
             this.diary_date.Location = new System.Drawing.Point(339, 15);
             this.diary_date.Name = "diary_date";
             this.diary_date.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.diary_date.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.diary_date.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.diary_date.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.diary_date.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.diary_date.Size = new System.Drawing.Size(213, 20);
             this.diary_date.TabIndex = 58;
             // 
@@ -980,7 +919,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(614, 61);
+            this.panelControl2.Size = new System.Drawing.Size(611, 61);
             this.panelControl2.TabIndex = 51;
             // 
             // ucLivingDiaryAdd
@@ -991,62 +930,61 @@
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.panelControl2);
             this.Name = "ucLivingDiaryAdd";
-            this.Size = new System.Drawing.Size(614, 507);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
+            this.Size = new System.Drawing.Size(630, 700);
+            ((System.ComponentModel.ISupportInitialize) (this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.msmoke_way.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.msmoke.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mdeficate_times.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mdeficate_active.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mwater_gotobed.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mwater_lunch.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mwater_dinnera.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mwater_moning.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mwater_breakfast.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mwater_afternoon.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mwater_dinnerb.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mwater_getup.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mwater_intake.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nap_movingtime.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nap_activetime.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nap_time.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.morning_time.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.night_time.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sleep_time.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.manager_time.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.manager_nosmoke.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.manager_defecate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.manager_drink.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.manager_sleep.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.smoke_amount.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.smoke.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.defecate_time.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hard_stool.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dry_stool.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.loose_stool.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.defecate_habit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drink_beverage.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drink_tea.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drink_intake.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drink_attitude.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.getup_late.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sleep_early.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sleep_late.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.getup_early.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dreaminess.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.festless_sleep.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sleep_less.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.user_id.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diary_date.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diary_date.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.msmoke_way.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.msmoke.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.mdeficate_times.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.mdeficate_active.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.mwater_gotobed.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.mwater_lunch.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.mwater_dinnera.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.mwater_moning.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.mwater_breakfast.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.mwater_afternoon.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.mwater_dinnerb.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.mwater_getup.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.mwater_intake.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.nap_movingtime.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.nap_activetime.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.nap_time.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.morning_time.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.night_time.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.sleep_time.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.manager_time.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.manager_nosmoke.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.manager_defecate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.manager_drink.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.manager_sleep.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.smoke_amount.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.smoke.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.defecate_time.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.hard_stool.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dry_stool.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.loose_stool.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.defecate_habit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.drink_beverage.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.drink_tea.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.drink_intake.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.drink_attitude.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.getup_late.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.sleep_early.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.sleep_late.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.getup_early.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dreaminess.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.festless_sleep.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.sleep_less.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.user_id.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.diary_date.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.diary_date.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
             this.ResumeLayout(false);
-
         }
 
         #endregion

@@ -71,6 +71,7 @@ namespace TmoExtendServer
                     uc.SetValue(dr["user_id"].ToString(), dr["user_times"].ToString());
                     DialogResult dire = uc.ShowDialog();
                     if (dire == DialogResult.OK) GetData();
+                    uc.Dispose();
                     //DXMessageBox.btnOKClick += DXMessageBox_btnOKClick;
                     //DXMessageBox.ShowQuestion("确定要购买此服务吗？");
                 }
@@ -88,6 +89,7 @@ namespace TmoExtendServer
                     uc.SetValue(dr["user_id"].ToString(), dr["user_times"].ToString(),dr["money"].ToString());
                     DialogResult dire = uc.ShowDialog();
                     if (dire == DialogResult.OK) GetData();
+                    uc.Dispose();
                     //DXMessageBox.btnOKClick += DXMessageBox_btnOKClick;
                     //DXMessageBox.ShowQuestion("确定要购买此服务吗？");
                 }

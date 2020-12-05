@@ -210,6 +210,7 @@ namespace TmoClient
                             DialogResult dr = ucIntervenePhoneResult.ShowDialog();
                             if (dr == DialogResult.OK)
                                 DXMessageBox.Show("电话干预执行成功!", true);
+                            ucIntervenePhoneResult.Dispose();
                         });
                     };
                     DXMessageBox.Show(datas[1], datas[0], true);
@@ -232,6 +233,7 @@ namespace TmoClient
                             DialogResult dr = ucIntervenePhoneResult.ShowDialog();
                             if (dr == DialogResult.OK)
                                 DXMessageBox.Show("面访干预执行成功!", true);
+                            ucIntervenePhoneResult.Dispose();
                         });
                     };
                     DXMessageBox.Show(datas[1], datas[0], true);

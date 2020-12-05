@@ -67,10 +67,10 @@ namespace TmoPointsCenter
             UCChooseUser ucchooseuser = new UCChooseUser();
             ucchooseuser.SingleMode = true;
             ucchooseuser.ShowDialog();
-            if(!ucchooseuser.SelectedUsers.Any()) return;
-            Userinfo userinfo = ucchooseuser.SelectedUsers.First();
+            Userinfo userinfo = ucchooseuser.SelectedUsers.FirstOrDefault();
             if (userinfo != null)
                 user_id.Text = userinfo.user_id;
+            ucchooseuser.Dispose();
         }
         private string xmlTargetAppend = TmoShare.XML_TITLE +
  @"<tmoTargetAppend>
@@ -93,7 +93,7 @@ namespace TmoPointsCenter
 <xueya_xw></xueya_xw>
 <xueya_sq></xueya_sq>
 <ghbaic></ghbaic>
-<points></points>
+<points>0</points>
 <input_time></input_time>
 <is_del></is_del>
 <is_client>true</is_client>
@@ -138,7 +138,7 @@ namespace TmoPointsCenter
                         }
                 }
             }
-            catch { DXMessageBox.Show("指标补充失败！", true); }
+            catch { DXMessageBox.ShowError("指标补充失败！", this); }
             ds.Tables[0].Rows.Add(dr);
             ds.AcceptChanges();
             TmoServiceClient.InvokeServerMethodT<string>(funCode.CreatePointsUser, user_id.Text);
@@ -152,7 +152,7 @@ namespace TmoPointsCenter
                     this.ParentForm.Close();
                 }
             }
-            else DXMessageBox.Show("指标补充失败！", true);
+            else DXMessageBox.ShowError("指标补充失败！", this);
         }
 
         private void btnClear_Click(object sender, EventArgs e)

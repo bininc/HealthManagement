@@ -100,13 +100,16 @@ namespace TmoGeneral
                 uap.ShowDialog(this);
                 if (uap.SaveSucess)
                     CloseForm();
+                uap.Dispose();
             }
         }
 
         void btnView_Click(object sender, EventArgs e)
         {
             string jsonData = GetDataJsonString();
-            new UCActionPlan(_user, jsonData).ShowDialog(this);
+            var ucActionPlan = new UCActionPlan(_user, jsonData);
+            ucActionPlan.ShowDialog(this);
+            ucActionPlan.Dispose();
         }
 
         void btnPrevious_Click(object sender, EventArgs e)

@@ -141,7 +141,7 @@ namespace DBDAL.MySqlDal
                 sqlinsert.Append(" values ");
                 sqlinsert.Append("('" + Guid.NewGuid().ToString("N") + "','" + drNruDiary["diary_date"] + "','" + drNruDiary["user_id"] + "','" + drNruDiary["diary_content"]
                                    + "','" + drNruDiary["staple_food"] + "','" + drNruDiary["coarse_food"] + "','" + drNruDiary["vegetable"] + "','" + drNruDiary["fruit"] + "','" + drNruDiary["nut"] + "','" + drNruDiary["pickles"] + "','" + drNruDiary["cure"]
-                                   + "','" + drNruDiary["fry"] + "','" + drNruDiary["soy_salt"] + "','" + drNruDiary["cook"] + "','" + drNruDiary["meal_num"] + "','" + drNruDiary["points"] + "','" + datetime + "','2')");
+                                   + "','" + drNruDiary["fry"] + "','" + drNruDiary["soy_salt"] + "','" + drNruDiary["cook"] + "','" + drNruDiary["meal_num"] + "','" + drNruDiary.GetDataRowIntValue("points",0) + "','" + datetime + "','2')");
                 SQLList.Add(sqlinsert.ToString());
                 sqlinsert.Remove(0, sqlinsert.Length);
                 if (!dsNurDiary.Tables[0].Columns.Contains("is_client"))
@@ -229,7 +229,7 @@ namespace DBDAL.MySqlDal
                 sqlinsert.Append("(sport_guid,diary_date,user_id,diary_content,sport_times_day,sport_time,sport_days_week,sport_walk_num,sport_walk_count,points,input_time,is_del)");
                 sqlinsert.Append(" values ");
                 sqlinsert.Append("('" + Guid.NewGuid().ToString("N") + "','" + drSportDiary["diary_date"] + "','" + drSportDiary["user_id"] + "','" + drSportDiary["diary_content"]
-                                   + "','" + drSportDiary["sport_times_day"] + "','" + drSportDiary["sport_time"] + "','" + drSportDiary["sport_days_week"] + "','" + drSportDiary["sport_walk_num"] + "','" + drSportDiary["sport_walk_count"] + "','" + drSportDiary["points"] + "','" + datetime + "','2')");
+                                   + "','" + drSportDiary["sport_times_day"] + "','" + drSportDiary["sport_time"] + "','" + drSportDiary["sport_days_week"] + "','" + drSportDiary["sport_walk_num"] + "','" + drSportDiary["sport_walk_count"] + "','" + drSportDiary.GetDataRowIntValue("points",0) + "','" + datetime + "','2')");
                 SQLList.Add(sqlinsert.ToString());
                 sqlinsert.Remove(0, sqlinsert.Length);
                 if (!dsSportDiary.Tables[0].Columns.Contains("is_client"))
@@ -423,7 +423,7 @@ namespace DBDAL.MySqlDal
                 sqlinsert.Append(" values ");
                 sqlinsert.Append("('" + Guid.NewGuid().ToString("N") + "','" + drTargetDiary["diary_date"] + "','" + drTargetDiary["user_id"] + "','" + drTargetDiary["diary_content"]
                                    + "','" + drTargetDiary["xuetang_kf"] + "','" + drTargetDiary["xuetang_zaoch"] + "','" + drTargetDiary["xuetang_wucq"] + "','" + drTargetDiary["xuetang_wuch"] + "','" + drTargetDiary["xuetang_wancq"] + "','" + drTargetDiary["xuetang_wanch"] + "','"
-                                   + drTargetDiary["xuetang_sq"] + "','" + drTargetDiary["xuetang_lc"] + "','" + drTargetDiary["xueya_zc"] + "','" + drTargetDiary["xueya_sw"] + "','" + drTargetDiary["xueya_zw"] + "','" + drTargetDiary["xueya_xw"] + "','" + drTargetDiary["xueya_sq"] + "','" + drTargetDiary["ghbaic"] + "','" + drTargetDiary["points"] + "','" + datetime + "','2')");
+                                   + drTargetDiary["xuetang_sq"] + "','" + drTargetDiary["xuetang_lc"] + "','" + drTargetDiary["xueya_zc"] + "','" + drTargetDiary["xueya_sw"] + "','" + drTargetDiary["xueya_zw"] + "','" + drTargetDiary["xueya_xw"] + "','" + drTargetDiary["xueya_sq"] + "','" + drTargetDiary["ghbaic"] + "','" + drTargetDiary.GetDataRowIntValue("points",0) + "','" + datetime + "','2')");
                 SQLList.Add(sqlinsert.ToString());
                 sqlinsert.Remove(0, sqlinsert.Length);
                 if (!dsTargetDiary.Tables[0].Columns.Contains("is_client"))

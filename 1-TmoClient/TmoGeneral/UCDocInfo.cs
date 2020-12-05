@@ -125,6 +125,7 @@ namespace TmoGeneral
                             GetData();
                     }
                 }
+                edit.Dispose();
             }
             base.OnRowCellClick(dr, e);
         }
@@ -175,6 +176,7 @@ namespace TmoGeneral
                 Tmo_CommonClient.Instance.RefreshDocChildrenID();
                 GetData();
             }
+            edit.Dispose();
             base.OnAddClick(e);
         }
 
@@ -189,6 +191,7 @@ namespace TmoGeneral
                     TmoComm.login_docInfo = Tmo_CommonClient.Instance.GetDocInfo(doc_id);
                 GetData();
             }
+            edit.Dispose();
             base.OnEditClick(selectedRow);
         }
     }

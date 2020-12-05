@@ -34,9 +34,9 @@ namespace DBDAL.MySqlDal
 
                 Dictionary<string, MySqlParameter[]> dic = new Dictionary<string, MySqlParameter[]>();
                 strSQL.Append("insert into tmo_web_aticle_content(");
-                strSQL.Append("opt_id,opt_subject,opt_type,opt_content,doc_code,is_del,is_system,input_time,section_type)");
+                strSQL.Append("opt_id,opt_subject,opt_type,opt_content,doc_code,is_del,is_system,input_time,section_type,clicknum)");
                 strSQL.Append(" values ( '");
-                strSQL.Append(maxID + "','" + dtOpt.Rows[0]["opt_subject"].ToString() + "','" + dtOpt.Rows[0]["opt_type"].ToString() + "','" + DESEncrypt.Decrypt(dtOpt.Rows[0]["opt_content"].ToString().Replace("'","")) + "','" + doc_code + "','1','1','" + input_time + "','" + section_type + "')");
+                strSQL.Append(maxID + "','" + dtOpt.Rows[0]["opt_subject"].ToString() + "','" + dtOpt.Rows[0]["opt_type"].ToString() + "','" + DESEncrypt.Decrypt(dtOpt.Rows[0]["opt_content"].ToString().Replace("'","")) + "','" + doc_code + "','1','1','" + input_time + "','" + section_type + "',0)");
                 num = MySQLHelper.ExecuteSql(strSQL.ToString());
 
             }

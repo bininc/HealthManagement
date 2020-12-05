@@ -685,6 +685,9 @@ namespace TmoServiceServer
                     case funCode.SaveActionPlan: //保存健康行动计划
                         returnObj = FunctionClass.SaveActionPlan(funParams);
                         break;
+                    case funCode.GetActionPlan:
+                        returnObj = FunctionClass.GetActionPlan(funParams);
+                        break;
                     case funCode.GetUserInfo:
                         returnObj = FunctionClass.GetUserinfo(funParams);
                         break;

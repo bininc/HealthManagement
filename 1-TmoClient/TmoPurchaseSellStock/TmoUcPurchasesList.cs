@@ -60,9 +60,11 @@ namespace TmoPurchaseSellStock
 
         void btnPurchases_Click(object sender, EventArgs e)
         {
-            DialogResult dr = new TmoUcPurchase().ShowDialog();
+            var tmoUcPurchase = new TmoUcPurchase();
+            DialogResult dr = tmoUcPurchase.ShowDialog();
             if (dr == DialogResult.OK)
                 GetData();
+            tmoUcPurchase.Dispose();
         }
         public void GetData()
         {

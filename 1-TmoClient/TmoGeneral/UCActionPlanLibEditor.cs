@@ -62,6 +62,7 @@ namespace TmoGeneral
                 _aclibType = Tmo_FakeEntityClient.Instance.GetData("tmo_actionplanlibtype");
                 TSCommon.BindImageComboBox(aclb_type, _aclibType, null, "type_name", "type_id");
             }
+            typeEditor.Dispose();
         }
 
         private void LinkEdit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -80,6 +81,7 @@ namespace TmoGeneral
                         _aclibType = Tmo_FakeEntityClient.Instance.GetData("tmo_actionplanlibtype");
                         TSCommon.BindImageComboBox(aclb_type, _aclibType, null, "type_name", "type_id");
                     }
+                    typeEditor.Dispose();
                 }
                 else
                 {

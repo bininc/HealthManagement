@@ -25,6 +25,7 @@ namespace tmoProject
             frmad.Getdata();
             frmad.Indata("");
             frmad.ShowDialog();
+            frmad.Dispose();
             GetData();
 
         }
@@ -64,6 +65,7 @@ namespace tmoProject
                 frmad.Getdata();
                 frmad.Indata(project_id);
                 frmad.ShowDialog();
+                frmad.Dispose();
                 GetData();
              
             }
@@ -162,7 +164,9 @@ namespace tmoProject
 
         private void updateType_Click(object sender, EventArgs e)
         {
-            new FrmTypeMaintain().ShowDialog();
+            var frm =new FrmTypeMaintain();
+            frm.ShowDialog();
+            frm.Dispose();
         }
     }
 }

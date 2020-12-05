@@ -75,10 +75,7 @@ namespace TmoWeb
         private void RefreshToolBar()
         {
             BeginUpdate();
-
-           
-                mshtml.IHTMLDocument2 document = (mshtml.IHTMLDocument2)webBrowserBody.Document.DomDocument;
-                EndUpdate();
+            EndUpdate();
               
         }
         public void updating() {

@@ -264,6 +264,7 @@ namespace TmoPointsCenter
                 uc.SetValue(detailID);
                 DialogResult dr = uc.ShowDialog();
                 if (dr == DialogResult.OK) GetData();
+                uc.Dispose();
             }
         }
 
@@ -303,6 +304,7 @@ namespace TmoPointsCenter
                 uc.SetValue(sellID);
                 DialogResult dr = uc.ShowDialog();
                 if (dr == DialogResult.OK) GetData();
+                uc.Dispose();
             }
         }
     }

@@ -380,6 +380,7 @@ namespace TmoQuestionnaire
                 {
                     user_id = login.SelectedUsers[0].user_id;
                 }
+                login.Dispose();
             }
             if (!string.IsNullOrEmpty(user_id))
             {

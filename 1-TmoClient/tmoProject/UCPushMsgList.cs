@@ -242,10 +242,12 @@ namespace tmoProject
 
         private void btnCreat_Click(object sender, EventArgs e)
         {
-            if (new FrmPushMsg().ShowDialog() == DialogResult.Cancel)
+            var frm = new FrmPushMsg();
+            if (frm.ShowDialog() == DialogResult.Cancel)
             {
                 GetData();
             }
+            frm.Dispose();
         }
 
         private void dgcTree_Click(object sender, EventArgs e)

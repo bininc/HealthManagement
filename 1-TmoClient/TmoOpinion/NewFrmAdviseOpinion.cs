@@ -54,7 +54,7 @@ namespace TmoOpinion
                     xx += ucchooseuser.SelectedUsers[0].user_id;
                 }
             }
-
+            ucchooseuser.Dispose();
             user_id.Text = xx;
         }
         string tmo_wechat_consulting = TmoShare.XML_TITLE +

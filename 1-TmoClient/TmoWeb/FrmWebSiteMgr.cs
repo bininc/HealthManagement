@@ -16,11 +16,11 @@ namespace TmoWeb
         ucReadList _ucReadList = null;
         ucAboutUs _ucAbout = null;
         /// <summary>
-        /// 健康阅读
+        /// 鍋ュ悍闃呰
         /// </summary>
         //UcReadList _ucReadList = null;
         ///// <summary>
-        ///// 关于我们
+        ///// 鍏充簬鎴戜滑
         ///// </summary>
         //UcAbout _ucAbout = null;
         public FrmWebSiteMgr()
@@ -28,7 +28,7 @@ namespace TmoWeb
             InitializeComponent();
             foreach (NavBarItem nbi in navBarControl1.Items)
                 nbi.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(nbi_LinkClicked);
-            Title = "网站管理";
+            Title = "缃戠珯绠＄悊";
             _ucReadList = new ucReadList();
             PlWorkAdd(_ucReadList);
         }
@@ -53,12 +53,12 @@ namespace TmoWeb
 
                     break;
             }
-            this.Text = "网站管理 - " + (sender as NavBarItem).Caption; ;
+            this.Text = "缃戠珯绠＄悊 - " + (sender as NavBarItem).Caption; ;
         }
 
 
         /// <summary>
-        /// 工作区中添加控件
+        /// 宸ヤ綔鍖轰腑娣诲姞鎺т欢
         /// </summary>
         /// <param name="control"></param>
         private void PlWorkAdd(System.Windows.Forms.Control control)

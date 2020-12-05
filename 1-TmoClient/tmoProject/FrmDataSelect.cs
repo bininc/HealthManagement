@@ -32,7 +32,7 @@ namespace tmoProject
             FrmWAllShow fwals = new FrmWAllShow(uid, dicCode, dicNamevalue, mtValuetype);
             fwals.Enabled = true;
             fwals.ShowDialog();
-         
+            fwals.Dispose();
         }
 
         private void btnskip_Click(object sender, EventArgs e)

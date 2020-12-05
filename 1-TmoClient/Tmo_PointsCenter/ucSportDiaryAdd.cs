@@ -67,9 +67,10 @@ namespace TmoPointsCenter
             UCChooseUser ucchooseuser = new UCChooseUser();
             ucchooseuser.SingleMode = true;
             ucchooseuser.ShowDialog();
-            Userinfo userinfo = ucchooseuser.SelectedUsers.First();
+            Userinfo userinfo = ucchooseuser.SelectedUsers.FirstOrDefault();
             if (userinfo != null)
                 user_id.Text = userinfo.user_id;
+            ucchooseuser.Dispose();
         }
         string xmlSportDiary = TmoShare.XML_TITLE +
 @"<tmoSportDiary>
@@ -83,7 +84,7 @@ namespace TmoPointsCenter
 <sport_days_week></sport_days_week>
 <sport_walk_num></sport_walk_num>
 <sport_walk_count></sport_walk_count>
-<points></points>
+<points>0</points>
 <input_time></input_time>
 <is_del></is_del>
 <is_client></is_client>
@@ -127,7 +128,7 @@ namespace TmoPointsCenter
                         }
                 }
             }
-            catch { DXMessageBox.Show("运动日志失败！", true); }
+            catch { DXMessageBox.ShowError("运动日志失败！", this); }
             ds.Tables[0].Rows.Add(dr);
             ds.AcceptChanges();
             TmoServiceClient.InvokeServerMethodT<string>(funCode.CreatePointsUser, user_id.Text);
@@ -141,7 +142,7 @@ namespace TmoPointsCenter
                     this.ParentForm.Close();
                 }
             }
-            else DXMessageBox.Show("运动日志失败！", true);
+            else DXMessageBox.ShowError("运动日志失败！", this);
         }
 
         private void btnClear_Click(object sender, EventArgs e)

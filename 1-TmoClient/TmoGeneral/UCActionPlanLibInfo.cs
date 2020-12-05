@@ -163,6 +163,7 @@ namespace TmoGeneral
             {
 
             }
+            ucActionPlanLibEditor.Dispose();
         }
 
         protected override void OnDelClick(DataRow selectedRow)

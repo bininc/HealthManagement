@@ -95,10 +95,12 @@ namespace TmoGeneral
             this.vip_type = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.lblIsVipStop = new DevExpress.XtraEditors.LabelControl();
             this.is_stopvip = new DevExpress.XtraEditors.RadioGroup();
-            this.lblIstnb = new DevExpress.XtraEditors.LabelControl();
             this.is_tnb = new DevExpress.XtraEditors.RadioGroup();
             this.lblIsGxy = new DevExpress.XtraEditors.LabelControl();
             this.is_gxy = new DevExpress.XtraEditors.RadioGroup();
+            this.lblIstnb = new DevExpress.XtraEditors.LabelControl();
+            this.lblIsYdjcy = new DevExpress.XtraEditors.LabelControl();
+            this.is_ydjcy = new DevExpress.XtraEditors.RadioGroup();
             ((System.ComponentModel.ISupportInitialize) (this.panelControlMain)).BeginInit();
             this.panelControlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.panelControlBotton)).BeginInit();
@@ -139,18 +141,19 @@ namespace TmoGeneral
             ((System.ComponentModel.ISupportInitialize) (this.is_stopvip.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize) (this.is_tnb.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize) (this.is_gxy.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.is_ydjcy.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControlMain
             // 
             this.panelControlMain.Controls.Add(this.tableLayoutPanelMain);
-            this.panelControlMain.Size = new System.Drawing.Size(628, 526);
+            this.panelControlMain.Size = new System.Drawing.Size(628, 546);
             // 
             // panelControlBotton
             // 
             this.panelControlBotton.Appearance.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (247)))), ((int) (((byte) (245)))), ((int) (((byte) (241)))));
             this.panelControlBotton.Appearance.Options.UseBackColor = true;
-            this.panelControlBotton.Location = new System.Drawing.Point(0, 526);
+            this.panelControlBotton.Location = new System.Drawing.Point(0, 546);
             this.panelControlBotton.Size = new System.Drawing.Size(628, 42);
             // 
             // tableLayoutPanelMain
@@ -225,15 +228,17 @@ namespace TmoGeneral
             this.tableLayoutPanelMain.Controls.Add(this.vip_type, 1, 15);
             this.tableLayoutPanelMain.Controls.Add(this.lblIsVipStop, 2, 15);
             this.tableLayoutPanelMain.Controls.Add(this.is_stopvip, 3, 15);
-            this.tableLayoutPanelMain.Controls.Add(this.lblIstnb, 0, 16);
             this.tableLayoutPanelMain.Controls.Add(this.is_tnb, 1, 16);
             this.tableLayoutPanelMain.Controls.Add(this.lblIsGxy, 2, 16);
             this.tableLayoutPanelMain.Controls.Add(this.is_gxy, 3, 16);
+            this.tableLayoutPanelMain.Controls.Add(this.lblIstnb, 0, 16);
+            this.tableLayoutPanelMain.Controls.Add(this.lblIsYdjcy, 0, 17);
+            this.tableLayoutPanelMain.Controls.Add(this.is_ydjcy, 1, 17);
             this.tableLayoutPanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelMain.Location = new System.Drawing.Point(2, 2);
             this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
             this.tableLayoutPanelMain.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.tableLayoutPanelMain.RowCount = 17;
+            this.tableLayoutPanelMain.RowCount = 18;
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -250,8 +255,9 @@ namespace TmoGeneral
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelMain.Size = new System.Drawing.Size(624, 522);
+            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelMain.Size = new System.Drawing.Size(624, 542);
             this.tableLayoutPanelMain.TabIndex = 39;
             this.tableLayoutPanelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanelMain_Paint);
             // 
@@ -817,15 +823,6 @@ namespace TmoGeneral
             this.is_stopvip.Size = new System.Drawing.Size(137, 23);
             this.is_stopvip.TabIndex = 63;
             // 
-            // lblIstnb
-            // 
-            this.lblIstnb.Appearance.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.lblIstnb.Location = new System.Drawing.Point(3, 488);
-            this.lblIstnb.Name = "lblIstnb";
-            this.lblIstnb.Size = new System.Drawing.Size(98, 20);
-            this.lblIstnb.TabIndex = 62;
-            this.lblIstnb.Text = "是否有糖尿病：";
-            // 
             // is_tnb
             // 
             this.is_tnb.EditValue = ((sbyte) (0));
@@ -840,9 +837,9 @@ namespace TmoGeneral
             this.lblIsGxy.Appearance.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.lblIsGxy.Location = new System.Drawing.Point(309, 488);
             this.lblIsGxy.Name = "lblIsGxy";
-            this.lblIsGxy.Size = new System.Drawing.Size(98, 20);
+            this.lblIsGxy.Size = new System.Drawing.Size(56, 20);
             this.lblIsGxy.TabIndex = 62;
-            this.lblIsGxy.Text = "是否有高血压：";
+            this.lblIsGxy.Text = "高血压：";
             // 
             // is_gxy
             // 
@@ -853,12 +850,39 @@ namespace TmoGeneral
             this.is_gxy.Size = new System.Drawing.Size(137, 23);
             this.is_gxy.TabIndex = 64;
             // 
+            // lblIstnb
+            // 
+            this.lblIstnb.Appearance.Font = new System.Drawing.Font("微软雅黑", 10F);
+            this.lblIstnb.Location = new System.Drawing.Point(3, 488);
+            this.lblIstnb.Name = "lblIstnb";
+            this.lblIstnb.Size = new System.Drawing.Size(56, 20);
+            this.lblIstnb.TabIndex = 62;
+            this.lblIstnb.Text = "糖尿病：";
+            // 
+            // lblIsYdjcy
+            // 
+            this.lblIsYdjcy.Appearance.Font = new System.Drawing.Font("微软雅黑", 10F);
+            this.lblIsYdjcy.Location = new System.Drawing.Point(3, 518);
+            this.lblIsYdjcy.Name = "lblIsYdjcy";
+            this.lblIsYdjcy.Size = new System.Drawing.Size(84, 20);
+            this.lblIsYdjcy.TabIndex = 62;
+            this.lblIsYdjcy.Text = "运动监测仪：";
+            // 
+            // is_ydjcy
+            // 
+            this.is_ydjcy.EditValue = ((sbyte) (0));
+            this.is_ydjcy.Location = new System.Drawing.Point(109, 518);
+            this.is_ydjcy.Name = "is_ydjcy";
+            this.is_ydjcy.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {new DevExpress.XtraEditors.Controls.RadioGroupItem(((sbyte) (1)), "有"), new DevExpress.XtraEditors.Controls.RadioGroupItem(((sbyte) (0)), "没有")});
+            this.is_ydjcy.Size = new System.Drawing.Size(137, 23);
+            this.is_ydjcy.TabIndex = 64;
+            // 
             // UCUserEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "UCUserEditor";
-            this.Size = new System.Drawing.Size(628, 568);
+            this.Size = new System.Drawing.Size(628, 588);
             ((System.ComponentModel.ISupportInitialize) (this.panelControlMain)).EndInit();
             this.panelControlMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize) (this.panelControlBotton)).EndInit();
@@ -900,8 +924,13 @@ namespace TmoGeneral
             ((System.ComponentModel.ISupportInitialize) (this.is_stopvip.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize) (this.is_tnb.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize) (this.is_gxy.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.is_ydjcy.Properties)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private DevExpress.XtraEditors.RadioGroup is_ydjcy;
+
+        private DevExpress.XtraEditors.LabelControl lblIsYdjcy;
 
         private DevExpress.XtraEditors.RadioGroup is_gxy;
 
