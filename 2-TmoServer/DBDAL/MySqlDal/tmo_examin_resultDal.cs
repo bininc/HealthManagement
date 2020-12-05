@@ -207,7 +207,8 @@ namespace DBDAL.MySqlDal
 
       public DataSet GetNewFiveData(string user_id,string user_times)
         {
-            string sql = "select q_id,qr_result,input_time,user_times from tmo_questionnaire_result where user_id='" + user_id + "' and user_times<='" + user_times + "'  and q_id in ('0C1553EA1A274B56A211CCFC5F4A429E','ADF9331BADAB48BF9147611A9BBD1C79','C41F469521E849D8B6314833C6FA92B0','225368D504EB431CA2E597FAD50D2949','6A67F0E229964527AB541B5DD318E2C3','6E3658E76CE141CEB0264BA1ADEF9664','C1443DA657174BC696008614A6659A99','D2198A7F78CF4DEFA821C4F41893E415','D9115BD44B1344B88A45EF121EADCBA5','EBE1C353B35842189EF8F4041BE95CB6','CE8C9F888AD2447487EAA996BBA5A6BF','930C3F590420467497A2F744A385C0C9','47651815A248484FB2B569E6B6AD782E') order by input_time"; DataSet ds = MySQLHelper.Query(sql);
+            string sql = "select q_id,qr_result,input_time,user_times from tmo_questionnaire_result where user_id='" + user_id + "' and user_times<='" + user_times + "'  and q_id in ('0C1553EA1A274B56A211CCFC5F4A429E','ADF9331BADAB48BF9147611A9BBD1C79','C41F469521E849D8B6314833C6FA92B0','225368D504EB431CA2E597FAD50D2949','6A67F0E229964527AB541B5DD318E2C3','6E3658E76CE141CEB0264BA1ADEF9664','C1443DA657174BC696008614A6659A99','D2198A7F78CF4DEFA821C4F41893E415','D9115BD44B1344B88A45EF121EADCBA5','EBE1C353B35842189EF8F4041BE95CB6','CE8C9F888AD2447487EAA996BBA5A6BF','930C3F590420467497A2F744A385C0C9','47651815A248484FB2B569E6B6AD782E') order by input_time"; 
+            DataSet ds = MySQLHelper.Query(sql);
             if (ds != null && ds.Tables.Count > 0)
             {
                 foreach (DataRow dr in ds.Tables[0].Rows)
@@ -216,7 +217,7 @@ namespace DBDAL.MySqlDal
                         string qrres = dr["qr_result"] == null ? "" : dr["qr_result"].ToString();
                         if (dr["q_id"].ToString() == "C41F469521E849D8B6314833C6FA92B0")
                         {
-                            float[] fv = TmoShare.GetValueFromJson<float[]>(qrres);
+                            float[] fv = TmoShare.GetValueFromJson<float[]>(qrres,false);
                             if (fv != null && fv.Length > 0)
                                 dr["qr_result"] = fv[0].ToString() + "/" + fv[1].ToString();
                             else
