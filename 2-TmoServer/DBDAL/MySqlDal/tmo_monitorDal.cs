@@ -144,7 +144,7 @@ namespace DBDAL.MySqlDal
                             foreach (var item in colVals)
                             {
                                 sbsql.Append(item.Key + ",");
-                                sbsqlval.AppendFormat("'{0}',", item.Value);
+                                sbsqlval.AppendFormat("{0},", item.Value == String.Empty ? "null" : $"'{item.Value}'");
                             }
 
                             sbsql.Append("input_time)");

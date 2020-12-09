@@ -735,8 +735,24 @@ namespace TmoServer
                                 StringBuilder sbsqlval = new StringBuilder(" values(");
                                 foreach (var item in colVals)
                                 {
-                                    sbsql.Append(item.Key + ",");
-                                    sbsqlval.AppendFormat("'{0}',", item.Value);
+                                    if (item.Key == "mt_time")
+                                    {
+                                        try
+                                        {
+                                            DateTime dt = DateTimeHelper.ToDateTime(item.Value);
+                                            sbsql.Append(item.Key + ",");
+                                            sbsqlval.AppendFormat("'{0}',", dt.ToFormatDateTimeStr());
+                                        }
+                                        catch
+                                        {
+                                            continue;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        sbsql.Append(item.Key + ",");
+                                        sbsqlval.AppendFormat("{0},", item.Value == String.Empty ? "null" : $"'{item.Value}'");
+                                    }
                                 }
 
                                 sbsql.Append("input_time)");
@@ -754,7 +770,7 @@ namespace TmoServer
             }
             catch (Exception ex)
             {
-                LogHelper.Log.Error("临时表保存数据到监测表错误",ex);
+                LogHelper.Log.Error("临时表保存数据到监测表错误", ex);
             }
             finally
             {

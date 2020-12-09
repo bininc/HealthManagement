@@ -2,7 +2,7 @@
 ; 有关创建 Inno Setup 脚本文件的详细资料请查阅帮助文档！
 
 #define MyAppName "健康管理服务端"
-#define MyAppVersion "1.3.7644.41873"
+#define MyAppVersion "1.3.7648.31939"
 #define MyAppPublisher "百年养生"
 #define MyAppExeName "TmoServer.exe"
 #define FileDir "..\2-TmoServer\TmoServer\bin\Debug\"
@@ -35,36 +35,10 @@ DisableFinishedPage=no
 Name: "chinesesimp"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "{#FileDir}TmoServer.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#FileDir}*.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#FileDir}*.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#FileDir}*.pdb"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#FileDir}TmoServer.exe.config"; DestDir: "{app}"; Flags: ignoreversion onlyifdoesntexist
-Source: "{#FileDir}BouncyCastle.Crypto.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}DBBLL.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}DBDAL.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}DBInterface.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}DBModel.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}DBUtility.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}Google.Protobuf.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}K4os.Compression.LZ4.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}K4os.Compression.LZ4.Streams.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}K4os.Hash.xxHash.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}log4net.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}MySql.Data.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}netstandard.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}Newtonsoft.Json.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}Renci.SshNet.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}System.Buffers.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}System.Memory.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}System.Net.Http.Formatting.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}System.Numerics.Vectors.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}System.Runtime.CompilerServices.Unsafe.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}System.Web.Http.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}System.Web.Http.SelfHost.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}TmoCommon.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}TmoPushData.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}TmoServiceServer.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}TmoTcpServer.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}Ubiety.Dns.Core.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#FileDir}Zstandard.Net.dll"; DestDir: "{app}"; Flags: ignoreversion
 ; 注意: 不要在任何共享系统文件上使用“Flags: ignoreversion”
 
 [Icons]
