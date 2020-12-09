@@ -1125,15 +1125,15 @@ namespace TmoCommon
             #region 读取设备数据
             do
             {
-                TmoShare.WriteLog("开始读取计步器可用数据");
+                LogHelper.Log.Info("开始读取计步器可用数据");
                 receivedData.Clear();
                 receivedDataTable.Clear();
                 bool suc = SendCommond(chekdataCmd);
                 if (suc)
-                    TmoShare.WriteLog("可用数据命令 发送成功");
+                    LogHelper.Log.Info("可用数据命令 发送成功");
                 else
                 {
-                    TmoShare.WriteLog("可用数据命令 发送失败");
+                    LogHelper.Log.Info("可用数据命令 发送失败");
                 }
                 Thread.Sleep(5000);
             } while (!isRecData);
@@ -1175,7 +1175,7 @@ namespace TmoCommon
                     }
                     else if (lastCmdState == 1)
                     { //失败  重发
-                        TmoShare.WriteLog("可用数据命令 发送失败 重发");
+                        LogHelper.Log.Info("可用数据命令 发送失败 重发");
                         receivedData.Clear();
                         SendCommond(chekdataCmd);
                     }

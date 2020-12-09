@@ -228,7 +228,7 @@ namespace TmoCommon
             }
             catch (Exception ex)
             {
-                TmoShare.WriteLog("电子邮件发送失败！服务器返回信息：" + ex.Message);
+                LogHelper.Log.Error("电子邮件发送失败！服务器返回信息：" , ex);
                 return false;
             }
         }
@@ -469,7 +469,7 @@ namespace TmoCommon
 
                                 if (!check)
                                 {
-                                    TmoShare.WriteLog("邮件发送失败 失败原因：邮件代理连接失败");
+                                    LogHelper.Log.Error("邮件发送失败 失败原因：邮件代理连接失败");
                                     throw new Exception("邮件代理连接失败\r\n");
                                 }
 
@@ -479,7 +479,7 @@ namespace TmoCommon
 
                                 if (!check)
                                 {
-                                    TmoShare.WriteLog("邮件发送失败 失败原因：远端服务器连接失败");
+                                    LogHelper.Log.Error("邮件发送失败 失败原因：远端服务器连接失败");
                                     throw new Exception("远端服务器连接失败\r\n");
                                 }
                             }
@@ -489,7 +489,7 @@ namespace TmoCommon
 
                                 if (!check)
                                 {
-                                    TmoShare.WriteLog("邮件发送失败 失败原因：远端服务器连接失败");
+                                    LogHelper.Log.Error("邮件发送失败 失败原因：远端服务器连接失败");
                                     throw new Exception("远端服务器连接失败\r\n");
                                 }
                             }
@@ -593,7 +593,7 @@ namespace TmoCommon
             }
             catch (Exception ex)
             {
-                TmoShare.WriteLog("发送邮件异常:" + ex.Message);
+               LogHelper.Log.Error("发送邮件异常:" , ex);
 
                 retbool = false;
             }

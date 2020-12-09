@@ -102,6 +102,7 @@
     <Compile Include="LogHelper.cs" />
     <Compile Include="MD5Helper.cs" />
     <Compile Include="ModelConvertHelper.cs" />
+    <Compile Include="NullLog.cs" />
     <Compile Include="ReflectHelper.cs" />
     <Compile Include="EamilHelper.cs" />
     <Compile Include="SMSHelper.cs" />

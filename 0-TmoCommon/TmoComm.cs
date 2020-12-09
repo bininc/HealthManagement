@@ -65,7 +65,7 @@ namespace TmoCommon
             }
             catch (Exception ex)
             {
-                TmoShare.WriteLog("CrossThreadCallsSync异常", ex);
+                LogHelper.Log.Error("CrossThreadCallsSync异常", ex);
             }
         }
 
@@ -446,7 +446,7 @@ namespace TmoCommon
             }
             catch (Exception ex)
             {
-                LogHelper.WriteError(ex, "Convert2Type");
+                LogHelper.Log.Error( "Convert2Type",ex);
                 throw ex;
             }
         }

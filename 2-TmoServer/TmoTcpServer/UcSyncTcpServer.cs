@@ -1,14 +1,8 @@
 ﻿using DBBLL;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Sockets;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -31,12 +25,10 @@ namespace TmoTcpServer
                 {
                     _instance = new UcSyncTcpServer();
                 }
+
                 return _instance;
             }
-            set
-            {
-                _instance = value;
-            }
+            set { _instance = value; }
         }
 
         private string _tcpServerIP = "";
@@ -60,17 +52,20 @@ namespace TmoTcpServer
 
             submitTable = new DataTable("receiveDataTable");
             DataColumn dcisnormal = new DataColumn("mt_isnormal");
-            dcisnormal.DefaultValue = 1;//默认正常
-            submitTable.Columns.AddRange(new DataColumn[] { new DataColumn("user_id"), dcisnormal, new DataColumn("mt_name"), new DataColumn("mt_time"),
-                                                       new DataColumn("mt_timestamp"), new DataColumn("dev_type"), new DataColumn("mt_value") });
+            dcisnormal.DefaultValue = 1; //默认正常
+            submitTable.Columns.AddRange(new DataColumn[]
+            {
+                new DataColumn("user_id"), dcisnormal, new DataColumn("mt_name"), new DataColumn("mt_time"),
+                new DataColumn("mt_timestamp"), new DataColumn("dev_type"), new DataColumn("mt_value")
+            });
             //DealData(new DeviceData("5A25100000215H000021000000205151121150207AB_460040280101446_FFFFFFFFFFFFFFFFFFFFFFFFF"));
         }
 
         #endregion Construtor
 
-        private string rtCode;  //设备返回码
+        private string rtCode; //设备返回码
         private List<DeviceData> receivedDatas = new List<DeviceData>(); //收到的数据
-        private Thread thSaveData;  //保存数据线程
+        private Thread thSaveData; //保存数据线程
         private DataTable submitTable; //提交数据表
         private static readonly object dealLock = new object(); //处理数据锁
 
@@ -104,7 +99,7 @@ namespace TmoTcpServer
             catch (Exception ex)
             {
                 AddListMsg(client, string.Format("收到数据异常：{0}", ex.Message));
-                LogHelper.WriteError(ex, "接收血糖仪数据失败");
+                LogHelper.Log.Error("接收血糖仪数据失败", ex);
             }
         }
 
@@ -121,7 +116,7 @@ namespace TmoTcpServer
         {
             while (true)
             {
-                bool sleep = (bool)obj;
+                bool sleep = (bool) obj;
                 try
                 {
                     DeviceData[] recDatas = receivedDatas.ToArray();
@@ -146,7 +141,7 @@ namespace TmoTcpServer
                         if (!addsuc)
                         {
                             AddListMsg(null, "保存无线设备数据到数据库失败");
-                            LogHelper.WriteError(new Exception("保存无线设备数据到数据库失败"));
+                            LogHelper.Log.Error("保存无线设备数据", new Exception("保存无线设备数据到数据库失败"));
                         }
                         else
                         {
@@ -160,11 +155,11 @@ namespace TmoTcpServer
                 catch (Exception ex)
                 {
                     AddListMsg(null, "SaveData 保存无线设备数据异常");
-                    LogHelper.WriteError(ex, "保存无线设备数据异常");
+                    LogHelper.Log.Error("保存无线设备数据异常", ex);
                 }
 
                 if (sleep)
-                    Thread.Sleep(10000);    //10秒检测一次数据
+                    Thread.Sleep(10000); //10秒检测一次数据
                 else
                     break;
             }
@@ -190,21 +185,23 @@ namespace TmoTcpServer
         public void AddListMsg(string msgStr)
         {
             this.rtbLogList.CrossThreadCalls(() =>
+            {
+                int showLines = 500; //只显示100行数据
+                if (this.rtbLogList.Lines.Length >= showLines)
+                {
+                    List<string> list = new List<string>(this.rtbLogList.Lines);
+                    for (int i = 0; i < list.Count - showLines; i++)
                     {
-                        int showLines = 500;    //只显示100行数据
-                        if (this.rtbLogList.Lines.Length >= showLines)
-                        {
-                            List<string> list = new List<string>(this.rtbLogList.Lines);
-                            for (int i = 0; i < list.Count - showLines; i++)
-                            {
-                                list.RemoveAt(i);
-                            }
-                            this.rtbLogList.Text = StringPlus.GetArrayStr(list, Environment.NewLine);
-                        }
-                        msgStr = msgStr.TrimEnd() + Environment.NewLine;
-                        this.rtbLogList.AppendText(msgStr);
-                        this.rtbLogList.ScrollToCaret();
-                    });
+                        list.RemoveAt(i);
+                    }
+
+                    this.rtbLogList.Text = StringPlus.GetArrayStr(list, Environment.NewLine);
+                }
+
+                msgStr = msgStr.TrimEnd() + Environment.NewLine;
+                this.rtbLogList.AppendText(msgStr);
+                this.rtbLogList.ScrollToCaret();
+            });
         }
 
         public void AddListMsg(TCPServerClient client, string msgStr)
@@ -232,22 +229,24 @@ namespace TmoTcpServer
             byte[] bs = BitConverter.GetBytes(_tcpServerPort);
             sb.Append(bs[0].ToString("X2"));
             sb.Append(bs[1].ToString("X2"));
-            sb.Append((Convert.ToInt32(IPArray[0], 10) ^ Convert.ToInt32(IPArray[1], 10) ^ Convert.ToInt32(IPArray[2], 10) ^ Convert.ToInt32(IPArray[3], 10) ^ bs[0] ^ bs[1]).ToString("X2"));
+            sb.Append((Convert.ToInt32(IPArray[0], 10) ^ Convert.ToInt32(IPArray[1], 10) ^ Convert.ToInt32(IPArray[2], 10) ^ Convert.ToInt32(IPArray[3], 10) ^
+                       bs[0] ^ bs[1]).ToString("X2"));
             sb.Append("{0}OK");
             rtCode = sb.ToString();
 
             if (_synctcpserver.Running)
             {
-                thSaveData = new Thread(SaveData) { IsBackground = true, Name = "th_SaveDevData" };
+                thSaveData = new Thread(SaveData) {IsBackground = true, Name = "th_SaveDevData"};
                 thSaveData.Start(true);
                 lblStatus.Text = "已启动...";
                 lblStatus.ForeColor = Color.Green;
-                TmoShare.WriteTcpLog("Sync", lblServerAddr.Text + lblStatus.Text);
+                LogHelper.Log.Info("Sync服务器" + lblServerAddr.Text + lblStatus.Text);
             }
             else
             {
-                TmoShare.WriteTcpLog("sync", "服务器" + _tcpServerIP + ":" + _tcpServerPort + "启动失败");
+                LogHelper.Log.Info("Sync服务器" + _tcpServerIP + ":" + _tcpServerPort + "启动失败");
             }
+
             return _synctcpserver.Running;
         }
 
@@ -266,17 +265,19 @@ namespace TmoTcpServer
                     thSaveData.DisableComObjectEagerCleanup();
                     thSaveData = null;
                 }
+
                 if (receivedDatas.Count > 0)
                     SaveData(false);
 
                 lblStatus.Text = "未启动...";
                 lblStatus.ForeColor = Color.Red;
-                TmoShare.WriteTcpLog("Sync", "服务器" + _tcpServerIP + ":" + _tcpServerPort + "停止成功");
+                LogHelper.Log.Info("Sync服务器" + _tcpServerIP + ":" + _tcpServerPort + "停止成功");
             }
             else
             {
-                TmoShare.WriteTcpLog("Sync", "服务器" + _tcpServerIP + ":" + _tcpServerPort + "停止失败");
+                LogHelper.Log.Info("Sync服务器" + _tcpServerIP + ":" + _tcpServerPort + "停止失败");
             }
+
             return !_synctcpserver.Running;
         }
     }

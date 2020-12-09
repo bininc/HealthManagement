@@ -120,7 +120,7 @@ namespace TmoCommon
             }
             catch (Exception ex)
             {
-                TmoShare.WriteLog("压缩字符串报错！", ex);
+                LogHelper.Log.Error("压缩字符串报错！", ex);
                 return compressString;
             }
         }
@@ -140,7 +140,7 @@ namespace TmoCommon
             }
             catch (Exception ex)
             {
-                TmoShare.WriteLog("解压字符串报错！", ex);
+               LogHelper.Log.Error("解压字符串报错！", ex);
                 return decompressString;
             }
         }

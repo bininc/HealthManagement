@@ -36,7 +36,7 @@ namespace TmoPushData
             {
                 bool suc = tmo_SmsEmailManager.Instance.SendEmail(emailXML, out err_tip);
                 if (!suc)
-                    TmoShare.WriteLog("电子邮件发送失败！ ->" + err_tip);
+                    LogHelper.Log.Error("电子邮件发送失败！ ->" + err_tip);
                 return suc;
             }
         }

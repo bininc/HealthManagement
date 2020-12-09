@@ -609,7 +609,6 @@ on d.user_times =b.usertimes and d.user_id=b.user_id
             parameters[25].Value = ConvertInt(dr["city_id"], true);
             parameters[26].Value = ConvertInt(dr["eare_id"], true);
             parameters[27].Value = ConvertInt(dr["source"], true);
-            TmoShare.WriteLog(sql + parameters);
             int bb = MySQLHelper.ExecuteSql(sql, parameters);
             if (bb > 0)
                 return true;

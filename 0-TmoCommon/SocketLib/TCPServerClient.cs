@@ -4,30 +4,38 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using static LogHelper;
 
 namespace TmoCommon.SocketLib
 {
     public delegate void DataReceivedHandler(TCPServerClient client, int head, byte[] buffer, string strdata = null);
+
     public delegate void DisplayMsgHandler(TCPServerClient client, string msg, DateTime time);
+
     public class TCPServerClient : INotifyPropertyChanged
     {
         public delegate void CloseHandler(TCPServerClient client);
+
         /// <summary>
         /// 客户端连接关闭事件
         /// </summary>
         public event CloseHandler ClientClosed;
+
         /// <summary>
         /// 收到数据事件
         /// </summary>
         public event DataReceivedHandler DataReceived;
+
         /// <summary>
         /// 消息显示事件
         /// </summary>
         public event DisplayMsgHandler DisplayMsg;
+
         /// <summary>
         /// 字段改变事件
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// 调用字段改变事件
         /// </summary>
@@ -37,6 +45,7 @@ namespace TmoCommon.SocketLib
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+
         public TCPServerClient(Socket sokClient, bool _trustClientValidate)
         {
             SokClient = sokClient;
@@ -48,26 +57,27 @@ namespace TmoCommon.SocketLib
             this.trustClientValidate = _trustClientValidate;
         }
 
-        private Timer countTimer;   //倒计时Timer
+        private Timer countTimer; //倒计时Timer
         private bool trustedClient; //可信连接
-        private DateTime connTime;  //连接时的时间
-        private DateTime dataTime;  //收到数据时间
-        private bool trustClientValidate = false;   //可信连接验证
+        private DateTime connTime; //连接时的时间
+        private DateTime dataTime; //收到数据时间
+        private bool trustClientValidate = false; //可信连接验证
+
         private void CountTimerCallBack(object state)
         {
             if (trustClientValidate)
             {
                 if (!trustedClient && (DateTime.Now - connTime).TotalSeconds >= 120)
                 {
-                    CloseConnection("验证超时", false);    //超过2分钟未检测到握手包 关闭连接
-                    countTimer.Dispose();   //销毁倒计时
+                    CloseConnection("验证超时", false); //超过2分钟未检测到握手包 关闭连接
+                    countTimer.Dispose(); //销毁倒计时
                 }
                 else
                 {
                     if (trustedClient && (DateTime.Now - connTime).TotalSeconds >= 60)
                     {
-                        CloseConnection("客户端超时掉线", false);    //超过1分钟未检测到心跳包 关闭连接 
-                        countTimer.Dispose();   //销毁倒计时
+                        CloseConnection("客户端超时掉线", false); //超过1分钟未检测到心跳包 关闭连接 
+                        countTimer.Dispose(); //销毁倒计时
                     }
                 }
             }
@@ -75,13 +85,14 @@ namespace TmoCommon.SocketLib
             {
                 if ((DateTime.Now - dataTime).TotalSeconds >= 60)
                 {
-                    CloseConnection("超时", false);     //超过1分钟未收到数据 关闭连接
-                    countTimer.Dispose();   //销毁倒计时
+                    CloseConnection("超时", false); //超过1分钟未收到数据 关闭连接
+                    countTimer.Dispose(); //销毁倒计时
                 }
             }
         }
 
         #region 字段
+
         /// <summary>
         /// 与客户端通信Socket
         /// </summary>
@@ -102,12 +113,14 @@ namespace TmoCommon.SocketLib
                     id = SokClient.RemoteEndPoint.ToString();
                     return id;
                 }
+
                 if (!string.IsNullOrWhiteSpace(id))
                     return id;
 
                 return null;
             }
         }
+
         /// <summary>
         /// 客户端版本
         /// </summary>
@@ -139,13 +152,16 @@ namespace TmoCommon.SocketLib
                     return string.Format("[{0}] 未登录 {1}", ID, ClientVer);
             }
         }
+
         /// <summary>
         /// 是否显示所有数据
         /// </summary>
         public bool ShowAllData { get; set; }
+
         #endregion
 
         #region 向客户端发送数据
+
         /// <summary>
         /// 向客户端发送字节
         /// </summary>
@@ -164,6 +180,7 @@ namespace TmoCommon.SocketLib
                 return false;
             }
         }
+
         /// <summary>
         /// 向客户端发送字符串
         /// </summary>
@@ -174,7 +191,7 @@ namespace TmoCommon.SocketLib
             if (string.IsNullOrWhiteSpace(msg)) return false;
             try
             {
-                int head = 0;   //0表示发送字符串
+                int head = 0; //0表示发送字符串
                 byte[] headBS = BitConverter.GetBytes(head);
                 byte[] msgBS = Encoding.UTF8.GetBytes(msg);
                 byte[] sendBytes = new byte[headBS.Length + msgBS.Length];
@@ -189,6 +206,7 @@ namespace TmoCommon.SocketLib
                 return false;
             }
         }
+
         /// <summary>
         /// 向客户端发送命令
         /// </summary>
@@ -214,6 +232,7 @@ namespace TmoCommon.SocketLib
                 return false;
             }
         }
+
         /// <summary>
         /// 向客户端发送命令
         /// </summary>
@@ -245,10 +264,11 @@ namespace TmoCommon.SocketLib
         #endregion
 
         #region 接收客户端发送过来的数据
+
         void ReceiveCallback(IAsyncResult ar)
         {
             StateObject state = ar.AsyncState as StateObject;
-            bool disposed = false;  //是否停止数据接收
+            bool disposed = false; //是否停止数据接收
             int length = 0; //接收到的数据长度
             try
             {
@@ -257,14 +277,14 @@ namespace TmoCommon.SocketLib
                 byte[] receiveBytes = new byte[length];
                 Array.Copy(state.Buffer, 0, receiveBytes, 0, length);
 
-                dataTime = DateTime.Now;    //更新收到数据时间
+                dataTime = DateTime.Now; //更新收到数据时间
 
-                int head = -1;  //消息头码
-                string strData = null;  //String类型消息
+                int head = -1; //消息头码
+                string strData = null; //String类型消息
                 if (length >= 4)
                 {
                     //消息头码
-                    head = BitConverter.ToInt32(new[] { receiveBytes[0], receiveBytes[1], receiveBytes[2], receiveBytes[3] }, 0);
+                    head = BitConverter.ToInt32(new[] {receiveBytes[0], receiveBytes[1], receiveBytes[2], receiveBytes[3]}, 0);
 
                     if (head == 8888) //握手头码
                     {
@@ -280,11 +300,12 @@ namespace TmoCommon.SocketLib
                             connTime = DateTime.Now;
                             SendHeartBeat();
                         }
+
                         strData = ParserString(receiveBytes);
                         string[] infos = strData.Split(';');
                         ClientVer = infos[0];
                         DocInfo = TmoShare.GetValueFromJson<DocInfo>(infos.LastOrDefault());
-                        
+
                         if (ShowAllData && DisplayMsg != null)
                             DisplayMsg(this, "收到心跳包：" + strData, DateTime.Now);
                     }
@@ -304,13 +325,16 @@ namespace TmoCommon.SocketLib
                             DisplayMsg(this, "收到其他消息：长度" + receiveBytes.Length, DateTime.Now);
                     }
                 }
+
                 if (DataReceived != null)
                 {
                     try
                     {
                         DataReceived(this, head, receiveBytes, strData);
                     }
-                    catch { }
+                    catch
+                    {
+                    }
                 }
             }
             catch (Exception ex)
@@ -320,12 +344,14 @@ namespace TmoCommon.SocketLib
                     disposed = true;
                     return; //停止接收数据
                 }
-                LogHelper.WriteError(ex, "TCP");
+
+                Log.Error("TCP", ex);
                 if (ex is SocketException)
                 {
                     CloseConnection("客户端掉线 err:" + ex.Message, false);
                     return;
                 }
+
                 if (DisplayMsg != null)
                     DisplayMsg(this, "客户端消息处理失败", DateTime.Now);
             }
@@ -345,9 +371,11 @@ namespace TmoCommon.SocketLib
                 }
             }
         }
+
         #endregion
 
         #region 其他连接处理
+
         /// <summary>
         /// 关闭与客户端连接
         /// </summary>
@@ -369,9 +397,13 @@ namespace TmoCommon.SocketLib
                         ClientClosed(this);
                 }
             }
-            catch { }
+            catch
+            {
+            }
+
             GC.Collect();
         }
+
         /// <summary>
         /// 发送握手包
         /// </summary>
@@ -399,6 +431,7 @@ namespace TmoCommon.SocketLib
         #endregion
 
         #region 公共方法
+
         /// <summary>
         /// 转换字符串方法
         /// </summary>
@@ -418,6 +451,7 @@ namespace TmoCommon.SocketLib
                 return "Buffer ParserString err";
             }
         }
+
         #endregion
 
         public override string ToString()
@@ -440,6 +474,7 @@ namespace TmoCommon.SocketLib
         {
             this.Socket = socket;
         }
+
         // Client socket.
         public Socket Socket = null;
 

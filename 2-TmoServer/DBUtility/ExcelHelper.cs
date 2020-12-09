@@ -35,7 +35,7 @@ namespace DBUtility
             }
             catch (Exception e)
             {
-                TmoShare.WriteLog(e.ToString());
+                LogHelper.Log.Error(e);
                 return null;
             }
             return ds;
@@ -59,7 +59,7 @@ namespace DBUtility
             }
             catch (Exception e)
             {
-                TmoShare.WriteLog(e.ToString());
+                LogHelper.Log.Error(e);
                 return null;
             }
             finally
@@ -97,7 +97,7 @@ namespace DBUtility
             }
             catch (Exception e)
             {
-                TmoShare.WriteLog(e.ToString());
+                LogHelper.Log.Error(e);
                 i = 0;
             }
             return i;
@@ -118,7 +118,7 @@ namespace DBUtility
             }
             catch (Exception e)
             {
-                TmoShare.WriteLog(e.ToString());
+                LogHelper.Log.Error(e);
                 i = 0;
             }
             return i;

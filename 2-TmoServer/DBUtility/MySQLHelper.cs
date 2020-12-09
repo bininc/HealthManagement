@@ -27,13 +27,13 @@ namespace DBUtility.MySQL
             get
             {
                 return _connectionString ??
-                   (_connectionString =
-                     string.Format("server={0};port={1};database={2};uid={3};pwd={4};charset=utf8;Allow Zero Datetime=true;Connect Timeout=90",
-                                     ConfigHelper.GetConfigString("DataIP"),
-                                     ConfigHelper.GetConfigString("DataPort"),
-                                     ConfigHelper.GetConfigString("DataName"),
-                                     ConfigHelper.GetConfigString("DName"),
-                                     DESEncrypt.Decrypt(ConfigHelper.GetConfigString("DPwd"))));
+                       (_connectionString =
+                           string.Format("server={0};port={1};database={2};uid={3};pwd={4};charset=utf8;Allow Zero Datetime=true;Connect Timeout=90",
+                               ConfigHelper.GetConfigString("DataIP"),
+                               ConfigHelper.GetConfigString("DataPort"),
+                               ConfigHelper.GetConfigString("DataName"),
+                               ConfigHelper.GetConfigString("DName"),
+                               DESEncrypt.Decrypt(ConfigHelper.GetConfigString("DPwd"))));
             }
         }
 
@@ -91,25 +91,27 @@ namespace DBUtility.MySQL
                 cmd.Connection = connection;
                 MySqlTransaction tx = connection.BeginTransaction();
                 cmd.Transaction = tx;
+                string strsql = string.Empty;
                 try
                 {
                     int count = 0;
                     for (int n = 0; n < SQLStringList.Count; n++)
                     {
-                        string strsql = SQLStringList[n];
+                        strsql = SQLStringList[n];
                         if (!string.IsNullOrWhiteSpace(strsql))
                         {
                             cmd.CommandText = strsql;
                             count += cmd.ExecuteNonQuery();
                         }
                     }
+
                     tx.Commit();
                     return count;
                 }
                 catch (Exception ex)
                 {
                     tx.Rollback();
-                    TmoShare.WriteLog("ExecuteSqlTran(List<String> SQLStringList)报错", ex.Message);
+                    LogHelper.Log.Error($"ExecuteSqlTran报错:{strsql}", ex);
                     return -1;
                 }
                 finally
@@ -143,6 +145,7 @@ namespace DBUtility.MySQL
             {
                 using (MySqlCommand cmd = new MySqlCommand())
                 {
+                    string curSql = string.Empty;
                     try
                     {
                         int success = 0;
@@ -151,16 +154,18 @@ namespace DBUtility.MySQL
                         cmd.Connection = connection;
                         foreach (string sql in SQLStringList)
                         {
+                            curSql = sql;
                             cmd.CommandText = sql;
                             int rows = cmd.ExecuteNonQuery();
                             if (rows > 0)
                                 success += rows;
                         }
+
                         return success;
                     }
                     catch (Exception es)
                     {
-                        TmoShare.WriteLog("执行多条SQL语句报错,原因：" + es.Message);
+                        LogHelper.Log.Error("ExecuteSqlList报错：" + curSql, es);
                         return 0;
                     }
                     finally
@@ -206,24 +211,26 @@ namespace DBUtility.MySQL
                                 cmd.Parameters.Add(dicParameter[sql][i]);
                                 dd += dicParameter[sql][i].ParameterName + "-->" + dicParameter[sql][i].Value.ToString() + "\r\n";
                             }
+
                             try
                             {
                                 count += cmd.ExecuteNonQuery();
                             }
                             catch (Exception es)
                             {
-                                TmoShare.WriteLog("执行单条数据报错,原因：" + es.Message);
+                                LogHelper.Log.Error($"执行单条语句报错：{strsql} {dd}", es);
                                 throw es;
                             }
                         }
                     }
+
                     tx.Commit();
                     return count;
                 }
                 catch (Exception ex)
                 {
                     //Trace.WriteLine("事务提交报错" + "原因：" + ex.Message);
-                    TmoShare.WriteLog("事务提交报错,原因：" + ex.Message);
+                    LogHelper.Log.Error("ExecuteSqlTranWithParaMeter事务提交报错：", ex);
                     tx.Rollback();
                     return 0;
                 }
@@ -253,6 +260,7 @@ namespace DBUtility.MySQL
             {
                 cmdresult = int.Parse(obj.ToString());
             }
+
             if (cmdresult == 0)
             {
                 return false;
@@ -278,6 +286,7 @@ namespace DBUtility.MySQL
             {
                 sb.AppendFormat(" {0}='{1}' and", item.Key, item.Value);
             }
+
             sb.Append(" 1=1");
             string sql = string.Format("select 1 from {0} where {1} limit 1", tableName, sb.ToString());
             return Exists(sql);
@@ -320,6 +329,7 @@ namespace DBUtility.MySQL
             {
                 cmdresult = int.Parse(obj.ToString());
             }
+
             if (cmdresult == 0)
             {
                 //记录不存在
@@ -355,7 +365,7 @@ namespace DBUtility.MySQL
                     }
                     catch (Exception es)
                     {
-                        TmoShare.WriteLog("执行单条数据报错,原因：" + es.Message);
+                        LogHelper.Log.Error("ExecuteSql报错：" + SQLString, es);
                         return 0;
                     }
                     finally
@@ -416,7 +426,7 @@ namespace DBUtility.MySQL
                     foreach (CommandInfo myDE in list)
                     {
                         string cmdText = myDE.CommandText;
-                        MySqlParameter[] cmdParms = (MySqlParameter[])myDE.Parameters;
+                        MySqlParameter[] cmdParms = (MySqlParameter[]) myDE.Parameters;
                         PrepareCommand(cmd, conn, tx, cmdText, cmdParms);
                         if (myDE.EffentNextType == EffentNextType.SolicitationEvent)
                         {
@@ -433,6 +443,7 @@ namespace DBUtility.MySQL
                             {
                                 isHave = false;
                             }
+
                             isHave = Convert.ToInt32(obj) > 0;
                             if (isHave)
                             {
@@ -440,6 +451,7 @@ namespace DBUtility.MySQL
                                 myDE.OnSolicitationEvent();
                             }
                         }
+
                         if (myDE.EffentNextType == EffentNextType.WhenHaveContine || myDE.EffentNextType == EffentNextType.WhenNoHaveContine)
                         {
                             if (myDE.CommandText.ToLower().IndexOf("count(") == -1)
@@ -455,6 +467,7 @@ namespace DBUtility.MySQL
                             {
                                 isHave = false;
                             }
+
                             isHave = Convert.ToInt32(obj) > 0;
 
                             if (myDE.EffentNextType == EffentNextType.WhenHaveContine && !isHave)
@@ -463,14 +476,17 @@ namespace DBUtility.MySQL
                                 //throw new Exception("SQL:违背要求" + myDE.CommandText + "返回值必须大于0");
                                 return 0;
                             }
+
                             if (myDE.EffentNextType == EffentNextType.WhenNoHaveContine && isHave)
                             {
                                 tx.Rollback();
                                 //throw new Exception("SQL:违背要求" + myDE.CommandText + "返回值必须等于0");
                                 return 0;
                             }
+
                             continue;
                         }
+
                         int val = cmd.ExecuteNonQuery();
                         if (myDE.EffentNextType == EffentNextType.ExcuteEffectRows && val == 0)
                         {
@@ -478,8 +494,10 @@ namespace DBUtility.MySQL
                             throw new Exception("SQL:违背要求" + myDE.CommandText + "必须有影响行");
                             //return 0;
                         }
+
                         cmd.Parameters.Clear();
                     }
+
                     //string oraConnectionString = PubConstant.GetConnectionString("ConnectionStringPPC");
                     bool res = Oracle.OracleHelper.ExecuteSqlTran(oracleCmdSqlList);
                     if (!res)
@@ -488,12 +506,13 @@ namespace DBUtility.MySQL
                         //throw new Exception("执行失败");
                         return -1;
                     }
+
                     tx.Commit();
                     return 1;
                 }
                 catch (MySql.Data.MySqlClient.MySqlException e)
                 {
-                    TmoShare.WriteLog("执行事务报错,原因：" + e.Message);
+                    LogHelper.Log.Error("执行事务报错,原因：", e);
                     tx.Rollback();
                     return 0;
                 }
@@ -534,7 +553,7 @@ namespace DBUtility.MySQL
                 }
                 catch (MySql.Data.MySqlClient.MySqlException e)
                 {
-                    TmoShare.WriteLog("执行单条数据报错,原因：" + e.Message);
+                    LogHelper.Log.Error($"ExecuteSql报错：{SQLString} {content}", e);
                     return 0;
                 }
                 finally
@@ -610,7 +629,7 @@ namespace DBUtility.MySQL
                 }
                 catch (MySql.Data.MySqlClient.MySqlException e)
                 {
-                    TmoShare.WriteLog("执行单条数据报错,原因：" + e.Message);
+                    LogHelper.Log.Error("ExecuteSqlInsertImg报错：" + strSQL, e);
                     return 0;
                 }
                 finally
@@ -649,7 +668,7 @@ namespace DBUtility.MySQL
                         }
                         catch (Exception ee)
                         {
-                            TmoShare.WriteLog("执行单条数据报错,原因：" + ee.Message);
+                            LogHelper.Log.Error($"ExecuteSql报错：{SQLString}", ee);
                             return 0;
                         }
                         finally
@@ -680,25 +699,27 @@ namespace DBUtility.MySQL
                 cmd.Connection = conn;
                 MySqlTransaction tx = conn.BeginTransaction();
                 cmd.Transaction = tx;
+                string strsql = string.Empty;
                 try
                 {
                     int count = 0;
                     for (int n = 0; n < SQLStringList.Count; n++)
                     {
-                        string strsql = SQLStringList[n];
+                        strsql = SQLStringList[n];
                         if (strsql.Trim().Length > 1)
                         {
                             cmd.CommandText = strsql;
                             count += cmd.ExecuteNonQuery();
                         }
                     }
+
                     tx.Commit();
 
                     return count;
                 }
                 catch (Exception ex)
                 {
-                    TmoShare.WriteLog("执行事务数据报错,原因：" + ex.Message);
+                    LogHelper.Log.Error("MyExecuteSqlTran报错：" + strsql, ex);
                     tx.Rollback();
                     return 0;
                 }
@@ -737,9 +758,10 @@ namespace DBUtility.MySQL
                             }
                             catch (Exception ee)
                             {
-                                TmoShare.WriteLog("执行单条数据报错,原因：" + ee.Message);
+                                LogHelper.Log.Error("执行单条数据报错：" + str, ee);
                             }
                         }
+
                         return rows;
                     }
                     catch
@@ -776,17 +798,18 @@ namespace DBUtility.MySQL
                         foreach (DictionaryEntry myDE in SQLStringList)
                         {
                             string cmdText = myDE.Key.ToString();
-                            MySqlParameter[] cmdParms = (MySqlParameter[])myDE.Value;
+                            MySqlParameter[] cmdParms = (MySqlParameter[]) myDE.Value;
                             PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
                             val += cmd.ExecuteNonQuery();
                             cmd.Parameters.Clear();
                         }
+
                         trans.Commit();
                         return val;
                     }
                     catch (Exception ex)
                     {
-                        TmoShare.WriteLog("执行事务数据报错,原因：" + ex.Message);
+                        LogHelper.Log.Error("执行事务数据报错,原因：", ex);
                         trans.Rollback();
                         return 0;
                     }
@@ -819,7 +842,7 @@ namespace DBUtility.MySQL
                         foreach (CommandInfo myDE in cmdList)
                         {
                             string cmdText = myDE.CommandText;
-                            MySqlParameter[] cmdParms = (MySqlParameter[])myDE.Parameters;
+                            MySqlParameter[] cmdParms = (MySqlParameter[]) myDE.Parameters;
                             PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
 
                             if (myDE.EffentNextType == EffentNextType.WhenHaveContine || myDE.EffentNextType == EffentNextType.WhenNoHaveContine)
@@ -836,6 +859,7 @@ namespace DBUtility.MySQL
                                 {
                                     isHave = false;
                                 }
+
                                 isHave = Convert.ToInt32(obj) > 0;
 
                                 if (myDE.EffentNextType == EffentNextType.WhenHaveContine && !isHave)
@@ -843,13 +867,16 @@ namespace DBUtility.MySQL
                                     trans.Rollback();
                                     return 0;
                                 }
+
                                 if (myDE.EffentNextType == EffentNextType.WhenNoHaveContine && isHave)
                                 {
                                     trans.Rollback();
                                     return 0;
                                 }
+
                                 continue;
                             }
+
                             int val = cmd.ExecuteNonQuery();
                             count += val;
                             if (myDE.EffentNextType == EffentNextType.ExcuteEffectRows && val == 0)
@@ -857,14 +884,16 @@ namespace DBUtility.MySQL
                                 trans.Rollback();
                                 return 0;
                             }
+
                             cmd.Parameters.Clear();
                         }
+
                         trans.Commit();
                         return count;
                     }
                     catch (Exception ex)
                     {
-                        TmoShare.WriteLog("执行事务数据报错,原因：" + ex.Message);
+                        LogHelper.Log.Error("执行事务数据报错,原因：", ex);
                         trans.Rollback();
                         throw;
                     }
@@ -897,7 +926,7 @@ namespace DBUtility.MySQL
                         foreach (CommandInfo myDE in SQLStringList)
                         {
                             string cmdText = myDE.CommandText;
-                            MySqlParameter[] cmdParms = (MySqlParameter[])myDE.Parameters;
+                            MySqlParameter[] cmdParms = (MySqlParameter[]) myDE.Parameters;
                             foreach (MySqlParameter q in cmdParms)
                             {
                                 if (q.Direction == ParameterDirection.InputOutput)
@@ -905,6 +934,7 @@ namespace DBUtility.MySQL
                                     q.Value = indentity;
                                 }
                             }
+
                             PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
                             int val = cmd.ExecuteNonQuery();
                             foreach (MySqlParameter q in cmdParms)
@@ -914,13 +944,15 @@ namespace DBUtility.MySQL
                                     indentity = Convert.ToInt32(q.Value);
                                 }
                             }
+
                             cmd.Parameters.Clear();
                         }
+
                         trans.Commit();
                     }
                     catch (Exception ex)
                     {
-                        TmoShare.WriteLog("执行事务数据报错,原因：" + ex.Message);
+                        LogHelper.Log.Error("执行事务数据报错,原因：", ex);
                         trans.Rollback();
                         throw;
                     }
@@ -953,7 +985,7 @@ namespace DBUtility.MySQL
                         foreach (DictionaryEntry myDE in SQLStringList)
                         {
                             string cmdText = myDE.Key.ToString();
-                            MySqlParameter[] cmdParms = (MySqlParameter[])myDE.Value;
+                            MySqlParameter[] cmdParms = (MySqlParameter[]) myDE.Value;
                             foreach (MySqlParameter q in cmdParms)
                             {
                                 if (q.Direction == ParameterDirection.InputOutput)
@@ -961,6 +993,7 @@ namespace DBUtility.MySQL
                                     q.Value = indentity;
                                 }
                             }
+
                             PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
                             int val = cmd.ExecuteNonQuery();
                             foreach (MySqlParameter q in cmdParms)
@@ -970,13 +1003,15 @@ namespace DBUtility.MySQL
                                     indentity = Convert.ToInt32(q.Value);
                                 }
                             }
+
                             cmd.Parameters.Clear();
                         }
+
                         trans.Commit();
                     }
                     catch (Exception e)
                     {
-                        TmoShare.WriteLog("执行事务报错,原因：" + e.Message);
+                        LogHelper.Log.Error("执行事务报错,原因：", e);
                         trans.Rollback();
                         throw;
                     }
@@ -1018,7 +1053,7 @@ namespace DBUtility.MySQL
                     }
                     catch (MySql.Data.MySqlClient.MySqlException e)
                     {
-                        TmoShare.WriteLog("执行GetSingle报错,原因：" + e.Message);
+                        LogHelper.Log.Error("GetSingle报错：" + SQLString, e);
                         return "err_GetSingle";
                     }
                     finally
@@ -1081,7 +1116,7 @@ namespace DBUtility.MySQL
                     }
                     catch (MySql.Data.MySqlClient.MySqlException ex)
                     {
-                        TmoShare.WriteLog("执行单条数据报错,原因：" + ex.Message);
+                        LogHelper.Log.Error("Query报错：" + SQLString, ex);
                         return null;
                     }
                     finally
@@ -1101,7 +1136,7 @@ namespace DBUtility.MySQL
             cmd.CommandText = cmdText;
             if (trans != null)
                 cmd.Transaction = trans;
-            cmd.CommandType = CommandType.Text;//cmdType;
+            cmd.CommandType = CommandType.Text; //cmdType;
             if (conn.State != ConnectionState.Open)
                 conn.Open();
             if (cmdParms != null)
@@ -1114,6 +1149,7 @@ namespace DBUtility.MySQL
                     {
                         parameter.Value = DBNull.Value;
                     }
+
                     cmd.Parameters.Add(parameter);
                     sb.Append(parameter.ParameterName + "=>" + parameter.Value.ToString() + "\r\n");
                 }
@@ -1147,7 +1183,7 @@ namespace DBUtility.MySQL
                         }
                         catch (Exception ee)
                         {
-                            TmoShare.WriteLog("执行单条数据报错,原因：" + ee.Message);
+                            LogHelper.Log.Error("执行单条数据报错,原因：", ee);
                             return 0;
                         }
                         finally
@@ -1196,7 +1232,7 @@ namespace DBUtility.MySQL
                     }
                     catch (MySql.Data.MySqlClient.MySqlException e)
                     {
-                        TmoShare.WriteLog("QuerySingle(string SQLString)报错", e.Message);
+                        LogHelper.Log.Error("QuerySingle报错：" + SQLString, e);
                         return "err_QuertSingle";
                     }
                     finally
@@ -1232,7 +1268,7 @@ namespace DBUtility.MySQL
                     }
                     catch (MySql.Data.MySqlClient.MySqlException e)
                     {
-                        TmoShare.WriteLog("QuerySingle(string SQLString, int Times)报错", e.Message);
+                        LogHelper.Log.Error("QuerySingle报错:" + SQLString, e);
                         return "err_QuertSingle";
                     }
                     finally
@@ -1263,7 +1299,7 @@ namespace DBUtility.MySQL
             }
             catch (MySql.Data.MySqlClient.MySqlException e)
             {
-                TmoShare.WriteLog("ExecuteReader(string strSQL)报错", e);
+                LogHelper.Log.Error("ExecuteReader报错:" + strSQL, e);
                 return null;
             }
             finally
@@ -1296,7 +1332,7 @@ namespace DBUtility.MySQL
                     }
                     catch (MySql.Data.MySqlClient.MySqlException ex)
                     {
-                        TmoShare.WriteLog("QueryWithConn(string connstring, string SQLString, params MySqlParameter[] cmdParms)报错", ex.Message);
+                        LogHelper.Log.Error("QueryWithConn报错", ex);
                         return null;
                     }
                     finally
@@ -1333,7 +1369,7 @@ namespace DBUtility.MySQL
                     }
                     catch (MySql.Data.MySqlClient.MySqlException ex)
                     {
-                        TmoShare.WriteLog("Query(string SQLString)报错", ex.Message);
+                        LogHelper.Log.Error("Query报错:" + SQLString, ex);
 
                         return null;
                     }
@@ -1343,6 +1379,7 @@ namespace DBUtility.MySQL
                         if (connection.State == ConnectionState.Open)
                             connection.Close();
                     }
+
                     return ds;
                 }
             }
@@ -1374,7 +1411,7 @@ namespace DBUtility.MySQL
                 }
                 catch (MySql.Data.MySqlClient.MySqlException ex)
                 {
-                    TmoShare.WriteLog("Query(string SQLString)报错", ex.Message);
+                    LogHelper.Log.Error("QueryTable报错:"+SQLString, ex);
 
                     return null;
                 }
@@ -1384,6 +1421,7 @@ namespace DBUtility.MySQL
                     if (connection.State == ConnectionState.Open)
                         connection.Close();
                 }
+
                 return dt;
             }
         }
@@ -1407,7 +1445,7 @@ namespace DBUtility.MySQL
                     }
                     catch (MySql.Data.MySqlClient.MySqlException ex)
                     {
-                        TmoShare.WriteLog("Query(string SQLString, int Times)报错", ex.Message);
+                        LogHelper.Log.Error("Query报错:"+SQLString, ex);
                         return null;
                     }
                     finally
@@ -1445,7 +1483,7 @@ namespace DBUtility.MySQL
                 }
                 catch (MySql.Data.MySqlClient.MySqlException ex)
                 {
-                    TmoShare.WriteLog("QueryNon(string connstr, string sqlstr)报错", ex.Message);
+                    LogHelper.Log.Error($"QueryNon报错:{connstr} {sqlstr}", ex);
                     return null;
                 }
                 finally
@@ -1454,6 +1492,7 @@ namespace DBUtility.MySQL
                     if (connection.State == ConnectionState.Open)
                         connection.Close();
                 }
+
                 return ds;
             }
         }
@@ -1485,6 +1524,7 @@ namespace DBUtility.MySQL
                         {
                             parameter.Value = DBNull.Value;
                         }
+
                         cmd.Parameters.Add(parameter);
                     }
                 }
@@ -1497,8 +1537,9 @@ namespace DBUtility.MySQL
                 }
                 catch (Exception ex)
                 {
-                    TmoShare.WriteLog("QuerySP(string cmdText, params MySqlParameter[] cmdParms)报错", ex);
+                    LogHelper.Log.Error("QuerySP报错:"+cmdText, ex);
                 }
+
                 conn.Close();
                 cmd.Parameters.Clear();
                 return ds;
@@ -1526,7 +1567,7 @@ namespace DBUtility.MySQL
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
-                TmoShare.WriteLog("QueryTableStruct(string tableName)报错", ex.Message);
+                LogHelper.Log.Error("QueryTableStruct报错:"+sqlstr, ex);
                 return null;
             }
             finally
@@ -1535,6 +1576,7 @@ namespace DBUtility.MySQL
                 if (connection.State == ConnectionState.Open)
                     connection.Close();
             }
+
             return ds;
         }
 
@@ -1580,7 +1622,7 @@ namespace DBUtility.MySQL
                 {
                     string col = item.Key;
                     string val = item.Value;
-                    if (val != null && val.Trim() == "-") continue;   //跳过特殊字段
+                    if (val != null && val.Trim() == "-") continue; //跳过特殊字段
                     if (string.IsNullOrEmpty(val)) val = ",NULL"; //排除空值
                     if (!dt.Columns.Contains(col)) continue; //排除不在表中的列
 
@@ -1589,6 +1631,7 @@ namespace DBUtility.MySQL
                     sbCol.AppendFormat("{0},", col);
                     sbVal.AppendFormat("{0},", val);
                 }
+
                 sbCol = sbCol.Remove(sbCol.Length - 1, 1).Append(")");
                 sbVal = sbVal.Remove(sbVal.Length - 1, 1).Append(")");
 
@@ -1597,8 +1640,9 @@ namespace DBUtility.MySQL
             }
             catch (Exception ex)
             {
-                LogHelper.WriteError(ex, "GetAddDataSql");
+                LogHelper.Log.Error("GetAddDataSql", ex);
             }
+
             return null;
         }
 
@@ -1633,6 +1677,7 @@ namespace DBUtility.MySQL
                 if (insertSql != null)
                     sqlList.Add(insertSql);
             }
+
             return ExecuteSqlTran(sqlList) > 0;
         }
 
@@ -1646,7 +1691,8 @@ namespace DBUtility.MySQL
         /// <returns></returns>
         public static bool UpdateData(string tableName, string pkName, string pkVal, Dictionary<string, string> datas)
         {
-            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(pkName) || string.IsNullOrWhiteSpace(pkVal) || datas == null || datas.Count <= 0) throw new Exception("修改数据出错，输入参数有误！");
+            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(pkName) || string.IsNullOrWhiteSpace(pkVal) || datas == null ||
+                datas.Count <= 0) throw new Exception("修改数据出错，输入参数有误！");
             try
             {
                 string whereStr = string.Format("{0}='{1}'", pkName, pkVal);
@@ -1667,7 +1713,8 @@ namespace DBUtility.MySQL
         /// <returns></returns>
         public static bool UpdateData(string tableName, string whereStr, Dictionary<string, string> datas)
         {
-            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(whereStr) || datas == null || datas.Count <= 0) throw new Exception("修改数据出错，输入参数有误！");
+            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(whereStr) || datas == null || datas.Count <= 0)
+                throw new Exception("修改数据出错，输入参数有误！");
             try
             {
                 string updateSql = GetUpdateDataSql(tableName, whereStr, datas);
@@ -1689,7 +1736,8 @@ namespace DBUtility.MySQL
         /// <returns></returns>
         public static bool UpdateDatas(string tableName, string whereStr, params Dictionary<string, string>[] datas)
         {
-            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(whereStr) || datas == null || datas.Length <= 0) throw new Exception("修改数据出错，输入参数有误！");
+            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(whereStr) || datas == null || datas.Length <= 0)
+                throw new Exception("修改数据出错，输入参数有误！");
             try
             {
                 Match mc = Regex.Match(whereStr, "{(.+)}");
@@ -1705,10 +1753,12 @@ namespace DBUtility.MySQL
                     {
                         where = whereStr.Replace("{" + colName + "}", data[colName]);
                     }
+
                     string updateSql = GetUpdateDataSql(tableName, where, data);
                     if (updateSql != null)
                         sqlList.Add(updateSql);
                 }
+
                 return ExecuteSqlTran(sqlList) > 0;
             }
             catch
@@ -1726,7 +1776,8 @@ namespace DBUtility.MySQL
         /// <returns></returns>
         public static string GetUpdateDataSql(string tableName, string whereStr, Dictionary<string, string> datas)
         {
-            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(whereStr) || datas == null || datas.Count <= 0) throw new Exception("修改数据出错，输入参数有误！");
+            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(whereStr) || datas == null || datas.Count <= 0)
+                throw new Exception("修改数据出错，输入参数有误！");
             try
             {
                 DataSet ds = QueryTableStruct(tableName);
@@ -1740,13 +1791,14 @@ namespace DBUtility.MySQL
                 {
                     string col = item.Key;
                     string val = item.Value;
-                    if (val != null && val.Trim() == "-") continue;   //跳过特殊字段
+                    if (val != null && val.Trim() == "-") continue; //跳过特殊字段
                     if (string.IsNullOrEmpty(val)) val = ",NULL"; //排除空值
                     if (!dt.Columns.Contains(col)) continue; //排除不在表中的列
 
                     val = val.StartsWith(",") ? val.TrimStart(',') : string.Format("'{0}'", val);
                     sbCol.AppendFormat("{0}={1},", col, val);
                 }
+
                 sbCol = sbCol.Remove(sbCol.Length - 1, 1);
                 string updateSql = sbCol.ToString() + sbVal.ToString();
                 return updateSql;
@@ -1766,7 +1818,8 @@ namespace DBUtility.MySQL
         /// <returns></returns>
         public static bool DeleteData(string tableName, string pkName, string pkVal)
         {
-            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(pkName) || string.IsNullOrWhiteSpace(pkVal)) throw new Exception("删除数据出错，输入参数有误！");
+            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(pkName) || string.IsNullOrWhiteSpace(pkVal))
+                throw new Exception("删除数据出错，输入参数有误！");
             try
             {
                 StringBuilder sbCol = new StringBuilder();
@@ -1797,6 +1850,7 @@ namespace DBUtility.MySQL
             {
                 sb.AppendFormat(" {0}='{1}' and", item.Key, item.Value);
             }
+
             if (excludeVal != null && excludeVal.Count > 0)
             {
                 foreach (var item in excludeVal)
@@ -1804,6 +1858,7 @@ namespace DBUtility.MySQL
                     sb.AppendFormat(" {0}<>'{1}' and", item.Key, item.Value);
                 }
             }
+
             sb.Append(" 1=1");
             string sql = string.Format("select count(*) from {0} where {1}", tableName, sb.ToString());
             return Exists(sql);
@@ -1815,11 +1870,13 @@ namespace DBUtility.MySQL
         /// <returns></returns>
         public static DataRow GetData(string tableName, string pkName, string pkVal)
         {
-            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(pkName) || string.IsNullOrWhiteSpace(pkVal)) throw new Exception("查询数据出错，输入参数有误！");
+            if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(pkName) || string.IsNullOrWhiteSpace(pkVal))
+                throw new Exception("查询数据出错，输入参数有误！");
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("select * from {0} where {1}='{2}'", tableName, pkName, pkVal);
             return QueryRow(sb.ToString());
         }
+
         /// <summary>
         /// 查询一条数据信息
         /// </summary>
@@ -1833,6 +1890,7 @@ namespace DBUtility.MySQL
             else
                 return null;
         }
+
         /// <summary>
         /// 查询一条数据
         /// </summary>
@@ -1858,6 +1916,7 @@ namespace DBUtility.MySQL
             {
                 colSql = string.Join(",", colNames);
             }
+
             string sql = string.Format("select {0} from {1}", colSql, tableName);
             return QueryTable(sql);
         }

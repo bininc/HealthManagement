@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -71,11 +70,12 @@ namespace TmoTcpServer
                     Reserved2 = _FirstPart.Substring(23, 3);
                     OrigValue = _FirstPart.Substring(26, 3);
 
-                    OrigValueTime = string.Format("20{0}/{1}/{2} {3}:{4}:00", _FirstPart.Substring(29, 2), _FirstPart.Substring(31, 2), _FirstPart.Substring(33, 2), _FirstPart.Substring(35, 2), _FirstPart.Substring(37, 2));
+                    OrigValueTime = string.Format("20{0}/{1}/{2} {3}:{4}:00", _FirstPart.Substring(29, 2), _FirstPart.Substring(31, 2),
+                        _FirstPart.Substring(33, 2), _FirstPart.Substring(35, 2), _FirstPart.Substring(37, 2));
                 }
                 catch (Exception ex)
                 {
-                    LogHelper.WriteError(ex, "解析无线设备数据错误");
+                    LogHelper.Log.Error("解析无线设备数据错误", ex);
                 }
             }
         }
@@ -174,14 +174,16 @@ namespace TmoTcpServer
                 {
                     //时间不正确已当前时间代替
                     valuetime = DateTime.Now;
-                    LogHelper.WriteWarn(_OrigValueTime, new Exception("时间格式不正确，已用当前时间代替"));
+                    LogHelper.Log.Warn(_OrigValueTime, new Exception("时间格式不正确，已用当前时间代替"));
                 }
+
                 //10天以前认为是无效日期
                 if (valuetime.AddDays(10) < DateTime.Now || valuetime > DateTime.Now)
                 {
                     valuetime = DateTime.Now;
-                    LogHelper.WriteWarn(_OrigValueTime, new Exception("10天前的日期和晚于当前的日期无效，已用当前时间代替"));
+                    LogHelper.Log.Warn(_OrigValueTime, new Exception("10天前的日期和晚于当前的日期无效，已用当前时间代替"));
                 }
+
                 ValueTime = valuetime;
             }
         }
@@ -223,11 +225,13 @@ namespace TmoTcpServer
                 string updatePath = ConfigHelper.GetConfigString("ClientUpdateDir", "", false);
                 string deviceDataPath = (string.IsNullOrWhiteSpace(updatePath) ? "" : Directory.GetParent(updatePath).Parent.FullName + "\\") + "DeviceData.txt";
 
-                TmoShare.WriteFile(string.Format(";{0} >>>{1}--{3}--[{4}]_[{5}]<<< ->{2}", DateTimeHelper.DateTimeNowStr, SerialNumber, OriginalData, Value, ValueTime, OrigValueTime), deviceDataPath, true);
+                TmoShare.WriteFile(
+                    string.Format(";{0} >>>{1}--{3}--[{4}]_[{5}]<<< ->{2}", DateTimeHelper.DateTimeNowStr, SerialNumber, OriginalData, Value, ValueTime,
+                        OrigValueTime), deviceDataPath, true);
             }
             catch (Exception ex)
             {
-                LogHelper.WriteError(ex, "保存设备上传记录失败");
+                LogHelper.Log.Error("保存设备上传记录失败", ex);
             }
         }
 
@@ -243,7 +247,7 @@ namespace TmoTcpServer
             }
             catch (Exception ex)
             {
-                LogHelper.WriteError(ex, "设备解析数据读取失败");
+                LogHelper.Log.Error("设备解析数据读取失败", ex);
                 return "设备解析数据读取失败";
             }
         }

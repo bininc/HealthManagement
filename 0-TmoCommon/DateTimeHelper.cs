@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using TmoCommon.WinAPI;
 
 namespace TmoCommon
@@ -20,7 +21,9 @@ namespace TmoCommon
         /// 日期格式化字符串
         /// </summary>
         public static string FormatDateStr
-        { get { return "yyyy-MM-dd"; } }
+        {
+            get { return "yyyy-MM-dd"; }
+        }
 
         /// <summary>
         /// 时间格式化字符串
@@ -90,7 +93,9 @@ namespace TmoCommon
         /// 现在时间字符串
         /// </summary>
         public static string TimeNowStr
-        { get { return DateTimeNow.ToString(FormatTimeStr); } }
+        {
+            get { return DateTimeNow.ToString(FormatTimeStr); }
+        }
 
         /// <summary>
         /// 获取当天起始时间
@@ -161,10 +166,7 @@ namespace TmoCommon
         /// </summary>
         public static string TodayEndStr
         {
-            get
-            {
-                return GetDayEndStr(DateTimeNow);
-            }
+            get { return GetDayEndStr(DateTimeNow); }
         }
 
         /// <summary>
@@ -235,8 +237,9 @@ namespace TmoCommon
         public static int TimeToStamp(DateTime time)
         {
             DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
-            return (int)(time - startTime).TotalSeconds;
+            return (int) (time - startTime).TotalSeconds;
         }
+
         /// <summary>
         /// 时间戳转换为datetime
         /// </summary>
@@ -248,6 +251,7 @@ namespace TmoCommon
             TimeSpan toNow = new TimeSpan(0, 0, timeStamp);
             return startTime.Add(toNow);
         }
+
         /// <summary>
         /// 设置系统时间
         /// </summary>
@@ -258,6 +262,69 @@ namespace TmoCommon
             Structs.SYSTEMTIME st = Structs.SYSTEMTIME.NewFromDateTime(time);
             //调用Win32 API设置系统时间
             return Kernel32.SetLocalTime(ref st);
+        }
+
+        /// <summary>
+        /// 字符串转换时间
+        /// </summary>
+        /// <param name="timeStr"></param>
+        /// <returns></returns>
+        public static DateTime ToDateTime(string timeStr, string fmt = null)
+        {
+            if (string.IsNullOrWhiteSpace(timeStr)) throw new ArgumentNullException(nameof(timeStr), "时间转换失败");
+            if (fmt == null)
+            {
+                DateTime dateTime;
+                bool pass = DateTime.TryParseExact(timeStr, FormatDateTimeStr, CultureInfo.InvariantCulture, DateTimeStyles.AllowInnerWhite, out dateTime);
+                if (!pass)
+                    pass = DateTime.TryParseExact(timeStr, "yyyy/M/d H:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.AllowInnerWhite, out dateTime);
+                if (!pass)
+                    pass = DateTime.TryParseExact(timeStr, "M/d/yyyy H:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.AllowInnerWhite, out dateTime);
+                if (!pass)
+                {
+                    if (timeStr.Contains("上午"))
+                        timeStr = timeStr.Replace("上午", "AM");
+                    if (timeStr.Contains("下午"))
+                        timeStr = timeStr.Replace("下午", "PM");
+                    if (timeStr.Contains("星期一"))
+                        timeStr = timeStr.Replace("星期一", "Monday");
+                    if (timeStr.Contains("星期二"))
+                        timeStr = timeStr.Replace("星期二", "Tuesday");
+                    if (timeStr.Contains("星期三"))
+                        timeStr = timeStr.Replace("星期三", "Wednesday");
+                    if (timeStr.Contains("星期四"))
+                        timeStr = timeStr.Replace("星期四", "Thursday");
+                    if (timeStr.Contains("星期五"))
+                        timeStr = timeStr.Replace("星期五", "Friday");
+                    if (timeStr.Contains("星期六"))
+                        timeStr = timeStr.Replace("星期六", "Saturday");
+                    if (timeStr.Contains("星期日"))
+                        timeStr = timeStr.Replace("星期日", "Sunday");
+                    if (timeStr.Contains("周一"))
+                        timeStr = timeStr.Replace("周一", "Monday");
+                    if (timeStr.Contains("周二"))
+                        timeStr = timeStr.Replace("周二", "Tuesday");
+                    if (timeStr.Contains("周三"))
+                        timeStr = timeStr.Replace("周三", "Wednesday");
+                    if (timeStr.Contains("周四"))
+                        timeStr = timeStr.Replace("周四", "Thursday");
+                    if (timeStr.Contains("周五"))
+                        timeStr = timeStr.Replace("周五", "Friday");
+                    if (timeStr.Contains("周六"))
+                        timeStr = timeStr.Replace("周六", "Saturday");
+                    if (timeStr.Contains("周日"))
+                        timeStr = timeStr.Replace("周日", "Sunday");
+
+                    pass = DateTime.TryParseExact(timeStr, "yyyy/M/d dddd tt h:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out dateTime);
+                }
+                if(!pass)
+                    throw new FormatException("无法转换的日期格式："+timeStr);
+                return dateTime;
+            }
+            else
+            {
+                return DateTime.ParseExact(timeStr, fmt, CultureInfo.InvariantCulture);
+            }
         }
     }
 }

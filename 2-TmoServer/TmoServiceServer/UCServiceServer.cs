@@ -138,11 +138,11 @@ namespace TmoServiceServer
                 if (ex.ErrorCode == 10049)
                     UserMessageBox.MessageInfo("本机IP地址配置错误，无法启动程序！");
 
-                TmoShare.WriteLog(ex);
+                LogHelper.Log.Error(ex);
             }
             catch (Exception ex)
             {
-                TmoCommon.TmoShare.WriteLog($"启动{ServiceName}失败", ex.Message);
+                LogHelper.Log.Error($"启动{ServiceName}失败", ex);
             }
 
             return false;
@@ -172,7 +172,7 @@ namespace TmoServiceServer
             }
             catch (Exception ex)
             {
-                TmoShare.WriteLog($"停止{ServiceName}失败", ex);
+                LogHelper.Log.Error($"停止{ServiceName}失败", ex);
                 return false;
             }
         }

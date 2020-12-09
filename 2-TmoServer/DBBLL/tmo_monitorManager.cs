@@ -10,7 +10,9 @@ namespace DBBLL
     public class tmo_monitorManager : Itmo_monitor
     {
         #region 单例模式
+
         private static tmo_monitorManager _instance = null;
+
         public static tmo_monitorManager Instance
         {
             get
@@ -20,18 +22,24 @@ namespace DBBLL
                 return _instance;
             }
         }
+
         #endregion
 
         #region 字段
+
         Itmo_monitor dal = null;
+
         #endregion
 
         #region 构造函数
+
         public tmo_monitorManager()
         {
             dal = BLLCommon.GetDALInstance<Itmo_monitor>();
         }
+
         #endregion
+
         /// <summary>
         /// 添加监测数据
         /// </summary>
@@ -41,6 +49,7 @@ namespace DBBLL
         {
             return dal.AddMonitorData(submitData);
         }
+
         /// <summary>
         /// 添加监测数据
         /// </summary>
@@ -51,9 +60,9 @@ namespace DBBLL
             return dal.AddMonitorData(submitTable);
         }
 
-        public System.Data.DataSet GetMonitorData(DataTable userID)
+        public System.Data.DataSet GetMonitorData(DataTable userID, DataSet combine = null)
         {
-            return dal.GetMonitorData(userID);
+            return dal.GetMonitorData(userID, combine);
         }
 
 
@@ -73,10 +82,12 @@ namespace DBBLL
         {
             return dal.GetItemWebData();
         }
-        public DataSet GetMonitorDataBy(DataTable userID)
+
+        public DataSet GetMonitorDataBy(DataTable userID, DataSet combine = null)
         {
-            return dal.GetMonitorDataBy(userID);
+            return dal.GetMonitorDataBy(userID, combine);
         }
+
         public bool UpdateWXState(string ids, int we_send = 1)
         {
             return dal.UpdateWXState(ids, we_send);

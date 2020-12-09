@@ -76,7 +76,7 @@ namespace UsbHid
             }
             catch (IOException ex)	// if we got an IO exception, the device was removed
             {
-                TmoShare.WriteLog(ex.ToString());
+                LogHelper.Log.Info(ex.ToString());
             }
         }
 
@@ -151,7 +151,7 @@ namespace UsbHid
 
         public void Disconnect()
         {
-            TmoShare.WriteLog("UsbHidDevice:Disconnect() -> 开始释放资源");
+            LogHelper.Log.Info("UsbHidDevice:Disconnect() -> 开始释放资源");
 
             if (_fsDeviceRead != null)
             {
@@ -162,7 +162,7 @@ namespace UsbHid
             // Is a device currently attached?
             //if (IsDeviceConnected)
             {
-                TmoShare.WriteLog("UsbHidDevice:Disconnect() -> 释放句柄");
+                LogHelper.Log.Info("UsbHidDevice:Disconnect() -> 释放句柄");
                 // Close the readHandle, writeHandle and hidHandle
                 try
                 {
@@ -211,7 +211,7 @@ namespace UsbHid
         {
             if (!_deviceInformation.IsDeviceAttached)
             {
-                TmoShare.WriteLog(":WriteBSToDevice(): -> 发送失败-设备未连接!");
+                LogHelper.Log.Info(":WriteBSToDevice(): -> 发送失败-设备未连接!");
                 return false;
             }
 
@@ -222,7 +222,7 @@ namespace UsbHid
                     int sendCount = (int)Math.Ceiling(writeBS.Length / 8.0);
                     USBQHIDDLL.SetDeviceHandle(_deviceInformation.HidHandle);
                     //int n = USBQHIDDLL.BFindUsb();
-                    //TmoShare.WriteLog("找到设备:" + n);
+                    //LogHelper.Log.Info("找到设备:" + n);
                     for (int i = 0; i < sendCount; i++)
                     {
                         int surplusCount = writeBS.Length - i * 8;
@@ -243,7 +243,7 @@ namespace UsbHid
                     }
                     for (int j = 0; j < data.Length; j++)
                     {
-                        TmoShare.WriteLog("收到字节:" + data[j]);
+                        LogHelper.Log.Info("收到字节:" + data[j]);
                     }
                     if (DataReceived != null) DataReceived(data);
                     return true;
@@ -251,7 +251,7 @@ namespace UsbHid
             }
             catch (Exception ex)
             {
-                TmoShare.WriteLog("DeviceCommunication:WriteBSToDevice(): -> 发生异常: " + ex.Message);
+                LogHelper.Log.Info("DeviceCommunication:WriteBSToDevice(): -> 发生异常: " + ex.Message);
                 return false;
             }
         }
@@ -265,7 +265,7 @@ namespace UsbHid
             }
             catch (Exception ex)
             {
-                TmoShare.WriteLog(ex.Message);
+                LogHelper.Log.Info(ex.Message);
             }
         }
 

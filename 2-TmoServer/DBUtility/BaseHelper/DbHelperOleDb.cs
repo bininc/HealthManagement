@@ -12,6 +12,7 @@ namespace DBUtility.BaseHelper
     public sealed class DbHelperOleDb
     {
         public static string connectionString = PubConstant.ConnectionString;
+
         public DbHelperOleDb()
         {
         }
@@ -31,6 +32,7 @@ namespace DBUtility.BaseHelper
                 return int.Parse(obj.ToString());
             }
         }
+
         public static bool Exists(string strSql)
         {
             object obj = DbHelperSql.GetSingle(strSql);
@@ -43,6 +45,7 @@ namespace DBUtility.BaseHelper
             {
                 cmdresult = int.Parse(obj.ToString());
             }
+
             if (cmdresult == 0)
             {
                 return false;
@@ -52,6 +55,7 @@ namespace DBUtility.BaseHelper
                 return true;
             }
         }
+
         public static bool Exists(string strSql, params OleDbParameter[] cmdParms)
         {
             object obj = GetSingle(strSql, cmdParms);
@@ -64,6 +68,7 @@ namespace DBUtility.BaseHelper
             {
                 cmdresult = int.Parse(obj.ToString());
             }
+
             if (cmdresult == 0)
             {
                 return false;
@@ -76,7 +81,7 @@ namespace DBUtility.BaseHelper
 
         #endregion
 
-        #region  执行简单SQL语句
+        #region 执行简单SQL语句
 
         /// <summary>
         /// 执行SQL语句，返回影响的记录数
@@ -128,6 +133,7 @@ namespace DBUtility.BaseHelper
                             cmd.ExecuteNonQuery();
                         }
                     }
+
                     tx.Commit();
                 }
                 catch (System.Data.OleDb.OleDbException E)
@@ -137,6 +143,7 @@ namespace DBUtility.BaseHelper
                 }
             }
         }
+
         /// <summary>
         /// 执行带一个存储过程参数的的SQL语句。
         /// </summary>
@@ -168,6 +175,7 @@ namespace DBUtility.BaseHelper
                 }
             }
         }
+
         /// <summary>
         /// 向数据库里插入图像格式的字段(和上面情况类似的另一种实例)
         /// </summary>
@@ -259,7 +267,7 @@ namespace DBUtility.BaseHelper
                     }
                     catch (System.Data.OleDb.OleDbException e)
                     {
-                        TmoShare.WriteLog("执行单条数据失败！详细信息：" + e.Message);
+                        LogHelper.Log.Error("执行单条数据失败！详细信息：", e);
                     }
                     finally
                     {
@@ -267,10 +275,11 @@ namespace DBUtility.BaseHelper
                             connection.Close();
                     }
                 }
-
             }
+
             return null;
         }
+
         /// <summary>
         /// 执行查询语句，返回OleDbDataReader
         /// </summary>
@@ -290,8 +299,8 @@ namespace DBUtility.BaseHelper
             {
                 throw new Exception(e.Message);
             }
-
         }
+
         /// <summary>
         /// 执行查询语句，返回DataSet
         /// </summary>
@@ -310,11 +319,13 @@ namespace DBUtility.BaseHelper
                 }
                 catch (System.Data.OleDb.OleDbException ex)
                 {
-                    TmoShare.WriteLog("执行单条数据失败！详细信息：" + ex.Message);
+                    LogHelper.Log.Error("执行单条数据失败！详细信息：" , ex);
                 }
+
                 return ds;
             }
         }
+
         /// <summary>
         /// 执行查询语句，返回DataSet
         /// </summary>
@@ -333,17 +344,17 @@ namespace DBUtility.BaseHelper
                 }
                 catch (Exception ex)
                 {
-                    TmoShare.WriteLog("执行单条数据失败！详细信息：" + ex.Message);
+                    LogHelper.Log.Error("执行单条数据失败！详细信息：" , ex);
                 }
                 finally
                 {
                     if (connection.State == ConnectionState.Open)
                         connection.Close();
                 }
+
                 return ds;
             }
         }
-
 
         #endregion
 
@@ -394,7 +405,7 @@ namespace DBUtility.BaseHelper
                         foreach (DictionaryEntry myDE in SQLStringList)
                         {
                             string cmdText = myDE.Key.ToString();
-                            OleDbParameter[] cmdParms = (OleDbParameter[])myDE.Value;
+                            OleDbParameter[] cmdParms = (OleDbParameter[]) myDE.Value;
                             PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
                             int val = cmd.ExecuteNonQuery();
                             cmd.Parameters.Clear();
@@ -465,7 +476,6 @@ namespace DBUtility.BaseHelper
             {
                 throw new Exception(e.Message);
             }
-
         }
 
         /// <summary>
@@ -491,6 +501,7 @@ namespace DBUtility.BaseHelper
                     {
                         throw new Exception(ex.Message);
                     }
+
                     return ds;
                 }
             }
@@ -505,7 +516,7 @@ namespace DBUtility.BaseHelper
             cmd.CommandText = cmdText;
             if (trans != null)
                 cmd.Transaction = trans;
-            cmd.CommandType = CommandType.Text;//cmdType;
+            cmd.CommandType = CommandType.Text; //cmdType;
             if (cmdParms != null)
             {
                 foreach (OleDbParameter parm in cmdParms)
@@ -514,6 +525,5 @@ namespace DBUtility.BaseHelper
         }
 
         #endregion
-
     }
 }

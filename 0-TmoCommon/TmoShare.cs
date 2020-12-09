@@ -20,6 +20,7 @@ using System.Configuration;
 using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
 using Newtonsoft.Json;
+using static LogHelper;
 
 namespace TmoCommon
 {
@@ -655,7 +656,7 @@ namespace TmoCommon
                         }
                         catch
                         {
-                            TmoShare.WriteLog(@"XML字段格式错误！原因：源数据保存时格式没有验证。其中时间类型默认转变为【当天yyyy-MM-dd 11:58:58】 \n字段名："
+                           LogHelper.Log.Error(@"XML字段格式错误！原因：源数据保存时格式没有验证。其中时间类型默认转变为【当天yyyy-MM-dd 11:58:58】 \n字段名："
                                               + col.ColumnName + " 字段值：" + dr[col.ColumnName] + " 字段类型:" + col.DataType);
                         }
 
@@ -1136,47 +1137,7 @@ namespace TmoCommon
 
         #endregion
 
-        #region 系统日志生成
-
-        /// <summary>
-        /// 写日志
-        /// </summary>
-        /// <param name="ex">异常</param>
-        public static void WriteLog(Exception ex)
-        {
-            LogHelper.WriteError(ex);
-        }
-
-        /// <summary>
-        /// 写日志
-        /// </summary>
-        /// <param name="typename">类型名称</param>
-        /// <param name="ex">异常</param>
-        public static void WriteLog(string typename, Exception ex)
-        {
-            LogHelper.WriteError(ex, typename);
-        }
-
-        /// <summary>
-        /// 写日志
-        /// </summary>
-        /// <param name="errMsg">异常文本</param>
-        public static void WriteLog(string errMsg)
-        {
-            WriteLog("日志", errMsg);
-        }
-
-        /// <summary>
-        /// 写日志文件
-        /// </summary>
-        /// <param name="errMsg">异常文本</param>
-        public static void WriteLog(string typeName, string errMsg)
-        {
-            if (!string.IsNullOrWhiteSpace(typeName))
-                errMsg = typeName + "|" + errMsg;
-            LogHelper.WriteInfo(errMsg);
-        }
-
+        #region 文件相关
         /// <summary>
         /// 写一个文本文件（自动覆盖已有的）
         /// </summary>
@@ -1216,34 +1177,7 @@ namespace TmoCommon
             {
             }
         }
-
-        /// <summary>
-        /// 写TCP日志
-        /// </summary>
-        /// <param name="typeName">类型名称</param>
-        /// <param name="errorMsg">错误消息</param>
-        public static void WriteTcpLog(string typeName, string errMsg)
-        {
-            if (!string.IsNullOrWhiteSpace(typeName))
-                errMsg = "TCP" + typeName + "|" + errMsg;
-            else
-                errMsg = "TCP|" + errMsg;
-            LogHelper.WriteInfo(errMsg);
-        }
-
-        /// <summary>
-        /// 写TCP日志
-        /// </summary>
-        /// <param name="typeName">类型名称</param>
-        /// <param name="ex">异常</param>
-        public static void WriteTcpLog(string typeName, Exception ex)
-        {
-            if (!string.IsNullOrWhiteSpace(typeName))
-                typeName = "TCP" + typeName;
-            else
-                typeName = "TCP";
-            LogHelper.WriteError(ex, typeName);
-        }
+        
 
         #endregion
 
@@ -1833,7 +1767,7 @@ namespace TmoCommon
             catch (Exception ex)
             {
                 if (writeLog)
-                    LogHelper.WriteError(ex, "Json字符串解析错误");
+                    Log.Error("Json字符串解析错误",ex);
             }
 
             return value;
@@ -1852,7 +1786,7 @@ namespace TmoCommon
             }
             catch (Exception ex)
             {
-                LogHelper.WriteError(ex, "Json对象转换错误");
+                Log.Error( "Json对象转换错误",ex);
                 return null;
             }
         }

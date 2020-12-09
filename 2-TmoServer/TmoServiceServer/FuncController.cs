@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Web.Http;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using TmoCommon;
 using TmoCommon.SocketLib;
 
@@ -700,7 +697,7 @@ namespace TmoServiceServer
             }
             catch (Exception ex)
             {
-                TmoShare.WriteLog("InvokeMain错误 funCode:" + funCode, ex);
+                LogHelper.Log.Error("InvokeMain错误 funCode:" + funCode, ex);
                 returnObj = ex.Message;
                 invokeSuccess = false;
             }
@@ -807,9 +804,9 @@ namespace TmoServiceServer
 
             string msg = $"{DateTime.Now.ToFormatTimeStr()} [{getIPAddress()} ] {docName}-> {fun}({(int) fun})-{(isSuccess ? "TRUE" : "ERROR")}-{runSeconds}";
             if (fun != funCode.SaveActionPlan && fun != funCode.InsertAttach && fun != funCode.UpdateAttach)
-                LogHelper.WriteInfo(msg + ":" + sbArg);
+                LogHelper.Log.Info(msg + ":" + sbArg);
             else
-                LogHelper.WriteInfo(msg);
+                LogHelper.Log.Info(msg);
             OnInvokedMain?.Invoke(msg);
         }
 

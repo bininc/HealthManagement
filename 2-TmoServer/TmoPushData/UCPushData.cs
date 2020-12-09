@@ -276,7 +276,7 @@ namespace TmoPushData
                         tmo_interveneManager.Instance.SetInterveneFailed(push_id, string.Format("失败:{1} 重试{0}次", pushcount, err_tip));
                     }
                     strTxt +=$"失败：{rt_code} {err_tip} (重试{pushcount}次)";
-                    TmoShare.WriteLog($"{pushtype}第{pushcount}次发送失败!=>{rt_code} {err_tip}");
+                    LogHelper.Log.Fatal($"{pushtype}第{pushcount}次发送失败!=>{rt_code} {err_tip}");
                 }
                 SendMessage(strTxt);
             }

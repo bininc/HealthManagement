@@ -44,6 +44,7 @@ namespace DBDAL.MySqlDal
                     {
                         int mt_code = TmoDataComm.GetMtCode(dr["mt_name"].ToString());
                         if (mt_code == 0) continue;
+                        if (dr["mt_value"] == null) continue; //跳过空值
                         string mt_valuetype = "mt_valuetext";
                         DataRow[] drsdic = dtdic.Select("mt_code=" + mt_code);
                         if (drsdic.Length > 0)
@@ -64,6 +65,8 @@ namespace DBDAL.MySqlDal
                                     break;
                             }
                         }
+
+                        if (mt_valuetype != "mt_valuetext" && string.IsNullOrWhiteSpace(dr["mt_value"].ToString())) continue; //跳过无效值
 
                         string user_id = dr["user_id"].ToString();
                         string errmsg;
@@ -185,7 +188,7 @@ namespace DBDAL.MySqlDal
             }
             catch (Exception ex)
             {
-                LogHelper.WriteError(ex, "添加监测数据失败");
+                LogHelper.Log.Error("添加监测数据失败",ex);
                 return false;
             }
         }
@@ -195,18 +198,36 @@ namespace DBDAL.MySqlDal
         /// </summary>
         /// <param name="userID"></param>
         /// <returns></returns>
-        public DataSet GetMonitorData(DataTable dtQuery)
+        public DataSet GetMonitorData(DataTable dtQuery, DataSet combine = null)
         {
+            DataTable tb_combine = new DataTable("combine") {Columns = {{"mt_code", typeof(string)}}};
+            if (combine != null && combine.Tables.Contains("combine"))
+                tb_combine = combine.Tables["combine"];
+
             DataRow dr = dtQuery.Rows[0];
-            int NowPage = Convert.ToInt32(dr["now_page"].ToString());
-            int PageSize = Convert.ToInt32(dr["page_size"].ToString());
+            int NowPage = dr.GetDataRowIntValue("now_page", 1);
+            int PageSize = dr.GetDataRowIntValue("page_size");
             string userID = dr["user_id"].ToString();
             string mt_code = dr["mt_code"].ToString();
             string mt_time = dr["mt_time"].ToString();
-            string wherestr = " and a.mt_code='" + mt_code + "'";
-            string sql = "select  MAX(mt_time) as max_time from tmo_monitor where user_id='" + userID +
-                         "' and mt_code='" + mt_code + "'";
-            if (mt_time != "0")
+            if (mt_code == "99")
+            {
+                if (tb_combine.Rows.Count == 0)
+                {
+                    mt_code = "100";
+                    tb_combine.Rows.Add(tb_combine.NewRow());
+                    tb_combine.Rows[0]["mt_code"] = "101";
+                }
+                else
+                {
+                    mt_code = tb_combine.Rows[0]["mt_code"].ToString();
+                    tb_combine.Rows.RemoveAt(0);
+                }
+            }
+
+            string wherestr = " and a.mt_code='" + mt_code + "' ";
+            string sql = "select  MAX(mt_time) as max_time from tmo_monitor where user_id='" + userID + "' and mt_code='" + mt_code + "'";
+            if (mt_time != string.Empty && mt_time != "0")
             {
                 DateTime maxTime = DateTime.Now;
                 object ot = MySQLHelper.QuerySingle(sql);
@@ -224,15 +245,8 @@ namespace DBDAL.MySqlDal
                     time = maxTime.AddMonths(-3).ToString();
                 if (mt_time == "4")
                     time = maxTime.AddYears(-1).ToString();
-                wherestr = "and a.mt_code='" + mt_code + "' ";
                 if (time != "")
                     wherestr += "and  a.mt_time>='" + time + "' ";
-            }
-
-            if (mt_code == "99")
-            {
-                PageSize = 10;
-                wherestr = " and  a.mt_code in('100','101') ";
             }
 
             StringBuilder strSql = new StringBuilder();
@@ -241,47 +255,63 @@ namespace DBDAL.MySqlDal
 
             strSql.Append(
                 "select id,a.mt_code,user_id,mt_valueint,mt_normalrange, mt_valuefloat,mt_valuetext,mt_isnormal,mt_time, mt_timestamp,a.input_time,mt_unit from");
-            strWhere.Append(" tmo_monitor as a LEFT JOIN tmo_dicmonitor as b on  a.mt_code=b.mt_code  where user_id='" +
-                            userID + "'" + wherestr);
+            strWhere.Append(" tmo_monitor as a LEFT JOIN tmo_dicmonitor as b on  a.mt_code=b.mt_code  where user_id='" + userID + "'" + wherestr);
             groupStr.Append(" order by mt_time desc ");
             DataSet dsSel = tmoCommonDal.GetPagingData(strSql, strWhere, groupStr.ToString(), PageSize, NowPage);
+            if (combine != null)
+            {
+                if (combine.Tables.Contains("dt"))
+                    foreach (DataRow row in combine.Tables["dt"].Rows)
+                    {
+                        dsSel.Tables["dt"].Rows.Add(row.ItemArray);
+                    }
+
+                if (combine.Tables.Contains("Count"))
+                    dsSel.Tables["Count"].Rows[0]["totalRowCount"] = dsSel.Tables["Count"].Rows[0].GetDataRowIntValue("totalRowCount") +
+                                                                     combine.Tables["Count"].Rows[0].GetDataRowIntValue("totalRowCount");
+            }
+
+            if (tb_combine.Rows.Count > 0)
+            {
+                dsSel.Tables.Add(tb_combine);
+                dsSel = GetMonitorData(dtQuery, dsSel);
+            }
+
             return dsSel;
         }
 
 
-        public DataSet GetMonitorDataBy(DataTable dtQuery)
+        public DataSet GetMonitorDataBy(DataTable dtQuery, DataSet combine = null)
         {
+            DataTable tb_combine = new DataTable("combine") {Columns = {{"mt_code", typeof(string)}}};
+            if (combine != null && combine.Tables.Contains("combine"))
+                tb_combine = combine.Tables["combine"];
+
             DataRow dr = dtQuery.Rows[0];
-            int NowPage = Convert.ToInt32(dr["now_page"].ToString());
-            int PageSize = Convert.ToInt32(dr["page_size"].ToString());
+            int NowPage = dr.GetDataRowIntValue("now_page", 1);
+            int PageSize = dr.GetDataRowIntValue("page_size");
             string userID = dr["user_id"].ToString();
-            string mt_code = dr["mt_code"].ToString();
+            string mt_code = dr["mt_code"]?.ToString();
             string mt_time = dr["mt_time"].ToString();
-            string wherestr = " and a.mt_code='" + mt_code + "'";
             if (mt_code == "99")
             {
-                wherestr = " and  a.mt_code in('100','101') ";
+                if (tb_combine.Rows.Count == 0)
+                {
+                    mt_code = "100";
+                    tb_combine.Rows.Add(tb_combine.NewRow());
+                    tb_combine.Rows[0]["mt_code"] = "101";
+                }
+                else
+                {
+                    mt_code = tb_combine.Rows[0]["mt_code"].ToString();
+                    tb_combine.Rows.RemoveAt(0);
+                }
             }
 
-            string sql = "select  MAX(mt_time) as max_time from tmo_monitor as a where user_id='" + userID + "'" +
-                         wherestr;
-            if (mt_time != "0")
+            string wherestr = " and a.mt_code='" + mt_code + "'";
+
+            if (!string.IsNullOrWhiteSpace(mt_time))
             {
-                //DateTime maxTime = DateTime.Now;
-                //object ot = MySQLHelper.QuerySingle(sql);
-                //if (ot != null)
-                //{
-                //    maxTime = Convert.ToDateTime(ot);
-                //}
-                //string time = "";
-                //if (mt_time == "1")
-                //    time = maxTime.AddDays(-3).ToString();
-                //if (mt_time == "2")
-                //    time = maxTime.AddMonths(-1).ToString();
-                //if (mt_time == "3")
-                //    time = maxTime.AddMonths(-3).ToString();
-                //if (mt_time == "4")
-                //    time = maxTime.AddYears(-1).ToString();
                 wherestr += " " + mt_time;
             }
 
@@ -292,11 +322,29 @@ namespace DBDAL.MySqlDal
 
             strSql.Append(
                 "select id,a.mt_code,user_id,mt_valueint,mt_normalrange, mt_valuefloat,mt_valuetext,mt_isnormal,mt_time, mt_timestamp,a.input_time,mt_unit from");
-            strWhere.Append(" tmo_monitor as a LEFT JOIN tmo_dicmonitor as b on  a.mt_code=b.mt_code  where user_id='" +
-                            userID + "'" + wherestr);
+            strWhere.Append(" tmo_monitor as a LEFT JOIN tmo_dicmonitor as b on  a.mt_code=b.mt_code  where user_id='" + userID + "'" + wherestr);
             groupStr.Append(" order by mt_time desc ");
             PageSize = 1000;
             DataSet dsSel = tmoCommonDal.GetPagingData(strSql, strWhere, groupStr.ToString(), PageSize, NowPage);
+            if (combine != null)
+            {
+                if (combine.Tables.Contains("dt"))
+                    foreach (DataRow row in combine.Tables["dt"].Rows)
+                    {
+                        dsSel.Tables["dt"].Rows.Add(row.ItemArray);
+                    }
+
+                if (combine.Tables.Contains("Count"))
+                    dsSel.Tables["Count"].Rows[0]["totalRowCount"] = dsSel.Tables["Count"].Rows[0].GetDataRowIntValue("totalRowCount") +
+                                                                     combine.Tables["Count"].Rows[0].GetDataRowIntValue("totalRowCount");
+            }
+
+            if (tb_combine.Rows.Count > 0)
+            {
+                dsSel.Tables.Add(tb_combine);
+                dsSel = GetMonitorDataBy(dtQuery, dsSel);
+            }
+
             return dsSel;
         }
 
@@ -317,7 +365,7 @@ namespace DBDAL.MySqlDal
         public DataSet GetMonitorData24(DataTable dtQuery)
         {
             DataRow dr = dtQuery.Rows[0];
-            int nowPage = Convert.ToInt32(dr["now_page"].ToString());
+            int nowPage = dr.GetDataRowIntValue("now_page", 1);
             const int pageSize = 1;
             string userID = dr["user_id"].ToString();
             string mtCode = dr["mt_code"].ToString();

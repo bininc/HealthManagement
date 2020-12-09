@@ -97,7 +97,7 @@ namespace TmoCommon.SocketLib
             {
                 if (ShowListMsg != null)
                     ShowListMsg(null, string.Format("服务器【{0}】启动失败", ip), DateTime.Now);
-                TmoShare.WriteTcpLog(string.Format("服务器【{0}】启动失败", ip), ex);
+                LogHelper.Log.Error(string.Format("服务器【{0}】启动失败", ip), ex);
             }
             return null;
         }
@@ -119,7 +119,7 @@ namespace TmoCommon.SocketLib
             {
                 if (ShowListMsg != null)
                     ShowListMsg(null, string.Format("服务器【{0}:{1}】启动失败", ip, port), DateTime.Now);
-                TmoShare.WriteTcpLog(string.Format("服务器【{0}:{1}】启动失败", ip, port), ex);
+                LogHelper.Log.Error(string.Format("服务器【{0}:{1}】启动失败", ip, port), ex);
             }
             return null;
         }

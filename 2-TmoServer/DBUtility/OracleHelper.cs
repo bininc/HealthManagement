@@ -149,7 +149,7 @@ namespace DBUtility.Oracle
                     }
                     catch (OracleException ex)
                     {
-                        TmoShare.WriteLog("执行单条数据失败！详细信息：" + ex.Message);
+                        LogHelper.Log.Error("执行单条数据失败！详细信息：" + ex.Message);
                     }
                     finally
                     {
@@ -199,7 +199,7 @@ namespace DBUtility.Oracle
             }
             catch (Exception ex)
             {
-                TmoShare.WriteLog("执行单条语句错误" + ex.Message);
+                LogHelper.Log.Error("执行单条语句错误" + ex.Message);
                 return 0;
             }
             finally
@@ -381,7 +381,7 @@ namespace DBUtility.Oracle
                 }
                 catch (System.Data.OracleClient.OracleException ex)
                 {
-                    TmoShare.WriteLog("执行数据报错,原因：" + ex.Message);
+                    LogHelper.Log.Error("执行数据报错,原因：" + ex.Message);
                     tx.Rollback();
                     return 0;
                 }
@@ -413,7 +413,7 @@ namespace DBUtility.Oracle
                 }
                 catch (System.Data.OracleClient.OracleException ex)
                 {
-                    TmoShare.WriteLog("执行数据报错,原因：" + ex.Message);
+                    LogHelper.Log.Error("执行数据报错,原因：" + ex.Message);
                     return 0;
                 }
                 finally
@@ -457,7 +457,7 @@ namespace DBUtility.Oracle
                     }
                     catch (Exception ex)
                     {
-                        TmoShare.WriteLog("执行事务数据报错,原因：" + ex.Message);
+                        LogHelper.Log.Error("执行事务数据报错,原因：" + ex.Message);
                         trans.Rollback();
                         return 0;
                     }
@@ -537,7 +537,7 @@ namespace DBUtility.Oracle
                 }
                 catch (OracleException ex)
                 {
-                    TmoShare.WriteLog(ex.Message);
+                    LogHelper.Log.Error(ex.Message);
                     throw new Exception(ex.Message);
 
                 }
@@ -579,7 +579,7 @@ namespace DBUtility.Oracle
                     }
                     catch (OracleException ex)
                     {
-                        TmoShare.WriteLog("执行单条数据失败！详细信息：" + ex.Message);
+                        LogHelper.Log.Error("执行单条数据失败！详细信息：" + ex.Message);
                     }
                     finally
                     {
@@ -623,7 +623,7 @@ namespace DBUtility.Oracle
                     catch (OracleException e)
                     {
 
-                        TmoShare.WriteLog("执行单条数据报错,原因：" + e.Message);
+                        LogHelper.Log.Error("执行单条数据报错,原因：" + e.Message);
                         return null;
                     }
                     finally
@@ -703,7 +703,7 @@ namespace DBUtility.Oracle
                             }
                             catch (Exception es)
                             {
-                                TmoShare.WriteLog("执行单条数据报错,原因：" + es.Message);
+                                LogHelper.Log.Error("执行单条数据报错,原因：" + es.Message);
                                 throw new Exception();
                             }
                         }
@@ -714,7 +714,7 @@ namespace DBUtility.Oracle
                 catch (Exception ex)
                 {
                     //Trace.WriteLine("事务提交报错" + "原因：" + ex.Message);
-                    TmoShare.WriteLog("事务提交报错,原因：" + ex.Message);
+                    LogHelper.Log.Error("事务提交报错,原因：" + ex.Message);
                     tx.Rollback();
                     return 0;
                 }

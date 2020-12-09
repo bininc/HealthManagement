@@ -311,7 +311,7 @@ namespace TmoServer
                     }
                     catch (Exception ex)
                     {
-                        TmoShare.WriteLog("干预任务解析失败！", ex);
+                        LogHelper.Log.Error("干预任务解析失败！", ex);
                         tmo_interveneManager.Instance.SetInterveneFailed(inte_id, "干预任务解析失败:" + ex.Message);
                     }
                 }
@@ -754,7 +754,7 @@ namespace TmoServer
             }
             catch (Exception ex)
             {
-                LogHelper.WriteError(ex, "临时表保存数据到监测表错误");
+                LogHelper.Log.Error("临时表保存数据到监测表错误",ex);
             }
             finally
             {

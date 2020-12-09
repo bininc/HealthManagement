@@ -59,11 +59,11 @@ namespace TmoCommon
                                         strRecode = "err_null";
                                         break;
                                     case "45009":
-                                        TmoShare.WriteLog("调用WXGetAccessToken当天过于频繁！ 详细信息：err_wx_45009");
+                                        LogHelper.Log.Error("调用WXGetAccessToken当天过于频繁！ 详细信息：err_wx_45009");
                                         strRecode = "err_wx_45009";
                                         break;
                                     case "40013":
-                                        TmoShare.WriteLog("调用WXGetAccessToken当天过于频繁！ 详细信息：err_wx_45009");
+                                        LogHelper.Log.Error("调用WXGetAccessToken当天过于频繁！ 详细信息：err_wx_45009");
                                         strRecode = "err_wx_45009";
                                         break;
                                     //{"errcode":40013,"errmsg":"invalid appid"}
@@ -100,7 +100,7 @@ namespace TmoCommon
                         }
                         catch (Exception ex)
                         {
-                            TmoShare.WriteLog("调用WXGetAccessToken接口发生未知错误！ 详细信息：" + ex.Message);
+                            LogHelper.Log.Error("调用WXGetAccessToken接口发生未知错误！ 详细信息：" , ex);
                             strRecode = "err_002";
                         }
                     }
@@ -108,13 +108,13 @@ namespace TmoCommon
                 else
                 {
                     strRecode = "err_wx_003";
-                    TmoShare.WriteLog("调用WXGetAccessToken未传入医生编码！");
+                    LogHelper.Log.Error("调用WXGetAccessToken未传入医生编码！");
                 }
             }
             catch (Exception e)
             {
                 strRecode = "err_wx_001";
-                TmoShare.WriteLog("当前医生" + infoValue[0] + "获取列表失败！ 原因：err_cdp_001(未知异常失败)" + e.Message);
+                LogHelper.Log.Error("当前医生" + infoValue[0] + "获取列表失败！ 原因：err_cdp_001(未知异常失败)" , e);
             }
             strRecode = TmoShare.WX_ACCESS_TOKEN;
             return strRecode;
@@ -150,294 +150,6 @@ namespace TmoCommon
             return strRecode;
         }
 
-        /// <summary>
-        /// 微信消息保存入库
-        /// </summary>
-        /// <param name="infoValue"></param>
-        /// <returns></returns>
-        //public static string WXMsgToDB(object[] infoValue)
-        //{
-        //    string resStr = "";
-        //    try
-        //    {
-        //        if (infoValue[0] != null && infoValue[0].ToString() != "")
-        //        {
-        //            if (WellDBBLL.well_weixin_contentManager.Instance.AddWeixinMsg(infoValue[0].ToString()))
-        //            {
-        //                #region 医生Tcp消息推送
-        //                DataSet dsXml = TmoShare.getDataSetfromXML(infoValue[0].ToString());
-        //                string token_open_id = dsXml.Tables[0].Rows[0]["token_open_id"].ToString();
-
-        //                bool blDN = AddDocNotifycation(dsXml);
-        //                #endregion
-        //                DataSet ds = WMFEntityManager.Instance.GetEntityInfoByPKLiteWhere("well_weixin_content", "token_open_id", token_open_id, "create_time,-*",
-        //                    "(is_answer=1 and create_time >'" + DateTime.Now.AddMinutes(-3).ToString("yyyy-MM-dd HH:mm:ss") + "' and create_time <'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
-        //                    + "') or "
-        //                    + "(is_answer=2 and create_time >'" + DateTime.Now.AddMinutes(-1).ToString("yyyy-MM-dd HH:mm:ss") + "' and create_time <'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')");
-
-        //                if (TmoShare.DataSetEmpty(ds))
-        //                {
-        //                    resStr = "msg_sucess";
-        //                }
-        //                else
-        //                {
-        //                    resStr = "msg_sucess_rep";//如果3分钟内医生回复过本人消息，则不重复提醒。
-        //                }
-
-        //            }
-        //            else
-        //            {
-        //                resStr = "error";
-        //            }
-        //        }
-        //        else
-        //        {
-        //            resStr = "error";
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        TmoShare.WriteWXLog("微信消息相应", ex.Message);
-        //        resStr = "error";
-        //    }
-
-        //    return resStr;
-        //}
-
-        //public static bool AddDocNotifycation(DataSet dsXml)
-        //{
-        //    #region 数据格式
-        //    //            string WeiMsgStr = TmoShare.XML_TITLE +
-        //    //  @"<wellweixincontent>
-        //    //<well_weixin_content>
-        //    //<doc_code></doc_code>
-        //    //<token_open_id></token_open_id>
-        //    //<message_content></message_content>
-        //    //<create_time></create_time>
-        //    //<input_time></input_time>
-        //    //<is_look></is_look>
-        //    //<is_answer></is_answer>
-        //    //<is_fousc></is_fousc>
-        //    //<wm_id></wm_id>
-        //    //<is_del></is_del>
-        //    //<r_mark></r_mark>
-        //    //<wx_type></wx_type>
-        //    //<media_id></media_id>
-        //    //<MsgId></MsgId>
-        //    //<format></format>
-        //    //</well_weixin_content>
-        //    //</wellweixincontent>";
-        //    #endregion
-        //    //提问者编号
-        //    string push_id = TmoShare.GetGuidString();
-        //    string token_open_id = dsXml.Tables[0].Rows[0]["token_open_id"].ToString();
-        //    string user_code = "";
-        //    DataSet dsToken = WMFEntityManager.Instance.GetEntityInfoByPKLite("well_reg_userinfo_token", "reg_login_token", token_open_id, "");
-        //    if (TmoShare.DataSetIsNotEmpty(dsToken))
-        //    {
-        //        user_code = dsToken.Tables[0].Rows[0]["user_code"].ToString();
-        //    }
-
-        //    #region 寻找医生
-        //    string doc_code = "admin";
-        //    if (dsXml.Tables[0].Columns.Contains("doc_code") && dsXml.Tables[0].Rows[0]["doc_code"].ToString().Trim() != "")
-        //    {
-        //        doc_code = dsXml.Tables[0].Rows[0]["doc_code"].ToString();
-        //    }
-        //    else
-        //    {
-        //        DataSet ds = WMFEntityManager.Instance.GetEntityInfoByPKLite("well_reg_userinfo",
-        //            "user_code", user_code, "doc_code,-*");
-        //        if (TmoShare.DataSetIsNotEmpty(ds))
-        //        {
-        //            doc_code = ds.Tables[0].Rows[0]["doc_code"].ToString();
-        //        }
-        //        else
-        //        {
-        //            doc_code = "admin";
-        //        }
-        //    }
-        //    #endregion
-
-        //    string push_type = "1";//推送类型 1 用户对医生 2 医生对医生
-        //    string to_doc_id = doc_code;
-        //    string from_user_id = user_code;
-        //    string content_type = "1";
-        //    string content_title = "";
-        //    string content_value = dsXml.Tables[0].Rows[0]["message_content"].ToString();
-        //    string content_url = "";
-        //    string content_key = "";
-        //    string push_status = "1"; //推送状态 1 未推送  2 已推送 3 推送中
-        //    string push_source = "6";
-        //    string timestamp = dsXml.Tables[0].Rows[0]["timestamp"].ToString();
-
-
-        //    string remark = string.Format("msg_r|token_open_id:{0}|to_doc_id:{1}|from_user_id:{2}|timestamp:{3}",
-        //        token_open_id, to_doc_id, user_code, timestamp);
-        //    bool blNotify = WMFEntityManager.Instance.SubmitEntityInfoByDictionaryLite("well_noitfycation_doc",
-        //           new Dictionary<string, string>() { 
-        //                        { "push_id",  push_id },
-        //                        { "push_type", push_type }, 
-        //                        { "push_source", push_source }, 
-        //                        { "to_doc_id", to_doc_id }, 
-        //                        { "from_user_id", from_user_id }, 
-        //                        { "content_type", content_type }, 
-        //                        { "content_title", content_title },
-        //                        { "content_value",content_value },
-        //                        { "content_url",content_url },
-        //                        { "content_key",content_key },
-        //                        { "push_status",push_status },
-        //                        { "push_count","0" },
-        //                        { "push_time",TmoShare.DateTimeNow() },
-        //                        { "doc_code",doc_code },
-        //                        { "remark",remark }
-        //                    },
-        //                    "push_id", push_id);
-        //    return blNotify;
-        //}
-
-        /// <summary>
-        /// 删除消息
-        /// </summary>
-        /// <param name="infoValue"></param>
-        /// <returns></returns>
-        //public static string DeleWXMsg(object[] infoValue)
-        //{
-        //    if (infoValue[0] != null && infoValue[0].ToString() != "")
-        //    {
-        //        string aw_id = "";
-        //        if (infoValue[1] != null && !string.IsNullOrEmpty(infoValue[1].ToString()))
-        //        {
-        //            aw_id = infoValue[1].ToString();
-        //        }
-
-        //        if (WellDBBLL.well_weixin_contentManager.Instance.DeleWXMsg(infoValue[0].ToString(), aw_id))
-        //        {
-        //            return "success";
-        //        }
-        //        else
-        //        {
-        //            return "error";
-        //        }
-        //    }
-        //    return "error";
-        //}
-        /// <summary>
-        /// 更新消息
-        /// </summary>
-        /// <param name="infoValue"></param>
-        /// <returns></returns>
-        //public static string UpdateWXMsg(object[] infoValue)
-        //{
-        //    if (infoValue[0] != null && infoValue[0].ToString() != "")
-        //    {
-        //        DataSet ds = TmoShare.getDataSetfromXML(infoValue[0].ToString());
-        //        if (WellDBBLL.well_weixin_contentManager.Instance.UpdateWXMsg(ds))
-        //        {
-        //            return "success";
-        //        }
-        //        else
-        //        {
-        //            return "error";
-        //        }
-        //    }
-        //    return "error";
-        //}
-        //public static string GetWxms(object[] infoValue)
-        //{
-        //    if (infoValue[0] != null && infoValue[0].ToString() != "")
-        //    {
-        //        DataSet ds = WellDBBLL.well_weixin_contentManager.Instance.GetWxms(infoValue[0].ToString());
-        //        if (ds != null && ds.Tables.Count > 0 && ds.Tables[0] != null)
-        //        {
-        //            return TmoShare._GetXml(ds);
-        //        }
-        //        else
-        //        {
-        //            return "error";
-        //        }
-        //    }
-        //    return "error";
-        //}
-        //public static string GetWxmsByWhere(object[] infoValue)
-        //{
-        //    if (infoValue[0] != null && infoValue[0].ToString() != "")
-        //    {
-        //        DataSet ds = WellDBBLL.well_weixin_contentManager.Instance.GetWxmsByWhere(infoValue[0].ToString());
-        //        if (ds != null && ds.Tables.Count > 0 && ds.Tables[0] != null)
-        //        {
-        //            return TmoShare._GetXml(ds);
-        //        }
-        //        else
-        //        {
-        //            return "error";
-        //        }
-        //    }
-        //    return "error";
-        //}
-        /// <summary>
-        /// 获取分页数据信息
-        /// </summary>
-        /// <param name="infoValue"></param>
-        /// <returns></returns>
-        //public static string GetWxmBypage(object[] infoValue)
-        //{
-        //    if (infoValue[0] != null && infoValue[0].ToString() != "")
-        //    {
-        //        DataSet ds = WellDBBLL.well_weixin_contentManager.Instance.GetWxmBypage(infoValue[0].ToString());
-        //        if (ds != null && ds.Tables.Count > 0)
-        //        {
-        //            return TmoShare._GetXml(ds);
-        //        }
-        //        else
-        //        {
-        //            return "error";
-        //        }
-        //    }
-        //    return "error";
-        //}
-        //public static string DownloadImg(object[] infoValue)
-        //{
-        //    if (infoValue[0] != null && infoValue[0].ToString() != "" && infoValue[1] != null)
-        //    {
-
-        //        return WellDBBLL.well_weixin_contentManager.Instance.DownloadImg(infoValue[0].ToString(), infoValue[1].ToString());
-
-        //    }
-        //    return "error";
-        //}
-        //public static string GetWx(object[] infoValue)
-        //{
-        //    if (infoValue[0] != null && infoValue[0].ToString() != "")
-        //    {
-        //        DataSet ds = WellDBBLL.well_weixin_contentManager.Instance.GetWx(infoValue[0].ToString());
-        //        if (ds != null && ds.Tables.Count > 0)
-        //        {
-        //            return TmoShare._GetXml(ds);
-        //        }
-        //        else
-        //        {
-        //            return "error";
-        //        }
-        //    }
-        //    return "error";
-        //}
-        //public static string GetWAsBypage(object[] infoValue)
-        //{
-        //    if (infoValue[0] != null && infoValue[0].ToString() != "")
-        //    {
-        //        DataSet ds = WellDBBLL.well_weixin_contentManager.Instance.GetWAsBypage(infoValue[0].ToString());
-        //        if (ds != null && ds.Tables.Count > 0)
-        //        {
-        //            return TmoShare._GetXml(ds);
-        //        }
-        //        else
-        //        {
-        //            return "error";
-        //        }
-        //    }
-        //    return "error";
-        //}
         /// <summary>
         /// 发送微信消息
         /// </summary>
@@ -642,14 +354,14 @@ namespace TmoCommon
                 else
                 {
                     strRecode = "未传入医生编码！";
-                    TmoShare.WriteLog(strRecode);
+                    LogHelper.Log.Error(strRecode);
                     return "err_wx_002";
                 }
             }
             catch (Exception e)
             {
                 strRecode = "当前医生" + infoValue[0] + "获取列表失败！ 原因：err_wx_001(未知异常失败)";
-                TmoShare.WriteLog(strRecode + e.Message);
+                LogHelper.Log.Error(strRecode , e);
                 return "err_wx_001";
             }
             return "";
@@ -668,7 +380,7 @@ namespace TmoCommon
             {
                 if (string.IsNullOrEmpty(infoValue[0].ToString()))  //参数缺少医生编号
                 {
-                    TmoShare.WriteLog(string.Format(strRecode, "err_wx_002(参数中未找到医生编号)", "null"));
+                    LogHelper.Log.Error(string.Format(strRecode, "err_wx_002(参数中未找到医生编号)", "null"));
                     return "err_wx_002";
                 }
                 string doc_code = infoValue[0].ToString();          //取得参数中的值
@@ -726,7 +438,7 @@ namespace TmoCommon
                 string AccessToken = WeChatHelper.WXGetAccessToken(new object[] { "admin" }, true);
                 if (string.IsNullOrEmpty(AccessToken) || AccessToken.StartsWith("err"))
                 {
-                    TmoShare.WriteLog(string.Format(strRecode, "err_wx_accessToken(获取accessToken失败:(" + AccessToken + "))", doc_code));
+                    LogHelper.Log.Error(string.Format(strRecode, "err_wx_accessToken(获取accessToken失败:(" + AccessToken + "))", doc_code));
                     return "err_wx_accessToken";
                 }
                 string url = "https://api.weixin.qq.com/cgi-bin/template/api_set_industry?access_token=" + AccessToken;
@@ -777,7 +489,7 @@ namespace TmoCommon
             }
             catch (Exception e)
             {
-                TmoShare.WriteLog(string.Format(strRecode, "err_wx_001(未知异常失败)", infoValue[0]) + e.Message);
+                LogHelper.Log.Error(string.Format(strRecode, "err_wx_001(未知异常失败)", infoValue[0]) , e);
                 return "err_wx_001";
             }
         }
@@ -794,7 +506,7 @@ namespace TmoCommon
             {
                 if (string.IsNullOrEmpty(infoValue[0].ToString()))  //参数缺少医生编号
                 {
-                    TmoShare.WriteLog(string.Format(strRecode, "err_wx_002(参数中未找到医生编号)", "null"));
+                    LogHelper.Log.Error(string.Format(strRecode, "err_wx_002(参数中未找到医生编号)", "null"));
                     return "err_wx_002";
                 }
                 string doc_code = infoValue[0].ToString();          //取得参数中的值
@@ -805,7 +517,7 @@ namespace TmoCommon
                 string AccessToken = WeChatHelper.WXGetAccessToken(new object[] { "admin" }, true);
                 if (string.IsNullOrEmpty(AccessToken) || AccessToken.StartsWith("err"))
                 {
-                    TmoShare.WriteLog(string.Format(strRecode, "err_wx_accessToken(获取accessToken失败:(" + AccessToken + "))", doc_code));
+                    LogHelper.Log.Error(string.Format(strRecode, "err_wx_accessToken(获取accessToken失败:(" + AccessToken + "))", doc_code));
                     return "err_wx_accessToken";
                 }
                 string url = "https://api.weixin.qq.com/cgi-bin/template/api_add_template?access_token=" + AccessToken;
@@ -890,7 +602,7 @@ namespace TmoCommon
             }
             catch (Exception e)
             {
-                TmoShare.WriteLog(string.Format(strRecode, "err_wx_001(未知异常失败)", infoValue[0]) + e.Message);
+                LogHelper.Log.Error(string.Format(strRecode, "err_wx_001(未知异常失败)", infoValue[0]) , e);
                 return "err_wx_001";
             }
         }
@@ -942,7 +654,7 @@ namespace TmoCommon
             {
                 if (string.IsNullOrEmpty(infoValue[0].ToString()))  //参数缺少医生编号
                 {
-                    TmoShare.WriteLog(string.Format(strRecode, "err_wx_002(参数中未找到医生编号)", "null"));
+                    LogHelper.Log.Error(string.Format(strRecode, "err_wx_002(参数中未找到医生编号)", "null"));
                     return "err_wx_002";
                 }
 
@@ -959,7 +671,7 @@ namespace TmoCommon
                 string AccessToken = WeChatHelper.WXGetAccessToken(new object[] { "admin" }, true);
                 if (string.IsNullOrEmpty(AccessToken) || AccessToken.StartsWith("err"))
                 {
-                    TmoShare.WriteLog(string.Format(strRecode, "err_wx_accessToken(获取accessToken失败:(" + AccessToken + "))", doc_code));
+                    LogHelper.Log.Error(string.Format(strRecode, "err_wx_accessToken(获取accessToken失败:(" + AccessToken + "))", doc_code));
                     return "err_wx_accessToken";
                 }
                 string uri = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=" + AccessToken;
@@ -995,7 +707,7 @@ namespace TmoCommon
                     {
                         //if (!AddWeiXinPushHistory(openid, data))
                         //{
-                        //   TmoShare.WriteLog("WeiXin", "创建微信模板消息历史记录失败");
+                        //   LogHelper.Log.Error("WeiXin", "创建微信模板消息历史记录失败");
                         //    return "err_success_创建微信模板消息历史记录失败";
                         //}
                         if (jsNodes.ContainsKey("msgid"))
@@ -1026,83 +738,11 @@ namespace TmoCommon
             }
             catch (Exception e)
             {
-                TmoShare.WriteLog(string.Format(strRecode, "err_wx_001(未知异常失败)", infoValue[0]) + e.Message);
+                LogHelper.Log.Error(string.Format(strRecode, "err_wx_001(未知异常失败)", infoValue[0]) , e);
                 return "err_wx_001";
             }
         }
-
-//        private static bool AddWeiXinPushHistory(string openID, string content)
-//        {
-//            #region question 表 添加数据
-//            string wm_id = "";
-//            #region xml串
-//            string WeiMsgStr = TmoShare.XML_TITLE +
-//                                @"<tmoweixincontent>
-//                                    <tmo_weixin_content>
-//                                        <doc_code></doc_code>
-//                                        <token_open_id></token_open_id>
-//                                        <message_content></message_content>
-//                                        <create_time></create_time>
-//                                        <input_time></input_time>
-//                                        <is_look></is_look>
-//                                        <is_answer></is_answer>
-//                                        <is_fousc></is_fousc>
-//                                        <wm_id></wm_id>
-//                                        <is_del></is_del>
-//                                        <r_mark></r_mark>
-//                                        <wx_type></wx_type>
-//                                        <media_id></media_id>
-//                                        <MsgId></MsgId>
-//                                        <format></format>
-//                                    </tmo_weixin_content>
-//                                </tmoweixincontent>";
-
-//            #endregion
-//            DataSet dtWeiXinMsg = TmoShare.getDataSetFromXML(WeiMsgStr, true);
-//            DataRow newRow = dtWeiXinMsg.Tables[0].NewRow();
-//            newRow["token_open_id"] = openID;
-//            newRow["message_content"] = "用户测量结果通知";
-//            newRow["create_time"] = System.DateTime.Now;
-//            wm_id = Guid.NewGuid().ToString("N");
-//            newRow["wm_id"] = wm_id;
-//            newRow["MsgId"] = Guid.NewGuid().ToString("N");
-//            dtWeiXinMsg.Tables[0].Rows.InsertAt(newRow, 0);
-//            dtWeiXinMsg.AcceptChanges();
-//            string resultXml = TmoShare.getXMLFromDataSet(dtWeiXinMsg);
-
-
-//            bool boolQuestion = tmo_weixin_contentManager.Instance.PushAddWxMsg(resultXml);
-//            if (boolQuestion)
-//            {
-//                #region answer 表添加数据
-//                string SUBMIT_XML = TmoShare.XML_TITLE + @"
-//                                        <well_data>
-//                                            <well_weixin_answer>
-//                                                <wm_id>" + wm_id + @"</wm_id>
-//                                                <content>" + content + @"</content>
-//                                                <answer_code>admin</answer_code>
-//                                                <token_open_id>" + openID + @"</token_open_id>
-//                                                <awm_id>1</awm_id>
-//                                                <r_mark></r_mark>
-//                                            </well_weixin_answer>
-//                                        </well_data>";
-//                string boolAnswer = tmo_weixin_answerManager.Instance.PushAddWeiXinAnswer(SUBMIT_XML);
-//                if (boolAnswer == "success")
-//                {
-//                    return true;
-//                }
-//                else
-//                {
-//                    return false;
-//                }
-//                #endregion
-//            }
-//            else
-//            {
-//                return false;
-//            }
-//            #endregion
-//        }
+        
 
     }
 }

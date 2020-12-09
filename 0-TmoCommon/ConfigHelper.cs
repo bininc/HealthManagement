@@ -95,9 +95,9 @@ namespace TmoCommon
                 config.Save(ConfigurationSaveMode.Modified);
                 ConfigurationManager.RefreshSection("appSettings");//重新加载新的配置文件 
             }
-            catch
+            catch(Exception ex)
             {
-                TmoShare.WriteLog("修改指定程序配置文件,程序配置文件路径：" + configPath + ",节点：" + cname + " ,值：" + cvalue);
+                LogHelper.Log.Error("修改指定程序配置文件,程序配置文件路径：" + configPath + ",节点：" + cname + " ,值：" + cvalue,ex);
             }
 
         }
@@ -215,9 +215,9 @@ namespace TmoCommon
                 {
                     result = int.Parse(cfgVal);
                 }
-                catch
+                catch(Exception ex)
                 {
-                    TmoShare.WriteLog("读取配置文件int类型失败 节点：" + key + " ,值：" + cfgVal);
+                    LogHelper.Log.Error("读取配置文件int类型失败 节点：" + key + " ,值：" + cfgVal,ex);
                 }
             }
             else

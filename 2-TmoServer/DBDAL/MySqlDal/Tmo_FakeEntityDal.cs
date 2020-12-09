@@ -65,6 +65,7 @@ namespace DBDAL.MySqlDal
                 if (!string.IsNullOrWhiteSpace(where))
                     sbSql.AppendFormat(" where {0}", where);
             }
+
             if (!string.IsNullOrWhiteSpace(order))
                 sbSql.AppendFormat(" order by {0}", order);
             if (rowStart != "-1" && rowEnd != "-1")
@@ -86,7 +87,7 @@ namespace DBDAL.MySqlDal
         public bool SubmitData(string submitdataEntityParams)
         {
             List<string> list = StringPlus.GetStrArray(submitdataEntityParams, "_;_");
-            DBOperateType opType = (DBOperateType)Convert.ToInt32(list[0]);
+            DBOperateType opType = (DBOperateType) Convert.ToInt32(list[0]);
             string entityName = list[1];
             string pkName = list[2];
             string pkValue = list[3];
@@ -127,6 +128,7 @@ namespace DBDAL.MySqlDal
                         sbsql.Append(",");
                     i++;
                 }
+
                 sbsql.Append(") values(");
                 i = 0;
                 foreach (string val in dicParams.Values)
@@ -136,6 +138,7 @@ namespace DBDAL.MySqlDal
                         sbsql.Append(",");
                     i++;
                 }
+
                 sbsql.Append(");");
             }
             else if (opType == DBOperateType.Update)
@@ -149,6 +152,7 @@ namespace DBDAL.MySqlDal
                         sbsql.Append(",");
                     i++;
                 }
+
                 sbsql.AppendFormat(" where {0}='{1}';", pkName, pkValue);
             }
             else if (opType == DBOperateType.Delete)
@@ -162,6 +166,7 @@ namespace DBDAL.MySqlDal
                 if (entityName.ToLower() == "tmo_monitor_devicebind")
                     MemoryCacheHelper.ClearCache("tmo_monitor_devicebind");
             }
+
             return count > 0;
         }
 
@@ -192,10 +197,17 @@ namespace DBDAL.MySqlDal
                     string value = string.Empty;
                     if (keyValuePair.Value != null)
                         value = keyValuePair.Value.ToString();
+                    if (keyValuePair.Key.IndexOf("time", StringComparison.OrdinalIgnoreCase) > 0 ||
+                        keyValuePair.Key.IndexOf("date", StringComparison.OrdinalIgnoreCase) > 0)
+                    {
+                        if (value.Contains("午") || value.Contains("星期") || value.Contains("周")|| !value.Take(4).All(char.IsNumber))
+                            value = DateTimeHelper.ToDateTime(value).ToFormatDateTimeStr();
+                    }
+
                     dicParams.Add(keyValuePair.Key, value);
                 }
             }
-
+            
             DataTable dtStruct = GetTableStruct(entityName);
             bool falseDel = dtStruct.Columns.Contains("is_del");
             bool autoInputTime = dtStruct.Columns.Contains("input_time") && opType == DBOperateType.Add;
@@ -225,6 +237,7 @@ namespace DBDAL.MySqlDal
                         sbsql.Append(",");
                     i++;
                 }
+
                 sbsql.Append(") values(");
                 i = 0;
                 foreach (string val in dicParams.Values)
@@ -234,6 +247,7 @@ namespace DBDAL.MySqlDal
                         sbsql.Append(",");
                     i++;
                 }
+
                 sbsql.Append(");");
             }
             else if (opType == DBOperateType.Update)
@@ -247,6 +261,7 @@ namespace DBDAL.MySqlDal
                         sbsql.Append(",");
                     i++;
                 }
+
                 sbsql.AppendFormat(" where {0}='{1}';", pkName, pkValue);
             }
             else if (opType == DBOperateType.Delete)
@@ -260,6 +275,7 @@ namespace DBDAL.MySqlDal
                 if (entityName.ToLower() == "tmo_monitor_devicebind")
                     MemoryCacheHelper.ClearCache("tmo_monitor_devicebind");
             }
+
             return count > 0;
         }
 
@@ -306,11 +322,14 @@ namespace DBDAL.MySqlDal
             int count = Convert.ToInt32(objCount);
             if (count < 1) return null;
             DataTable dtCount = new DataTable("tmo_count");
-            dtCount.Columns.AddRange(new DataColumn[] { new DataColumn("count"), new DataColumn("pageCount"),
-                                                        new DataColumn("pageIndex"), new DataColumn("pageSize") });
+            dtCount.Columns.AddRange(new DataColumn[]
+            {
+                new DataColumn("count"), new DataColumn("pageCount"),
+                new DataColumn("pageIndex"), new DataColumn("pageSize")
+            });
             DataRow drCount = dtCount.NewRow();
             drCount["count"] = count;
-            int pageCount = pageSize != -1 ? (int)Math.Ceiling((double)count / pageSize) : 1;
+            int pageCount = pageSize != -1 ? (int) Math.Ceiling((double) count / pageSize) : 1;
             drCount["pageCount"] = pageCount;
             if (pageIndex != -1)
                 pageIndex = pageIndex > pageCount ? pageCount : pageIndex;
@@ -366,7 +385,7 @@ namespace DBDAL.MySqlDal
                 {
                     string col = item.Key;
                     string val = item.Value;
-                    if (string.IsNullOrWhiteSpace(col) || string.IsNullOrWhiteSpace(val)) continue;//筛选无效值
+                    if (string.IsNullOrWhiteSpace(col) || string.IsNullOrWhiteSpace(val)) continue; //筛选无效值
 
                     val = val.StartsWith(",")
                         ? string.Format("{0} {1}", col, val.TrimStart(','))
@@ -385,7 +404,7 @@ namespace DBDAL.MySqlDal
             {
                 foreach (var jc in param.JoinConditions)
                 {
-                    if (string.IsNullOrWhiteSpace(jc.Table) || string.IsNullOrWhiteSpace(jc.OnCol)) continue;  //忽略无效的连接条件
+                    if (string.IsNullOrWhiteSpace(jc.Table) || string.IsNullOrWhiteSpace(jc.OnCol)) continue; //忽略无效的连接条件
                     if (string.IsNullOrWhiteSpace(jc.MainTable)) jc.MainTable = param.Sources;
                     if (string.IsNullOrWhiteSpace(jc.MainCol)) jc.MainCol = jc.OnCol;
                     param.Sources += " " + TmoShare.GetDescription(jc.JoinType);
@@ -415,26 +434,31 @@ namespace DBDAL.MySqlDal
                     if (string.IsNullOrWhiteSpace(o.Col)) continue;
                     orderCols += string.Format(" {0} {1},", o.Col, o.IsDesc ? "desc" : "asc");
                 }
+
                 if (!string.IsNullOrWhiteSpace(orderCols))
                     sbSql.AppendFormat(" order by {0}", orderCols.TrimEnd(','));
             }
 
             if (param.PageSize != -1 || param.PageIndex != -1)
-            {   //分页模式
-                if (param.PageSize < 1) param.PageSize = 100;   //错误页码过滤
+            {
+                //分页模式
+                if (param.PageSize < 1) param.PageSize = 100; //错误页码过滤
                 if (param.PageIndex < 1) param.PageIndex = 1;
                 int count = 0;
                 int pageCount = 1;
 
                 DataTable dtCount = new DataTable("tmo_count");
-                dtCount.Columns.AddRange(new DataColumn[] { new DataColumn("count"), new DataColumn("pageCount"),
-                                                        new DataColumn("pageIndex"), new DataColumn("pageSize") });
+                dtCount.Columns.AddRange(new DataColumn[]
+                {
+                    new DataColumn("count"), new DataColumn("pageCount"),
+                    new DataColumn("pageIndex"), new DataColumn("pageSize")
+                });
                 DataRow drCount = dtCount.NewRow();
                 object objCount = MySQLHelper.GetSingle(sbSqlCount.ToString());
                 if (objCount != null)
                     count = Convert.ToInt32(objCount);
                 drCount["count"] = count;
-                pageCount = (int)Math.Ceiling((double)count / param.PageSize);
+                pageCount = (int) Math.Ceiling((double) count / param.PageSize);
                 drCount["pageCount"] = pageCount;
                 if (param.PageIndex > pageCount)
                     param.PageIndex = pageCount;
@@ -452,10 +476,12 @@ namespace DBDAL.MySqlDal
                         ds.Tables.Add(dt);
                     }
                 }
+
                 ds.Tables.Add(dtCount);
             }
             else
-            {   //无需分页
+            {
+                //无需分页
                 DataTable dt = MySQLHelper.QueryTable(sbSql.ToString());
                 if (dt != null)
                 {
@@ -463,6 +489,7 @@ namespace DBDAL.MySqlDal
                     ds.Tables.Add(dt);
                 }
             }
+
             return ds;
         }
 
@@ -516,6 +543,7 @@ namespace DBDAL.MySqlDal
                 if (tableName.ToLower() == "tmo_monitor_devicebind")
                     MemoryCacheHelper.ClearCache("tmo_monitor_devicebind");
             }
+
             return count > 0;
         }
     }

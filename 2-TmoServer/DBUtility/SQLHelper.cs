@@ -43,7 +43,7 @@ namespace DBUtility.Sql
                 }
                 catch (Exception ex)
                 {
-                    TmoShare.WriteLog("执行单条数据报错,原因：" + ex.Message);
+                    LogHelper.Log.Error("执行单条数据报错,原因：" + ex.Message);
                     return 0;
                 }
             }
@@ -178,7 +178,7 @@ namespace DBUtility.Sql
             }
             catch (Exception ex)
             {
-                TmoShare.WriteLog("执行单条数据报错,原因：" + ex.Message);
+                LogHelper.Log.Error("执行单条数据报错,原因：" + ex.Message);
                 conn.Close();
                 throw;
             }
@@ -285,7 +285,7 @@ namespace DBUtility.Sql
                 }
                 catch (Exception ex)
                 {
-                    TmoShare.WriteLog("GetSingle()报错!", ex);
+                    LogHelper.Log.Error("GetSingle()报错!", ex);
                     connection.Close();
                     return null;
                 }
@@ -327,7 +327,7 @@ namespace DBUtility.Sql
                 }
                 catch (Exception ex)
                 {
-                    TmoShare.WriteLog("执行单条数据报错,原因：" + ex.Message);
+                    LogHelper.Log.Error("执行单条数据报错,原因：" + ex.Message);
                 }
                 finally
                 {
@@ -360,7 +360,7 @@ namespace DBUtility.Sql
                 }
                 catch (Exception ex)
                 {
-                    TmoShare.WriteLog("执行单条数据报错,原因：" + ex.Message);
+                    LogHelper.Log.Error("执行单条数据报错,原因：" + ex.Message);
                 }
                 finally
                 {
@@ -394,7 +394,7 @@ namespace DBUtility.Sql
                 }
                 catch (Exception ex)
                 {
-                    TmoShare.WriteLog("执行单条数据报错,原因：" + ex.Message + @"
+                    LogHelper.Log.Error("执行单条数据报错,原因：" + ex.Message + @"
 commandText:" + commandText + @"
 connStr：" + connStr);
                 }
@@ -565,7 +565,7 @@ connStr：" + connStr);
                 }
                 catch (Exception e)
                 {
-                    TmoShare.WriteLog("执行事务报错,原因：" + e.Message);
+                    LogHelper.Log.Error("执行事务报错,原因：" + e.Message);
                     tx.Rollback("Transacion1");
                     return 0;
                 }
@@ -609,7 +609,7 @@ connStr：" + connStr);
                 }
                 catch (Exception e)
                 {
-                    TmoShare.WriteLog("执行事务报错,原因：" + e.Message);
+                    LogHelper.Log.Error("执行事务报错,原因：" + e.Message);
                     tx.Rollback();
                     return 0;
                 }
@@ -651,7 +651,7 @@ connStr：" + connStr);
                 }
                 catch (Exception e)
                 {
-                    TmoShare.WriteLog("执行事务报错,原因：" + e.Message);
+                    LogHelper.Log.Error("执行事务报错,原因：" + e.Message);
                     tx.Rollback();
                     return 0;
                 }
@@ -691,7 +691,7 @@ connStr：" + connStr);
                     }
                     catch (Exception e)
                     {
-                        TmoShare.WriteLog("执行事务报错,原因：" + e.Message);
+                        LogHelper.Log.Error("执行事务报错,原因：" + e.Message);
                         trans.Rollback();
                         return 0;
                     }
@@ -741,7 +741,7 @@ connStr：" + connStr);
                             }
                             catch (Exception es)
                             {
-                                TmoShare.WriteLog("执行单条数据报错,原因：" + es.Message);
+                                LogHelper.Log.Error("执行单条数据报错,原因：" + es.Message);
                             }
                         }
                     }
@@ -750,7 +750,7 @@ connStr：" + connStr);
                 }
                 catch (Exception ex)
                 {
-                    TmoShare.WriteLog("事务提交报错,原因：" + ex.Message);
+                    LogHelper.Log.Error("事务提交报错,原因：" + ex.Message);
                     tx.Rollback();
                     return 0;
                 }
@@ -835,7 +835,7 @@ connStr：" + connStr);
                     }
                     catch (Exception ex)
                     {
-                        TmoShare.WriteLog("执行单条数据报错,原因：" + ex.Message);
+                        LogHelper.Log.Error("执行单条数据报错,原因：" + ex.Message);
                         return null;
                     }
                     finally
@@ -989,7 +989,7 @@ connStr：" + connStr);
                 }
                 catch (Exception ex)
                 {
-                    TmoShare.WriteLog("执行单条数据报错,原因：" + ex.Message);
+                    LogHelper.Log.Error("执行单条数据报错,原因：" + ex.Message);
                 }
                 finally
                 {

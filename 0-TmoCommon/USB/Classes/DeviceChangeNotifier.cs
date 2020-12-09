@@ -56,7 +56,7 @@ namespace UsbHid.USB.Classes
             }
             catch (Exception ex)
             {
-                TmoShare.WriteLog(ex.Message);
+                LogHelper.Log.Error(ex.Message);
             }
             mInstance = null;
             th = null;
@@ -84,7 +84,7 @@ namespace UsbHid.USB.Classes
                 }
                 catch (Exception ex)
                 {
-                    TmoShare.WriteLog(ex.Message);
+                    LogHelper.Log.Error(ex.Message);
                 }
                 mInstance = this;
             }
@@ -109,7 +109,7 @@ namespace UsbHid.USB.Classes
         /// </summary>
         public bool RegisterForDeviceNotifications(IntPtr windowHandle1)
         {
-            TmoShare.WriteLog("usbGenericHidCommunication:registerForDeviceNotifications() -> Method called");
+            LogHelper.Log.Info("usbGenericHidCommunication:registerForDeviceNotifications() -> Method called");
 
             // A DEV_BROADCAST_DEVICEINTERFACE header holds information about the request.
             var devBroadcastDeviceInterface = new DevBroadcastDeviceinterface();
@@ -137,22 +137,22 @@ namespace UsbHid.USB.Classes
 
                 if ((DeviceNotificationHandle.ToInt32() == IntPtr.Zero.ToInt32()))
                 {
-                    TmoShare.WriteLog(
+                    LogHelper.Log.Info(
                         "usbGenericHidCommunication:registerForDeviceNotifications() -> Notification registration failed");
                     return false;
                 }
                 else
                 {
-                    TmoShare.WriteLog(
+                    LogHelper.Log.Info(
                         "usbGenericHidCommunication:registerForDeviceNotifications() -> Notification registration succeded");
                     return true;
                 }
             }
             catch (Exception ex)
             {
-                TmoShare.WriteLog(
+                LogHelper.Log.Info(
                     "usbGenericHidCommunication:registerForDeviceNotifications() -> EXCEPTION: An unknown exception has occured!");
-                TmoShare.WriteLog(ex.Message);
+                LogHelper.Log.Error(ex.Message);
             }
             finally
             {
@@ -165,7 +165,7 @@ namespace UsbHid.USB.Classes
                     }
                     catch (Exception ex)
                     {
-                        TmoShare.WriteLog(ex.Message);
+                        LogHelper.Log.Error(ex.Message);
                     }
                 }
             }
@@ -184,26 +184,26 @@ namespace UsbHid.USB.Classes
                 {
                     // Device attached
                     case Constants.DbtDevicearrival:
-                        TmoShare.WriteLog("handleDeviceNotificationMessages() -> 新设备插入");
+                        LogHelper.Log.Info("handleDeviceNotificationMessages() -> 新设备插入");
                         // If our target device is not currently attached, this could be our device, so we attempt to find it.
                         ReportDeviceAttached(m);
                         break;
 
                     // Device removed
                     case Constants.DbtDeviceremovecomplete:
-                        TmoShare.WriteLog("handleDeviceNotificationMessages() -> 设备拔出");
+                        LogHelper.Log.Info("handleDeviceNotificationMessages() -> 设备拔出");
                         ReportDeviceDetached(m);
                         break;
 
                     // Other message
                     default:
-                        TmoShare.WriteLog("handleDeviceNotificationMessages() -> 未知设备事件");
+                        LogHelper.Log.Info("handleDeviceNotificationMessages() -> 未知设备事件");
                         break;
                 }
             }
             catch (Exception ex)
             {
-                TmoShare.WriteLog("handleDeviceNotificationMessages() -> 发生异常:" + ex.Message);
+               LogHelper.Log.Error("handleDeviceNotificationMessages() -> 发生异常:" , ex);
             }
         }
 
@@ -221,7 +221,7 @@ namespace UsbHid.USB.Classes
                 }
                 catch (Exception ex)
                 {
-                    TmoShare.WriteLog(ex.Message);
+                    LogHelper.Log.Error(ex.Message);
                 }
 
 
@@ -240,7 +240,7 @@ namespace UsbHid.USB.Classes
             }
             catch (Exception ex)
             {
-                TmoShare.WriteLog("GetDeviceName(Message m) -> 发生异常:" + ex.Message);
+                LogHelper.Log.Error("GetDeviceName(Message m) -> 发生异常:" , ex);
             }
             return null;
         }
