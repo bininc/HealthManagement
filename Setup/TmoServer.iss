@@ -2,7 +2,7 @@
 ; 有关创建 Inno Setup 脚本文件的详细资料请查阅帮助文档！
 
 #define MyAppName "健康管理服务端"
-#define MyAppVersion "1.3.7648.31939"
+#define MyAppVersion "1.3.7649.33821"
 #define MyAppPublisher "百年养生"
 #define MyAppExeName "TmoServer.exe"
 #define FileDir "..\2-TmoServer\TmoServer\bin\Debug\"

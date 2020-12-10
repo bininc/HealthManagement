@@ -301,10 +301,16 @@ namespace TmoCommon.SocketLib
                             SendHeartBeat();
                         }
 
-                        strData = ParserString(receiveBytes);
-                        string[] infos = strData.Split(';');
-                        ClientVer = infos[0];
-                        DocInfo = TmoShare.GetValueFromJson<DocInfo>(infos.LastOrDefault());
+                        try
+                        {
+                            strData = ParserString(receiveBytes);
+                            string[] infos = strData.Split(';');
+                            ClientVer = infos[0];
+                            DocInfo = TmoShare.GetValueFromJson<DocInfo>(infos.LastOrDefault(), false);
+                        }
+                        catch
+                        {
+                        }
 
                         if (ShowAllData && DisplayMsg != null)
                             DisplayMsg(this, "收到心跳包：" + strData, DateTime.Now);
