@@ -75,7 +75,7 @@ namespace TmoTcpServer
                 }
                 catch (Exception ex)
                 {
-                    LogHelper.Log.Error("解析无线设备数据错误", ex);
+                    LogHelper.Log.Error("解析无线设备数据错误:" + value, ex);
                 }
             }
         }

@@ -316,6 +316,8 @@ namespace TmoCommon
                         timeStr = timeStr.Replace("周日", "Sunday");
 
                     pass = DateTime.TryParseExact(timeStr, "yyyy/M/d dddd tt h:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out dateTime);
+                    if(!pass)
+                        pass=DateTime.TryParseExact(timeStr, "yyyy/M/d dddd H:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out dateTime);
                 }
                 if(!pass)
                     throw new FormatException("无法转换的日期格式："+timeStr);

@@ -188,7 +188,7 @@ namespace DBDAL.MySqlDal
             }
             catch (Exception ex)
             {
-                LogHelper.Log.Error("添加监测数据失败",ex);
+                LogHelper.Log.Error("添加监测数据失败", ex);
                 return false;
             }
         }
@@ -258,7 +258,7 @@ namespace DBDAL.MySqlDal
             strWhere.Append(" tmo_monitor as a LEFT JOIN tmo_dicmonitor as b on  a.mt_code=b.mt_code  where user_id='" + userID + "'" + wherestr);
             groupStr.Append(" order by mt_time desc ");
             DataSet dsSel = tmoCommonDal.GetPagingData(strSql, strWhere, groupStr.ToString(), PageSize, NowPage);
-            if (combine != null)
+            if (dsSel != null && combine != null)
             {
                 if (combine.Tables.Contains("dt"))
                     foreach (DataRow row in combine.Tables["dt"].Rows)
@@ -273,6 +273,8 @@ namespace DBDAL.MySqlDal
 
             if (tb_combine.Rows.Count > 0)
             {
+                if (dsSel == null)
+                    dsSel = new DataSet("tmodata");
                 dsSel.Tables.Add(tb_combine);
                 dsSel = GetMonitorData(dtQuery, dsSel);
             }
@@ -326,7 +328,7 @@ namespace DBDAL.MySqlDal
             groupStr.Append(" order by mt_time desc ");
             PageSize = 1000;
             DataSet dsSel = tmoCommonDal.GetPagingData(strSql, strWhere, groupStr.ToString(), PageSize, NowPage);
-            if (combine != null)
+            if (dsSel != null && combine != null)
             {
                 if (combine.Tables.Contains("dt"))
                     foreach (DataRow row in combine.Tables["dt"].Rows)
@@ -341,6 +343,8 @@ namespace DBDAL.MySqlDal
 
             if (tb_combine.Rows.Count > 0)
             {
+                if (dsSel == null)
+                    dsSel = new DataSet("tmodata");
                 dsSel.Tables.Add(tb_combine);
                 dsSel = GetMonitorDataBy(dtQuery, dsSel);
             }
