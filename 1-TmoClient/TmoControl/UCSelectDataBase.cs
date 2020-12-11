@@ -555,7 +555,7 @@ namespace TmoControl
             }
             catch (Exception ex)
             {
-                TmoShare.WriteLog("实体加载数据出错", ex);
+                LogHelper.Log.Error("实体加载数据出错", ex);
                 DXMessageBox.ShowWarning2("数据加载失败！请重试！");
             }
             finally { }

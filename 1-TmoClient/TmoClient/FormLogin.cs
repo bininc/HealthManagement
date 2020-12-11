@@ -235,7 +235,7 @@ namespace TmoClient
                                     TCPClient.Instance.SendHeartBeat(); //登录成功后 主动发送心跳包
                                     break;
                                 default:
-                                    TmoShare.WriteLog("未知错误->错误码:" + docInfo.err_Code);
+                                    LogHelper.Log.Error("未知错误->错误码:" + docInfo.err_Code);
                                     DXMessageBox.ShowError("未知错误！错误码:" + docInfo.err_Code, this);
                                     break;
                             }

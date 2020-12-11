@@ -127,7 +127,7 @@ namespace TmoControl
                 }
                 catch (Exception ex)
                 {
-                    TmoShare.WriteLog("实体加载数据出错", ex);
+                    LogHelper.Log.Error("实体加载数据出错", ex);
                     DXMessageBox.btnClick += (object sender, EventArgs e) => { btnCancel_Click(null, null); };
                     DXMessageBox.ShowWarning2("数据加载失败！请重试！");
                 }
@@ -320,7 +320,7 @@ namespace TmoControl
             }
             catch (Exception ex)
             {
-                TmoShare.WriteLog("SetControlData(DataRow dr)错误", ex);
+                LogHelper.Log.Error("SetControlData(DataRow dr)错误", ex);
                 return false;
             }
         }

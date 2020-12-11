@@ -107,7 +107,7 @@ namespace TmoClient
                     }
                     catch (Exception ex)
                     {
-                        TmoShare.WriteLog("程序加载失败", ex);
+                        LogHelper.Log.Error("程序加载失败", ex);
                     }
 
                     if (frmLogin == null)    //退出程序

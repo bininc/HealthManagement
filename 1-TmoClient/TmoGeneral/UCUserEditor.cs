@@ -266,7 +266,7 @@ namespace TmoGeneral
             }
             catch (Exception ex)
             {
-                TmoShare.WriteLog("提交用户信息失败", ex);
+                LogHelper.Log.Error("提交用户信息失败", ex);
                 return false;
             }
 

@@ -90,7 +90,7 @@ namespace TmoLinkServer
             {
                 string errmsg = ex.Message;
                 StopService();
-                TmoShare.WriteLog("InvokeServerMethod错误 funCode:" + funCode, errmsg);
+                LogHelper.Log.Error("InvokeServerMethod错误 funCode:" + funCode, ex);
                 // if (!isTcp)
                 // {
                 //     isTcp = true; //尝试TCP模式
@@ -157,7 +157,7 @@ namespace TmoLinkServer
             }
             catch (Exception ex)
             {
-                TmoShare.WriteLog("InvokeServerMethodT<T>错误 funCode:" + funCode, ex);
+                LogHelper.Log.Error("InvokeServerMethodT<T>错误 funCode:" + funCode, ex);
             }
 
             return retT;
@@ -175,13 +175,13 @@ namespace TmoLinkServer
 
             if (string.IsNullOrWhiteSpace(Ip))
             {
-                TmoShare.WriteLog("err_ServerIP");
+                LogHelper.Log.Fatal("err_ServerIP");
                 return retT;
             }
 
             if (Port == 0)
             {
-                TmoShare.WriteLog("err_ServerPort");
+                LogHelper.Log.Fatal("err_ServerPort");
                 return retT;
             }
 

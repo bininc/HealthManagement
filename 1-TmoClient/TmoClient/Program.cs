@@ -78,7 +78,7 @@ namespace TmoClient
 
         static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
-            LogHelper.WriteError(e.Exception);
+            LogHelper.Log.Error(e.Exception);
             TmoCommon.UserMessageBox.MessageError("捕获未处理异常！原因：\n" + e.Exception.Message);
         }
     }

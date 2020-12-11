@@ -305,7 +305,7 @@ namespace TmoReport
                 }
                 catch (Exception ex)
                 {
-                    TmoShare.WriteLog("没有任何信息", ex);
+                    LogHelper.Log.Error("没有任何信息", ex);
                     DXMessageBox.ShowWarning2("没有任何信息！");
                 }
 

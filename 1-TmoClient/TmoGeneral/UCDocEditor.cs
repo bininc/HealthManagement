@@ -91,7 +91,7 @@ namespace TmoGeneral
             string docid = DbOperaType == DBOperateType.Add ? Tmo_FakeEntityClient.Instance.GetNextID(TableName, PrimaryKey) : PrimaryKeyValue;
             if (string.IsNullOrWhiteSpace(docid))
             {
-                TmoShare.WriteLog(DbOperaType + "操作" + TableName + "时得到主键为空");
+                LogHelper.Log.Warn(DbOperaType + "操作" + TableName + "时得到主键为空");
                 DXMessageBox.ShowError("提交失败！请重试！");
                 return false;
             }
