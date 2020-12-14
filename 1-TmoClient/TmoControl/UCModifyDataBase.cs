@@ -269,14 +269,20 @@ namespace TmoControl
                     if (!dr.Table.Columns.Contains(fieldName)) continue;  //跳过不在表中的控件
 
                     object fieldValue = dr[fieldName];
+                    string fieldValueStr = fieldValue?.ToString();
+                    if (fieldValueStr!=null &&  fieldValue is DateTime)
+                    {
+                        fieldValueStr = ((DateTime) fieldValue).ToFormatDateTimeStr();
+                    }
+                    
                     if (ctrl is Label)
                     {
-                        ((Label)ctrl).Text = fieldValue == null ? null : fieldValue.ToString();
+                        ((Label) ctrl).Text = fieldValueStr;
                     }
                     else if (ctrl is TextBox)
                     {
                         TextBox tb = (TextBox)ctrl;
-                        tb.Text = fieldValue == null ? null : fieldValue.ToString();
+                        tb.Text = fieldValueStr;
                         if (dbOperaType == DBOperateType.View) tb.ReadOnly = true;
                     }
                     else if (ctrl is ComboBox)
@@ -292,7 +298,7 @@ namespace TmoControl
                     }
                     else if (ctrl is DevExpress.XtraEditors.LabelControl)
                     {
-                        ((DevExpress.XtraEditors.LabelControl)ctrl).Text = fieldValue.ToString();
+                        ((DevExpress.XtraEditors.LabelControl)ctrl).Text = fieldValueStr;
                     }
                     else if (ctrl is DevExpress.XtraEditors.BaseEdit)
                     {
