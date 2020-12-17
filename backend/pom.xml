@@ -13,22 +13,23 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <spring-boot.version>2.3.0.RELEASE</spring-boot.version>
-        <spring-boot-admin.version>2.2.3</spring-boot-admin.version>
-        <spring-cloud.version>Hoxton.SR4</spring-cloud.version>
-        <oshi.version>5.2.0</oshi.version>
-        <jasypt.version>3.0.3</jasypt.version>
-        <hutool.version>5.3.5</hutool.version>
-        <ttl.version>2.11.4</ttl.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <spring-boot.version>2.3.4.RELEASE</spring-boot.version>
+        <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
+        <spring-platform.version>Cairo-SR8</spring-platform.version>
+        <hutool.version>5.5.2</hutool.version>
+        <swagger.fox.version>2.9.2</swagger.fox.version>
         <swagger.core.version>1.5.22</swagger.core.version>
+        <junit-jupiter.version>5.7.0</junit-jupiter.version>
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/com.github.oshi/oshi-core -->
+        <!--Lombok-->
         <dependency>
-            <groupId>com.github.oshi</groupId>
-            <artifactId>oshi-core</artifactId>
-            <version>${oshi.version}</version>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
         <!--配置文件处理器-->
         <dependency>
@@ -41,30 +42,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <!--Lombok-->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <!--测试依赖-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!--jasypt配置文件加解密-->
-        <dependency>
-            <groupId>com.github.ulisesbocchio</groupId>
-            <artifactId>jasypt-spring-boot-starter</artifactId>
-            <version>${jasypt.version}</version>
-        </dependency>
-        <!--监控客户端-->
-        <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-starter-client</artifactId>
-            <version>${spring-boot-admin.version}</version>
-        </dependency>
     </dependencies>
 
     <modules>
@@ -73,10 +50,24 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- 工具包 -->
+            <dependency>
+                <groupId>cn.tmo</groupId>
+                <artifactId>common-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.spring.platform</groupId>
+                <artifactId>platform-bom</artifactId>
+                <version>${spring-platform.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -93,11 +84,23 @@
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
             </dependency>
-            <!--TTL-->
+            <!--测试依赖-->
             <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>transmittable-thread-local</artifactId>
-                <version>${ttl.version}</version>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${junit-jupiter.version} </version>
+                <scope>test</scope>
+            </dependency>
+            <!--swagger -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.fox.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>${swagger.core.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.swagger</groupId>
@@ -133,11 +136,12 @@
         </pluginManagement>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <target>${java.version}</target>
-                    <source>${java.version}</source>
+                    <target>${maven.compiler.target}</target>
+                    <source>${maven.compiler.source}</source>
                     <encoding>UTF-8</encoding>
                     <skip>true</skip>
                 </configuration>
@@ -150,6 +154,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
+                <version>3.2.0</version>
                 <configuration>
                     <nonFilteredFileExtensions>
                         <nonFilteredFileExtension>p12</nonFilteredFileExtension>
